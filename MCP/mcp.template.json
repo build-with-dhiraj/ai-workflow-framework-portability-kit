@@ -1,0 +1,12 @@
+{
+  "_comment": "MCP server registry. Copy to ~/.claude/mcp.json on the new Mac and replace each REDACTED token with the live secret.",
+  "mcpServers": {
+    "n8n": {
+      "type": "http",
+      "url": "https://pw-ai.app.n8n.cloud/mcp-server/http",
+      "headers": {
+        "Authorization": "Bearer REDACTED_PUT_N8N_MCP_JWT_HERE"
+      }
+    }
+  }
+}

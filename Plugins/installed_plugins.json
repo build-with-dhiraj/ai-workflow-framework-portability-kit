@@ -1,0 +1,87 @@
+{
+  "version": 2,
+  "plugins": {
+    "figma@claude-plugins-official": [
+      {
+        "scope": "project",
+        "projectPath": "/Users/pw",
+        "installPath": "/Users/pw/.claude/plugins/cache/claude-plugins-official/figma/2.0.2",
+        "version": "2.0.2",
+        "installedAt": "2026-02-11T05:39:09.435Z",
+        "lastUpdated": "2026-05-06T11:54:36.405Z",
+        "gitCommitSha": "20aca44ee6ba6092037e943c151c067896828360"
+      }
+    ],
+    "vercel-plugin@vercel-vercel-plugin": [
+      {
+        "scope": "project",
+        "projectPath": "/Users/pw",
+        "installPath": "/Users/pw/.claude/plugins/cache/vercel-vercel-plugin/vercel-plugin/0.24.0",
+        "version": "0.24.0",
+        "installedAt": "2026-03-27T19:40:29.487Z",
+        "lastUpdated": "2026-05-06T11:54:36.405Z",
+        "gitCommitSha": "2e79fc9698b0f25253a238f4ac5ab6d3265d266d"
+      }
+    ],
+    "superpowers@superpowers-marketplace": [
+      {
+        "scope": "project",
+        "projectPath": "/Users/pw",
+        "installPath": "/Users/pw/.claude/plugins/cache/superpowers-marketplace/superpowers/5.1.0",
+        "version": "5.1.0",
+        "installedAt": "2026-05-06T07:44:51.389Z",
+        "lastUpdated": "2026-05-06T11:54:36.405Z",
+        "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
+      }
+    ],
+    "superpowers-chrome@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/pw/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/1.12.0",
+        "version": "1.12.0",
+        "installedAt": "2026-05-06T11:54:30.440Z",
+        "lastUpdated": "2026-05-06T11:54:30.440Z",
+        "gitCommitSha": "2d3663e888bcc44405627628c86a7ffbfdaacccb"
+      }
+    ],
+    "superpowers-developing-for-claude-code@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/pw/.claude/plugins/cache/superpowers-marketplace/superpowers-developing-for-claude-code/0.3.1",
+        "version": "0.3.1",
+        "installedAt": "2026-05-06T11:54:42.244Z",
+        "lastUpdated": "2026-05-06T11:54:42.244Z",
+        "gitCommitSha": "74afe935da49efe782907e837a27ce618498099a"
+      }
+    ],
+    "superpowers-lab@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/pw/.claude/plugins/cache/superpowers-marketplace/superpowers-lab/0.4.0",
+        "version": "0.4.0",
+        "installedAt": "2026-05-06T11:54:43.869Z",
+        "lastUpdated": "2026-05-06T11:54:43.869Z",
+        "gitCommitSha": "59389b1506e2d476980ee05c7c98c2f5e211fcb1"
+      }
+    ],
+    "andrej-karpathy-skills@karpathy-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/pw/.claude/plugins/cache/karpathy-skills/andrej-karpathy-skills/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-05-07T15:05:31.446Z",
+        "lastUpdated": "2026-05-07T15:05:31.446Z",
+        "gitCommitSha": "2c606141936f1eeef17fa3043a72095b4765b9c2"
+      }
+    ],
+    "github@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/pw/.claude/plugins/cache/claude-plugins-official/github/unknown",
+        "version": "unknown",
+        "installedAt": "2026-05-12T21:30:03.173Z",
+        "lastUpdated": "2026-05-12T21:30:03.173Z"
+      }
+    ]
+  }
+}

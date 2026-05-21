@@ -1,0 +1,16 @@
+# Personal portfolio assets — not part of the public kit
+Ask-AI-Daily-Automation-Exec.pptx
+Dhiraj-AI-Kit.pptx
+Dhiraj-AI-Workflow-Portfolio.pptx
+LLM-Eval-Research-Report.md
+dhiraj-portfolio-content-brief.md
+
+# OS / editor noise
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+
+# Plan-mode artifacts (if any sneak in)
+*.plan.md

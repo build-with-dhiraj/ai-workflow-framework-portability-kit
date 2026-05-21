@@ -1,0 +1,25 @@
+{
+  "name": "lib",
+  "dependencies": {
+    "@anthropic-ai/claude-code": {
+      "version": "2.1.129",
+      "overridden": false
+    },
+    "@openai/codex": {
+      "version": "0.128.0",
+      "overridden": false
+    },
+    "docx": {
+      "version": "9.6.1",
+      "overridden": false
+    },
+    "npm": {
+      "version": "11.12.1",
+      "overridden": false
+    },
+    "pptxgenjs": {
+      "version": "4.0.1",
+      "overridden": false
+    }
+  }
+}
