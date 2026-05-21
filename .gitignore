@@ -5,6 +5,11 @@ Dhiraj-AI-Workflow-Portfolio.pptx
 LLM-Eval-Research-Report.md
 dhiraj-portfolio-content-brief.md
 
+# Per-project Claude Code state (philosophy: kit captures global config only)
+.claude/
+.kernel/
+.specify/
+
 # OS / editor noise
 .DS_Store
 *.swp

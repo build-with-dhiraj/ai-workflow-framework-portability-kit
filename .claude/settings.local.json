@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Skill(building-claude-portability-kit)",
-      "Skill(building-claude-portability-kit:*)"
-    ]
-  }
-}
