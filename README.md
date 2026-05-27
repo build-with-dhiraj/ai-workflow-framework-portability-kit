@@ -75,7 +75,234 @@ The top-priority directive: **the orchestrator never writes code.** All implemen
 
 ---
 
-## Restore on a fresh Mac
+## Skill precedence — decision trees
+
+When two or more skills could handle the same task, these trees decide which one fires. Read top-down, stop at first match. Same logic lives terser as bullet lists in `CLAUDE.md` §4c.
+
+### Design / visual quality
+
+```
+You say: "design / make / polish / animate / audit something"
+                │
+                ▼
+        Is it static visual art? (poster, PDF, PNG, single-image)
+                │
+        ┌───────┴───────┐
+       YES              NO  (it's app UI)
+        │               │
+   anthropic-skills:    ▼
+   canvas-design   Figma file involved? (read / generate / implement)
+   ───STOP──             │
+                  ┌──────┴──────┐
+                 YES            NO
+                  │             │
+              figma:* cluster   ▼
+              (see Figma        3D / WebGL?
+               workflow         │
+               below)     ┌─────┴─────┐
+              ───STOP──  YES          NO
+                          │           │
+                   3D web stack       ▼
+                   cluster       Brand-locked Anthropic work?
+                   (see below)        │
+                   ───STOP──    ┌─────┴─────┐
+                               YES          NO
+                                │           │
+                       anthropic-skills:    ▼
+                       brand-guidelines NEW UI or EXISTING UI?
+                       (local archived)     │
+                       ───STOP──      ┌─────┴─────┐
+                                    NEW         EXISTING
+                                     │           │
+                         design-taste-frontend   impeccable
+                         (greenfield landing /   (anti-pattern audit:
+                          portfolio / redesign)  /audit /polish /critique
+                                                 /animate /typeset /spacing
+                         THEN run impeccable     /motion /clarify /distill
+                         /audit as polish pass   /harden ...)
+                                     │           │
+                                     └─────┬─────┘
+                                           ▼
+                                    Need motion?
+                                           │
+                                    ┌──────┼──────────┐
+                                 FRAMER  OTHER     Three.js
+                                  │     (taste)       │
+                       framer-motion- emil-design-  3D cluster
+                       animator       eng (taste;   (above)
+                                      pair with
+                                      framer for
+                                      actual code)
+                                           │
+                                           ▼
+                                    Theme overlay?
+                                    (apply preset)
+                                           │
+                                    anthropic-skills:theme-factory
+
+  Orthogonal layers (always available, never conflict):
+    AI-feature UX (LLM streaming, fallback, multi-turn) → ai-product-ux
+    shadcn component library                            → vercel-plugin:shadcn
+
+  Full design-task dispatch ("make this beautiful" not "build this feature"):
+    → engineering-design-specialist (parallel to engineering-frontend-developer)
+```
+
+---
+
+### Grilling — stress-testing a plan
+
+```
+Need to stress-test a plan or design decision?
+                │
+                ▼
+   Does the project have docs/adr/ or CONTEXT.md?
+                │
+        ┌───────┴───────┐
+       YES              NO
+        │               │
+   grill-with-docs      grill-me
+   (writes decisions    (no doc writes;
+    back to docs/adr/)  pure interview)
+```
+
+---
+
+### 3D web stack (narrowest-match-wins)
+
+```
+3D / WebGL task?
+        │
+        ▼
+Is it animation? (keyframe, GLTF, skeletal, morph targets, mixing)
+        │
+   ┌────┴─────┐
+  YES         NO
+   │          │
+threejs-      ▼
+animation  Is it React Three Fiber specifically?
+───STOP──     │
+         ┌────┴────┐
+        YES        NO
+         │         │
+   r3f-best-       ▼
+   practices  3d-web-experience
+   ───STOP──  (catch-all — "how do I build a 3D site",
+              Spline integration, immersive scenes,
+              product configurators)
+```
+
+---
+
+### Postgres / Supabase
+
+```
+Postgres / SQL task?
+        │
+        ▼
+Does the task involve Supabase explicitly?
+(Database, Auth, Storage, Edge Functions, Vectors, supabase-js, RLS, ...)
+        │
+   ┌────┴─────┐
+  YES         NO
+   │          │
+   ▼          ▼
+Is this   postgresql-code-review
+SQL       (pure PostgreSQL, no
+performance Supabase context;
+specifically? schema, queries, RLS,
+   │          functions)
+┌──┴───┐
+YES    NO
+ │     │
+supabase- supabase
+postgres- (umbrella — any
+best-     Supabase task,
+practices product-wide)
+```
+
+---
+
+### Vercel deployment
+
+```
+Vercel deployment / CI / env-var work?
+        │
+        ▼
+  Use vercel-plugin:* skills (all authoritative)
+        │
+   ┌────┴────┬─────────┬──────────────┐
+   ▼         ▼         ▼              ▼
+deployments- vercel-cli  deploy        env
+cicd                                   (env-var management)
+(workflows,  (CLI usage, (the deploy   (list/pull/add/
+ promote,     env, link,  command       remove, diff
+ rollback,    logs)       itself)       between envs)
+ prebuild)
+
+  ⚠️ Local vercel-deployment skill is DEPRECATED
+  Archived in ~/.claude/skills/.archive/. Do not use.
+```
+
+---
+
+### Architecture work
+
+```
+Architecture / refactoring task?
+        │
+        ▼
+Is there existing code to analyze?
+        │
+   ┌────┴─────┐
+  YES         NO  (new feature; nothing to scan yet)
+   │          │
+   ▼          ▼
+improve-     gepetto
+codebase-    (prescriptive — multi-step plan,
+architecture  multi-LLM review via stakeholder
+(diagnostic   interviews. Use BEFORE
+— scans       superpowers:writing-plans)
+docs/adr/ +
+CONTEXT.md +
+code; flags
+refactor
+opportunities)
+```
+
+---
+
+### Figma workflow (sequential steps, not competing alternatives)
+
+```
+                  ┌─────────────────┐
+                  │ figma:figma-use │  ◄── PREREQUISITE for most others
+                  │ (read / inspect /│      (Figma must be reachable
+                  │  interact with   │       before any other op)
+                  │  a Figma file)   │
+                  └────────┬────────┘
+                           │
+   ┌────────────┬──────────┼──────────────┬─────────────────┐
+   ▼            ▼          ▼              ▼                 ▼
+figma:        figma:     figma:        figma:             figma:
+figma-        figma-     figma-        figma-create-      figma-code-
+implement-    generate-  generate-     design-system-     connect-
+design        design     library       rules              components
+
+(Figma →      (code /    (codebase →   (author per-       (bidirectional
+ production    page →     Figma         project DS         mapping
+ code, 1:1     Figma —    design        rules / tokens)    Figma ↔ code
+ visual        build a    system)                          components for
+ fidelity)     screen in                                   Code Connect)
+               Figma from
+               an app view)
+```
+
+Use the leftmost path (read → implement) when you have a Figma design that needs to ship as code. Use the rightmost paths (generate-library, code-connect) when you have a codebase and want to maintain a design system in Figma alongside it.
+
+---
+
+
 
 ```bash
 # 1. Clone this repo
