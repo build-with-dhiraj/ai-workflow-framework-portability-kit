@@ -4,7 +4,7 @@ description: Build LLM eval suites, run prompt regression tests, score AI output
 dispatch_to: ai-engineer
 license: MIT
 metadata:
-  author: the-operator
+  author: priyanshu
   version: "1.0.0"
   date: May 2026
   abstract: Teaches Claude how to build LLM evaluation suites using deepeval (confident-ai/deepeval), wire results into Langfuse for persistence, and surface metrics in Metabase. Covers core metrics, pytest structure, LLM-as-judge custom rubrics, and CI integration. Designed for Ask AI / Chakra AI EdTech context with locked SME rubrics.

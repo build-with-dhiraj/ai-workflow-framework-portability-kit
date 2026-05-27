@@ -5,8 +5,16 @@
       "version": "2.1.129",
       "overridden": false
     },
+    "@google/gemini-cli": {
+      "version": "0.43.0",
+      "overridden": false
+    },
     "@openai/codex": {
       "version": "0.128.0",
+      "overridden": false
+    },
+    "agent-browser": {
+      "version": "0.27.0",
       "overridden": false
     },
     "docx": {
@@ -17,8 +25,16 @@
       "version": "11.12.1",
       "overridden": false
     },
+    "pnpm": {
+      "version": "11.2.2",
+      "overridden": false
+    },
     "pptxgenjs": {
       "version": "4.0.1",
+      "overridden": false
+    },
+    "vercel": {
+      "version": "54.4.1",
       "overridden": false
     }
   }

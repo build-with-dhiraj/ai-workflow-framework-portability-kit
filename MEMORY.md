@@ -150,4 +150,4 @@ Rule of thumb: **if a piece of information is only useful within the current con
 
 ## 6. Memory in this specific folder
 
-This folder (`/Users/pw/Claude Agents and Skills/`) has its own auto-memory directory at `/Users/pw/.claude/projects/-Users-pw-Claude-Agents-and-Skills/memory/`. As of the snapshot date (2026-05-20), it's empty — this conversation is the first substantive session in this workspace, so memory will populate as we continue working here.
+This folder (`/Users/pw/Claude Agents and Skills/`) has its own auto-memory directory at `/Users/pw/.claude/projects/-Users-pw-Claude-Agents-and-Skills/memory/`. As of the snapshot date (2026-05-27), it's empty — this conversation is the first substantive session in this workspace, so memory will populate as we continue working here.

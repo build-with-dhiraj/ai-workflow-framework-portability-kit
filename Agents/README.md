@@ -1,6 +1,6 @@
 # Agents — Roster & Dispatch Logic
 
-34 custom specialist agents live in this folder — 30 engineering implementers (the `engineering-*` files), 1 cross-session-continuity advisor (`agency-kernel-steward`), and 3 consultative expert advisors (`llm-architect`, `prompt-engineer`, `qa-expert`). The engineering implementers are the **implementation tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). The advisors are dispatched for counsel, not implementation. The orchestrator (top-level Claude Code session) dispatches them all via the `Task` tool; the orchestrator itself never writes code.
+35 custom specialist agents live in this folder — 31 engineering implementers (the `engineering-*` files, including the new `engineering-design-specialist` for visual-judgment work), 1 cross-session-continuity advisor (`agency-kernel-steward`), and 3 consultative expert advisors (`llm-architect`, `prompt-engineer`, `qa-expert`). The engineering implementers are the **implementation tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). The advisors are dispatched for counsel, not implementation. The orchestrator (top-level Claude Code session) dispatches them all via the `Task` tool; the orchestrator itself never writes code.
 
 > **Where they live on the live Mac:** `~/.claude/agents/`
 > Restoration: copy every `*.md` in this folder back to that location. That's it — Claude Code auto-discovers them at session start.
@@ -129,7 +129,7 @@ The orchestration skill for this pattern: `superpowers:dispatching-parallel-agen
 
 ## 5. File inventory
 
-The 34 agent files in this folder, alphabetically:
+The 35 agent files in this folder, alphabetically:
 
 ```
 agency-kernel-steward.md
@@ -142,6 +142,7 @@ engineering-code-reviewer.md
 engineering-codebase-onboarding-engineer.md
 engineering-data-engineer.md
 engineering-database-optimizer.md
+engineering-design-specialist.md
 engineering-devops-automator.md
 engineering-email-intelligence-engineer.md
 engineering-embedded-firmware-engineer.md

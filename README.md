@@ -2,7 +2,7 @@
 
 A portable, self-contained snapshot of a working **Claude Code** setup — agents, skills, plugins, MCP servers, host-side tooling, and the orchestration logic that ties them together. Drop the folder on a fresh Mac, run one script, and the entire stack is restored in about twenty minutes.
 
-This is the master config behind a multi-layer "Engineering Manager" AI workflow: a top-level orchestrator that never writes code itself, dispatching work down to 34 specialist agents who do. The kit captures that architecture as files anyone can audit, fork, or rebuild from.
+This is the master config behind a multi-layer "Engineering Manager" AI workflow: a top-level orchestrator that never writes code itself, dispatching work down to 35 specialist agents who do. The kit captures that architecture as files anyone can audit, fork, or rebuild from.
 
 ---
 
@@ -14,8 +14,8 @@ This is the master config behind a multi-layer "Engineering Manager" AI workflow
 | [`BOOTSTRAP.md`](BOOTSTRAP.md) | Step-by-step new-Mac install runbook. Numbered phases for the manual path; one-script "fast path" pointer at the top. |
 | [`MEMORY.md`](MEMORY.md) | Memory-system design — auto-memory (per-project), context kernel (cross-session), how state survives forked conversations. |
 | [`SPEC-KIT-global.md`](SPEC-KIT-global.md) | Greenfield-only Spec-Driven Development phase map; explicit override rule (never run `/speckit.implement`). |
-| [`Agents/`](Agents/) | **34 custom specialist agents** — 30 engineering implementers (frontend, backend, AI, Solidity, WeChat, Feishu, etc.), 1 cross-session continuity advisor, 3 consultative expert advisors. Each is dispatched by the orchestrator via the `Task` tool. |
-| [`Skills/`](Skills/) | **93 active skills** — process discipline (TDD, debugging, brainstorming), implementation patterns (Supabase, Three.js, Flutter, etc.), and governance (skill-necessity gating, library hygiene). Symlinks already resolved into real content — zero external dependencies. |
+| [`Agents/`](Agents/) | **35 custom specialist agents** — 31 engineering implementers (frontend, backend, AI, Solidity, WeChat, Feishu, design-specialist, etc.), 1 cross-session continuity advisor, 3 consultative expert advisors. Each is dispatched by the orchestrator via the `Task` tool. |
+| [`Skills/`](Skills/) | **104 active skills** — process discipline (TDD, debugging, brainstorming), implementation patterns (Supabase, Three.js, Flutter, design / impeccable / taste, etc.), and governance (skill-necessity gating, library hygiene). Symlinks already resolved into real content — zero external dependencies. |
 | [`MCP/`](MCP/) | Local MCP server registry template, with all secrets redacted to placeholders. |
 | [`Plugins/`](Plugins/) | Installed-plugins manifest, known-marketplaces registry, plus the local-directory marketplace cache (without it, Vercel-style plugins fail to reinstall). |
 | [`Connectors/`](Connectors/) | Inventory of 43 account-bound MCP integrations (Gmail, Drive, Supabase, Slack, Atlassian, Notion, etc.). These auto-reattach on `claude login` — the README documents what's wired up. |
@@ -42,7 +42,7 @@ This is the master config behind a multi-layer "Engineering Manager" AI workflow
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
 │  Layer 3 — SPECIALIST AGENTS (the "who")                     │
-│  34 custom specialists, dispatched in parallel when work     │
+│  35 custom specialists, dispatched in parallel when work     │
 │  is independent. THIS is where code gets written.            │
 └──────────────────────────┬──────────────────────────────────┘
                            │ uses

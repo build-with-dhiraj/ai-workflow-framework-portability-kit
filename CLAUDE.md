@@ -2,7 +2,7 @@
 
 This folder is **a portable, self-contained snapshot** of the operator's Claude Code agent + skill setup. Drop it on any new Mac, follow [BOOTSTRAP.md](BOOTSTRAP.md), and the orchestration logic, specialist agents, and skill library are restored exactly as on the source machine.
 
-> **Snapshotted on:** 2026-05-20
+> **Snapshotted on:** 2026-05-27
 > **Source machine settings live at:** `~/.claude/` (mirrored here)
 
 ---
@@ -17,8 +17,8 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `CLAUDE-global.md` | Snapshot of your global `~/.claude/CLAUDE.md` | `~/.claude/CLAUDE.md` |
 | `SPEC-KIT-global.md` | Snapshot of your global `~/.claude/SPEC-KIT.md` (greenfield spec-driven phase mapping) | `~/.claude/SPEC-KIT.md` |
 | `settings.json` | Snapshot of `~/.claude/settings.json` (plugins, permissions, env) | `~/.claude/settings.json` |
-| `Agents/` | All 34 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
-| `Skills/` | All 93 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
+| `Agents/` | All 35 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
+| `Skills/` | All 104 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
@@ -49,7 +49,7 @@ Claude operates as a **conductor**, not a soloist. Work flows through six layers
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │  Layer 3 — SPECIALIST AGENTS (the "who" — domain experts, write code)        │
-│  • 34 custom specialist agents in /Agents (see Agents/README.md for org chart)│
+│  • 35 custom specialist agents in /Agents (see Agents/README.md for org chart)│
 │  • Each owns a domain: frontend, backend, Solidity, WeChat, Feishu, etc.     │
 │  • Dispatched by Layer 1 in parallel when work is independent                │
 └────────────────────────────────┬────────────────────────────────────────────┘
@@ -133,6 +133,7 @@ Two or more skills can match the same job. When they do, follow this priority or
 | Architectural pre-planning | `gepetto` | `superpowers:writing-plans` (use AFTER gepetto) |
 | Subagent dispatch | `superpowers:subagent-driven-development`, `superpowers:dispatching-parallel-agents` | — |
 | Final verification | `superpowers:verification-before-completion` + `evaluating-agent-behavior` | — |
+| Premium / anti-slop UI generation | `design-taste-frontend` (Leonxlnx) | local `frontend-design` (deprecated; archived) |
 
 ### 4c. Local skill clusters (narrowest match wins)
 
@@ -153,6 +154,16 @@ Two or more skills can match the same job. When they do, follow this priority or
 - **Architecture work**
   - `improve-codebase-architecture` → diagnostic: find refactor opportunities in existing code
   - `gepetto` → prescriptive: upfront multi-step plan for a new feature
+- **Design / visual quality** (narrowest-match-wins cascade)
+  - `impeccable` → anti-pattern auto-detection (purple gradients, low contrast, nested cards, bounce-easing overuse); run early in any UI review pass. 23 slash-commands available (`/audit`, `/polish`, `/critique`, `/animate`, `/colorize`, `/typeset`, `/spacing`, `/motion`, etc.)
+  - `design-taste-frontend` (Leonxlnx/taste-skill) → premium-default UI generation for landing pages, portfolios, redesigns; **supersedes** the archived local `frontend-design`
+  - `emil-design-eng` (emilkowalski/skill) → narrow: animation + micro-interaction polish; fires AFTER `impeccable` + `design-taste-frontend` are happy with structure
+  - `anthropic-skills:canvas-design` → static visual art only (posters, PNG/PDF deliverables) — NOT app UI
+  - `anthropic-skills:theme-factory` → applying a pre-built theme to an artifact
+  - `brand-guidelines` (local) / `anthropic-skills:brand-guidelines` → brand-locked Anthropic work
+  - `framer-motion-animator` → Framer Motion specifically; for non-Framer animation polish, use `emil-design-eng`
+  - 3D animation → use the 3D web stack cluster above, not this one
+  - Dispatch agent: `engineering-design-specialist` owns this domain (parallel to `engineering-frontend-developer` when task is "make this beautiful" not "build this feature")
 
 ### 4d. Governance trio — strict ordering
 

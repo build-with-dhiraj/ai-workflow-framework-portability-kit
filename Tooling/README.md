@@ -21,7 +21,7 @@ This folder captures the **host-side tooling** Claude depends on: brew packages,
 
 ## 2. What `Brewfile` contains right now
 
-Snapshot taken 2026-05-20:
+Snapshot taken 2026-05-27:
 
 | Type | Package | Why it's here |
 |---|---|---|

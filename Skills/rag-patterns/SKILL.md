@@ -2,7 +2,7 @@
 name: rag-patterns
 description: "Build RAG pipelines — vector DB + LLM, document Q&A, chunking/embedding strategies. Triggers on 'build RAG', 'document Q&A', 'retrieval pipeline', 'embed and search'."
 metadata:
-  author: the-operator
+  author: priyanshu
   version: "0.1.0"
 ---
 
