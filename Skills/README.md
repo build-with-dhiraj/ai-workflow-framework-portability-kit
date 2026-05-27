@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-103 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+106 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -239,6 +239,25 @@ Each directory contains a `SKILL.md` with the activation logic, plus optional bu
 - Local `brand-guidelines` moved to `~/.claude/skills/.archive/brand-guidelines/` (was a duplicate of harness-bundled `anthropic-skills:brand-guidelines`; bundled version is authoritative).
 
 Both are locally restorable; neither is visible in the public kit.
+
+---
+
+### Connecting-Dots planning round (same 2026-05-27 push)
+
+While planning a personal-content "second brain" tool ("Connecting Dots"), the `evaluating-skill-necessity` gate was run against marketplace candidates for each project gap. After concrete `npx skills find` results were re-gated, **2 marketplace installs passed and 1 custom skill was authored** via `write-a-skill`:
+
+| Skill | Source | License | Use |
+|---|---|---|---|
+| `baoyu-youtube-transcript` | `jimliu/baoyu-skills` (skills.sh) | MIT-ish (per skill repo) | Download YouTube transcripts/subtitles/cover images by URL or video ID. 11.4k installs, category leader. |
+| `integrate-whatsapp` | `gokapso/agent-skills` (skills.sh) | Per skill repo | WhatsApp Cloud API integration — onboarding flow, webhooks, message-send, Flows. 2k installs. |
+| `personal-content-resurface` | **Local custom (authored via `write-a-skill`)** | MIT (kit-default) | Decide which saved content (YT/IG/WA/LI) should re-surface today. Encodes SM-2, FSRS, and a custom context-aware hybrid algorithm — implementer picks at build time. Decision math only; no UX. This is the Connecting-Dots moat. |
+
+**Gate results for the other gaps (documented for audit trail):**
+- LinkedIn scraper → REJECT (no skill installed; manual export flow specified in PRD instead — ToS-safer)
+- Personal knowledge graph skill → REJECT (existing `obsidian-vault` + `memory-router` + `ner-content-pipeline` cover 85%)
+- Browser extension scaffold → REJECT (out of MVP scope)
+- Playwright skill / Neo4j skill / Prefect skill → DEFERRED (revisit after `gepetto` architectural decisions)
+- Instagram scraper → DEFERRED (install only if `deep-research` confirms IG platform-feasibility)
 
 **Unrelated drift (9 skills appeared between 2026-05-20 and 2026-05-27, lumped into this same push):** `defuddle`, `wrap-up`, `user-research`, `obsidian-markdown`, `research-synthesis`, `memory-router`, `obsidian-bases`, `obsidian-cli`, `json-canvas`. These are personal-knowledge / research / utility skills (Obsidian + Pinecone memory routing pattern), unrelated to the design layer. Documented here for the next monthly `managing-skills-library` audit.
 
