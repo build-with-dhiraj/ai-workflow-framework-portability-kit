@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-104 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+103 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -234,7 +234,11 @@ Each directory contains a `SKILL.md` with the activation logic, plus optional bu
 
 **Companion agent:** `engineering-design-specialist.md` added — visual-judgment dispatch parallel to `engineering-frontend-developer`. See `Agents/README.md` for full role.
 
-**Deprecated/archived:** local `frontend-design` moved to `~/.claude/skills/.archive/frontend-design/` (replaced by `design-taste-frontend`). Not visible in public kit; locally restorable.
+**Deprecated/archived:**
+- Local `frontend-design` moved to `~/.claude/skills/.archive/frontend-design/` (replaced by `design-taste-frontend`).
+- Local `brand-guidelines` moved to `~/.claude/skills/.archive/brand-guidelines/` (was a duplicate of harness-bundled `anthropic-skills:brand-guidelines`; bundled version is authoritative).
+
+Both are locally restorable; neither is visible in the public kit.
 
 **Unrelated drift (9 skills appeared between 2026-05-20 and 2026-05-27, lumped into this same push):** `defuddle`, `wrap-up`, `user-research`, `obsidian-markdown`, `research-synthesis`, `memory-router`, `obsidian-bases`, `obsidian-cli`, `json-canvas`. These are personal-knowledge / research / utility skills (Obsidian + Pinecone memory routing pattern), unrelated to the design layer. Documented here for the next monthly `managing-skills-library` audit.
 

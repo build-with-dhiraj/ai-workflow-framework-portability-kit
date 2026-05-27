@@ -18,7 +18,7 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `SPEC-KIT-global.md` | Snapshot of your global `~/.claude/SPEC-KIT.md` (greenfield spec-driven phase mapping) | `~/.claude/SPEC-KIT.md` |
 | `settings.json` | Snapshot of `~/.claude/settings.json` (plugins, permissions, env) | `~/.claude/settings.json` |
 | `Agents/` | All 35 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
-| `Skills/` | All 104 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
+| `Skills/` | All 103 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
@@ -134,6 +134,7 @@ Two or more skills can match the same job. When they do, follow this priority or
 | Subagent dispatch | `superpowers:subagent-driven-development`, `superpowers:dispatching-parallel-agents` | — |
 | Final verification | `superpowers:verification-before-completion` + `evaluating-agent-behavior` | — |
 | Premium / anti-slop UI generation | `design-taste-frontend` (Leonxlnx) | local `frontend-design` (deprecated; archived) |
+| Anthropic brand styling | `anthropic-skills:brand-guidelines` (harness-bundled, authoritative) | local `brand-guidelines` (deprecated; archived — was a duplicate of the bundled version) |
 
 ### 4c. Local skill clusters (narrowest match wins)
 
@@ -154,16 +155,29 @@ Two or more skills can match the same job. When they do, follow this priority or
 - **Architecture work**
   - `improve-codebase-architecture` → diagnostic: find refactor opportunities in existing code
   - `gepetto` → prescriptive: upfront multi-step plan for a new feature
-- **Design / visual quality** (narrowest-match-wins cascade)
-  - `impeccable` → anti-pattern auto-detection (purple gradients, low contrast, nested cards, bounce-easing overuse); run early in any UI review pass. 23 slash-commands available (`/audit`, `/polish`, `/critique`, `/animate`, `/colorize`, `/typeset`, `/spacing`, `/motion`, etc.)
-  - `design-taste-frontend` (Leonxlnx/taste-skill) → premium-default UI generation for landing pages, portfolios, redesigns; **supersedes** the archived local `frontend-design`
-  - `emil-design-eng` (emilkowalski/skill) → narrow: animation + micro-interaction polish; fires AFTER `impeccable` + `design-taste-frontend` are happy with structure
-  - `anthropic-skills:canvas-design` → static visual art only (posters, PNG/PDF deliverables) — NOT app UI
-  - `anthropic-skills:theme-factory` → applying a pre-built theme to an artifact
-  - `brand-guidelines` (local) / `anthropic-skills:brand-guidelines` → brand-locked Anthropic work
-  - `framer-motion-animator` → Framer Motion specifically; for non-Framer animation polish, use `emil-design-eng`
-  - 3D animation → use the 3D web stack cluster above, not this one
-  - Dispatch agent: `engineering-design-specialist` owns this domain (parallel to `engineering-frontend-developer` when task is "make this beautiful" not "build this feature")
+- **Design / visual quality** (decision tree — read top-down, stop at first match)
+  - **Static visual art** (poster, PDF, PNG, single-image deliverable, NOT app UI) → `anthropic-skills:canvas-design`. Stop here.
+  - **Figma file involved?** (read, generate, implement, code-connect) → `figma:*` cluster (see "Figma workflow" below). Stop here.
+  - **3D / WebGL?** → 3D web stack cluster (above), not this one. Stop here.
+  - **Brand-locked Anthropic work** (colors, typography, official identity) → `anthropic-skills:brand-guidelines` (harness-bundled, authoritative). Local `brand-guidelines` is **archived** (was a duplicate).
+  - **Greenfield UI generation** (new landing page, portfolio, marketing site, redesign-from-scratch) → `design-taste-frontend` (Leonxlnx/taste-skill). **Supersedes** archived local `frontend-design`. Use FIRST to set direction, THEN run `impeccable /audit` as a polish pass.
+  - **Existing UI review / audit / critique / polish** → `impeccable`. 23 slash-commands: `/audit`, `/polish`, `/critique`, `/animate`, `/colorize`, `/typeset`, `/spacing`, `/motion`, `/clarify`, `/distill`, `/harden`, etc. Use `/audit` first to detect anti-patterns, then specific subcommands to fix.
+  - **Theme overlay on an existing artifact** (apply one of 10 presets) → `anthropic-skills:theme-factory`. Different layer than design-taste-frontend (skin vs build from scratch).
+  - **Motion / animation:**
+    - Library-specific: Framer Motion → `framer-motion-animator` · Three.js → `threejs-animation` (3D cluster) · Flutter → `flutter-animating-apps`
+    - General motion *taste* / "does this feel alive" / micro-interaction philosophy → `emil-design-eng` (Emil owns judgment, not implementation — pair with `framer-motion-animator` for the actual code)
+    - Motion as one aspect of a broader UI audit → `impeccable /animate` or `/motion`
+  - **AI-feature UX** (LLM streaming, multi-turn state, fallback states, onboarding for AI features) → `ai-product-ux`. Orthogonal to the above — this is AI-product-shaped UX, not visual design.
+  - **shadcn-based product UI** (component library choice) → `vercel-plugin:shadcn` runs alongside whichever generation skill above is firing. Orthogonal — it's about *which library*, not *what design*.
+  - **Dispatch agent**: `engineering-design-specialist` owns this entire domain. Dispatched in parallel with `engineering-frontend-developer` when task is "make this beautiful" rather than "build this feature".
+
+- **Figma workflow** (these are sequential steps, not competing alternatives)
+  - `figma:figma-use` → read / inspect / interact with a Figma file (prerequisite for several others)
+  - `figma:figma-implement-design` → Figma design → production code (1:1 fidelity)
+  - `figma:figma-generate-design` → code/page → Figma (build a screen in Figma from an app view)
+  - `figma:figma-generate-library` → codebase → Figma design system
+  - `figma:figma-create-design-system-rules` → author per-project DS rules
+  - `figma:figma-code-connect-components` → bidirectional component mapping
 
 ### 4d. Governance trio — strict ordering
 

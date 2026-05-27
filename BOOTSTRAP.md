@@ -60,7 +60,7 @@ rsync -a "/Users/pw/Claude Agents and Skills/Skills/" ~/.claude/skills/
 Verify:
 
 ```bash
-ls ~/.claude/skills/ | wc -l   # should print 104
+ls ~/.claude/skills/ | wc -l   # should print 103
 ```
 
 > **Note:** On the source Mac, ~30 of these were *symlinks* to `~/.agents/skills/` (an external Mattpocock library). In this folder, those symlinks have already been **resolved** into real content — you do NOT need to install or restore `~/.agents/skills/` separately. Everything is self-contained.
@@ -217,7 +217,7 @@ In a fresh terminal, run:
 ls ~/.claude/agents/*.md | wc -l   # expect 35
 
 # Check skills
-ls ~/.claude/skills/ | wc -l       # expect 104 (or fewer if some are now symlinks)
+ls ~/.claude/skills/ | wc -l       # expect 103 (or fewer if some are now symlinks)
 
 # Check plugins
 claude plugin list                  # expect 8 enabled plugins
