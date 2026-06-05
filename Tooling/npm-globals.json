@@ -17,6 +17,10 @@
       "version": "0.27.0",
       "overridden": false
     },
+    "defuddle": {
+      "version": "0.18.1",
+      "overridden": false
+    },
     "docx": {
       "version": "9.6.1",
       "overridden": false

@@ -40,5 +40,7 @@
   "theme": "dark",
   "teammateMode": "in-process",
   "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skipWorkflowUsageWarning": true,
+  "cleanupPeriodDays": 99999
 }
