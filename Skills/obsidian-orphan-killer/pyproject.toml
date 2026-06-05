@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "obsidian-orphan-killer"
+version = "0.1.0"
+description = "Auto-link the orphans in any [[wikilink]] markdown vault. Three modes: deterministic resolve, embedding anchor, experimental cluster-mint. Frontmatter-only writes, atomic, idempotent."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Dhiraj Singh Pawar", email = "build.with.dhiraj@gmail.com" }]
+requires-python = ">=3.10"
+keywords = [
+    "obsidian",
+    "second-brain",
+    "pkm",
+    "zettelkasten",
+    "orphans",
+    "wikilinks",
+    "knowledge-management",
+    "entity-resolution",
+    "embeddings",
+    "markdown",
+    "vault",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "pyyaml>=6.0",
+    "networkx>=3.0",
+]
+
+[project.optional-dependencies]
+# The anchor + mint modes use fastembed for local $0 embeddings; declared as an
+# optional extra so the resolve mode (deterministic alias-table only) can be
+# installed without pulling in any ML deps.
+embed = [
+    "fastembed>=0.3",
+]
+# Optional dependency for the built-in OpenAI cluster-namer in mint mode. The
+# user can plug in their own llm_namer callable to avoid this dep entirely.
+mint = [
+    "fastembed>=0.3",
+    "openai>=1.0",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/build-with-dhiraj/obsidian-orphan-killer"
+Issues = "https://github.com/build-with-dhiraj/obsidian-orphan-killer/issues"
+Changelog = "https://github.com/build-with-dhiraj/obsidian-orphan-killer/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/build-with-dhiraj/obsidian-orphan-killer#readme"
+
+[project.scripts]
+obsidian-orphan-killer = "obsidian_orphan_killer.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["obsidian_orphan_killer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]

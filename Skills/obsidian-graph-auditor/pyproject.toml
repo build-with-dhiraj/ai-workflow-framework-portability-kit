@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "obsidian-graph-auditor"
+version = "0.1.0"
+description = "Score an Obsidian vault on the 8-dimension Grade-A rubric. Read-only, pure Python, no API keys."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Dhiraj Singh Pawar", email = "build.with.dhiraj@gmail.com" }]
+requires-python = ">=3.10"
+keywords = [
+    "obsidian",
+    "second-brain",
+    "pkm",
+    "zettelkasten",
+    "graph",
+    "audit",
+    "knowledge-management",
+    "markdown",
+    "vault",
+    "networkx",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "networkx>=3.0",
+    "python-louvain>=0.16",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/build-with-dhiraj/obsidian-graph-auditor"
+Issues = "https://github.com/build-with-dhiraj/obsidian-graph-auditor/issues"
+Changelog = "https://github.com/build-with-dhiraj/obsidian-graph-auditor/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/build-with-dhiraj/obsidian-graph-auditor#readme"
+
+[project.scripts]
+obsidian-graph-audit = "obsidian_graph_auditor.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["obsidian_graph_auditor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]  # line length handled by formatter where it matters

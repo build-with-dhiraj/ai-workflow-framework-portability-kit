@@ -1,0 +1,56 @@
+================================================================
+  OBSIDIAN VAULT AUDIT — Grade-A Rubric
+================================================================
+  vault                       /tmp/claude-501/tmp_iz2djxg/vault_healthy
+
+  STRUCTURE
+    total notes                       30
+    resolved internal edges          120
+    link density (edges/note)     4.0000   A
+
+  CONNECTIVITY
+    orphans (deg 0)                    0  (0.00%)   A
+    near-orphans (deg 1)               0  (0.00%)   A
+    connected (deg >=2)               30  (100.00%)   A
+    frontmatter-wikilink          100.00%  adoption    A
+
+  CONCENTRATION
+    top hub                   gamma-08
+    top-hub edge-share              3.33%   A
+    top-hub : next ratio           1.000   A
+
+  COMMUNITY
+    Louvain modularity            0.6667   B
+    # communities                      3
+
+  NOTE CLASSES
+    signal      n=     30  orphans=     0  (0.00%)
+
+  TOP HUBS (weighted degree)
+         11.40  gamma-08
+         11.40  gamma-09
+         11.40  gamma-00
+         11.40  gamma-01
+         11.40  gamma-02
+         11.40  alpha-04
+         11.40  alpha-05
+         11.40  alpha-06
+         11.40  alpha-07
+         11.40  alpha-08
+
+  TOP BRIDGES (betweenness)
+        0.0012  gamma-08
+        0.0012  gamma-09
+        0.0012  gamma-00
+        0.0012  gamma-01
+        0.0012  gamma-02
+        0.0012  alpha-04
+        0.0012  alpha-05
+        0.0012  alpha-06
+        0.0012  alpha-07
+        0.0012  alpha-08
+
+  OVERALL GRADE              B
+================================================================
+
+  SCORE                      96.88 / 100  (Grade B)

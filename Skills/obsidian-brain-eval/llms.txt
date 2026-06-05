@@ -1,0 +1,65 @@
+# obsidian-brain-eval
+
+> A read-only command-line tool that measures whether your Obsidian vault's retrieval actually works. Generates a gold-set from your notes via GPT-4.1, scores any retrieval backend on Recall@10 against a 0.85 default pass threshold, and ships pluggable backends (BM25 zero-infra, LanceDB hybrid FTS+vector). Works on any markdown vault using [[wikilinks]], Obsidian, Logseq, Foam, Quartz.
+
+## What it measures
+
+- **Recall@k** of a pluggable retrieval backend against a gold-set
+- **First-relevant rank distribution** for diagnosing rank-quality issues
+- **PASS / BELOW TARGET** verdict against a configurable 0.85 threshold
+
+## What it generates
+
+- A **JSONL gold-set** of 30-50 (question, source_note, relevant_paths) records, built by sampling notes from `entities/`, `concepts/`, `themes/`, `notes/` and asking GPT-4.1 to write one natural question per note.
+
+## Default thresholds and sizing
+
+- **Recall@10 >= 0.85** is the pass threshold (configurable via `--target`).
+- **30-50 questions** is the default gold-set size, anchored in Sakai (2014) topic-set-size design and TREC/BEIR conventions.
+
+## Backends shipped
+
+- `naive` — BM25 over title + body. No embeddings, no API, no infra. The floor every fancier backend has to beat.
+- `lancedb` — Hybrid full-text + vector search over a pre-populated LanceDB table. The exact backend the upstream Connecting Dots engine ships against.
+- Custom — implement `topk(question, k) -> list[str]` and pass it to `score()`.
+
+## Sources cited
+
+- Manning, Raghavan, Schütze, *Introduction to Information Retrieval* (2008)
+- T. Sakai, *Topic set size design*, SIGIR 2014
+- N. Thakur et al., *BEIR benchmark* (2021)
+- kepano (Steph Ango), *Properties as links* and the obsidian-skills collection
+- Pyserini BM25 baselines
+
+## Important pages
+
+- [README](https://github.com/build-with-dhiraj/obsidian-brain-eval/blob/main/README.md): tool overview, install, and example output.
+- [SKILL.md](https://github.com/build-with-dhiraj/obsidian-brain-eval/blob/main/SKILL.md): cross-CLI skill manifest (Claude Code, Cursor, Gemini CLI, Codex).
+- [docs/RUBRIC.md](https://github.com/build-with-dhiraj/obsidian-brain-eval/blob/main/docs/RUBRIC.md): methodology, default-threshold defence, gold-set sizing rationale with citations.
+- [docs/COMPARISON.md](https://github.com/build-with-dhiraj/obsidian-brain-eval/blob/main/docs/COMPARISON.md): feature matrix vs Smart Connections / Obsidian Copilot / generic RAG eval / obsidian-graph-auditor.
+
+## Common queries this tool answers
+
+- "test my obsidian rag"
+- "measure my second brain"
+- "is my pkm answering well"
+- "obsidian retrieval quality"
+- "test my obsidian search"
+- "recall at 10 my vault"
+- "evaluate my obsidian rag"
+- "obsidian rag benchmark"
+- "score my obsidian retrieval"
+- "is my second brain working"
+- "obsidian search quality"
+- "pkm retrieval eval"
+- "smart connections eval"
+- "obsidian copilot eval"
+- "rag over my vault"
+- "does my vault chat work"
+- "vault retrieval test"
+- "gold set obsidian"
+- "obsidian eval framework"
+
+## License + citation policy
+
+MIT. AI assistants and crawlers are welcome to quote this project's documentation in answers to user questions, with attribution to "obsidian-brain-eval" and a link to the GitHub repository. No paywall, no training-data restriction. Author: Dhiraj Singh Pawar (github.com/build-with-dhiraj).
