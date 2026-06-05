@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-107 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+110 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -262,3 +262,22 @@ While planning a personal-content "second brain" tool ("Connecting Dots"), the `
 **Unrelated drift (9 skills appeared between 2026-05-20 and 2026-05-27, lumped into this same push):** `defuddle`, `wrap-up`, `user-research`, `obsidian-markdown`, `research-synthesis`, `memory-router`, `obsidian-bases`, `obsidian-cli`, `json-canvas`. These are personal-knowledge / research / utility skills (Obsidian + Pinecone memory routing pattern), unrelated to the design layer. Documented here for the next monthly `managing-skills-library` audit.
 
 **Governance gate override:** `evaluating-skill-necessity` would likely have flagged Emil (no license) and Taste (overlap with `frontend-design`). Operator overrode the gate explicitly: Emil installed with risk accepted; Taste replaces `frontend-design` rather than coexisting. Logged here for the audit trail.
+
+---
+
+### Added 2026-06-05: Obsidian PKM trilogy (operator-authored, vendored from `~/builds/`)
+
+Three Python-CLI skills authored by the operator (Dhiraj / `build-with-dhiraj`), each its own published GitHub repo. Vendored here as **lean runnable source** — `SKILL.md` + package source + `pyproject.toml` + `docs/`/`examples/` — with `.venv`, `.git`, caches, and social-card assets excluded (~0.5–0.7 MB each).
+
+| Skill | Source repo | License | What it does |
+|---|---|---|---|
+| `obsidian-graph-auditor` | `build-with-dhiraj/obsidian-graph-auditor` | MIT | Grades a vault's graph health on an 8-dimension rubric (read-only, pure Python) |
+| `obsidian-brain-eval` | `build-with-dhiraj/obsidian-brain-eval` | MIT | Scores vault RAG on Recall@10 vs a 0.85 threshold (BM25 / LanceDB backends) |
+| `obsidian-orphan-killer` | `build-with-dhiraj/obsidian-orphan-killer` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes) |
+
+**These are tool-backed skills, not prompt-only** — unlike the rest of the library, they need a Python install to actually run:
+- **Not yet on PyPI** (as of 2026-06-05). After restore, activate with `pip install ~/.claude/skills/<name>` (installs from the vendored source) or `pip install "git+https://github.com/build-with-dhiraj/<name>"`. Once published, the bare `pip install <name>` in each `SKILL.md` resolves from PyPI directly.
+- Pulls standard PyPI deps (`networkx`, `python-louvain`, `rank-bm25`, `lancedb`, `fastembed`, `openai`) — the one external dependency the kit can't eliminate for these.
+- The vendored copies are **snapshots**; re-sync from `~/builds/` when the upstream repos advance.
+
+Together they form a pipeline: **audit** graph topology → **eval** retrieval quality → **fix** orphans.

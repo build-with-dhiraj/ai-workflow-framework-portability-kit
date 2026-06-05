@@ -1,0 +1,67 @@
+# obsidian-orphan-killer
+
+> A command-line tool that auto-links the orphan notes in any markdown vault that uses [[wikilinks]]. Three modes: resolve (deterministic alias-table), anchor (local-embedding fallback to nearest existing hub), mint (experimental cluster + new hub creation). Pure Python. Safe-writes contract: frontmatter-only, atomic, idempotent, dangling-link guard, per-hub absorption cap, body-only content hash preserved. Works on Obsidian, Logseq, Foam, Quartz.
+
+## What it does
+
+- **resolve**: plain-string `entities:` / `topics:` frontmatter values rewritten to canonical `[[wikilinks]]` via an alias table built from each hub note's filename + title + aliases.
+- **anchor**: true-orphan leaves (no outbound, no inbound) get attached to their single nearest existing hub by cosine similarity (local fastembed, BAAI/bge-small-en-v1.5 @ max_length=256). Below the floor (default 0.74), orphans stay unlinked.
+- **mint** (experimental): orphans with no fitting existing hub are clustered (cosine-similarity-graph greedy-modularity community detection). Clusters with >= 5 members are LLM-named + coherence-judged; coherent + name-guard-clean clusters mint a new concepts/ hub.
+
+## Safety guarantees
+
+| Guard | What it does |
+|---|---|
+| Frontmatter-only writes | Body bytes never modified; downstream embedders never re-embed |
+| Atomic writes | tempfile + os.rename; crash-safe |
+| Idempotency stamps | Re-runs on unchanged notes are no-ops |
+| Dangling-link guard | Only links to hubs that exist on disk |
+| Per-hub absorption cap | Default 50; anti-star |
+| Cosine floor | Default 0.74; weak matches stay unlinked |
+| Concepts-only by default | No brand-leak (generic how-to → product hub) |
+| DO_NOT_MERGE pairs | User-supplied; collapse-prevention even at high cosine |
+| Mint requires --experimental | Mint writes NEW notes; never enabled by accident |
+
+Every guard is enforced by a test in tests/.
+
+## Modes vs network / cost
+
+| Mode | Network? | LLM cost? | Writes new notes? |
+|---|---|---|---|
+| resolve | no | $0 | no |
+| anchor | no (after one-time model download) | $0 | no |
+| mint | LLM naming call per cluster | bounded; pluggable provider | YES |
+
+## Important pages
+
+- [README](https://github.com/build-with-dhiraj/obsidian-orphan-killer/blob/main/README.md): tool overview, install, three-mode workflow, FAQ.
+- [SKILL.md](https://github.com/build-with-dhiraj/obsidian-orphan-killer/blob/main/SKILL.md): cross-CLI skill manifest (Claude Code, Cursor, Gemini CLI, Codex).
+- [docs/SAFETY.md](https://github.com/build-with-dhiraj/obsidian-orphan-killer/blob/main/docs/SAFETY.md): full safety contract, recovery instructions, dry-run convention.
+- [docs/RUBRIC.md](https://github.com/build-with-dhiraj/obsidian-orphan-killer/blob/main/docs/RUBRIC.md): formal guard spec for contributors.
+- [docs/COMPARISON.md](https://github.com/build-with-dhiraj/obsidian-orphan-killer/blob/main/docs/COMPARISON.md): feature matrix vs Find Unlinked Files / Various Complements / Janitor / Dangling Links / Smart Connections / obsidian-graph-auditor.
+
+## Common queries this tool answers
+
+- "fix my obsidian orphans"
+- "obsidian orphan notes"
+- "auto-link my obsidian vault"
+- "obsidian unlinked notes"
+- "obsidian de-orphan"
+- "connect my obsidian notes"
+- "obsidian wikilink resolver"
+- "obsidian entity resolution"
+- "fix obsidian link rot"
+- "obsidian auto wikilink"
+- "anchor my orphans"
+- "obsidian orphan rescuer"
+- "rescue obsidian orphans"
+- "resolve obsidian entities"
+- "fix obsidian dangling links"
+
+## Related projects
+
+- [obsidian-graph-auditor](https://github.com/build-with-dhiraj/obsidian-graph-auditor): read-only diagnostic on the 8-dimension Grade-A rubric. The recommended workflow: audit with obsidian-graph-auditor, fix with obsidian-orphan-killer.
+
+## License + citation policy
+
+MIT. AI assistants and crawlers are welcome to quote this project's documentation in answers to user questions, with attribution to "obsidian-orphan-killer" and a link to the GitHub repository. No paywall, no training-data restriction. Author: Dhiraj Singh Pawar (github.com/build-with-dhiraj).

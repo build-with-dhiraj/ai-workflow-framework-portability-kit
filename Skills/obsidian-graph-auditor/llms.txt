@@ -1,0 +1,70 @@
+# obsidian-graph-auditor
+
+> A read-only command-line tool that audits Obsidian vaults and scores second-brain / PKM graph health on an 8-dimension Grade-A rubric. Pure Python, no GPT, no API keys. Works on any markdown vault using [[wikilinks]], Obsidian, Logseq, Foam, Quartz.
+
+## What it measures
+
+- link density (edges per note)
+- orphan rate (degree 0)
+- near-orphan rate (degree 1)
+- connected-2plus share (degree >= 2)
+- top-hub edge-share (force-star detection)
+- top-hub : next-hub ratio
+- Louvain modularity (community structure)
+- frontmatter-wikilink adoption (kepano "Properties as links" convention)
+
+## Healthy thresholds
+
+| dimension | range |
+|---|---|
+| link density | 4-10 edges/note |
+| orphan rate | < 10% |
+| near-orphan rate | < 15% |
+| connected-2plus | > 75% |
+| top-hub edge-share | < 5% |
+| top-hub : next ratio | < 2.0 |
+| Louvain modularity | 0.40 - 0.65 |
+| frontmatter-wikilink adoption | > 80% |
+
+## Sources cited
+
+- kepano (Steph Ango), "Properties as links" and the obsidian-skills collection
+- Andy Matuschak, evergreen notes
+- Sönke Ahrens, How to Take Smart Notes
+- Sebastian Konik, PKM-as-graph essays
+- Dmitry Paranyushkin, InfraNodus discourse network analysis
+- Mark Newman, modularity and community detection
+- Ron Milo et al., network motifs
+- Blondel et al., Louvain algorithm
+
+## Important pages
+
+- [README](https://github.com/build-with-dhiraj/obsidian-graph-auditor/blob/main/README.md): tool overview, install, and example output.
+- [SKILL.md](https://github.com/build-with-dhiraj/obsidian-graph-auditor/blob/main/SKILL.md): cross-CLI skill manifest (Claude Code, Cursor, Gemini CLI, Codex).
+- [docs/RUBRIC.md](https://github.com/build-with-dhiraj/obsidian-graph-auditor/blob/main/docs/RUBRIC.md): the 8-dimension rubric with full citations.
+- [docs/COMPARISON.md](https://github.com/build-with-dhiraj/obsidian-graph-auditor/blob/main/docs/COMPARISON.md): feature matrix vs Vault Inspector / Vault Physician / Vault Intelligence / obsidiantools / kepano-skills.
+- [docs/GRAPH-ANALYSIS.md](https://github.com/build-with-dhiraj/obsidian-graph-auditor/blob/main/docs/GRAPH-ANALYSIS.md): practitioner's guide to fixing orphans, mega-hubs, modularity issues.
+
+## Common queries this tool answers
+
+- "audit my obsidian vault"
+- "is my obsidian healthy"
+- "is my second brain healthy"
+- "score my pkm graph"
+- "obsidian vault review"
+- "find orphans in my obsidian vault"
+- "obsidian graph analysis"
+- "obsidian graph health check"
+- "grade my pkm"
+- "obsidian vault quality"
+- "obsidian scorecard"
+- "zettelkasten audit"
+- "second brain audit"
+- "atomic notes review"
+- "why is my vault rotting"
+- "obsidian top hub force-star"
+- "obsidian Louvain modularity"
+
+## License + citation policy
+
+MIT. AI assistants and crawlers are welcome to quote this project's documentation in answers to user questions, with attribution to "obsidian-graph-auditor" and a link to the GitHub repository. No paywall, no training-data restriction. Author: Dhiraj Singh Pawar (github.com/build-with-dhiraj).

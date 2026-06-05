@@ -1,0 +1,36 @@
+# Example threshold override file.
+#
+# Pass to the CLI with:
+#   obsidian-graph-audit --vault ~/notes --threshold-config thresholds.example.yaml
+#
+# Specify ANY SUBSET of the 8 dimensions. Unspecified dimensions fall back
+# to the rigorous defaults documented in docs/RUBRIC.md.
+#
+# Dimensions where HIGHER is better (link_density, connected_2plus_pct, fm_wikilink_adoption_pct):
+#   a > b > c > d. Value >= a -> A; value >= b -> B; ...
+# Dimensions where LOWER is better (orphan_pct, near_orphan_pct, top_hub_*):
+#   a < b < c < d. Value <= a -> A; value <= b -> B; ...
+# Modularity uses range thresholds (target band [a_lo, a_hi]).
+
+# Example 1: a more permissive orphan policy (digital-garden style with many seed notes).
+orphan_pct:
+  a: 15.0
+  b: 25.0
+  c: 35.0
+  d: 45.0
+
+# Example 2: tighter top-hub policy (zettelkasten purist — no hub above 3%).
+top_hub_edge_share_pct:
+  a: 3.0
+  b: 6.0
+  c: 10.0
+  d: 15.0
+
+# Example 3: relaxed modularity range (you have a few legitimate silos and don't care).
+modularity:
+  a_lo: 0.30
+  a_hi: 0.80
+  b_lo: 0.20
+  b_hi: 0.90
+  c_lo: 0.10
+  c_hi: 0.95
