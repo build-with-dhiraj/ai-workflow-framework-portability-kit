@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-110 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+112 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -169,39 +169,68 @@ The following skills come from installed plugins — they auto-reappear when plu
 
 ## 5. File inventory — what's actually in this folder
 
-82 skill directories, alphabetically:
+112 skill directories — the authoritative on-disk set as of the 2026-06-08 re-sync, alphabetically:
 
 ```
-3d-web-experience              flutter-handling-concurrency      postgresql-code-review
-brand-guidelines               flutter-handling-http-and-json    product-management
-building-claude-portability-kit flutter-implementing-navigation-…  prototype
-caveman                        flutter-improving-accessibility   r3f-best-practices
-claude-seo                     flutter-interoperating-with-…     scaffold-exercises
-code-review-excellence         flutter-localizing-apps           security-review
-context-kernel                 flutter-managing-state            setup-matt-pocock-skills
-cra-to-next-migration          flutter-reducing-app-size         setup-pre-commit
-deep-research                  flutter-setting-up-on-linux       supabase
-diagnose                       flutter-setting-up-on-macos       supabase-postgres-best-practices
-edit-article                   flutter-setting-up-on-windows     tanstack-start-best-practices
-evaluating-agent-behavior      flutter-testing-apps              tdd
-evaluating-skill-necessity     flutter-theming-apps              threejs-animation
-fact-check                     flutter-working-with-databases    to-issues
-find-skills                    framer-motion-animator            to-prd
-fleet-auditor                  frontend-design                   token-coach
-flutter-adding-home-screen-…   gepetto                           token-dashboard
-flutter-animating-apps         git-guardrails-claude-code        token-optimizer
-flutter-architecting-apps      grill-me                          triage
-flutter-building-forms         grill-with-docs                   typescript-react-reviewer
-flutter-building-layouts       gws-forms                         write-a-skill
-flutter-building-plugins       humanizer                         zoom-out
-flutter-caching-data           idea-researcher
-flutter-embedding-native-views improve-codebase-architecture
-                               langfuse
-                               managing-skills-library
-                               migrate-to-shoehorn
-                               obsidian-vault
-                               office-hours
+3d-web-experience                           ai-product-ux
+arize-experiment                            arize-prompt-optimization
+baoyu-youtube-transcript                    build-review-interface
+building-claude-portability-kit             caveman
+claude-seo                                  code-review-excellence
+context-kernel                              cra-to-next-migration
+creating-financial-models                   deep-research
+defuddle                                    design-taste-frontend
+diagnose                                    dspy-gepa-reflective
+edit-article                                emil-design-eng
+error-analysis                              eval-audit
+evaluate-rag                                evaluating-agent-behavior
+evaluating-skill-necessity                  fact-check
+find-skills                                 fleet-auditor
+flutter-adding-home-screen-widgets          flutter-animating-apps
+flutter-architecting-apps                   flutter-building-forms
+flutter-building-layouts                    flutter-building-plugins
+flutter-caching-data                        flutter-embedding-native-views
+flutter-handling-concurrency                flutter-handling-http-and-json
+flutter-implementing-navigation-and-routing flutter-improving-accessibility
+flutter-interoperating-with-native-apis     flutter-localizing-apps
+flutter-managing-state                      flutter-reducing-app-size
+flutter-setting-up-on-linux                 flutter-setting-up-on-macos
+flutter-setting-up-on-windows               flutter-testing-apps
+flutter-theming-apps                        flutter-working-with-databases
+framer-motion-animator                      generate-synthetic-data
+gepetto                                     git-guardrails-claude-code
+github-actions                              grill-me
+grill-with-docs                             gws-forms
+humanizer                                   idea-researcher
+impeccable                                  improve-codebase-architecture
+integrate-whatsapp                          jove-youtube-feed-pipeline
+json-canvas                                 langfuse
+langsmith-evaluator                         llm-eval
+managing-skills-library                     memory-router
+migrate-to-shoehorn                         ner-content-pipeline
+obsidian-bases                              obsidian-brain-eval
+obsidian-cli                                obsidian-graph-auditor
+obsidian-markdown                           obsidian-orphan-rescue
+obsidian-vault                              office-hours
+personal-content-resurface                  postgresql-code-review
+product-management                          prompt-engineering
+prototype                                   python-pipelines
+r3f-best-practices                          rag-patterns
+research-synthesis                          scaffold-exercises
+security-review                             setup-matt-pocock-skills
+setup-pre-commit                            stock-pick-ranker
+supabase                                    supabase-postgres-best-practices
+tanstack-start-best-practices               tdd
+threejs-animation                           to-issues
+to-prd                                      token-coach
+token-dashboard                             token-optimizer
+triage                                      typescript-react-reviewer
+user-research                               validate-evaluator
+wrap-up                                     write-a-skill
+write-judge-prompt                          zoom-out
 ```
+
+> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 112; this fenced block is the source of truth for *what is on disk right now*.
 
 ### Added 2026-05-14 (post-snapshot import)
 | Skill | Source | Notes |
@@ -273,7 +302,7 @@ Three Python-CLI skills authored by the operator (Dhiraj / `build-with-dhiraj`),
 |---|---|---|---|
 | `obsidian-graph-auditor` | `build-with-dhiraj/obsidian-graph-auditor` | MIT | Grades a vault's graph health on an 8-dimension rubric (read-only, pure Python) |
 | `obsidian-brain-eval` | `build-with-dhiraj/obsidian-brain-eval` | MIT | Scores vault RAG on Recall@10 vs a 0.85 threshold (BM25 / LanceDB backends) |
-| `obsidian-orphan-killer` | `build-with-dhiraj/obsidian-orphan-killer` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes) |
+| `obsidian-orphan-rescue` | `build-with-dhiraj/obsidian-orphan-killer` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes). *Dir renamed from `obsidian-orphan-killer`; upstream repo slug still `obsidian-orphan-killer`.* |
 
 **These are tool-backed skills, not prompt-only** — unlike the rest of the library, they need a Python install to actually run:
 - **Not yet on PyPI** (as of 2026-06-05). After restore, activate with `pip install ~/.claude/skills/<name>` (installs from the vendored source) or `pip install "git+https://github.com/build-with-dhiraj/<name>"`. Once published, the bare `pip install <name>` in each `SKILL.md` resolves from PyPI directly.
@@ -281,3 +310,16 @@ Three Python-CLI skills authored by the operator (Dhiraj / `build-with-dhiraj`),
 - The vendored copies are **snapshots**; re-sync from `~/builds/` when the upstream repos advance.
 
 Together they form a pipeline: **audit** graph topology → **eval** retrieval quality → **fix** orphans.
+
+---
+
+### Added 2026-06-08: finance / investment-analysis pair (re-sync to live → 112 skills)
+
+Two finance skills appeared in the live `~/.claude/skills/` since the last snapshot and are vendored here. This is the re-sync that brings the kit to full parity with the live app — **110 → 112 skills**.
+
+| Skill | License | What it does |
+|---|---|---|
+| `creating-financial-models` | MIT (kit-default) | Advanced financial-modeling suite — DCF analysis, sensitivity testing, Monte Carlo simulation, and scenario planning for investment decisions. Method/concept toolkit; use for standalone models of private/unlisted companies. |
+| `stock-pick-ranker` | MIT (kit-default) | End-to-end equity quality + valuation ranking pipeline: scrapes investor newsletters, enriches live (Indian-listed) financials, scores each stock on a 7-factor principles rubric, runs forward + reverse DCF, reliability-weights the valuation, re-ranks the universe, and appends/refreshes `Substack_Stock_Picks.xlsx`. Workbook-driven; distinct from `creating-financial-models` (which is for standalone private-company models). |
+
+Same `obsidian-orphan-killer` → `obsidian-orphan-rescue` directory rename landed in this re-sync (see the 2026-06-05 table above — the local directory and CLI are now `obsidian-orphan-rescue`; the upstream GitHub repo slug is still `obsidian-orphan-killer`).

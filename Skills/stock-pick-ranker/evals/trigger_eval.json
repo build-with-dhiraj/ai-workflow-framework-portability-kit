@@ -1,0 +1,14 @@
+[
+  {"query": "add KPIT Technologies and Tata Elxsi to my Substack_Stock_Picks workbook and rank them with the full quality + DCF methodology", "should_trigger": true},
+  {"query": "found a new substack investor at https://substack.com/@valuepicksindia — scrape their stock picks and append them to my ranking sheet", "should_trigger": true},
+  {"query": "score Premier Energies end to end — is it cheap for its quality? add it to the investment workbook and rerank everything", "should_trigger": true},
+  {"query": "run the whole workflow on CDSL, BSE and Angel One and append to /Users/pw/invest/Substack_Stock_Picks.xlsx", "should_trigger": true},
+  {"query": "I want Bharat Electronics valued with reverse-DCF and slotted into the final ranking with all the other stocks", "should_trigger": true},
+  {"query": "here are 3 new multibagger picks a newsletter just put out, do the full pipeline (enrich financials, principles score, valuation) and update my rankings", "should_trigger": true},
+  {"query": "build a DCF model for my SaaS startup from these revenue projections and a 12% WACC", "should_trigger": false},
+  {"query": "what's the current P/E and market cap of Reliance Industries?", "should_trigger": false},
+  {"query": "scrape this substack article and just give me the clean text: https://foo.substack.com/p/xyz", "should_trigger": false},
+  {"query": "add a profit-margin % column to this sales spreadsheet in my downloads, revenue is col C and cost is col D", "should_trigger": false},
+  {"query": "explain how the Greenblatt magic formula and reverse-DCF differ", "should_trigger": false},
+  {"query": "rank these 8 vendors by reliability and price for our procurement decision", "should_trigger": false}
+]
