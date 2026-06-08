@@ -302,7 +302,7 @@ Three Python-CLI skills authored by the operator (Dhiraj / `build-with-dhiraj`),
 |---|---|---|---|
 | `obsidian-graph-auditor` | `build-with-dhiraj/obsidian-graph-auditor` | MIT | Grades a vault's graph health on an 8-dimension rubric (read-only, pure Python) |
 | `obsidian-brain-eval` | `build-with-dhiraj/obsidian-brain-eval` | MIT | Scores vault RAG on Recall@10 vs a 0.85 threshold (BM25 / LanceDB backends) |
-| `obsidian-orphan-rescue` | `build-with-dhiraj/obsidian-orphan-rescue` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes). *Renamed from `obsidian-orphan-killer` (both the local dir and the upstream GitHub repo; the old repo URL now redirects).* |
+| `obsidian-orphan-rescue` | `build-with-dhiraj/obsidian-pkm-skills` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes). *Lives in the `obsidian-pkm-skills` monorepo under `skills/`. Renamed from `obsidian-orphan-killer`; the standalone `obsidian-orphan-killer` repo is now archived and its URL redirects.* |
 
 **These are tool-backed skills, not prompt-only** — unlike the rest of the library, they need a Python install to actually run:
 - **Not yet on PyPI** (as of 2026-06-05). After restore, activate with `pip install ~/.claude/skills/<name>` (installs from the vendored source) or `pip install "git+https://github.com/build-with-dhiraj/<name>"`. Once published, the bare `pip install <name>` in each `SKILL.md` resolves from PyPI directly.
