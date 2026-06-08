@@ -2,7 +2,7 @@
 
 This is the runbook to get from a fresh Mac + Claude subscription to the same orchestration setup as the source machine. Estimated time: **15–20 minutes**.
 
-> **🚀 Fast path (recommended):** Run `Tooling/restore.sh`. It does steps 1–6 below in a single pass after one confirmation prompt. See [Tooling/README.md](Tooling/README.md). Step 5 (MCP secrets) is the only manual remainder. The steps below remain as a reference if you need to do anything partially or manually.
+> **🚀 Fast path (recommended):** Run `Tooling/restore.sh`. It does steps 1–7 below in a single pass after one confirmation prompt. See [Tooling/README.md](Tooling/README.md). Step 7 (MCP secrets) is the only manual remainder. The steps below remain as a reference if you need to do anything partially or manually.
 
 ---
 

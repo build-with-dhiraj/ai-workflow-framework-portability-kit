@@ -302,7 +302,7 @@ Three Python-CLI skills authored by the operator (Dhiraj / `build-with-dhiraj`),
 |---|---|---|---|
 | `obsidian-graph-auditor` | `build-with-dhiraj/obsidian-graph-auditor` | MIT | Grades a vault's graph health on an 8-dimension rubric (read-only, pure Python) |
 | `obsidian-brain-eval` | `build-with-dhiraj/obsidian-brain-eval` | MIT | Scores vault RAG on Recall@10 vs a 0.85 threshold (BM25 / LanceDB backends) |
-| `obsidian-orphan-rescue` | `build-with-dhiraj/obsidian-orphan-killer` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes). *Dir renamed from `obsidian-orphan-killer`; upstream repo slug still `obsidian-orphan-killer`.* |
+| `obsidian-orphan-rescue` | `build-with-dhiraj/obsidian-orphan-rescue` | MIT | Auto-links orphan notes (resolve / anchor / mint; frontmatter-only safe writes). *Renamed from `obsidian-orphan-killer` (both the local dir and the upstream GitHub repo; the old repo URL now redirects).* |
 
 **These are tool-backed skills, not prompt-only** — unlike the rest of the library, they need a Python install to actually run:
 - **Not yet on PyPI** (as of 2026-06-05). After restore, activate with `pip install ~/.claude/skills/<name>` (installs from the vendored source) or `pip install "git+https://github.com/build-with-dhiraj/<name>"`. Once published, the bare `pip install <name>` in each `SKILL.md` resolves from PyPI directly.
@@ -322,4 +322,4 @@ Two finance skills appeared in the live `~/.claude/skills/` since the last snaps
 | `creating-financial-models` | MIT (kit-default) | Advanced financial-modeling suite — DCF analysis, sensitivity testing, Monte Carlo simulation, and scenario planning for investment decisions. Method/concept toolkit; use for standalone models of private/unlisted companies. |
 | `stock-pick-ranker` | MIT (kit-default) | End-to-end equity quality + valuation ranking pipeline: scrapes investor newsletters, enriches live (Indian-listed) financials, scores each stock on a 7-factor principles rubric, runs forward + reverse DCF, reliability-weights the valuation, re-ranks the universe, and appends/refreshes `Substack_Stock_Picks.xlsx`. Workbook-driven; distinct from `creating-financial-models` (which is for standalone private-company models). |
 
-Same `obsidian-orphan-killer` → `obsidian-orphan-rescue` directory rename landed in this re-sync (see the 2026-06-05 table above — the local directory and CLI are now `obsidian-orphan-rescue`; the upstream GitHub repo slug is still `obsidian-orphan-killer`).
+Same `obsidian-orphan-killer` → `obsidian-orphan-rescue` rename landed in this re-sync (see the 2026-06-05 table above — the local directory and CLI are now `obsidian-orphan-rescue`; the upstream GitHub repo has since been renamed to `obsidian-orphan-rescue` as well, and the old `obsidian-orphan-killer` repo URL now redirects).
