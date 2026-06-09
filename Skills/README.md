@@ -93,7 +93,7 @@ Per `superpowers:using-superpowers`:
 | `setup-matt-pocock-skills` | Installs the AGENTS.md `## Agent skills` block + `docs/agents/` scaffolding (precondition for `to-prd`, `to-issues`, `triage`) |
 | `write-a-skill` | Author a new skill with proper structure + bundled resources |
 | `scaffold-exercises` | Exercise directory scaffolding (course/content authoring) |
-| `building-claude-portability-kit` | Build a self-contained Mac-replacement-proof snapshot of an entire Claude Code setup (agents + skills + plugins + MCP + connectors + tooling + restore script). Encodes the exact workflow used to build the canonical kit at `/Users/pw/Claude Agents and Skills/` |
+| `building-claude-portability-kit` | Build a self-contained Mac-replacement-proof snapshot of an entire Claude Code setup (agents + skills + plugins + MCP + connectors + tooling + restore script). Encodes the exact workflow used to build this canonical kit (the folder you're reading now) |
 
 ### Implementation-pattern skills (domain knowledge)
 

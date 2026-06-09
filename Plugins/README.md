@@ -108,11 +108,11 @@ This means the marketplace was pulled from a local cache, not the upstream repo.
 
 **Recovery options (in order of preference):**
 
-1. **✅ Use the cache embedded in this kit (default).** The full 7.7 MB marketplace source is mirrored at `Plugins/vercel-marketplace-source/`. On the new Mac:
+1. **✅ Use the cache embedded in this kit (default).** The full 7.7 MB marketplace source is mirrored at `Plugins/vercel-marketplace-source/`. On the new Mac (set `$KIT_DIR` first — `cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD"`, per BOOTSTRAP.md §0):
    ```bash
    # 1. Place the source where the original Mac expected it
    mkdir -p ~/.cache/plugins
-   rsync -a "/Users/pw/Claude Agents and Skills/Plugins/vercel-marketplace-source/" \
+   rsync -a "$KIT_DIR/Plugins/vercel-marketplace-source/" \
             "$HOME/.cache/plugins/github.com-vercel-vercel-plugin/"
 
    # 2. Register the marketplace from that directory
@@ -144,12 +144,12 @@ claude plugin disable <name>@<marketplace>   # also: edit settings.json enabledP
 claude plugin remove <name>@<marketplace>
 ```
 
-After any change, sync the snapshots in this folder:
+After any change, sync the snapshots in this folder (with `$KIT_DIR` pointing at this kit — `export KIT_DIR="$PWD"` from inside it):
 
 ```bash
-cp ~/.claude/plugins/installed_plugins.json "/Users/pw/Claude Agents and Skills/Plugins/"
-cp ~/.claude/plugins/known_marketplaces.json "/Users/pw/Claude Agents and Skills/Plugins/"
-cp ~/.claude/settings.json "/Users/pw/Claude Agents and Skills/"
+cp ~/.claude/plugins/installed_plugins.json "$KIT_DIR/Plugins/"
+cp ~/.claude/plugins/known_marketplaces.json "$KIT_DIR/Plugins/"
+cp ~/.claude/settings.json "$KIT_DIR/"
 ```
 
 ---

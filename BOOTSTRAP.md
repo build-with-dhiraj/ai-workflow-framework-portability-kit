@@ -11,8 +11,19 @@ This is the runbook to get from a fresh Mac + Claude subscription to the same or
 - Claude Code installed (`brew install claude-code` or the official installer)
 - Logged into your Claude subscription via `claude login`
 - `git` and `curl` available (macOS ships both)
-- This folder (`/Users/pw/Claude Agents and Skills/`) accessible — restore from iCloud / external drive / git remote
+- This kit folder accessible (placed anywhere you like) — restore from iCloud / external drive / git remote
 - Homebrew is **not** required up-front — `Tooling/restore.sh` installs it if missing
+
+### Set `KIT_DIR` once (makes every command below location-independent)
+
+The manual steps reference the kit through a `$KIT_DIR` variable, so they work no matter where you put this folder. From wherever you placed it:
+
+```bash
+cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)"   # adjust to where you put it
+export KIT_DIR="$PWD"
+```
+
+Keep this terminal open for the rest of the runbook. If you open a new shell, re-run those two lines. (The fast path — `Tooling/restore.sh` — self-locates and needs no `KIT_DIR`.)
 
 ---
 
@@ -20,8 +31,8 @@ This is the runbook to get from a fresh Mac + Claude subscription to the same or
 
 ```bash
 # Copy your global instructions back into ~/.claude/
-cp "/Users/pw/Claude Agents and Skills/CLAUDE-global.md" ~/.claude/CLAUDE.md
-cp "/Users/pw/Claude Agents and Skills/settings.json" ~/.claude/settings.json
+cp "$KIT_DIR/CLAUDE-global.md" ~/.claude/CLAUDE.md
+cp "$KIT_DIR/settings.json" ~/.claude/settings.json
 ```
 
 The `settings.json` includes:
@@ -36,7 +47,7 @@ The `settings.json` includes:
 
 ```bash
 mkdir -p ~/.claude/agents
-cp "/Users/pw/Claude Agents and Skills/Agents/"*.md ~/.claude/agents/
+cp "$KIT_DIR/Agents/"*.md ~/.claude/agents/
 ```
 
 Verify:
@@ -54,7 +65,7 @@ Claude Code auto-discovers agents on next session start. No restart command need
 ```bash
 mkdir -p ~/.claude/skills
 # Copy each skill directory back
-rsync -a "/Users/pw/Claude Agents and Skills/Skills/" ~/.claude/skills/
+rsync -a "$KIT_DIR/Skills/" ~/.claude/skills/
 ```
 
 Verify:
@@ -119,10 +130,10 @@ The shipped `settings.json` (already copied in step 1) has the right `enabledPlu
 
 ```bash
 # 1. Open the template, replace REDACTED_* with live tokens (n8n JWT lives in 1Password)
-$EDITOR "/Users/pw/Claude Agents and Skills/MCP/mcp.template.json"
+$EDITOR "$KIT_DIR/MCP/mcp.template.json"
 
 # 2. Copy into place once secrets are filled in
-cp "/Users/pw/Claude Agents and Skills/MCP/mcp.template.json" ~/.claude/mcp.json
+cp "$KIT_DIR/MCP/mcp.template.json" ~/.claude/mcp.json
 ```
 
 ### 5b. Plugin-bundled MCP servers
@@ -153,10 +164,10 @@ If doing it manually, the equivalent commands are:
 
 ```bash
 # All host-side packages in one go
-brew bundle --file="/Users/pw/Claude Agents and Skills/Tooling/Brewfile"
+brew bundle --file="$KIT_DIR/Tooling/Brewfile"
 
 # Global npm packages
-cd "/Users/pw/Claude Agents and Skills/Tooling"
+cd "$KIT_DIR/Tooling"
 node -e 'const list=require("./npm-globals.json").dependencies||{};
   Object.keys(list).filter(n=>n!=="npm").forEach(n=>console.log(n));' \
   | xargs -n1 npm install -g
@@ -210,9 +221,12 @@ Skip this section if you'd rather use the frozen-at-snapshot versions (simpler, 
 
 ## 9. Verify the restoration
 
-In a fresh terminal, run:
+In a fresh terminal, run (re-establish `KIT_DIR` first, since a new shell won't have it):
 
 ```bash
+# If this is a new shell, point KIT_DIR at the kit again:
+cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD"
+
 # Check agents
 ls ~/.claude/agents/*.md | wc -l   # expect 35
 
@@ -226,7 +240,7 @@ claude plugin list                  # expect 8 enabled plugins
 head -30 ~/.claude/CLAUDE.md        # should start with "# Claude Code Configuration"
 
 # Check host-side tooling (snapshot match)
-brew bundle check --file="/Users/pw/Claude Agents and Skills/Tooling/Brewfile"
+brew bundle check --file="$KIT_DIR/Tooling/Brewfile"
                                     # expect "The Brewfile's dependencies are satisfied."
 
 # Check global npm packages

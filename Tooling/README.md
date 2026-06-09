@@ -62,9 +62,13 @@ Notably **NOT** captured globally: `vercel` and `nlm` (NotebookLM CLI). They're 
 
 ### Run it
 
+`restore.sh` self-locates — it works from wherever you place the kit, no setup needed:
+
 ```bash
-bash "/Users/pw/Claude Agents and Skills/Tooling/restore.sh"
+bash "/path/to/Claude Agents and Skills (PORTABILITY KIT)/Tooling/restore.sh"
 ```
+
+> The manual snippets elsewhere in this kit reference a `$KIT_DIR` variable. Set it once with `cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD"` (see BOOTSTRAP.md §0). `restore.sh` itself does **not** need it.
 
 It prompts once for confirmation, then runs end-to-end:
 
@@ -98,10 +102,10 @@ Safe to re-run if it fails partway through:
 
 ## 5. Keeping these snapshots current
 
-When you install a new tool or remove an old one on the live Mac, re-snapshot:
+When you install a new tool or remove an old one on the live Mac, re-snapshot. `cd` into this kit's `Tooling/` directory first (wherever the kit lives), then:
 
 ```bash
-cd "/Users/pw/Claude Agents and Skills/Tooling"
+# cd into <this kit>/Tooling first
 brew bundle dump --force --file=./Brewfile
 npm list -g --depth=0 --json > ./npm-globals.json
 ```

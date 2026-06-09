@@ -29,14 +29,14 @@ Currently one server. The full registry is in `mcp.template.json` next to this R
 |---|---|---|---|
 | `n8n` | HTTP | Bearer JWT (REDACTED in template) | n8n cloud automation — fires workflows from Claude |
 
-**Restoration:**
+**Restoration:** (assumes `$KIT_DIR` points at this kit — set it with `cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD"`, per BOOTSTRAP.md §0)
 
 ```bash
 # 1. Open the template, paste the live JWT (it's in your password manager)
-$EDITOR "/Users/pw/Claude Agents and Skills/MCP/mcp.template.json"
+$EDITOR "$KIT_DIR/MCP/mcp.template.json"
 
 # 2. Copy into place
-cp "/Users/pw/Claude Agents and Skills/MCP/mcp.template.json" ~/.claude/mcp.json
+cp "$KIT_DIR/MCP/mcp.template.json" ~/.claude/mcp.json
 ```
 
 **Adding more:** local MCPs are JSON entries in this file with this shape:

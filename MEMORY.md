@@ -67,15 +67,15 @@ After running [BOOTSTRAP.md](BOOTSTRAP.md), most of the system is back. For memo
 
 ### 3a. If you want to preserve auto-memory from specific workspaces
 
-Before wiping the old Mac, archive each workspace's memory directory:
+Before wiping the old Mac, archive each workspace's memory directory. These snippets use `$KIT_DIR` for the kit location — set it once with `cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD"` (per BOOTSTRAP.md §0):
 
 ```bash
 # On the OLD Mac, before retirement:
 for d in ~/.claude/projects/*/memory; do
   workspace=$(basename "$(dirname "$d")")
   if [ -f "$d/MEMORY.md" ]; then
-    mkdir -p "/Users/pw/Claude Agents and Skills/AutoMemory-Backup/$workspace"
-    cp -R "$d"/* "/Users/pw/Claude Agents and Skills/AutoMemory-Backup/$workspace/"
+    mkdir -p "$KIT_DIR/AutoMemory-Backup/$workspace"
+    cp -R "$d"/* "$KIT_DIR/AutoMemory-Backup/$workspace/"
   fi
 done
 ```
@@ -84,7 +84,7 @@ On the NEW Mac, after BOOTSTRAP.md and after Claude Code has created `~/.claude/
 
 ```bash
 # On the NEW Mac:
-for backup in "/Users/pw/Claude Agents and Skills/AutoMemory-Backup/"*/; do
+for backup in "$KIT_DIR/AutoMemory-Backup/"*/; do
   workspace=$(basename "$backup")
   mkdir -p "$HOME/.claude/projects/$workspace/memory"
   cp -R "$backup"* "$HOME/.claude/projects/$workspace/memory/"
@@ -150,4 +150,4 @@ Rule of thumb: **if a piece of information is only useful within the current con
 
 ## 6. Memory in this specific folder
 
-This folder (`/Users/pw/Claude Agents and Skills/`) has its own auto-memory directory at `/Users/pw/.claude/projects/-Users-pw-Claude-Agents-and-Skills/memory/`. As of the snapshot date (2026-05-27), it's empty — this conversation is the first substantive session in this workspace, so memory will populate as we continue working here.
+This kit folder has its own auto-memory directory under `~/.claude/projects/<slug-of-this-folder's-path>/memory/` (Claude Code derives the slug by replacing each `/` and space in the absolute path with `-`). As of the snapshot date (2026-05-27), it's empty — this conversation is the first substantive session in this workspace, so memory will populate as we continue working here.
