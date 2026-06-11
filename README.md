@@ -3,7 +3,7 @@
 > Your entire Claude Code stack — **35 agents, 115 skills, plugins, MCP & tooling** — portable across Macs. Clone, `claude login`, run one script, working in **~20 min**.
 
 <p>
-  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/build-with-dhiraj/ai-workflow-framework-portability-kit?color=yellow"></a>
   <img alt="last commit" src="https://img.shields.io/github/last-commit/build-with-dhiraj/ai-workflow-framework-portability-kit">
   <img alt="agents" src="https://img.shields.io/badge/agents-35-blue">
   <img alt="skills" src="https://img.shields.io/github/directory-file-count/build-with-dhiraj/ai-workflow-framework-portability-kit/Skills?type=dir&label=skills&color=blue">
