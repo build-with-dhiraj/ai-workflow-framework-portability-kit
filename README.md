@@ -6,7 +6,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg"></a>
   <img alt="last commit" src="https://img.shields.io/github/last-commit/build-with-dhiraj/ai-workflow-framework-portability-kit">
   <img alt="agents" src="https://img.shields.io/badge/agents-35-blue">
-  <img alt="skills" src="https://img.shields.io/badge/skills-112-blue">
+  <img alt="skills" src="https://img.shields.io/badge/skills-115-blue">
   <img alt="platform" src="https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white">
   <img alt="Claude Code" src="https://img.shields.io/badge/Claude%20Code-orchestration-D97757">
 </p>
