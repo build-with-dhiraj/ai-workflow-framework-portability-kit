@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-112 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+115 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -169,7 +169,7 @@ The following skills come from installed plugins — they auto-reappear when plu
 
 ## 5. File inventory — what's actually in this folder
 
-112 skill directories — the authoritative on-disk set as of the 2026-06-08 re-sync, alphabetically:
+115 skill directories — the authoritative on-disk set as of the 2026-06-11 re-sync, alphabetically:
 
 ```
 3d-web-experience                           ai-product-ux
@@ -206,31 +206,33 @@ impeccable                                  improve-codebase-architecture
 integrate-whatsapp                          jove-youtube-feed-pipeline
 json-canvas                                 langfuse
 langsmith-evaluator                         llm-eval
-managing-skills-library                     memory-router
-migrate-to-shoehorn                         ner-content-pipeline
-obsidian-bases                              obsidian-brain-eval
-obsidian-cli                                obsidian-graph-auditor
-obsidian-markdown                           obsidian-orphan-rescue
-obsidian-vault                              office-hours
+managing-skills-library                     master-resume
+memory-router                               migrate-to-shoehorn
+ner-content-pipeline                        obsidian-bases
+obsidian-brain-eval                         obsidian-cli
+obsidian-graph-auditor                      obsidian-markdown
+obsidian-orphan-rescue                      obsidian-vault
+obsidian-vault-architect                    office-hours
 personal-content-resurface                  postgresql-code-review
 product-management                          prompt-engineering
 prototype                                   python-pipelines
 r3f-best-practices                          rag-patterns
 research-synthesis                          scaffold-exercises
 security-review                             setup-matt-pocock-skills
-setup-pre-commit                            stock-pick-ranker
-supabase                                    supabase-postgres-best-practices
-tanstack-start-best-practices               tdd
-threejs-animation                           to-issues
-to-prd                                      token-coach
-token-dashboard                             token-optimizer
-triage                                      typescript-react-reviewer
-user-research                               validate-evaluator
-wrap-up                                     write-a-skill
-write-judge-prompt                          zoom-out
+setup-pre-commit                            stock-onboarding-pipeline
+stock-pick-ranker                           supabase
+supabase-postgres-best-practices            tanstack-start-best-practices
+tdd                                         threejs-animation
+to-issues                                   to-prd
+token-coach                                 token-dashboard
+token-optimizer                             triage
+typescript-react-reviewer                   user-research
+validate-evaluator                          wrap-up
+write-a-skill                               write-judge-prompt
+zoom-out
 ```
 
-> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 112; this fenced block is the source of truth for *what is on disk right now*.
+> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 115; this fenced block is the source of truth for *what is on disk right now*.
 
 ### Added 2026-05-14 (post-snapshot import)
 | Skill | Source | Notes |
@@ -323,3 +325,17 @@ Two finance skills appeared in the live `~/.claude/skills/` since the last snaps
 | `stock-pick-ranker` | MIT (kit-default) | End-to-end equity quality + valuation ranking pipeline: scrapes investor newsletters, enriches live (Indian-listed) financials, scores each stock on a 7-factor principles rubric, runs forward + reverse DCF, reliability-weights the valuation, re-ranks the universe, and appends/refreshes `Substack_Stock_Picks.xlsx`. Workbook-driven; distinct from `creating-financial-models` (which is for standalone private-company models). |
 
 Same `obsidian-orphan-killer` → `obsidian-orphan-rescue` rename landed in this re-sync (see the 2026-06-05 table above — the local directory and CLI are now `obsidian-orphan-rescue`; the upstream GitHub repo has since been renamed to `obsidian-orphan-rescue` as well, and the old `obsidian-orphan-killer` repo URL now redirects).
+
+---
+
+### Added 2026-06-11: live re-sync → 115 skills
+
+Three skills appeared in the live `~/.claude/skills/` since the last snapshot and are vendored here (operator-authored / personal). Re-sync brings the kit to parity with the live app — **112 → 115 skills**.
+
+| Skill | License | What it does |
+|---|---|---|
+| `master-resume` | MIT (kit-default) | Research-grade resume/CV/cover-letter tailoring from a persistent experience library to specific JDs — provenance-checked anti-fabrication, confidence-scored matching, 8-dimension critique, LaTeX/Overleaf output. **Runtime dep:** `tectonic` (Homebrew) for PDF compilation — not yet captured in `Tooling/Brewfile`; `brew install tectonic` after restore. |
+| `obsidian-vault-architect` | MIT (kit-default) | Higher-level Obsidian vault structuring/architecture guidance (complements the `obsidian-graph-auditor` / `obsidian-brain-eval` / `obsidian-orphan-rescue` trilogy). |
+| `stock-onboarding-pipeline` | MIT (kit-default) | End-to-end onboarding of new Indian stocks into the "Paise se Paisa" Action Dashboard (deep dossier → advisor board with FOREVER gate → deterministic D-Engine re-rank → publish). Embeds a personal workspace path (`/Users/pw/invest`) and a Google Sheet fileId — adjust on a new machine. |
+
+`hooks` + `statusLine` (token-optimizer) remain intentionally **out** of the kit's `settings.json` — they hardcode a machine-specific `.archive-token-optimizer-pkg` path and the token-optimizer plugin re-establishes them on restore.

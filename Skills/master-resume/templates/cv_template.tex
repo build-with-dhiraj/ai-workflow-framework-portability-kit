@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MASTER-RESUME — Academic CV template (self-contained, Overleaf-ready)
+% Compiler: pdfLaTeX. No custom .cls. Geometry = textwidth 7.5in, 11pt.
+%
+% HOW TO USE
+%  1. Fill [CONFIG: ...] and FIXED sections (Education, Publications, Honors)
+%     with REAL content. Publications are FIXED — maintain in publications.md.
+%  2. Leave [GENERATE: ...] for per-JD content (Research Summary, Experience).
+%  3. Char budget (rendered chars): 1L 88-93 (max 101) | 2L 168-182 (max 190)
+%     | 3L 250-268 (max 280). Orphan: last line >= 65 chars.
+%     PAGE-1 RULE: first bullet of the first experience MUST be 2L (a 3L first
+%     bullet overflows page 1). Measure with scripts/char_count.py -f cv.
+%  4. Provenance: under-review -> "under review at [Journal]"; preprint flagged;
+%     team work -> contributing verbs only (see anti-fabrication.md).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,letterpaper]{article}
+\usepackage[left=0.75in,top=0.75in,right=0.75in,bottom=0.7in,textwidth=7.5in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[version=4]{mhchem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries\scshape}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+\setlist[itemize]{leftmargin=1.3em,topsep=2pt,itemsep=1.5pt,parsep=0pt}
+\newcommand{\daterange}[1]{\hfill\textnormal{\textit{#1}}}
+\newcommand{\role}[4]{\textbf{#1}\daterange{#4}\\ \textit{#2, #3}\par\vspace{1pt}}
+
+\begin{document}
+
+%====================== HEADER — FIXED ======================================
+\begin{center}
+  {\LARGE\bfseries [CONFIG: Full Name, Ph.D.]}\\[2pt]
+  [CONFIG: email] $\vert$ [CONFIG: phone] $\vert$ [CONFIG: City, State]\\
+  \href{[CONFIG: website URL]}{Website} $\vert$ \href{[CONFIG: Google Scholar/ORCID]}{Scholar} $\vert$ \href{[CONFIG: LinkedIn URL]}{LinkedIn}
+\end{center}
+
+%====================== RESEARCH SUMMARY — GENERATE per JD ===================
+\section{Research Summary}
+% 4-5 sentences. Lead with field + primary methods. Include the bridge to the
+% target program's focus. End with venue/citation metrics if applicable.
+[GENERATE: [Field] researcher with [N]+ years in \textbf{[method]} and \textbf{[method]}. [Bridge to this program/PI's focus]. [Publications, citations, h-index if applicable].]
+
+%====================== EDUCATION — FIXED ===================================
+\section{Education}
+\textbf{[FIXED: Ph.D., Field]}, [FIXED: Institution] \daterange{[FIXED: Year]}\\
+\textit{Dissertation:} [FIXED: title]. Advisor: [FIXED: name].\\[3pt]
+\textbf{[FIXED: B.S./M.S., Field]}, [FIXED: Institution] \daterange{[FIXED: Year]}
+
+%====================== RESEARCH EXPERIENCE — GENERATE bullets ===============
+\section{Research Experience}
+\role{[GENERATE: JD-customized theme]}{[Formal Title]}{[Institution / Group]}{[Dates]}
+\begin{itemize}
+  \item [GENERATE: top achievement — MUST be 2L on page 1, ends on a result/metric]
+  \item [GENERATE: 2L or 3L; quantify; correct provenance flag]
+\end{itemize}
+
+\role{[GENERATE: theme]}{[Formal Title]}{[Institution]}{[Dates]}
+\begin{itemize}
+  \item [GENERATE: ...]
+\end{itemize}
+
+%====================== PUBLICATIONS — FIXED (from publications.md) ==========
+% NEVER alter titles/authors/venues. Mark under-review / preprint explicitly.
+\section{Selected Publications}
+\begin{enumerate}[leftmargin=1.4em,topsep=2pt,itemsep=2pt]
+  \item [FIXED: Authors. "Title." \textit{Venue}, Year.]
+  \item [FIXED: Authors. "Title." Under review at \textit{Venue}, Year.]
+\end{enumerate}
+
+%====================== HONORS & AWARDS — FIXED =============================
+% ". " separators, never "---".
+\section{Honors \& Awards}
+[FIXED: Fellowship, Year. Award, Year. Travel grant, Year.]
+
+\end{document}
