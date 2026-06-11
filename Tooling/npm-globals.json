@@ -40,6 +40,10 @@
     "vercel": {
       "version": "54.4.1",
       "overridden": false
+    },
+    "zubeid-youtube-mcp-server": {
+      "version": "1.0.0",
+      "overridden": false
     }
   }
 }

@@ -15,40 +15,50 @@ This folder captures the **host-side tooling** Claude depends on: brew packages,
 | `npm-globals.json` | Global npm packages (excluding npm itself) | `npm list -g --depth=0 --json` |
 | `restore.sh` | One-shot script that installs everything and restores the entire kit | hand-authored |
 
-> Only **leaf** brew packages are captured — i.e., things you `brew install`'d directly. Their dependencies (currently 67 transitive packages) come along automatically when brew bundle runs. This keeps the Brewfile small and forward-compatible across brew versions.
+> Only **leaf** brew packages are captured — i.e., things you `brew install`'d directly. Their dependencies (several dozen transitive packages — `ffmpeg` alone pulls a large tree) come along automatically when brew bundle runs. This keeps the Brewfile small and forward-compatible across brew versions.
 
 ---
 
 ## 2. What `Brewfile` contains right now
 
-Snapshot taken 2026-05-27:
+Snapshot re-synced 2026-06-11:
 
 | Type | Package | Why it's here |
 |---|---|---|
 | `brew` | `cocoapods` | iOS dependency manager (needed for `flutter-*` skills targeting iOS) |
+| `brew` | `ffmpeg` | Audio/video transcode + frame/audio extraction — backs the YouTube skills (`baoyu-youtube-transcript`, `jove-youtube-feed-pipeline`) |
 | `brew` | `gh` | GitHub CLI — used by many skills + Mattpocock `to-issues`, `to-prd`, `triage` |
 | `brew` | `node` | Node.js + npm — runtime for Claude Code itself + npm-globals |
 | `brew` | `pandoc` | Document conversion — used by `anthropic-skills:docx`, `pdf`, `xlsx` |
 | `brew` | `poppler` | PDF utilities — used by `anthropic-skills:pdf` |
 | `brew` | `python@3.11` | Modern Python for tools that don't work with system 3.9 (Xcode's pip) |
 | `brew` | `tectonic` | Self-contained LaTeX engine — compiles `master-resume`'s CV/résumé/cover-letter `.tex` output to PDF |
+| `brew` | `yt-dlp` | YouTube/video downloader — backs `baoyu-youtube-transcript` and `jove-youtube-feed-pipeline` |
+| `cask` | `libreoffice` | Headless office suite — document-conversion fallback for `anthropic-skills:docx`/`pptx`/`xlsx` |
 | `vscode` | `anysphere.remote-ssh` | Cursor's Remote SSH extension |
 | `uv` | `notebooklm-mcp-cli` | NotebookLM CLI installed via `uv` |
-| `uv` | `notebooklm-mcp-server` | NotebookLM MCP server |
 | `uv` | `specify-cli` | github/spec-kit — greenfield Spec-Driven Development |
+| `uv` | `youtube-studio-mcp` | YouTube Studio MCP server — analytics / upload / caption tooling behind the YouTube skills |
 
 ## 3. What `npm-globals.json` contains right now
 
-4 global npm packages:
+11 global npm packages (`npm` itself is excluded from the restore loop):
 
 | Package | Why |
 |---|---|
 | `@anthropic-ai/claude-code` | Claude Code itself |
-| `@openai/codex` | OpenAI Codex CLI (alternative agent CLI) |
-| `docx` | docx generation library (referenced by docx skill) |
+| `@google/gemini-cli` | Gemini CLI — alternative agent CLI |
+| `@openai/codex` | OpenAI Codex CLI — alternative agent CLI |
+| `agent-browser` | Browser-automation CLI (Vercel `agent-browser` skill) |
+| `defuddle` | Clean-markdown web extraction (the `defuddle` skill) |
+| `docx` | docx generation library (referenced by the docx skill) |
+| `pnpm` | Fast package manager used across JS projects |
+| `pptxgenjs` | pptx generation library |
+| `vercel` | Vercel CLI — deploys + env management |
+| `zubeid-youtube-mcp-server` | YouTube MCP server — backs `baoyu-youtube-transcript` and `jove-youtube-feed-pipeline` |
 | `npm` | npm itself — excluded from the restore loop |
 
-Notably **NOT** captured globally: `vercel` and `nlm` (NotebookLM CLI). They're either uv-managed (see Brewfile) or installed on-demand by skills.
+Notably **NOT** captured globally: `nlm` (NotebookLM CLI) — it's uv-managed (`notebooklm-mcp-cli` in the Brewfile) or installed on-demand by skills.
 
 ---
 
