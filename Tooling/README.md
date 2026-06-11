@@ -31,6 +31,7 @@ Snapshot taken 2026-05-27:
 | `brew` | `pandoc` | Document conversion — used by `anthropic-skills:docx`, `pdf`, `xlsx` |
 | `brew` | `poppler` | PDF utilities — used by `anthropic-skills:pdf` |
 | `brew` | `python@3.11` | Modern Python for tools that don't work with system 3.9 (Xcode's pip) |
+| `brew` | `tectonic` | Self-contained LaTeX engine — compiles `master-resume`'s CV/résumé/cover-letter `.tex` output to PDF |
 | `vscode` | `anysphere.remote-ssh` | Cursor's Remote SSH extension |
 | `uv` | `notebooklm-mcp-cli` | NotebookLM CLI installed via `uv` |
 | `uv` | `notebooklm-mcp-server` | NotebookLM MCP server |
