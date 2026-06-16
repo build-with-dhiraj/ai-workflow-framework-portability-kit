@@ -22,6 +22,7 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
+| `Automations/` | The loop-heartbeat layer (Osmani "Loop Engineering") — harness scheduling stack, hooks/statusLine policy, and the human-in-the-loop kit-maintenance loop (README inside) | harness/account-bound (`/loop`, `/goal`, `/schedule`; no local file) |
 | `Tooling/` | Brewfile + npm globals snapshot + **`restore.sh`** (one-prompt end-to-end restore script) | system-level (Homebrew, npm) |
 
 ---
@@ -276,6 +277,7 @@ The `/speckit.implement` phase is explicitly disabled because spec-kit's generic
 | Local MCP servers + plugin-bundled MCPs | [MCP/README.md](MCP/README.md) (template at `MCP/mcp.template.json`) |
 | Installed plugins + marketplaces + reinstall commands | [Plugins/README.md](Plugins/README.md) (snapshots alongside) |
 | Account-bound integrations (Gmail, Drive, Supabase, etc.) | [Connectors/README.md](Connectors/README.md) |
+| Automation / loop heartbeat (scheduling stack, hooks policy, maintenance loop) | [Automations/README.md](Automations/README.md) |
 | Host-side packages (Homebrew, npm globals) + one-shot restore script | [Tooling/README.md](Tooling/README.md) (Brewfile + npm-globals.json + restore.sh) |
 | Memory restoration | [MEMORY.md](MEMORY.md) |
 | New-Mac install procedure | [BOOTSTRAP.md](BOOTSTRAP.md) |

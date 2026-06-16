@@ -152,7 +152,9 @@ Auto-restored when step 4 reinstalls the plugins. Nothing to do manually.
 
 If any expected connector is missing, open *claude.ai → Settings → Connectors* and re-add it.
 
----
+### Automation / loop heartbeat (account-bound — nothing to file-restore)
+
+Like connectors, the **automation layer** reattaches automatically. After `claude login`, the scheduling stack (`/loop`, `/goal`, `/schedule`, `Cron*`, `mcp__scheduled-tasks__*`) is available immediately; `anthropic-skills:schedule` and the superpowers loop skills return when plugins reinstall (step 4). The operator's token-optimizer `hooks`/`statusLine` are **intentionally not vendored** (machine-specific path; the plugin re-establishes them). **See [Automations/README.md](Automations/README.md)** for the loop-engineering architecture, the heartbeat mechanisms, and the human-in-the-loop kit-maintenance loop.
 
 ---
 

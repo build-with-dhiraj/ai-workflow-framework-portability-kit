@@ -41,6 +41,7 @@ This kit treats that setup as code: **version-controlled, reproducible, restorab
 | [`MCP/`](MCP/) | Local MCP server template (secrets redacted to placeholders) + the full MCP roster. ([README inside](MCP/README.md)) |
 | [`Plugins/`](Plugins/) | Installed-plugins snapshot + known-marketplaces registry + the local-directory Vercel marketplace cache + reinstall guide. ([README inside](Plugins/README.md)) |
 | [`Connectors/`](Connectors/) | Inventory of account-bound MCP integrations (Gmail, Drive, Supabase, Slack, Atlassian, Notion, …). These auto-reattach on `claude login`. ([README inside](Connectors/README.md)) |
+| [`Automations/`](Automations/) | The **loop-heartbeat** layer ([Loop Engineering](https://addyosmani.com/blog/loop-engineering/)) — the harness scheduling stack (`/loop`, `/goal`, `/schedule`), hooks/statusLine policy, and a human-in-the-loop kit-maintenance loop. ([README inside](Automations/README.md)) |
 | [`Tooling/`](Tooling/) | Brewfile + npm-globals snapshot + **`restore.sh`** — the one-prompt end-to-end restore script. ([README inside](Tooling/README.md)) |
 | [`CLAUDE-global.md`](CLAUDE-global.md) | Verbatim mirror of the source machine's global `~/.claude/CLAUDE.md`. Source of truth for the orchestrator directive. |
 | [`SPEC-KIT-global.md`](SPEC-KIT-global.md) | Greenfield-only Spec-Driven Development phase map; explicit override rule (never run `/speckit.implement`). |
