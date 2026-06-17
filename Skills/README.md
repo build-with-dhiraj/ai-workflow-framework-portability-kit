@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-115 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+123 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -169,34 +169,36 @@ The following skills come from installed plugins — they auto-reappear when plu
 
 ## 5. File inventory — what's actually in this folder
 
-115 skill directories — the authoritative on-disk set as of the 2026-06-11 re-sync, alphabetically:
+123 skill directories — the authoritative on-disk set as of the 2026-06-17 re-sync, alphabetically:
 
 ```
 3d-web-experience                           ai-product-ux
 arize-experiment                            arize-prompt-optimization
-baoyu-youtube-transcript                    build-review-interface
-building-claude-portability-kit             caveman
+bank-valuation                              baoyu-youtube-transcript
+build-review-interface                      building-claude-portability-kit
+capital-allocation-judge                    caveman
 claude-seo                                  code-review-excellence
 context-kernel                              cra-to-next-migration
-creating-financial-models                   deep-research
-defuddle                                    design-taste-frontend
-diagnose                                    dspy-gepa-reflective
-edit-article                                emil-design-eng
-error-analysis                              eval-audit
-evaluate-rag                                evaluating-agent-behavior
-evaluating-skill-necessity                  fact-check
-find-skills                                 fleet-auditor
-flutter-adding-home-screen-widgets          flutter-animating-apps
-flutter-architecting-apps                   flutter-building-forms
-flutter-building-layouts                    flutter-building-plugins
-flutter-caching-data                        flutter-embedding-native-views
-flutter-handling-concurrency                flutter-handling-http-and-json
-flutter-implementing-navigation-and-routing flutter-improving-accessibility
-flutter-interoperating-with-native-apis     flutter-localizing-apps
-flutter-managing-state                      flutter-reducing-app-size
-flutter-setting-up-on-linux                 flutter-setting-up-on-macos
-flutter-setting-up-on-windows               flutter-testing-apps
-flutter-theming-apps                        flutter-working-with-databases
+creating-financial-models                   decision-journal
+deep-research                               defuddle
+design-taste-frontend                       diagnose
+dspy-gepa-reflective                        edit-article
+emil-design-eng                             error-analysis
+eval-audit                                  evaluate-rag
+evaluating-agent-behavior                   evaluating-skill-necessity
+fact-check                                  find-skills
+fleet-auditor                               flutter-adding-home-screen-widgets
+flutter-animating-apps                      flutter-architecting-apps
+flutter-building-forms                      flutter-building-layouts
+flutter-building-plugins                    flutter-caching-data
+flutter-embedding-native-views              flutter-handling-concurrency
+flutter-handling-http-and-json              flutter-implementing-navigation-and-routing
+flutter-improving-accessibility             flutter-interoperating-with-native-apis
+flutter-localizing-apps                     flutter-managing-state
+flutter-reducing-app-size                   flutter-setting-up-on-linux
+flutter-setting-up-on-macos                 flutter-setting-up-on-windows
+flutter-testing-apps                        flutter-theming-apps
+flutter-working-with-databases              forensic-accounting-redflags
 framer-motion-animator                      generate-synthetic-data
 gepetto                                     git-guardrails-claude-code
 github-actions                              grill-me
@@ -208,31 +210,33 @@ json-canvas                                 langfuse
 langsmith-evaluator                         llm-eval
 managing-skills-library                     master-resume
 memory-router                               migrate-to-shoehorn
-ner-content-pipeline                        obsidian-bases
-obsidian-brain-eval                         obsidian-cli
-obsidian-graph-auditor                      obsidian-markdown
-obsidian-orphan-rescue                      obsidian-vault
-obsidian-vault-architect                    office-hours
-personal-content-resurface                  postgresql-code-review
-product-management                          prompt-engineering
-prototype                                   python-pipelines
-r3f-best-practices                          rag-patterns
-research-synthesis                          scaffold-exercises
-security-review                             setup-matt-pocock-skills
-setup-pre-commit                            stock-onboarding-pipeline
-stock-pick-ranker                           supabase
-supabase-postgres-best-practices            tanstack-start-best-practices
-tdd                                         threejs-animation
-to-issues                                   to-prd
-token-coach                                 token-dashboard
-token-optimizer                             triage
-typescript-react-reviewer                   user-research
-validate-evaluator                          wrap-up
+moat-analysis                               ner-content-pipeline
+obsidian-bases                              obsidian-brain-eval
+obsidian-cli                                obsidian-graph-auditor
+obsidian-markdown                           obsidian-orphan-rescue
+obsidian-vault                              obsidian-vault-architect
+office-hours                                personal-content-resurface
+portfolio-sizing                            postgresql-code-review
+primary-research-sentiment                  product-management
+prompt-engineering                          prototype
+python-pipelines                            r3f-best-practices
+rag-patterns                                research-synthesis
+scaffold-exercises                          security-review
+setup-matt-pocock-skills                    setup-pre-commit
+stock-onboarding-pipeline                   stock-pick-ranker
+supabase                                    supabase-postgres-best-practices
+tanstack-start-best-practices               tdd
+threejs-animation                           to-issues
+to-prd                                      token-coach
+token-dashboard                             token-optimizer
+triage                                      typescript-react-reviewer
+user-research                               validate-evaluator
+valuation-dcf-longrunway                    wrap-up
 write-a-skill                               write-judge-prompt
 zoom-out
 ```
 
-> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 115; this fenced block is the source of truth for *what is on disk right now*.
+> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 123; this fenced block is the source of truth for *what is on disk right now*.
 
 ### Added 2026-05-14 (post-snapshot import)
 | Skill | Source | Notes |
@@ -339,3 +343,20 @@ Three skills appeared in the live `~/.claude/skills/` since the last snapshot an
 | `stock-onboarding-pipeline` | MIT (kit-default) | End-to-end onboarding of new Indian stocks into the "Paise se Paisa" Action Dashboard (deep dossier → advisor board with FOREVER gate → deterministic D-Engine re-rank → publish). Embeds a personal workspace path (`/Users/pw/invest`) and a Google Sheet fileId — adjust on a new machine. |
 
 `hooks` + `statusLine` (token-optimizer) remain intentionally **out** of the kit's `settings.json` — they hardcode a machine-specific `.archive-token-optimizer-pkg` path and the token-optimizer plugin re-establishes them on restore.
+
+### Added 2026-06-17: finance-desk cluster → 123 skills
+
+Eight operator-authored finance/investing **specialist-desk** skills were created (and the existing `stock-onboarding-pipeline` updated to dispatch them) during the "External-Investor Canon Layer + Analyst Desk" build on the `invest` workspace. They form a per-stock analyst desk the onboarding pipeline calls at Stages 1/3/4; the binding Munger/Buffett vault CIO stays the arbiter (these inform, never override). Re-sync brings the kit to parity — **115 → 123 skills**.
+
+| Skill | License | What it does |
+|---|---|---|
+| `forensic-accounting-redflags` | MIT (kit-default) | Stage-1 governance-integrity gate — 10 India-specific red-flag dimensions -> CLEAN/CAUTION/RED; a flag can cap conviction or hard-fail a thesis. |
+| `capital-allocation-judge` | MIT (kit-default) | Thorndike-Outsiders 6-axis CEO capital-allocation scorecard (incl. reinvestment runway x incremental ROCE). |
+| `moat-analysis` | MIT (kit-default) | 7-source moat taxonomy + pricing-power + erosion test; "a moat does not set its own price." |
+| `primary-research-sentiment` | MIT (kit-default) | ValuePickr/Reddit/concall DD + sentiment harvester, framed as disconfirmation-seeking; voices weighted inversely to how hard they talk their book. |
+| `valuation-dcf-longrunway` | MIT (kit-default) | Multi-stage owner-earnings DCF for proven long-runway compounders (fixes the DCF truncation hole). |
+| `bank-valuation` | MIT (kit-default) | Damodaran financial-firm method (excess-return / justified-P/B) with provisioning + reg-capital + Ke adjustments; deposit-franchise-as-float. |
+| `portfolio-sizing` | MIT (kit-default) | Kelly/half-Kelly ceiling + conviction-cap table + catastrophic-loss limit ("Kelly proposes, the catastrophic-loss test disposes"). |
+| `decision-journal` | MIT (kit-default) | Contemporaneous decision-journal + inversion artifact; sentiment-cycle locus + standing FOREVER re-decision cadence. |
+
+All eight embed the personal `invest` workspace conventions (they consult `data/scripts/32_consult_brain.py --corpus blended`); the brain scripts themselves live in the `invest` repo (survive via that git remote), not in this kit.

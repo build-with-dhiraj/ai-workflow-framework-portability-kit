@@ -1,103 +1,209 @@
 ---
 name: stock-onboarding-pipeline
 description: >
-  Onboard new Indian stocks into the "Paise se Paisa" Action Dashboard end-to-end — the matured
-  pipeline (deep dossier → blended advisor board with a strict FOREVER gate → deterministic D-Engine
-  re-rank → publish). Use when the user says "add stocks", "add the next batch", "onboard <tickers>",
-  "grow the dashboard", or wants to extend the 20→N stock TO-BUY list. Workspace: /Users/pw/invest,
-  sheet fileId 1N87younF990u-YGMOAiT8q6X-EtZ3jVovlWCF44orEY.
+  Onboard new Indian stocks into the "Paise se Paisa" Action Dashboard end-to-end, using the v2
+  vault-aligned machinery (understanding gate → quality-gated conviction with ROIC+runway →
+  conservative IV range → conviction-scaled margin-of-safety vs opportunity cost → reformed verdict).
+  Use when the user says "add stocks", "add the next batch", "onboard <tickers>", "grow the dashboard",
+  "re-rank", or wants to extend the TO-BUY/study list. Workspace: /Users/pw/invest, sheet fileId
+  1N87younF990u-YGMOAiT8q6X-EtZ3jVovlWCF44orEY. Charlie Munger & Warren Buffett (the Obsidian vault)
+  are the binding CIO; the vault gates conviction/verdict/MoS, it is not narrative decoration.
 ---
 
-# Stock Onboarding Pipeline
+# Stock Onboarding Pipeline (v2 — vault-aligned)
 
 The single source of truth for adding stocks to the Action Dashboard. Follow the stages in order.
-This is the *distilled* mature workflow — every step earned through prior batches. See
-[[reference-paise-se-paisa-sheet]] and [[feedback-indian-mentors-lens]] in memory for context.
+**v2 machinery adopted 2026-06-12** after a CIO review (Munger/Buffett via the vault) found v1
+"looked Buffett but ranked like a quant trading desk", and that the vault only fed narrative.
+See [[reference-paise-se-paisa-sheet]] and [[feedback-indian-mentors-lens]] in memory. The live
+process is documented in the sheet's **⚙️ Machinery v2** tab; per-stock grades in **🔍 Conviction & MoS v2**.
+**Retrieval plumbing upgraded 2026-06-12 (brain-densification Phase 4):** all vault consultation now goes
+through `data/scripts/32_consult_brain.py` (scoped, cited, structured) — the v2 logic itself is unchanged.
 
 ## North star
-The dashboard is a **search for ONE strictly-lifelong hold (FOREVER)** — not a buy-list. The Indian
-Substack analysts (Vaibhav & Gaurav Tambade = "India's Buffett/Munger"; plus Karan Shah, The Megatrend
-Investor, Dhruva) supply the bull thesis + ground-truth context; **Charlie Munger & Warren Buffett are
-the FINAL arbiters of "is this lifelong."** Finding zero FOREVER names is an acceptable, expected result.
-Patience is the edge.
+The dashboard is a **STUDY LIST in search of ONE strictly-lifelong hold (FOREVER)** — not a buy-list,
+and **not a 45-name basket** (Munger: 1–3 wonderful businesses suffice; act rarely). Indian Substack
+analysts (Vaibhav & Gaurav Tambade = "India's Buffett/Munger"; plus Karan Shah, The Megatrend Investor,
+Dhruva) supply the bull thesis + ground-truth context; **Charlie Munger & Warren Buffett (the vault) are
+the FINAL, BINDING arbiters.** Finding zero FOREVER names — and finding that nothing clears the
+margin-of-safety bar at today's prices — is an acceptable, expected result. Patience is the edge.
 
 ## HARD RULES (never violate)
 1. **Never re-grill / re-dossier stocks already done.** Existing dossiers in `vault/research/dossiers/*.md`
-   are frozen inputs. Only dossier the NEW stocks.
+   are frozen inputs. Only dossier the NEW stocks. (Exception: a stock whose dossier had a *data error* —
+   e.g. wrong price — may be corrected; that is a fix, not a re-grill.)
 2. **Always re-rank the WHOLE set** (old + new) after adding — never just the new ones.
-3. **No fabricated citations.** Dossier `cites_principles` may contain ONLY slugs the vault RAG actually
-   returns (`data/scripts/29_vault_chat.py ... --json-out`). Abstain + flag if the vault is thin.
-4. **Method-appropriate valuation.** DCF for operating cos; **justified-P/B for banks & sub-book names**;
-   **distribution-yield for InvITs** (strip return-of-capital); **multiple-on-mid-cycle-EPS for commodity
-   cyclicals** (the DCF under-converts FCF — trust the multiple, demand bigger MoS). Check for stock splits.
-5. **Read the article AND its comment thread** (Substack API — comments are real signal).
-6. **4-tier verdict** exactly one per stock: FOREVER / COMPOUND / WATCH / AVOID.
+3. **The vault is BINDING, not decoration.** `data/scripts/32_consult_brain.py` (scoped, cited retrieval — see
+   CONSULTING THE BRAIN below) gates conviction, verdict and MoS at Stages 0/3/4. `cites_principles` may contain
+   ONLY slugs it actually returns (`principles[].slug`). No fabricated citations. If `principles` comes back
+   empty/thin → abstain + flag. (`29_vault_chat.py` stays available for free-form cited Q&A / ad-hoc grilling.)
+4. **Quality is a HARD GATE before price.** Order of analysis: understanding → moat/owner-earnings/management
+   → ONLY THEN price. A business you can't understand, or with no durable moat, cannot earn high conviction
+   regardless of price or optics.
+5. **Conviction = JUDGMENT, not a formula** (Munger: avoid false precision / formulaic thinking). It measures
+   durable business quality, price-independent — see the rubric in KEY REGISTRY. Gates: no moat → 1;
+   chronically weak/near-zero FCF → cap 2; returns below ~12% cost of capital → cap 2. Banks/NBFCs judged on
+   ROE vs cost of equity (ROCE/FCF N/A); InvITs cap 2; quasi-financials (heavy FCF can offset modest ROCE).
+6. **Margin of safety is THE gate** (the cornerstone, widens with uncertainty), scaled to conviction
+   (conv5 ≥10%, conv4 ≥15%, conv3 ≥25%, conv2 ≥40%, conv1 ≥55%), measured vs **opportunity cost** (the best
+   existing idea), NOT a bond yield. **IRR HURDLE (named gate):** a BUY must clear the index — expected IRR > the ~9–10% Nifty return (the default opportunity cost); a wonderful business that can't beat the index from today's price is a WATCH, not a BUY. **Volatility ≠ risk** — the old GBM price engine is a DEMOTED clerk
+   (informational only: "is an entry plausible / where's the MoS line"), never the judge or tiebreak.
+7. **Intrinsic value is a conservative RANGE** (low/base/high), never a false-precise point. Buy-below =
+   `iv_base × (1 − required_MoS)`.
+8. **Sell ₹ + Upside are written for every NON-FOREVER verdict — never blank them (Chairman rule 2026-06-13).**
+   WATCH / AVOID / TOO_HARD each carry a numeric **Sell ₹ = fair-value target (IV-high)** AND an **Upside%**
+   `=(Sell−Live)/Live` (honestly negative when the price is above fair value), alongside the WATCH buy-below
+   entry trigger. ONLY FOREVER/COMPOUND show "DON'T SELL" / "∞ hold" (lifelong hold; sell only on thesis-break,
+   moat erosion, a better opportunity, or a cash need). Do NOT blank a Sell/Upside cell for a WATCH/AVOID name
+   (that was a publish bug — the upside column must always render a number for non-FOREVER rows).
+9. **Too-hard → DISCARD from the buy-list**, don't rank it (Buffett's three buckets: in / out / too-hard).
+   Loss-makers with no clear path, unpredictable/rapid-change businesses → TOO_HARD quarantine. Forced
+   inactivity is a feature.
+10. **Read the article AND its comment thread** (Substack API — comments are real signal). Method-appropriate
+    valuation (DCF for operating cos; justified-P/B for banks; distribution-yield for InvITs; mid-cycle-EPS
+    multiple for commodity cyclicals). Always check for stock splits and validate the dossier's current_price
+    against the live yfinance close (a stale enriched-pipeline snapshot once put a price 17% wrong).
+11. **5-tier verdict** exactly one per stock: FOREVER / COMPOUND / WATCH / AVOID / TOO_HARD.
+
+## CONSULTING THE BRAIN (`data/scripts/32_consult_brain.py` — the ONE retrieval entrypoint)
+```bash
+set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
+  /Users/pw/invest/data/scripts/32_consult_brain.py \
+  --company "<name>" \
+  --model <bank|insurance|consumer-brand|commodity-cyclical|utility-psu|capital-goods|platform|general> \
+  --step <circle|conviction|intrinsic-value|margin-of-safety|opportunity-cost|verdict|inversion|capital-allocation|sizing> \
+  [--corpus <binding|blended>] [--entities <peer-slugs,comma-sep>] [--k 8] --json-out extracted/grilling/<TICKER>_<step>.json
+```
+- **What it does:** derives 2-3 model-aware retrieval questions from the stock context, routes internally
+  (specific model or entities → ScopedLanceDBBackend with caller-supplied scope, **0 Azure calls**;
+  `general` + no entities → hybrid + GPT rerank, 1 Azure call/question — the two are NEVER stacked,
+  measured worse), RRF-merges + dedupes, and hygiene-filters to mentors' atomics/raws + `_synthesis`
+  (hubs, MOCs, `_system`, dossiers, positions excluded; every path verified on disk).
+- **How to read the output:** `principles: [{claim, path, slug, citation, mentor, note_type, source_note,
+  applies_to_model, applies_to_filter, rrf_score}]`. `claim` = the principle to apply; `citation`/`slug` =
+  the ONLY tokens permitted in `cites_principles`; `source_note` = traceability to the raw transcript/letter.
+  Empty `principles` → vault is thin here → ABSTAIN + flag, never pad.
+- **Step → lens map (binding):** circle→circle · conviction→moat+management+owner-earnings ·
+  intrinsic-value→owner-earnings+MoS · margin-of-safety→MoS+opportunity-cost ·
+  opportunity-cost→opportunity-cost · verdict→moat+circle+opportunity-cost ·
+  inversion→moat+management+MoS (disconfirming) · capital-allocation→reinvestment-runway+ROCE+allocation-discipline ·
+  sizing→kelly+conviction-cap+catastrophic-loss. Aliases: understanding=circle, iv, mos, oc.
+
+## FINANCE-DESK SPECIALISTS (additive advisory layer — they inform; the binding CIO at 0/3/4 decides)
+Dispatch these sharpened skills at the stages below to SHARPEN the analysis. They are an additive, `--corpus blended`-informed
+advisory layer (blended surfaces desk-synthesis atomics + perspectives ALONGSIDE binding); the perspectives they surface are
+pitch-side / down-weighted and **NEVER reverse a `--corpus binding` verdict.** The Munger/Buffett CIO at Stages 0/3/4 stays THE arbiter.
+
+| Skill | Stage | Role |
+|---|---|---|
+| `primary-research-sentiment` | 1 | DD/sentiment harvest (ValuePickr/Reddit/concall), framed as disconfirmation-seeking |
+| `forensic-accounting-redflags` | 1 | governance-integrity gate → CLEAN/CAUTION/RED (CAUTION caps conviction; RED hard-fails to AVOID/TOO_HARD) |
+| `moat-analysis` | 3 | enriches the moat call in conviction/verdict |
+| `capital-allocation-judge` | 3 | 6-axis CEO scorecard; consults `--step capital-allocation --corpus blended` |
+| `valuation-dcf-longrunway` | 3 (& 1 step 4) | IV method for operating cos (conservative range) |
+| `bank-valuation` | 3 (& 1 step 4) | IV method for banks/NBFCs (justified-P/B) |
+| `decision-journal` | 4 | behavioral decision artifact + inversion enrichment; records sentiment-cycle locus + FOREVER re-decision cadence |
+| `portfolio-sizing` | 4 | Max-size (col-M) decision; consults `--step sizing --corpus blended` |
 
 ## MODEL / EFFORT TIERING (not ultracode)
-- Dossier workers (the bulk): **Sonnet**, 1 rigorous pass each, run in a **Workflow** (resumable).
-- Board + strict FOREVER gate + adversarial verify: **Opus/Fable** (few agents, high stakes).
-- D-Engine re-run + sheet publish: **mechanical** (Bash/MCP) — no model reasoning, engine already verified.
+- New-stock dossier workers (the bulk): **Sonnet**, 1 rigorous pass each, in a **Workflow** (resumable).
+- v2 conviction/verdict re-grade over the FULL set: **Sonnet** workflow (judgment, vault-bound, structured output).
+- Inversion / strict FOREVER gate: **Opus/Fable** (few agents, high stakes, adversarial).
+- Fundamentals fetch + price-engine clerk + sheet publish: **mechanical** (Bash/MCP) — no model reasoning.
 
-## STAGE 0 — Scope & ingest (orchestrator, mechanical)
-- Derive the new stocks = universe (`extracted/_final_v2.json`) minus done (`ls vault/research/dossiers/`).
-  Beware name-spelling/ticker mismatches (e.g. Gemmological vs Gemological, ticker ≠ filename).
-- Per stock map: author + article via `extracted/<author>.json` (`source_url/date/title`); valuation g-file
-  (`grep <TICKER> extracted/valuation/v2/g*.json`); enriched financials (`grep <TICKER> extracted/enriched/batch_*.json`);
-  7-factor scores (`extracted/_principles_scores_v2.json`, `_holdings_principles_scores.json`); v2 rank/theme.
-- Fetch article + comments via Substack API:
-  `curl -s "https://<pub>.substack.com/api/v1/posts/<slug>"` → get id;
-  `curl -s "https://<pub>.substack.com/api/v1/post/<id>/comments?all_comments=true&token="` → JSON (`.comments[].children`).
-- Flag **sector pieces** (one URL → many stocks, e.g. Megatrend "Transformer/Recycling/EV&BESS", Karan
-  "AI Data Center"): the worker extracts ONLY its stock's section.
-- Verify NSE symbol (live price ≈ expected to ±5%) — recently-listed names may need .BO or symbol fixes.
+## STAGE 0 — Scope, ingest & understanding gate (orchestrator)
+- New stocks = universe (`extracted/_final_v2.json`) minus done (`ls vault/research/dossiers/`). Beware
+  name/ticker spelling mismatches.
+- Per stock map: author/article (`extracted/<author>.json`), valuation g-file (`grep <TICKER> extracted/valuation/v2/g*.json`),
+  enriched financials (`grep <TICKER> extracted/enriched/batch_*.json` — VERIFY price vs live), 7-factor scores, v2 rank/theme.
+- Fetch article + comments via Substack API: `curl -s "https://<pub>.substack.com/api/v1/posts/<slug>"` → id;
+  `curl -s ".../api/v1/post/<id>/comments?all_comments=true&token="` → `.comments[].children`.
+- **Understanding gate + triage:** for each name ask "would I own the whole business 10 years with the market shut?"
+  Ground the call: `32_consult_brain.py --company "<name>" --model <model> --step circle` and apply the returned
+  circle-of-competence principles (cite their slugs). Genuinely too-hard → TOO_HARD bucket, off the buy-list.
+  Verify NSE symbol (live ≈ expected ±5%; .BO/BSE for InvITs).
 
-## STAGE 1 — N parallel dossier workers (Workflow, Sonnet)
-Each writes `vault/research/dossiers/<TICKER>.md` to **IGI-depth** (read `vault/research/dossiers/IGI.md`
-as the exact template; ~150 lines; frontmatter schema per `vault/CLAUDE.md`: note_type, ticker, company,
-sector, status, conviction_level, filter_1_circle..filter_6_opportunity_cost (pass|partial|fail),
-intrinsic_value_estimate, current_price, margin_of_safety_pct, cites_principles, kill_criteria, created).
-Worker steps: (1) WebFetch the article + Substack comments (honest paywall handling); (2) fresh web research
-(latest quarter, price, splits, governance); (3) dual-lens RAG (`29_vault_chat.py "<q>" --k 10 --mentor
-charlie-munger|warren-buffett --json-out extracted/grilling/<TICKER>_{munger,buffett}.json` — use ONLY
-returned slugs); (4) method-appropriate IV/MoS + buy-below/sell informed by the author's target; (5) a
-named **"Author's voice"** section + a **"Comment-thread red flags"** section; (6) 4-tier verdict, kill-
-criteria (inversion), honesty flags. Self-validate before returning. **Barrier:** all dossiers exist.
+## STAGE 1 — N parallel dossier workers (Workflow, Sonnet) — NEW stocks only
+Each writes `vault/research/dossiers/<TICKER>.md` to IGI-depth (read `vault/research/dossiers/IGI.md` as the
+template; frontmatter per `vault/CLAUDE.md`). Steps: (1) WebFetch article + Substack comments; (2) fresh web
+research (latest quarter, price, splits, governance); (3) **brain consult** (`32_consult_brain.py --company "<name>"
+--model <model> --step conviction --json-out extracted/grilling/<TICKER>_conviction.json`, then likewise
+`--step margin-of-safety` — both mentors arrive in one call, mentor carried per-principle; use ONLY returned
+slugs); (4) method-appropriate IV as a **conservative range** (ground with `--step intrinsic-value` if needed); (5) "Author's voice" + "Comment-thread
+red flags" sections; (6) verdict + kill-criteria (inversion) + honesty flags. **Barrier:** all dossiers exist.
+- **Desk specialists (advisory):** run `primary-research-sentiment` (disconfirmation-seeking DD harvest) and the
+  `forensic-accounting-redflags` integrity gate (CLEAN/CAUTION/RED — CAUTION caps conviction, RED hard-fails to AVOID/TOO_HARD);
+  `valuation-dcf-longrunway` / `bank-valuation` may build the conservative IV range in step 4. They inform; the binding gate decides.
 
-## STAGE 2 — Blended board over the FULL set (Opus/Fable)
-Four advisor agents (Gaurav, Vaibhav, Charlie, Warren personas) tier ALL stocks (old digests + new
-dossiers); India theses + comment threads feed context; reconcile into one TO-BUY list. Record each
-advisor's vote + split notes. Output `extracted/grilling/<batch>_ranking.json`.
+## STAGE 2 — Fundamentals fetch (mechanical) — the compounding-quality data
+For ALL stocks (old + new), fetch via **yfinance statements** (NOT `.info` — it rate-limits): ROCE
+(`EBIT / (Stockholders Equity + Total Debt)`), ROE (`Net Income / Equity`), and 4-year **FCF** (`Free Cash Flow`,
+count positive years + latest FCF/PAT). This is the owner-earnings + returns-on-capital evidence conviction needs.
+Add a 0.3s sleep between tickers. Output `/tmp/fundamentals_v2.json`.
 
-## STAGE 3 — Strict FOREVER gate (Opus/Fable, adversarial)
-For every FOREVER *candidate* only: a skeptic makes the strongest case it is NOT a strictly-lifelong hold
-(moat that can't be lost overnight, owner-earnings, management/alignment, price not demanding heroics).
-Survive all axes → FOREVER; else demote. Default to demote. Honor any Chairman (user) override explicitly.
+## STAGE 3 — v2 conviction & verdict re-grade (Workflow, Sonnet — judgment, vault-bound)
+One agent per stock over the FULL set. Each reads its dossier + gets its fundamentals (ROCE/ROE/FCF) + the
+**binding vault principles** — the per-stock `32_consult_brain.py` output for steps `conviction`,
+`margin-of-safety` and (where IV is contested) `intrinsic-value`/`verdict`; embed the returned claims+citations
+in the prompt, `cites_principles` ⊂ returned slugs — + the conviction rubric & MoS thresholds, then
+applies JUDGMENT (not a formula) and returns structured: `{understanding (in|too_hard), conviction_v2 (1-5) +
+rationale, roic_runway_note, iv_low/iv_base/iv_high, mos_pct, required_mos_pct, clears_bar, buy_below_v2,
+verdict_v2, sell_logic}`. Honest + conservative — "nothing clears the bar" is the expected answer. (Existing
+dossiers are frozen *inputs*; re-grading their conviction/verdict against the whole set is allowed and required.)
+- **Desk specialists (advisory):** `moat-analysis` sharpens the moat call, `capital-allocation-judge` runs the 6-axis CEO
+  scorecard (`--step capital-allocation --corpus blended`), and `valuation-dcf-longrunway` / `bank-valuation` supply the IV
+  method. They inform the re-grade; the `--corpus binding` conviction/verdict gate remains the arbiter.
 
-## STAGE 4 — D-Engine deterministic re-rank (mechanical)
-- Append the new stocks to `extracted/dengine/stock_params.json` (ticker, yahoo, E=buy-below, H=sell or
-  null for FOREVER, verdict, conv, flags). Fetch their daily histories (`extracted/dengine/fetch_price_histories.py`
-  pattern, yfinance, 1y; validate last_close ≈ live ±5%; split-check). Re-run
-  `.venv/bin/python data/scripts/30_d_engine.py --data ... --stocks ... --params ... --out extracted/dengine/d_engine_results.json`.
-- Engine = GBM first-passage (reflection principle), Bayesian-shrunk drift, EV(buy-now) vs EV(wait), half-Kelly.
-  **Rank key = lexicographic (verdict_tier [FOREVER<COMPOUND<WATCH<AVOID], −conv, −D_score); FOREVER ranked by
-  P(entry).** Do NOT re-verify the math (one-time done); just feed new data. Determinism: two runs byte-identical.
+## STAGE 4 — Inversion / strict FOREVER gate (Opus/Fable, adversarial)
+For every FOREVER *candidate*: a skeptic pulls **disconfirming** vault principles
+(`32_consult_brain.py --company "<name>" --model <model> --step inversion` — moat erosion, management failure,
+MoS as protection against being wrong) and checks for bias
+(mere-association, overconfidence, market-prediction focus), and argues the strongest case it is NOT strictly
+lifelong (moat that can't be lost overnight, clean owner-earnings, aligned long-horizon owner, price not heroic).
+Survive all axes → FOREVER; else demote. Default = demote. **No standing Chairman FOREVER overrides** — the prior IGI & CAMS override was REVOKED 2026-06-17 (both graded to WATCH on the merits; the FOREVER tier is currently EMPTY). Grade every name honestly, IGI/CAMS included, no exceptions.
+- **Desk specialists (advisory):** `decision-journal` records the behavioral decision artifact + inversion enrichment (sentiment-cycle locus,
+  standing FOREVER re-decision cadence), and `portfolio-sizing` informs the Max-size (col-M) call (`--step sizing --corpus blended`).
+  They inform; the `--corpus binding` FOREVER gate decides — desk perspectives never lift a name into FOREVER.
 
-## STAGE 5 — Publish (mechanical, no rework)
-- New dossiers → embed into RAG: `.venv/bin/python data/scripts/26_build_lancedb_index.py --vault ... --db vault/.lancedb`.
-- Append new rows to "Buffett-Munger Deep Ranking" (gid 508986127), update its A=rank + I=tier columns for ALL,
-  then `sortRange` by rank.
-- Extend "🎯 Action Dashboard" (gid 1722681272) via `/Users/pw/.cursor/mcp-servers/google-drive/add-stock.js`
-  (`--rank --ticker --symbol --company --verdict --buyBelow --avgCost --sell --maxSize --conv --why --priceFallback`;
-  row = 3+rank; FOREVER → `--sell "DON'T SELL"`; InvIT → BSE symbol patch on G/L; styling auto via locked
-  buffer to row 60). Re-sort all 20+N rows to the new D-Engine order; verify with `verify-row.js`.
-- Update the "🧮 D-Engine" tab (gid 1487890548) with the full new results table.
-- Sync `avgCost` from INDmoney (`mcp__indmoney__networth_holdings IND_STOCK`) for any held names.
-- Update memory ([[reference-paise-se-paisa-sheet]]) with the new order + any FOREVER finding.
+## STAGE 5 — Price engine as a CLERK (mechanical, optional, informational only)
+The Family-D engine (`data/scripts/30_d_engine.py`) may be run to answer "is a buyable entry plausible / where
+is the MoS line" — but it is **demoted**: volatility ≠ risk, it does NOT set verdict, conviction, or the rank.
+Its sheet tab (🧮 D-Engine, gid 1487890548) is annotated DEMOTED. Skip if not needed.
+
+## STAGE 6 — Final sort & publish (mechanical, no rework)
+- **Rank key = lexicographic (verdict_tier [FOREVER<COMPOUND<WATCH<AVOID<TOO_HARD], −conviction_v2, −mos_pct).**
+  TOO_HARD quarantined off the buy-list.
+- New dossiers → embed into RAG: `.venv/bin/python data/scripts/26_build_lancedb_index.py --vault vault --db vault/.lancedb`.
+- **Action Dashboard (gid 1722681272):** re-sort to the new order. Use `~/.cursor/mcp-servers/google-drive/republish.js`
+  (reads current rows WITH formulas, reorders by a results json, applies per-ticker overrides — preserves every
+  why/price-formula/InvIT-BSE-patch byte-for-byte). Set conviction = conv_v2, buy-below = buy_below_v2 (MoS-gate),
+  verdict = verdict_v2; FOREVER/COMPOUND → `--sell "DON'T SELL"` (Sell col shows "∞ hold"); **WATCH/AVOID/TOO_HARD → numeric
+  `--sell <iv_high>`** so the Sell ₹ + Upside columns render (rule 8 — NEVER leave a non-FOREVER Sell/Upside blank; the
+  Upside formula `=IF($D="FOREVER","∞ hold",TEXT(($H-$G)/$G,"+0%;-0%"))` needs a numeric Sell to render). For genuinely NEW rows use `add-stock.js`. Header reframed
+  to "STUDY LIST · target 1–3 holds". `sheet-exec.js` runs generic ops (expandRows/updateValues/clearValues/sortRange).
+- **🔍 Conviction & MoS v2 (gid 1264181600):** rewrite the full per-stock table (rank, ROCE/ROE, FCF, IV range,
+  MoS%, req MoS%, clears-bar, buy-below, verdict, conviction rationale, sell logic).
+- **⚙️ Machinery v2 (gid 49292954):** the documented process — update only if the machinery itself changes.
+- **Buffett-Munger Deep Ranking (gid 508986127):** re-stamp col A = new rank + col I = verdict for ALL, then
+  `sortRange` by rank (so dashboard "view" hyperlinks → row = rank+1 resolve). Add rows for new stocks (C&W prose).
+- Back up the prior engine/grade state (e.g. `extracted/dengine/backup_v1/`). Sync `avgCost` from INDmoney
+  (`mcp__indmoney__networth_holdings IND_STOCK`: avg = invested_amount/total_units) for held names.
+- Update memory ([[reference-paise-se-paisa-sheet]]) with the new order + FOREVER finding + whether anything cleared the MoS bar.
 
 ## KEY REGISTRY
-- Sheet fileId `1N87younF990u-YGMOAiT8q6X-EtZ3jVovlWCF44orEY`; tabs: Action Dashboard 1722681272,
-  Buffett-Munger Deep Ranking 508986127, D-Engine 1487890548, Final Ranking v2 528383543, Stock Picks 747182097.
-- Engine `data/scripts/30_d_engine.py` (+ spec `dashboards/d-engine-spec.md`); RAG `data/scripts/29_vault_chat.py`,
-  index `data/scripts/26_build_lancedb_index.py`; dashboard helper `~/.cursor/mcp-servers/google-drive/add-stock.js`.
-- Verdict colors (conditional fmt on Dashboard col D, rows 4-60): FOREVER green, COMPOUND blue #c9daf8,
-  WATCH amber, AVOID red. Upside col K = numeric + blue gradient (lightest→darkest = low→high).
+- Sheet fileId `1N87younF990u-YGMOAiT8q6X-EtZ3jVovlWCF44orEY`; tabs: **Action Dashboard 1722681272**,
+  **🔍 Conviction & MoS v2 1264181600**, **⚙️ Machinery v2 49292954**, Buffett-Munger Deep Ranking 508986127,
+  🧮 D-Engine 1487890548 (demoted), Final Ranking v2 528383543, Stock Picks 747182097.
+- Scripts: brain consult `data/scripts/32_consult_brain.py` (the BINDING gate — scoped+cited, see CONSULTING
+  THE BRAIN); free-form vault RAG `29_vault_chat.py` (ad-hoc Q&A only); index `26_build_lancedb_index.py`;
+  price-engine clerk `30_d_engine.py` (demoted); fundamentals = yfinance statements (ROCE/ROE/FCF, not `.info`).
+- Helpers in `~/.cursor/mcp-servers/google-drive/`: `add-stock.js` (new styled row), `republish.js` (formula-preserving
+  reorder + overrides), `sheet-exec.js` (generic ops runner), `verify-row.js`, `clear-row.js`, `lock-dashboard-style.js`.
+- **CONVICTION RUBRIC (1-5, judgment within gates, price-independent):** 5 = wide durable moat + pristine high
+  ROCE/ROE (≥25%) + clean multi-year FCF + long reinvestment runway + aligned mgmt (almost never). 4 = strong moat +
+  high returns + clean owner-earnings + good mgmt. 3 = real but narrower moat + good returns + reasonably clean FCF +
+  decent runway. 2 = partial moat OR lumpy/weak FCF OR returns near cost of capital OR short/unproven. 1 = no durable
+  moat (commodity/replicable/no pricing power). Gates: no-moat→1; weak-FCF→cap2; ROIC<~12%→cap2; bank-below-Ke→cap2;
+  InvIT→cap2. **MoS thresholds:** conv5 ≥10%, conv4 ≥15%, conv3 ≥25%, conv2 ≥40%, conv1 ≥55%.
+- Verdict colors (Dashboard col D, rows 4-60): FOREVER green, COMPOUND blue #c9daf8, WATCH amber, AVOID red.
+  E/F/G/H must be NUMBERS (₹#,##0 format) for the live GOOGLEFINANCE/Status/sparkline engine to work.
