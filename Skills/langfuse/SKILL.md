@@ -1,6 +1,17 @@
 ---
 name: langfuse
-description: Query/modify Langfuse data via CLI (traces, prompts, datasets, scores) and look up Langfuse docs, SDK usage, and integration guides.
+description: Interact with Langfuse and access its documentation. Use when needing to (1) query or modify Langfuse data programmatically via the CLI — traces, prompts, datasets, scores, sessions, and any other API resource, (2) look up Langfuse documentation, concepts, integration guides, or SDK usage, or (3) understand how any Langfuse feature works. This skill covers CLI-based API access (via npx) and multiple documentation retrieval methods.
+allowed-tools:
+  - WebFetch(domain:langfuse.com)
+  - Bash(curl *langfuse.com/*)
+  - Bash(npx langfuse-cli api __schema *)
+  - Bash(npx langfuse-cli api * --help *)
+  - Bash(npx langfuse-cli api * list *)
+  - Bash(npx langfuse-cli api * get *)
+  - Bash(bunx langfuse-cli api __schema *)
+  - Bash(bunx langfuse-cli api * --help *)
+  - Bash(bunx langfuse-cli api * list *)
+  - Bash(bunx langfuse-cli api * get *)
 ---
 
 # Langfuse
@@ -24,7 +35,11 @@ Follow these principles for ALL Langfuse work:
 - capturing user feedback (thumbs, ratings, implicit signals) as scores on traces: references/user-feedback.md
 - further tips on using the Langfuse CLI: references/cli.md
 - upgrading or migrating Langfuse SDKs to the latest version: references/sdk-upgrade.md
+- judge calibration (LLM-as-a-Judge reliability, simple accuracy checks, advanced split-based validation, confusion matrices, and metric ingestion): references/judge-calibration.md
+- systematic error analysis — reading traces, building failure taxonomy, deciding what to fix: references/error-analysis.md
+- setting up CI/CD experiment gates with `langfuse/experiment-action`: references/ci-cd.md
 - submitting feedback about this skill: references/skill-feedback.md
+
 
 ## 1. Langfuse API via CLI
 
@@ -50,10 +65,10 @@ Set environment variables before making calls:
 ```bash
 export LANGFUSE_PUBLIC_KEY=pk-lf-...
 export LANGFUSE_SECRET_KEY=sk-lf-...
-export LANGFUSE_HOST=https://cloud.langfuse.com # example for EU cloud. For US cloud it's us.cloud.langfuse.com, and can also be a self-hosted URL. The server must always be specified in order to access Langfuse.
+export LANGFUSE_BASE_URL=https://cloud.langfuse.com # example for EU cloud. For US cloud it's us.cloud.langfuse.com, and can also be a self-hosted URL. The server must always be specified in order to access Langfuse.
 ```
-
-If not set, ask the user for their API keys (found in Langfuse UI → Settings → API Keys).
+If `LANGFUSE_BASE_URL` is used instead of `LANGFUSE_HOST`, run `export LANGFUSE_HOST="$LANGFUSE_BASE_URL"`.
+If not set, ask the user to set them in their shell or a `.env` file (do not ask them to paste keys into chat for security reasons). Keys are found in Langfuse UI → Settings → API Keys.
 
 ### Detailed CLI Reference
 

@@ -1,7 +1,9 @@
 ---
 name: stock-pick-ranker
 description: >-
-  Run the full matured equity quality+valuation ranking pipeline on new stocks and append
+  SUPERSEDED (2026-06-13) — OFFLINE xlsx-research variant ONLY; for adding/ranking stocks into the LIVE
+  Action Dashboard use the stock-onboarding-pipeline skill instead (vault-binding v2). This v1 runs the
+  full matured equity quality+valuation ranking pipeline on new stocks and append
   them into the Substack_Stock_Picks.xlsx workbook. Use this skill WHENEVER the user gives new
   companies/tickers to evaluate, new Substack (or other newsletter) investor profile URLs to scrape
   for stock picks, or asks to "add these stocks", "rank these companies", "score this stock", "run

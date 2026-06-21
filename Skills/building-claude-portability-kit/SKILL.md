@@ -34,7 +34,7 @@ Every portability kit gets exactly this shape. Folder boundaries are not arbitra
 └── Tooling/             ← README + Brewfile + npm-globals.json + restore.sh
 ```
 
-The **canonical worked example** is the "Claude Agents and Skills (PORTABILITY KIT)" folder this skill ships inside — when filling in a new kit, reference its structure and tone.
+The **canonical worked example** lives at `/Users/pw/Claude Agents and Skills/` — when filling in a new kit, reference the structure and tone there.
 
 ---
 

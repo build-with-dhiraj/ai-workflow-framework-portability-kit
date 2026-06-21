@@ -89,7 +89,7 @@ It prompts once for confirmation, then runs end-to-end:
 | 2 | `brew bundle` (formulas, casks, vscode extensions, uv tools) | 5–10min |
 | 3 | Install global npm packages | 1–2min |
 | 4 | Copy `CLAUDE-global.md` → `~/.claude/CLAUDE.md` and `settings.json` → `~/.claude/settings.json` | <1s |
-| 5 | Restore 35 agents + 115 skills via `rsync` | <5s |
+| 5 | Restore 35 agents + 131 skills via `rsync` | <5s |
 | 6 | Register 3 marketplaces + install 8 plugins | 1–3min |
 | 7 | **Manual** — print instructions for MCP secrets (the script can't paste your JWT for you) | — |
 

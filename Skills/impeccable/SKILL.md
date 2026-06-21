@@ -129,6 +129,7 @@ If someone could look at this interface and say "AI made that" without doubt, it
 | `extract [target]` | Build | Pull reusable tokens and components into design system | [reference/extract.md](reference/extract.md) |
 | `critique [target]` | Evaluate | UX design review with heuristic scoring | [reference/critique.md](reference/critique.md) |
 | `audit [target]` | Evaluate | Technical quality checks (a11y, perf, responsive) | [reference/audit.md](reference/audit.md) |
+| `ethics [target]` | Evaluate | Dark-pattern check, GDPR/cookie banners, manipulative copy, autonomy review | [reference/ethics.md](reference/ethics.md) |
 | `polish [target]` | Refine | Final quality pass before shipping | [reference/polish.md](reference/polish.md) |
 | `bolder [target]` | Refine | Amplify safe or bland designs | [reference/bolder.md](reference/bolder.md) |
 | `quieter [target]` | Refine | Tone down aggressive or overstimulating designs | [reference/quieter.md](reference/quieter.md) |

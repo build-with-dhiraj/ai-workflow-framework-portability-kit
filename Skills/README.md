@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-123 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+131 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -169,74 +169,78 @@ The following skills come from installed plugins — they auto-reappear when plu
 
 ## 5. File inventory — what's actually in this folder
 
-123 skill directories — the authoritative on-disk set as of the 2026-06-17 re-sync, alphabetically:
+131 skill directories — the authoritative on-disk set as of the 2026-06-21 re-sync, alphabetically:
 
 ```
 3d-web-experience                           ai-product-ux
-arize-experiment                            arize-prompt-optimization
-bank-valuation                              baoyu-youtube-transcript
-build-review-interface                      building-claude-portability-kit
-capital-allocation-judge                    caveman
-claude-seo                                  code-review-excellence
-context-kernel                              cra-to-next-migration
-creating-financial-models                   decision-journal
-deep-research                               defuddle
+ai-sdk                                      arize-experiment
+arize-prompt-optimization                   bank-valuation
+baoyu-youtube-transcript                    build-review-interface
+building-claude-portability-kit             capital-allocation-judge
+caveman                                     claude-seo
+code-review-excellence                      context-kernel
+cra-to-next-migration                       creating-financial-models
+decision-journal                            deep-research
+defuddle                                    deployments-cicd
 design-taste-frontend                       diagnose
 dspy-gepa-reflective                        edit-article
 emil-design-eng                             error-analysis
-eval-audit                                  evaluate-rag
-evaluating-agent-behavior                   evaluating-skill-necessity
-fact-check                                  find-skills
-fleet-auditor                               flutter-adding-home-screen-widgets
-flutter-animating-apps                      flutter-architecting-apps
-flutter-building-forms                      flutter-building-layouts
-flutter-building-plugins                    flutter-caching-data
-flutter-embedding-native-views              flutter-handling-concurrency
-flutter-handling-http-and-json              flutter-implementing-navigation-and-routing
-flutter-improving-accessibility             flutter-interoperating-with-native-apis
-flutter-localizing-apps                     flutter-managing-state
-flutter-reducing-app-size                   flutter-setting-up-on-linux
-flutter-setting-up-on-macos                 flutter-setting-up-on-windows
-flutter-testing-apps                        flutter-theming-apps
-flutter-working-with-databases              forensic-accounting-redflags
-framer-motion-animator                      generate-synthetic-data
-gepetto                                     git-guardrails-claude-code
-github-actions                              grill-me
-grill-with-docs                             gws-forms
-humanizer                                   idea-researcher
-impeccable                                  improve-codebase-architecture
-integrate-whatsapp                          jove-youtube-feed-pipeline
-json-canvas                                 langfuse
-langsmith-evaluator                         llm-eval
-managing-skills-library                     master-resume
-memory-router                               migrate-to-shoehorn
-moat-analysis                               ner-content-pipeline
-obsidian-bases                              obsidian-brain-eval
-obsidian-cli                                obsidian-graph-auditor
-obsidian-markdown                           obsidian-orphan-rescue
-obsidian-vault                              obsidian-vault-architect
-office-hours                                personal-content-resurface
+etf-reit-onboarding                         eval-audit
+evaluate-rag                                evaluating-agent-behavior
+evaluating-skill-necessity                  fact-check
+find-skills                                 fleet-auditor
+flutter-adding-home-screen-widgets          flutter-animating-apps
+flutter-architecting-apps                   flutter-building-forms
+flutter-building-layouts                    flutter-building-plugins
+flutter-caching-data                        flutter-embedding-native-views
+flutter-handling-concurrency                flutter-handling-http-and-json
+flutter-implementing-navigation-and-routing flutter-improving-accessibility
+flutter-interoperating-with-native-apis     flutter-localizing-apps
+flutter-managing-state                      flutter-reducing-app-size
+flutter-setting-up-on-linux                 flutter-setting-up-on-macos
+flutter-setting-up-on-windows               flutter-testing-apps
+flutter-theming-apps                        flutter-working-with-databases
+forensic-accounting-redflags                framer-motion-animator
+generate-synthetic-data                     gepetto
+git-guardrails-claude-code                  github-actions
+grill-me                                    grill-with-docs
+gws-forms                                   humanizer
+idea-researcher                             impeccable
+improve-codebase-architecture               integrate-whatsapp
+jove-youtube-feed-pipeline                  json-canvas
+langfuse                                    langsmith-evaluator
+llm-eval                                    managing-skills-library
+master-resume                               memory-router
+migrate-to-shoehorn                         moat-analysis
+ner-content-pipeline                        nextjs-app-router-patterns
+nodejs-backend-patterns                     obsidian-bases
+obsidian-brain-eval                         obsidian-cli
+obsidian-graph-auditor                      obsidian-markdown
+obsidian-orphan-rescue                      obsidian-vault
+obsidian-vault-architect                    office-hours
+personal-content-resurface                  phy6-brand-assets
 portfolio-sizing                            postgresql-code-review
 primary-research-sentiment                  product-management
 prompt-engineering                          prototype
 python-pipelines                            r3f-best-practices
 rag-patterns                                research-synthesis
 scaffold-exercises                          security-review
-setup-matt-pocock-skills                    setup-pre-commit
-stock-onboarding-pipeline                   stock-pick-ranker
-supabase                                    supabase-postgres-best-practices
-tanstack-start-best-practices               tdd
-threejs-animation                           to-issues
-to-prd                                      token-coach
-token-dashboard                             token-optimizer
-triage                                      typescript-react-reviewer
-user-research                               validate-evaluator
-valuation-dcf-longrunway                    wrap-up
+sentry-nextjs-sdk                           setup-matt-pocock-skills
+setup-pre-commit                            stock-onboarding-pipeline
+stock-pick-ranker                           supabase
+supabase-postgres-best-practices            tanstack-start-best-practices
+tdd                                         threejs-animation
+to-issues                                   to-prd
+token-coach                                 token-dashboard
+token-optimizer                             triage
+typescript-react-reviewer                   user-research
+validate-evaluator                          valuation-dcf-longrunway
+web-asset-generator                         wrap-up
 write-a-skill                               write-judge-prompt
-zoom-out
+zoom-out                                    
 ```
 
-> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 123; this fenced block is the source of truth for *what is on disk right now*.
+> `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 131; this fenced block is the source of truth for *what is on disk right now*.
 
 ### Added 2026-05-14 (post-snapshot import)
 | Skill | Source | Notes |
@@ -360,3 +364,21 @@ Eight operator-authored finance/investing **specialist-desk** skills were create
 | `decision-journal` | MIT (kit-default) | Contemporaneous decision-journal + inversion artifact; sentiment-cycle locus + standing FOREVER re-decision cadence. |
 
 All eight embed the personal `invest` workspace conventions (they consult `data/scripts/32_consult_brain.py --corpus blended`); the brain scripts themselves live in the `invest` repo (survive via that git remote), not in this kit.
+
+### Added 2026-06-21: live re-sync → 131 skills
+
+Eight skills appeared in live `~/.claude/skills/` since the 2026-06-17 snapshot and are vendored here (symlinks from `~/.agents/skills/` resolved with `rsync -aL`). Re-sync brings the kit to parity — **123 → 131 skills**.
+
+| Skill | Source | Notes |
+|---|---|---|
+| `ai-sdk` | `~/.agents/skills/` | Vercel AI SDK patterns |
+| `deployments-cicd` | `~/.agents/skills/` | Vercel deployments / CI |
+| `nextjs-app-router-patterns` | `~/.agents/skills/` | Next.js App Router |
+| `nodejs-backend-patterns` | `~/.agents/skills/` | Node backend patterns |
+| `sentry-nextjs-sdk` | `~/.agents/skills/` | Sentry + Next.js |
+| `phy6-brand-assets` | local dir | Brand asset generation |
+| `web-asset-generator` | local dir | Web asset generation |
+| `etf-reit-onboarding` | local dir | ETF/REIT onboarding pipeline |
+
+**Intentionally excluded from the kit:** `vercel-deployment` (deprecated — use `vercel-plugin:*`), `.archive-token-optimizer-pkg/` (archive bundle), nested `.git/` dirs, and `__pycache__/`.
+
