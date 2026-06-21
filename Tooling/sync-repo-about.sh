@@ -16,6 +16,16 @@ if ! command -v gh >/dev/null 2>&1; then
   exit 1
 fi
 
+# GITHUB_TOKEN cannot edit repo settings; REPO_ADMIN_TOKEN (classic PAT, repo scope) is required in CI.
+if [ -z "${GH_TOKEN:-}" ] && [ -n "${REPO_ADMIN_TOKEN:-}" ]; then
+  export GH_TOKEN="$REPO_ADMIN_TOKEN"
+fi
+
+if [ -z "${GH_TOKEN:-}" ]; then
+  echo "error: set GH_TOKEN (local gh auth) or REPO_ADMIN_TOKEN (CI secret)" >&2
+  exit 1
+fi
+
 CURRENT=$(gh repo view "$REPO" --json description -q .description 2>/dev/null || echo "")
 
 if [ "$CURRENT" = "$NEW_DESC" ]; then
@@ -24,5 +34,17 @@ if [ "$CURRENT" = "$NEW_DESC" ]; then
 fi
 
 echo "Updating About: ${AGENTS} agents, ${SKILLS} skills"
-gh repo edit "$REPO" --description "$NEW_DESC"
+if ! gh repo edit "$REPO" --description "$NEW_DESC"; then
+  cat >&2 <<'EOF'
+error: could not update GitHub About description.
+
+In CI, add a repository secret named REPO_ADMIN_TOKEN:
+  classic PAT with "repo" scope (or fine-grained with Administration: Read and write)
+  Settings → Secrets and variables → Actions → New repository secret
+
+Locally, run: gh auth login
+EOF
+  exit 1
+fi
+
 echo "Done."

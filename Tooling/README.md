@@ -123,7 +123,9 @@ npm list -g --depth=0 --json > ./npm-globals.json
 ```
 
 Commit both files (if this kit is in git) so the next restore captures the latest state.
-After adding or removing agents/skills, the GitHub **About** blurb updates automatically — `.github/workflows/sync-repo-about.yml` runs `Tooling/sync-repo-about.sh` on every push to `main` that touches `Agents/` or `Skills/`. To sync manually: `bash Tooling/sync-repo-about.sh`.
+After adding or removing agents/skills, the GitHub **About** blurb updates automatically — `.github/workflows/sync-repo-about.yml` runs `Tooling/sync-repo-about.sh` on every push to `main` that touches `Agents/` or `Skills/`.
+
+**One-time CI setup:** add repository secret `REPO_ADMIN_TOKEN` (classic PAT with `repo` scope, or fine-grained PAT with **Administration: Read and write** on this repo). GitHub's built-in `GITHUB_TOKEN` cannot edit repo settings. To sync manually anytime: `bash Tooling/sync-repo-about.sh`.
 
 ---
 
