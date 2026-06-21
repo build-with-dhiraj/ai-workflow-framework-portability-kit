@@ -1,6 +1,6 @@
 # Agents — Roster & Dispatch Logic
 
-35 custom specialist agents live in this folder — 31 engineering implementers (the `engineering-*` files, including the new `engineering-design-specialist` for visual-judgment work), 1 cross-session-continuity advisor (`agency-kernel-steward`), and 3 consultative expert advisors (`llm-architect`, `prompt-engineer`, `qa-expert`). The engineering implementers are the **implementation tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). The advisors are dispatched for counsel, not implementation. The orchestrator (top-level Claude Code session) dispatches them all via the `Task` tool; the orchestrator itself never writes code.
+36 custom specialist agents live in this folder — 31 engineering implementers (the `engineering-*` files, including the new `engineering-design-specialist` for visual-judgment work), 1 cross-session-continuity advisor (`agency-kernel-steward`), and 3 consultative expert advisors (`llm-architect`, `prompt-engineer`, `qa-expert`). The engineering implementers are the **implementation tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). The advisors are dispatched for counsel, not implementation. The orchestrator (top-level Claude Code session) dispatches them all via the `Task` tool; the orchestrator itself never writes code.
 
 > **Where they live on the live Mac:** `~/.claude/agents/`
 > Restoration: copy every `*.md` in this folder back to that location. That's it — Claude Code auto-discovers them at session start.
@@ -35,6 +35,7 @@ The full subagent override clause is in `../CLAUDE-global.md` under the "Special
 | Agent | Use when |
 |---|---|
 | `engineering-software-architect` | System design, DDD, architectural patterns, scalable/maintainable decisions |
+| `loop-engineering-architect` | Loop/harness design, `/loop` `/goal`, repo picks, Agent Hub patterns, loop contracts |
 | **Plan** *(built-in)* | Quick "give me a step-by-step plan for X" without research |
 
 (The richer planning workflow is **skill-driven** — `gepetto` for multi-LLM-reviewed plans, `to-prd` for tracker artifacts. See [../Skills/README.md](../Skills/README.md).)
@@ -133,6 +134,7 @@ The 35 agent files in this folder, alphabetically:
 
 ```
 agency-kernel-steward.md
+loop-engineering-architect.md
 engineering-ai-data-remediation-engineer.md
 engineering-ai-engineer.md
 engineering-autonomous-optimization-architect.md

@@ -70,6 +70,12 @@ For idea validation or product research, use the `idea-researcher` skill. It orc
 - Run `evaluating-skill-necessity` before adding any new skill or agent.
 - Run `managing-skills-library` monthly to audit for drift, dead skills, or duplicate descriptions.
 
+## Loop Engineering Doctrine (v2)
+
+For loop design, harness engineering, `/loop` `/goal` setup, Ralph loops, Agent Hub patterns, or choosing installable loop tooling: dispatch **`loop-engineering-architect`** (`Agents/loop-engineering-architect.md`). The architect MUST load code audits via `Skills/loop-engineering/scripts/load-digest.py` before recommending installs — not REFERENCE alone.
+
+Load the **`loop-engineering`** skill for decision trees. Corpus v2: 93 line-indexed sources + 33 full repo code audits at `research/loop-engineering-agent-hub-2026/ingest/`; doctrine at `synthesis/`; bundled audits at `Skills/loop-engineering/data/repo-audits/`. Do not inline the full corpus into context.
+
 ## Specialist Behavior
 
 Agency-agents specialists (in `~/.claude/agents/engineering-*.md`) provide domain expertise. They are dispatched by Engineering Manager mode (this Claude Code session) and they DO write code. Their workflow opinions apply only when they're invoked as the worker — they do not override the Engineering Manager's orchestration.

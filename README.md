@@ -1,11 +1,11 @@
 # 🧰 AI Workflow Framework & Portability Kit
 
-> Your entire Claude Code stack — **35 agents, 131 skills, plugins, MCP & tooling** — portable across Macs. Clone, `claude login`, run one script, working in **~20 min**.
+> Your entire Claude Code stack — **36 agents, 133 skills, plugins, MCP & tooling** — portable across Macs. Clone, `claude login`, run one script, working in **~20 min**.
 
 <p>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/build-with-dhiraj/ai-workflow-framework-portability-kit?color=yellow"></a>
   <img alt="last commit" src="https://img.shields.io/github/last-commit/build-with-dhiraj/ai-workflow-framework-portability-kit">
-  <img alt="agents" src="https://img.shields.io/badge/agents-35-blue">
+  <img alt="agents" src="https://img.shields.io/badge/agents-36-blue">
   <img alt="skills" src="https://img.shields.io/github/directory-file-count/build-with-dhiraj/ai-workflow-framework-portability-kit/Skills?type=dir&label=skills&color=blue">
   <img alt="platform" src="https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white">
   <img alt="Claude Code" src="https://img.shields.io/badge/Claude%20Code-orchestration-D97757">
@@ -13,7 +13,7 @@
 
 A portable, self-contained snapshot of a working **Claude Code** setup — the specialist agents, the skill library, the plugins, the MCP servers, the host-side tooling, and the orchestration logic that ties them all together. Drop the folder on a fresh Mac, run one script, and the entire stack is restored in about twenty minutes.
 
-This is the master config behind a multi-layer **"Engineering Manager"** AI workflow: a top-level orchestrator that never writes code itself, dispatching work down to 35 specialist agents who do. The kit captures that architecture as plain files anyone can audit, fork, or rebuild from.
+This is the master config behind a multi-layer **"Engineering Manager"** AI workflow: a top-level orchestrator that never writes code itself, dispatching work down to 36 specialist agents who do. The kit captures that architecture as plain files anyone can audit, fork, or rebuild from.
 
 > **Want the deep model?** This README is the landing page. [`CLAUDE.md`](CLAUDE.md) is the full deep-dive — the layered architecture, every skill-precedence rule, and the agent org chart.
 
@@ -36,8 +36,8 @@ This kit treats that setup as code: **version-controlled, reproducible, restorab
 | [`CLAUDE.md`](CLAUDE.md) | The master orchestration logic — the layered architecture, skill-precedence rules, agent org chart, the Engineering-Manager directive. **Start here for the deep model.** |
 | [`BOOTSTRAP.md`](BOOTSTRAP.md) | Step-by-step new-Mac install runbook. Numbered phases for the manual path; one-script "fast path" up top. |
 | [`MEMORY.md`](MEMORY.md) | Memory-system design + restoration guide — auto-memory (per-project), context kernel (cross-session), what survives a Mac swap. |
-| [`Agents/`](Agents/) | **35 custom specialist agents** + dispatch logic — frontend, backend, AI, Solidity, WeChat, Feishu, design-specialist, and more. Each is dispatched by the orchestrator via the `Task` tool. ([README inside](Agents/README.md)) |
-| [`Skills/`](Skills/) | **131 active skills** — process discipline (TDD, debugging, brainstorming), implementation patterns (Supabase, Three.js, Flutter, the design layer, YouTube transcript, WhatsApp Cloud API, finance modeling), and governance (skill-necessity gating, library hygiene). Symlinks already resolved into real content — zero external dependencies. ([README inside](Skills/README.md)) |
+| [`Agents/`](Agents/) | **36 custom specialist agents** + dispatch logic — frontend, backend, AI, Solidity, WeChat, Feishu, design-specialist, and more. Each is dispatched by the orchestrator via the `Task` tool. ([README inside](Agents/README.md)) |
+| [`Skills/`](Skills/) | **133 active skills** — process discipline (TDD, debugging, brainstorming), implementation patterns (Supabase, Three.js, Flutter, the design layer, YouTube transcript, WhatsApp Cloud API, finance modeling), and governance (skill-necessity gating, library hygiene). Symlinks already resolved into real content — zero external dependencies. ([README inside](Skills/README.md)) |
 | [`MCP/`](MCP/) | Local MCP server template (secrets redacted to placeholders) + the full MCP roster. ([README inside](MCP/README.md)) |
 | [`Plugins/`](Plugins/) | Installed-plugins snapshot + known-marketplaces registry + the local-directory Vercel marketplace cache + reinstall guide. ([README inside](Plugins/README.md)) |
 | [`Connectors/`](Connectors/) | Inventory of account-bound MCP integrations (Gmail, Drive, Supabase, Slack, Atlassian, Notion, …). These auto-reattach on `claude login`. ([README inside](Connectors/README.md)) |
@@ -68,7 +68,7 @@ Claude operates as a **conductor, not a soloist.** Work flows down through layer
                                 ▼
 ┌──────────────────────────────────────────────────────────────┐
 │  L3 — SPECIALIST AGENTS  the "who"  ← code gets written HERE   │
-│       35 domain experts, dispatched in parallel when possible  │
+│       36 domain experts, dispatched in parallel when possible  │
 └───────────────────────────────┬──────────────────────────────┘
                                 │  uses
                                 ▼
@@ -125,8 +125,8 @@ That's it. The script is **idempotent** — safe to re-run if it fails partway. 
 
 | | |
 |---|---|
-| 🤖 **35** specialist agents | the full dispatch roster, copied into `~/.claude/agents/` |
-| 🧩 **131** skills | process + implementation + governance, symlinks pre-resolved (zero external deps) |
+| 🤖 **36** specialist agents | the full dispatch roster, copied into `~/.claude/agents/` |
+| 🧩 **133** skills | process + implementation + governance, symlinks pre-resolved (zero external deps) |
 | 🔌 **8** plugins | re-installed from their marketplaces (incl. the local-directory Vercel cache) |
 | 🛰️ MCP template | full server roster with secrets redacted to placeholders |
 | 🍺 Host tooling | Brewfile (leaf packages + VS Code extensions + `uv` tools) + npm globals |

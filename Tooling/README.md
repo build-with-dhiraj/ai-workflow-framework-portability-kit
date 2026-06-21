@@ -138,3 +138,8 @@ After adding or removing agents/skills, the GitHub **About** blurb updates autom
 - **Cursor IDE itself** — `anysphere.remote-ssh` extension is captured but the Cursor app has to be installed separately from cursor.sh
 - **Cowork / Claude Desktop** — separate app, not a CLI package
 - **API keys / OAuth secrets** — by design; they belong in 1Password
+
+
+## Loop engineering CLIs (npm globals)
+
+Installed via research ADOPT stack: `@cobusgreyling/loop-init`, `@cobusgreyling/loop-audit`, `@cobusgreyling/loop-cost`, `@earendil-works/pi-coding-agent`. `loom` is linked from source (not on npm).

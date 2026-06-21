@@ -53,7 +53,7 @@ cp "$KIT_DIR/Agents/"*.md ~/.claude/agents/
 Verify:
 
 ```bash
-ls ~/.claude/agents/ | wc -l   # should print 35
+ls ~/.claude/agents/ | wc -l   # should print 36
 ```
 
 Claude Code auto-discovers agents on next session start. No restart command needed.
@@ -71,7 +71,7 @@ rsync -a "$KIT_DIR/Skills/" ~/.claude/skills/
 Verify:
 
 ```bash
-ls ~/.claude/skills/ | wc -l   # should print 131
+ls ~/.claude/skills/ | wc -l   # should print 133
 ```
 
 > **Note:** On the source Mac, ~30 of these were *symlinks* to `~/.agents/skills/` (an external Mattpocock library). In this folder, those symlinks have already been **resolved** into real content — you do NOT need to install or restore `~/.agents/skills/` separately. Everything is self-contained.
@@ -230,10 +230,10 @@ In a fresh terminal, run (re-establish `KIT_DIR` first, since a new shell won't 
 cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD"
 
 # Check agents
-ls ~/.claude/agents/*.md | wc -l   # expect 35
+ls ~/.claude/agents/*.md | wc -l   # expect 36
 
 # Check skills
-ls ~/.claude/skills/ | wc -l       # expect 131 (or fewer if some are now symlinks)
+ls ~/.claude/skills/ | wc -l       # expect 133 (or fewer if some are now symlinks)
 
 # Check plugins
 claude plugin list                  # expect 8 enabled plugins
@@ -252,7 +252,7 @@ npm list -g --depth=0               # should include @anthropic-ai/claude-code, 
 #   "Confirm Engineering Manager mode is active and list available agents"
 ```
 
-If Claude Code lists all 35 custom agents and acknowledges Engineering Manager mode in the response, restoration is complete.
+If Claude Code lists all 36 custom agents and acknowledges Engineering Manager mode in the response, restoration is complete.
 
 ---
 

@@ -1,0 +1,632 @@
+{
+  "generated_at": "2026-06-21T07:45:15.917327+00:00",
+  "repos": [
+    {
+      "slug": "cobusgreyling/loop-engineering",
+      "dir": "cobusgreyling__loop-engineering",
+      "files_read": 201,
+      "total_lines": 11790,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 201,
+        "total": 9.62
+      },
+      "total_score": 9.62,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/cobusgreyling__loop-engineering/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 cobusgreyling/loop-engineering\n\n- **Files read:** 201 text/source files (every line indexed)\n- **Pushed at:** 2026-06-19T11:57:00Z\n- **Stars:** 522\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 201\n- **total:** 9.62\n\n## Entrypoints (from code)\n\n- skill"
+    },
+    {
+      "slug": "earendil-works/pi",
+      "dir": "earendil-works__pi",
+      "files_read": 843,
+      "total_lines": 243355,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 843,
+        "total": 9.62
+      },
+      "total_score": 9.62,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/earendil-works__pi/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 earendil-works/pi\n\n- **Files read:** 843 text/source files (every line indexed)\n- **Pushed at:** 2026-06-20T20:27:39Z\n- **Stars:** 64325\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 843\n- **total:** 9.62\n\n## Entrypoints (from code)\n\n- skill_md: packag"
+    },
+    {
+      "slug": "valkor-ai/loom",
+      "dir": "valkor-ai__loom",
+      "files_read": 295,
+      "total_lines": 80117,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 295,
+        "total": 9.62
+      },
+      "total_score": 9.62,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/valkor-ai__loom/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 valkor-ai/loom\n\n- **Files read:** 295 text/source files (every line indexed)\n- **Pushed at:** 2026-06-18T07:09:37Z\n- **Stars:** 347\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 295\n- **total:** 9.62\n\n## Entrypoints (from code)\n\n- skill_md: plugins/cla"
+    },
+    {
+      "slug": "agentic-in/inferoa",
+      "dir": "agentic-in__inferoa",
+      "files_read": 254,
+      "total_lines": 101262,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 7.5,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 254,
+        "total": 9.12
+      },
+      "total_score": 9.12,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/agentic-in__inferoa/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 agentic-in/inferoa\n\n- **Files read:** 254 text/source files (every line indexed)\n- **Pushed at:** 2026-06-18T12:58:43Z\n- **Stars:** 221\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 7.5\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 254\n- **total:** 9.12\n\n## Entrypoints (from code)\n\n- skill_md: skills"
+    },
+    {
+      "slug": "colbymchenry/codegraph",
+      "dir": "colbymchenry__codegraph",
+      "files_read": 326,
+      "total_lines": 108754,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 10,
+        "loop_implementation": 4.800000000000001,
+        "registry_memory": 7.5,
+        "verification": 9.5,
+        "file_coverage": 326,
+        "total": 8.25
+      },
+      "total_score": 8.25,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/colbymchenry__codegraph/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 colbymchenry/codegraph\n\n- **Files read:** 326 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T06:42:31Z\n- **Stars:** 52393\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 10\n- **loop_implementation:** 4.800000000000001\n- **registry_memory:** 7.5\n- **verification:** 9.5\n- **file_coverage:** 326\n- **total:** 8.25\n\n## Entrypoints (from code"
+    },
+    {
+      "slug": "AlexDuchDev/AgenticMind",
+      "dir": "AlexDuchDev__AgenticMind",
+      "files_read": 297,
+      "total_lines": 57072,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 4.5,
+        "loop_implementation": 8.8,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 297,
+        "total": 8.22
+      },
+      "total_score": 8.22,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/AlexDuchDev__AgenticMind/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 AlexDuchDev/AgenticMind\n\n- **Files read:** 297 text/source files (every line indexed)\n- **Pushed at:** 2026-06-20T12:12:53Z\n- **Stars:** 4\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 4.5\n- **loop_implementation:** 8.8\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 297\n- **total:** 8.22\n\n## Entrypoints (from code)\n\n- skill_md: (n"
+    },
+    {
+      "slug": "rlaope/oh-my-hermes",
+      "dir": "rlaope__oh-my-hermes",
+      "files_read": 331,
+      "total_lines": 116494,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 331,
+        "total": 7.12
+      },
+      "total_score": 7.12,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/rlaope__oh-my-hermes/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 rlaope/oh-my-hermes\n\n- **Files read:** 331 text/source files (every line indexed)\n- **Pushed at:** 2026-06-20T23:34:51Z\n- **Stars:** 23\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 331\n- **total:** 7.12\n\n## Entrypoints (from code)\n\n- skill_md: skills"
+    },
+    {
+      "slug": "vinnylarouge/skill-opt-skill",
+      "dir": "vinnylarouge__skill-opt-skill",
+      "files_read": 200,
+      "total_lines": 33082,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 200,
+        "total": 7.12
+      },
+      "total_score": 7.12,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/vinnylarouge__skill-opt-skill/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 vinnylarouge/skill-opt-skill\n\n- **Files read:** 200 text/source files (every line indexed)\n- **Pushed at:** 2026-06-02T10:51:44Z\n- **Stars:** 0\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 200\n- **total:** 7.12\n\n## Entrypoints (from code)\n\n- skill_md"
+    },
+    {
+      "slug": "ChaoYue0307/awesome-loop-engineering",
+      "dir": "ChaoYue0307__awesome-loop-engineering",
+      "files_read": 108,
+      "total_lines": 8344,
+      "scores": {
+        "direct_install": 4.0,
+        "claude_code_native": 4.5,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 108,
+        "total": 7.03
+      },
+      "total_score": 7.03,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/ChaoYue0307__awesome-loop-engineering/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 ChaoYue0307/awesome-loop-engineering\n\n- **Files read:** 108 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T05:05:19Z\n- **Stars:** 11\n\n## Code-backed scores\n\n- **direct_install:** 4.0\n- **claude_code_native:** 4.5\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 108\n- **total:** 7.03\n\n## Entrypoints (from code)\n\n"
+    },
+    {
+      "slug": "FUY25/Loop",
+      "dir": "FUY25__Loop",
+      "files_read": 14,
+      "total_lines": 1130,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 9.0,
+        "file_coverage": 14,
+        "total": 6.97
+      },
+      "total_score": 6.97,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/FUY25__Loop/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 FUY25/Loop\n\n- **Files read:** 14 text/source files (every line indexed)\n- **Pushed at:** 2026-06-10T06:47:26Z\n- **Stars:** 8\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 9.0\n- **file_coverage:** 14\n- **total:** 6.97\n\n## Entrypoints (from code)\n\n- skill_md: skills/loop-gener"
+    },
+    {
+      "slug": "Fractera/Agent-Engineering-Infrastructure",
+      "dir": "Fractera__Agent-Engineering-Infrastructure",
+      "files_read": 389,
+      "total_lines": 94594,
+      "scores": {
+        "direct_install": 3.0,
+        "claude_code_native": 4.5,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 389,
+        "total": 6.78
+      },
+      "total_score": 6.78,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/Fractera__Agent-Engineering-Infrastructure/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 Fractera/Agent-Engineering-Infrastructure\n\n- **Files read:** 389 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T00:30:26Z\n- **Stars:** 27\n\n## Code-backed scores\n\n- **direct_install:** 3.0\n- **claude_code_native:** 4.5\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 389\n- **total:** 6.78\n\n## Entrypoints (from co"
+    },
+    {
+      "slug": "Forward-Future/loop-library",
+      "dir": "Forward-Future__loop-library",
+      "files_read": 80,
+      "total_lines": 35086,
+      "scores": {
+        "direct_install": 2.0,
+        "claude_code_native": 7.5,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 7.5,
+        "file_coverage": 80,
+        "total": 6.75
+      },
+      "total_score": 6.75,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/Forward-Future__loop-library/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 Forward-Future/loop-library\n\n- **Files read:** 80 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T03:22:46Z\n- **Stars:** 483\n\n## Code-backed scores\n\n- **direct_install:** 2.0\n- **claude_code_native:** 7.5\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 7.5\n- **file_coverage:** 80\n- **total:** 6.75\n\n## Entrypoints (from code)\n\n- skill_m"
+    },
+    {
+      "slug": "blazov/living-board",
+      "dir": "blazov__living-board",
+      "files_read": 358,
+      "total_lines": 128612,
+      "scores": {
+        "direct_install": 2.0,
+        "claude_code_native": 4.5,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 358,
+        "total": 6.53
+      },
+      "total_score": 6.53,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/blazov__living-board/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 blazov/living-board\n\n- **Files read:** 358 text/source files (every line indexed)\n- **Pushed at:** 2026-05-23T17:12:22Z\n- **Stars:** 0\n\n## Code-backed scores\n\n- **direct_install:** 2.0\n- **claude_code_native:** 4.5\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 358\n- **total:** 6.53\n\n## Entrypoints (from code)\n\n- skill_md: (none)"
+    },
+    {
+      "slug": "jpoindexter/ai-agent-skills",
+      "dir": "jpoindexter__ai-agent-skills",
+      "files_read": 19,
+      "total_lines": 1556,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 10,
+        "registry_memory": 5.0,
+        "verification": 7.5,
+        "file_coverage": 19,
+        "total": 6.38
+      },
+      "total_score": 6.38,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/jpoindexter__ai-agent-skills/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 jpoindexter/ai-agent-skills\n\n- **Files read:** 19 text/source files (every line indexed)\n- **Pushed at:** 2026-06-16T14:57:20Z\n- **Stars:** 0\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 10\n- **registry_memory:** 5.0\n- **verification:** 7.5\n- **file_coverage:** 19\n- **total:** 6.38\n\n## Entrypoints (from code)\n\n- skill_md: "
+    },
+    {
+      "slug": "Stahl-G/briefloop",
+      "dir": "Stahl-G__briefloop",
+      "files_read": 650,
+      "total_lines": 140858,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 6.800000000000001,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 650,
+        "total": 6.33
+      },
+      "total_score": 6.33,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/Stahl-G__briefloop/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 Stahl-G/briefloop\n\n- **Files read:** 650 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T06:11:42Z\n- **Stars:** 7\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 6.800000000000001\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 650\n- **total:** 6.33\n\n## Entrypoints (from code)\n\n- skil"
+    },
+    {
+      "slug": "emosamastudio/agent-hub",
+      "dir": "emosamastudio__agent-hub",
+      "files_read": 121,
+      "total_lines": 44499,
+      "scores": {
+        "direct_install": 10,
+        "claude_code_native": 0.6,
+        "loop_implementation": 4.0,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 121,
+        "total": 6.25
+      },
+      "total_score": 6.25,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/emosamastudio__agent-hub/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 emosamastudio/agent-hub\n\n- **Files read:** 121 text/source files (every line indexed)\n- **Pushed at:** 2026-06-18T10:07:13Z\n- **Stars:** 2\n\n## Code-backed scores\n\n- **direct_install:** 10\n- **claude_code_native:** 0.6\n- **loop_implementation:** 4.0\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 121\n- **total:** 6.25\n\n## Entrypoints (from code)\n\n- skill_md: (n"
+    },
+    {
+      "slug": "juliusbrussee/caveman",
+      "dir": "juliusbrussee__caveman",
+      "files_read": 131,
+      "total_lines": 14673,
+      "scores": {
+        "direct_install": 6.5,
+        "claude_code_native": 10,
+        "loop_implementation": 0.8,
+        "registry_memory": 7.5,
+        "verification": 8.5,
+        "file_coverage": 131,
+        "total": 6.22
+      },
+      "total_score": 6.22,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/juliusbrussee__caveman/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 juliusbrussee/caveman\n\n- **Files read:** 131 text/source files (every line indexed)\n- **Pushed at:** 2026-06-12T13:51:06Z\n- **Stars:** 75222\n\n## Code-backed scores\n\n- **direct_install:** 6.5\n- **claude_code_native:** 10\n- **loop_implementation:** 0.8\n- **registry_memory:** 7.5\n- **verification:** 8.5\n- **file_coverage:** 131\n- **total:** 6.22\n\n## Entrypoints (from code)\n\n- skill_md:"
+    },
+    {
+      "slug": "Windy3f3f3f3f/how-claude-code-works",
+      "dir": "Windy3f3f3f3f__how-claude-code-works",
+      "files_read": 45,
+      "total_lines": 28579,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 4.5,
+        "loop_implementation": 10,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 45,
+        "total": 6.03
+      },
+      "total_score": 6.03,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/Windy3f3f3f3f__how-claude-code-works/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 Windy3f3f3f3f/how-claude-code-works\n\n- **Files read:** 45 text/source files (every line indexed)\n- **Pushed at:** 2026-05-05T15:39:49Z\n- **Stars:** 2688\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 4.5\n- **loop_implementation:** 10\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 45\n- **total:** 6.03\n\n## Entrypoints (from code)\n\n-"
+    },
+    {
+      "slug": "microsoft/SkillOpt",
+      "dir": "microsoft__SkillOpt",
+      "files_read": 286,
+      "total_lines": 63473,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 3.2,
+        "registry_memory": 7.5,
+        "verification": 9.0,
+        "file_coverage": 286,
+        "total": 5.28
+      },
+      "total_score": 5.28,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/microsoft__SkillOpt/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 microsoft/SkillOpt\n\n- **Files read:** 286 text/source files (every line indexed)\n- **Pushed at:** 2026-06-20T14:26:43Z\n- **Stars:** 8483\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 3.2\n- **registry_memory:** 7.5\n- **verification:** 9.0\n- **file_coverage:** 286\n- **total:** 5.28\n\n## Entrypoints (from code)\n\n- skill_md: ckp"
+    },
+    {
+      "slug": "xpriment626/pi-factory",
+      "dir": "xpriment626__pi-factory",
+      "files_read": 68,
+      "total_lines": 10593,
+      "scores": {
+        "direct_install": 7.5,
+        "claude_code_native": 0.0,
+        "loop_implementation": 4.0,
+        "registry_memory": 7.5,
+        "verification": 7.5,
+        "file_coverage": 68,
+        "total": 5.12
+      },
+      "total_score": 5.12,
+      "tier": "installable",
+      "audit_path": "ingest/github-code/xpriment626__pi-factory/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 xpriment626/pi-factory\n\n- **Files read:** 68 text/source files (every line indexed)\n- **Pushed at:** 2026-06-13T01:51:31Z\n- **Stars:** 3\n\n## Code-backed scores\n\n- **direct_install:** 7.5\n- **claude_code_native:** 0.0\n- **loop_implementation:** 4.0\n- **registry_memory:** 7.5\n- **verification:** 7.5\n- **file_coverage:** 68\n- **total:** 5.12\n\n## Entrypoints (from code)\n\n- skill_md: (no"
+    },
+    {
+      "slug": "sneg55/agent-starter",
+      "dir": "sneg55__agent-starter",
+      "files_read": 60,
+      "total_lines": 6302,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 0.8,
+        "registry_memory": 7.5,
+        "verification": 7.5,
+        "file_coverage": 60,
+        "total": 4.45
+      },
+      "total_score": 4.45,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/sneg55__agent-starter/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 sneg55/agent-starter\n\n- **Files read:** 60 text/source files (every line indexed)\n- **Pushed at:** 2026-06-16T21:52:12Z\n- **Stars:** 10\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 0.8\n- **registry_memory:** 7.5\n- **verification:** 7.5\n- **file_coverage:** 60\n- **total:** 4.45\n\n## Entrypoints (from code)\n\n- skill_md: skill"
+    },
+    {
+      "slug": "rtk-ai/rtk",
+      "dir": "rtk-ai__rtk",
+      "files_read": 365,
+      "total_lines": 107350,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 10,
+        "loop_implementation": 0.0,
+        "registry_memory": 7.5,
+        "verification": 8.0,
+        "file_coverage": 365,
+        "total": 4.33
+      },
+      "total_score": 4.33,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/rtk-ai__rtk/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 rtk-ai/rtk\n\n- **Files read:** 365 text/source files (every line indexed)\n- **Pushed at:** 2026-06-20T15:24:24Z\n- **Stars:** 64297\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 10\n- **loop_implementation:** 0.0\n- **registry_memory:** 7.5\n- **verification:** 8.0\n- **file_coverage:** 365\n- **total:** 4.33\n\n## Entrypoints (from code)\n\n- skill_md: .claude/sk"
+    },
+    {
+      "slug": "Dryxio/auto-re-agent",
+      "dir": "Dryxio__auto-re-agent",
+      "files_read": 92,
+      "total_lines": 6109,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 0.3,
+        "loop_implementation": 8.8,
+        "registry_memory": 5.0,
+        "verification": 7.5,
+        "file_coverage": 92,
+        "total": 4.13
+      },
+      "total_score": 4.13,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/Dryxio__auto-re-agent/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 Dryxio/auto-re-agent\n\n- **Files read:** 92 text/source files (every line indexed)\n- **Pushed at:** 2026-04-10T07:12:55Z\n- **Stars:** 326\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 0.3\n- **loop_implementation:** 8.8\n- **registry_memory:** 5.0\n- **verification:** 7.5\n- **file_coverage:** 92\n- **total:** 4.13\n\n## Entrypoints (from code)\n\n- skill_md: (no"
+    },
+    {
+      "slug": "bhavinkotak/agentforge",
+      "dir": "bhavinkotak__agentforge",
+      "files_read": 205,
+      "total_lines": 36042,
+      "scores": {
+        "direct_install": 2.0,
+        "claude_code_native": 3.9,
+        "loop_implementation": 1.6,
+        "registry_memory": 7.5,
+        "verification": 8.0,
+        "file_coverage": 205,
+        "total": 4.0
+      },
+      "total_score": 4.0,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/bhavinkotak__agentforge/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 bhavinkotak/agentforge\n\n- **Files read:** 205 text/source files (every line indexed)\n- **Pushed at:** 2026-06-16T09:20:55Z\n- **Stars:** 0\n\n## Code-backed scores\n\n- **direct_install:** 2.0\n- **claude_code_native:** 3.9\n- **loop_implementation:** 1.6\n- **registry_memory:** 7.5\n- **verification:** 8.0\n- **file_coverage:** 205\n- **total:** 4.0\n\n## Entrypoints (from code)\n\n- skill_md: (n"
+    },
+    {
+      "slug": "wquguru/harness-books",
+      "dir": "wquguru__harness-books",
+      "files_read": 157,
+      "total_lines": 16124,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 7.5,
+        "loop_implementation": 0.0,
+        "registry_memory": 7.5,
+        "verification": 8.5,
+        "file_coverage": 157,
+        "total": 3.9
+      },
+      "total_score": 3.9,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/wquguru__harness-books/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 wquguru/harness-books\n\n- **Files read:** 157 text/source files (every line indexed)\n- **Pushed at:** 2026-04-19T03:01:21Z\n- **Stars:** 2538\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 7.5\n- **loop_implementation:** 0.0\n- **registry_memory:** 7.5\n- **verification:** 8.5\n- **file_coverage:** 157\n- **total:** 3.9\n\n## Entrypoints (from code)\n\n- skill_md: "
+    },
+    {
+      "slug": "thu-nmrc/openloop",
+      "dir": "thu-nmrc__openloop",
+      "files_read": 32,
+      "total_lines": 1756,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 0.0,
+        "loop_implementation": 10,
+        "registry_memory": 1.0,
+        "verification": 8.0,
+        "file_coverage": 32,
+        "total": 3.85
+      },
+      "total_score": 3.85,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/thu-nmrc__openloop/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 thu-nmrc/openloop\n\n- **Files read:** 32 text/source files (every line indexed)\n- **Pushed at:** 2026-06-10T04:08:27Z\n- **Stars:** 56\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 0.0\n- **loop_implementation:** 10\n- **registry_memory:** 1.0\n- **verification:** 8.0\n- **file_coverage:** 32\n- **total:** 3.85\n\n## Entrypoints (from code)\n\n- skill_md: (none)\n-"
+    },
+    {
+      "slug": "WAPA0012/cc-loop-engineering",
+      "dir": "WAPA0012__cc-loop-engineering",
+      "files_read": 16,
+      "total_lines": 1782,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 1.2,
+        "loop_implementation": 8.4,
+        "registry_memory": 0.0,
+        "verification": 10,
+        "file_coverage": 16,
+        "total": 3.84
+      },
+      "total_score": 3.84,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/WAPA0012__cc-loop-engineering/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 WAPA0012/cc-loop-engineering\n\n- **Files read:** 16 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T05:54:49Z\n- **Stars:** 0\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 1.2\n- **loop_implementation:** 8.4\n- **registry_memory:** 0.0\n- **verification:** 10\n- **file_coverage:** 16\n- **total:** 3.84\n\n## Entrypoints (from code)\n\n- skill_md"
+    },
+    {
+      "slug": "mikulgohil/se-agent-platform",
+      "dir": "mikulgohil__se-agent-platform",
+      "files_read": 92,
+      "total_lines": 13916,
+      "scores": {
+        "direct_install": 3.5,
+        "claude_code_native": 0.8999999999999999,
+        "loop_implementation": 0.0,
+        "registry_memory": 7.5,
+        "verification": 10,
+        "file_coverage": 92,
+        "total": 3.68
+      },
+      "total_score": 3.68,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/mikulgohil__se-agent-platform/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 mikulgohil/se-agent-platform\n\n- **Files read:** 92 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T06:15:32Z\n- **Stars:** 0\n\n## Code-backed scores\n\n- **direct_install:** 3.5\n- **claude_code_native:** 0.8999999999999999\n- **loop_implementation:** 0.0\n- **registry_memory:** 7.5\n- **verification:** 10\n- **file_coverage:** 92\n- **total:** 3.68\n\n## Entrypoints (from co"
+    },
+    {
+      "slug": "pgmnemo/pgmnemo",
+      "dir": "pgmnemo__pgmnemo",
+      "files_read": 343,
+      "total_lines": 164320,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 1.2,
+        "loop_implementation": 0.8,
+        "registry_memory": 7.5,
+        "verification": 7.5,
+        "file_coverage": 343,
+        "total": 2.69
+      },
+      "total_score": 2.69,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/pgmnemo__pgmnemo/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 pgmnemo/pgmnemo\n\n- **Files read:** 343 text/source files (every line indexed)\n- **Pushed at:** 2026-06-20T21:04:57Z\n- **Stars:** 4\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 1.2\n- **loop_implementation:** 0.8\n- **registry_memory:** 7.5\n- **verification:** 7.5\n- **file_coverage:** 343\n- **total:** 2.69\n\n## Entrypoints (from code)\n\n- skill_md: (none)\n-"
+    },
+    {
+      "slug": "ordinary9843/gitizens",
+      "dir": "ordinary9843__gitizens",
+      "files_read": 125,
+      "total_lines": 19468,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 6.9,
+        "loop_implementation": 2.4000000000000004,
+        "registry_memory": 1.0,
+        "verification": 3.5,
+        "file_coverage": 125,
+        "total": 2.66
+      },
+      "total_score": 2.66,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/ordinary9843__gitizens/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 ordinary9843/gitizens\n\n- **Files read:** 125 text/source files (every line indexed)\n- **Pushed at:** 2026-06-21T06:01:08Z\n- **Stars:** 5\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 6.9\n- **loop_implementation:** 2.4000000000000004\n- **registry_memory:** 1.0\n- **verification:** 3.5\n- **file_coverage:** 125\n- **total:** 2.66\n\n## Entrypoints (from code)\n"
+    },
+    {
+      "slug": "DreamChaserEric/claude-lights-out",
+      "dir": "DreamChaserEric__claude-lights-out",
+      "files_read": 21,
+      "total_lines": 2425,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 4.2,
+        "loop_implementation": 0.0,
+        "registry_memory": 2.5,
+        "verification": 7.5,
+        "file_coverage": 21,
+        "total": 2.34
+      },
+      "total_score": 2.34,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/DreamChaserEric__claude-lights-out/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 DreamChaserEric/claude-lights-out\n\n- **Files read:** 21 text/source files (every line indexed)\n- **Pushed at:** 2026-06-10T13:12:42Z\n- **Stars:** 10\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 4.2\n- **loop_implementation:** 0.0\n- **registry_memory:** 2.5\n- **verification:** 7.5\n- **file_coverage:** 21\n- **total:** 2.34\n\n## Entrypoints (from code)\n\n- s"
+    },
+    {
+      "slug": "alchaincyf/loop-engineering-orange-book",
+      "dir": "alchaincyf__loop-engineering-orange-book",
+      "files_read": 4,
+      "total_lines": 182,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 3.0,
+        "loop_implementation": 4.800000000000001,
+        "registry_memory": 0.0,
+        "verification": 1.0,
+        "file_coverage": 4,
+        "total": 1.95
+      },
+      "total_score": 1.95,
+      "tier": "clone_configure",
+      "audit_path": "ingest/github-code/alchaincyf__loop-engineering-orange-book/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 alchaincyf/loop-engineering-orange-book\n\n- **Files read:** 4 text/source files (every line indexed)\n- **Pushed at:** 2026-06-15T05:28:06Z\n- **Stars:** 718\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 3.0\n- **loop_implementation:** 4.800000000000001\n- **registry_memory:** 0.0\n- **verification:** 1.0\n- **file_coverage:** 4\n- **total:** 1.95\n\n## Entrypoin"
+    },
+    {
+      "slug": "alchaincyf/harness-engineering-orange-book",
+      "dir": "alchaincyf__harness-engineering-orange-book",
+      "files_read": 3,
+      "total_lines": 154,
+      "scores": {
+        "direct_install": 0.0,
+        "claude_code_native": 1.2,
+        "loop_implementation": 0.0,
+        "registry_memory": 0.0,
+        "verification": 0.0,
+        "file_coverage": 3,
+        "total": 0.24
+      },
+      "total_score": 0.24,
+      "tier": "reference_only",
+      "audit_path": "ingest/github-code/alchaincyf__harness-engineering-orange-book/code-audit.md",
+      "audit_excerpt": "# Code Audit \u2014 alchaincyf/harness-engineering-orange-book\n\n- **Files read:** 3 text/source files (every line indexed)\n- **Pushed at:** 2026-04-11T14:35:13Z\n- **Stars:** 44\n\n## Code-backed scores\n\n- **direct_install:** 0.0\n- **claude_code_native:** 1.2\n- **loop_implementation:** 0.0\n- **registry_memory:** 0.0\n- **verification:** 0.0\n- **file_coverage:** 3\n- **total:** 0.24\n\n## Entrypoints (from cod"
+    }
+  ]
+}

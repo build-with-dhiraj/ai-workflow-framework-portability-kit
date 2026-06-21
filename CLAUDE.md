@@ -17,8 +17,8 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `CLAUDE-global.md` | Snapshot of your global `~/.claude/CLAUDE.md` | `~/.claude/CLAUDE.md` |
 | `SPEC-KIT-global.md` | Snapshot of your global `~/.claude/SPEC-KIT.md` (greenfield spec-driven phase mapping) | `~/.claude/SPEC-KIT.md` |
 | `settings.json` | Snapshot of `~/.claude/settings.json` (plugins, permissions, env) | `~/.claude/settings.json` |
-| `Agents/` | All 35 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
-| `Skills/` | All 131 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
+| `Agents/` | All 36 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
+| `Skills/` | All 133 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
@@ -50,7 +50,7 @@ Claude operates as a **conductor**, not a soloist. Work flows through six layers
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │  Layer 3 — SPECIALIST AGENTS (the "who" — domain experts, write code)        │
-│  • 35 custom specialist agents in /Agents (see Agents/README.md for org chart)│
+│  • 36 custom specialist agents in /Agents (see Agents/README.md for org chart)│
 │  • Each owns a domain: frontend, backend, Solidity, WeChat, Feishu, etc.     │
 │  • Dispatched by Layer 1 in parallel when work is independent                │
 └────────────────────────────────┬────────────────────────────────────────────┘
@@ -266,6 +266,12 @@ For brand-new projects with no `docs/adr/` or `CONTEXT.md`, the `specify` CLI (g
 The `/speckit.implement` phase is explicitly disabled because spec-kit's generic execution loop bypasses our domain specialists. If a future spec-kit version makes this harder to disable, add an explicit deny in `settings.json`.
 
 ---
+
+
+## Loop Engineering Doctrine (v2)
+
+For loop design, harness engineering, `/loop` `/goal`, Ralph loops, Agent Hub patterns, or installable loop tooling: dispatch **`loop-engineering-architect`**. Load **`loop-engineering`** skill; corpus at `research/loop-engineering-agent-hub-2026/`. See [CLAUDE-global.md](CLAUDE-global.md) for runtime rule.
+
 
 ## 8. Where the source of truth lives
 

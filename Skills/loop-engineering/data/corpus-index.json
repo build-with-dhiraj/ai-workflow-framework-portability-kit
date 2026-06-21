@@ -1,0 +1,839 @@
+[
+  {
+    "source_id": "PDF_agent-hub-field-guide",
+    "type": "pdf",
+    "title": "agent-hub-field-guide",
+    "line_count": 562,
+    "digest_path": "ingest/sources/PDF_agent-hub-field-guide/digest.md",
+    "thesis": "A BEHIND-THE-SCENES BUILD GUIDE",
+    "read_complete": true
+  },
+  {
+    "source_id": "S01",
+    "type": "pdf",
+    "title": "Agent Hub Field Guide",
+    "line_count": 6273,
+    "digest_path": "ingest/sources/S01/digest.md",
+    "thesis": "<</Type/Pages/Kids[6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R]/Count 8>>",
+    "read_complete": true
+  },
+  {
+    "source_id": "S02",
+    "type": "article",
+    "title": "Loop Engineering",
+    "line_count": 279,
+    "digest_path": "ingest/sources/S02/digest.md",
+    "thesis": "\"name\": \"addy-osmani-loop-engineering\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S03",
+    "type": "article",
+    "title": "Loop Engineering (Substack)",
+    "line_count": 297,
+    "digest_path": "ingest/sources/S03/digest.md",
+    "thesis": "\"name\": \"addyo-substack-loop-engineering\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S04",
+    "type": "article",
+    "title": "Loop Engineering, designing systems that prompt your coding agents",
+    "line_count": 2033,
+    "digest_path": "ingest/sources/S04/digest.md",
+    "thesis": "\"name\": \"i-scoop-loop-engineering\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S05",
+    "type": "article",
+    "title": "Loop Engineering (Firecrawl)",
+    "line_count": 173,
+    "digest_path": "ingest/sources/S05/digest.md",
+    "thesis": "\"name\": \"firecrawl-loop-engineering\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S06",
+    "type": "article",
+    "title": "Loop Engineering AI Coding Agents Guide",
+    "line_count": 248,
+    "digest_path": "ingest/sources/S06/digest.md",
+    "thesis": "\"name\": \"lushbinary-loop-engineering\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S07",
+    "type": "article",
+    "title": "The Anthropic leader who built Claude Code says he ditched prompting \u2014 now he just writes loops",
+    "line_count": 4184,
+    "digest_path": "ingest/sources/S07/digest.md",
+    "thesis": "\"name\": \"thenewstack-loop-engineering\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S08",
+    "type": "docs",
+    "title": "Claude Code Routines",
+    "line_count": 215,
+    "digest_path": "ingest/sources/S08/digest.md",
+    "thesis": "\"name\": \"claude-code-routines\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S09",
+    "type": "docs",
+    "title": "Agent SDK Agent Loop",
+    "line_count": 408,
+    "digest_path": "ingest/sources/S09/digest.md",
+    "thesis": "\"name\": \"claude-code-agent-loop\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S10",
+    "type": "article",
+    "title": "The architecture of an agent that runs itself",
+    "line_count": 1011,
+    "digest_path": "ingest/sources/S10/digest.md",
+    "thesis": "\"name\": \"dev-agent-runs-itself\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S100",
+    "type": "paper",
+    "title": "Code-Augur: Agentic Vulnerability Detection via Specification Inference",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S100/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S101",
+    "type": "paper",
+    "title": "DF-ExpEnse: Diffusion Filtered Exploration for Sample Efficient Finetuning",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S101/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S102",
+    "type": "paper",
+    "title": "Playful Agentic Robot Learning",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S102/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S103",
+    "type": "paper",
+    "title": "Learning to Annotate Delayed and False AEB Events: A Practical System for Extreme Class Imbalance and Asymmetric Label Noise",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S103/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S104",
+    "type": "paper",
+    "title": "RTSGameBench: An RTS Benchmark for Strategic Reasoning by Vision-Language Models",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S104/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S105",
+    "type": "paper",
+    "title": "Skill-Guided Continuation Distillation for GUI Agents",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S105/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S106",
+    "type": "paper",
+    "title": "RubricsTree: Scalable and Evolving Open-Ended Evaluation of Personal Health Agents across Health Memory and Medical Skills",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S106/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S11",
+    "type": "product",
+    "title": "Nabu \u2014 self-hosted self-improving AI agent",
+    "line_count": 124,
+    "digest_path": "ingest/sources/S11/digest.md",
+    "thesis": "\"url\": \"https://nabuagent.com/\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S26",
+    "type": "skills.sh",
+    "title": "continual-learning",
+    "line_count": 20,
+    "digest_path": "ingest/sources/S26/digest.md",
+    "thesis": "\"url\": \"https://skills.sh/microsoft/agent-skills/continual-learning\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S27",
+    "type": "skills.sh",
+    "title": "self-improving-agent",
+    "line_count": 33,
+    "digest_path": "ingest/sources/S27/digest.md",
+    "thesis": "\"name\": \"self-improving-agent\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S28",
+    "type": "skills.sh",
+    "title": "self-improvement",
+    "line_count": 30,
+    "digest_path": "ingest/sources/S28/digest.md",
+    "thesis": "\"url\": \"https://skills.sh/pskoett/self-improving-agent/self-improvement\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S29",
+    "type": "skills.sh",
+    "title": "ralph (Ouroboros loop)",
+    "line_count": 33,
+    "digest_path": "ingest/sources/S29/digest.md",
+    "thesis": "\"url\": \"https://skills.sh/supercent-io/skills-template/ralph\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S30",
+    "type": "skills.sh",
+    "title": "claude-reflection",
+    "line_count": 25,
+    "digest_path": "ingest/sources/S30/digest.md",
+    "thesis": "\"url\": \"https://skills.sh/vamseeachanta/workspace-hub/claude-reflection\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S31",
+    "type": "reddit",
+    "title": "If loop engineering is replacing prompt\u2026",
+    "line_count": 7,
+    "digest_path": "ingest/sources/S31/digest.md",
+    "thesis": "",
+    "read_complete": true
+  },
+  {
+    "source_id": "S32",
+    "type": "youtube",
+    "title": "Loop Engineering, OpenAI Sites & the Great China Model Shift | This Week In AI",
+    "line_count": 492,
+    "digest_path": "ingest/sources/S32/digest.md",
+    "thesis": "Shane: This is a tweet from OpenAI.",
+    "read_complete": true
+  },
+  {
+    "source_id": "S33",
+    "type": "youtube",
+    "title": "Ryan Lopopolo - Harness Engineering: How to Build Software When Humans Steer and Agents Execute",
+    "line_count": 733,
+    "digest_path": "ingest/sources/S33/digest.md",
+    "thesis": "Thank you kindly. Uh we've only got a",
+    "read_complete": true
+  },
+  {
+    "source_id": "S34",
+    "type": "youtube",
+    "title": "\u3010Loop Engineering \u5faa\u73af\u5de5\u7a0b\u3011\u4ece\u7406\u8bba\u5230\u5b9e\u8df5\uff0c\u5b83\u771f\u7684\u9002\u5408\u6bcf\u4e2a\u4eba\u5417\uff1f",
+    "line_count": 396,
+    "digest_path": "ingest/sources/S34/digest.md",
+    "thesis": "\u5dee\u4e0d\u591a\u540c\u4e00\u65f6\u95f4,Anthropic \u90a3\u8fb9\u7ba1 Claude Code \u7684",
+    "read_complete": true
+  },
+  {
+    "source_id": "S35",
+    "type": "youtube",
+    "title": "Loop Engineering Simplified. Here's What To Do Next",
+    "line_count": 156,
+    "digest_path": "ingest/sources/S35/digest.md",
+    "thesis": "Prompt engineering is dead and most people haven't noticed it.",
+    "read_complete": true
+  },
+  {
+    "source_id": "S36",
+    "type": "youtube",
+    "title": "Visualizing Claude Code Ep.1 | Sessions, Turns & the Agent Loop",
+    "line_count": 38,
+    "digest_path": "ingest/sources/S36/digest.md",
+    "thesis": "An Agent looks like a chat interface, but behind it runs a whole execution chain.",
+    "read_complete": true
+  },
+  {
+    "source_id": "S37",
+    "type": "youtube",
+    "title": "Loop Engineering \u706b\u4e86\uff1aAI Agent \u7684\u6760\u6746\uff0c\u6b63\u5728\u4ece Prompt \u79fb\u5230 Loop",
+    "line_count": 444,
+    "digest_path": "ingest/sources/S37/digest.md",
+    "thesis": "Hello everyone, welcome to Lingjie's AI Talk.",
+    "read_complete": true
+  },
+  {
+    "source_id": "S38",
+    "type": "youtube",
+    "title": "L8 Principal's Agentic Engineering Workflow",
+    "line_count": 1136,
+    "digest_path": "ingest/sources/S38/digest.md",
+    "thesis": "Hi everyone, welcome to this video and",
+    "read_complete": true
+  },
+  {
+    "source_id": "S39",
+    "type": "youtube",
+    "title": "The NEW Way to Use Claude Code in 2026 (Loops)",
+    "line_count": 365,
+    "digest_path": "ingest/sources/S39/digest.md",
+    "thesis": "The creator of Claude Code says that he",
+    "read_complete": true
+  },
+  {
+    "source_id": "S40",
+    "type": "youtube",
+    "title": "Claude Code \u96b1\u85cf\u529f\u80fd\uff1a\u5275\u9020\u8005 Boris \u516c\u958b 15 \u500b\u79c1\u85cf\u6280\u5de7",
+    "line_count": 254,
+    "digest_path": "ingest/sources/S40/digest.md",
+    "thesis": "\u90a3\u500b\u6253\u9020\u51fa Claude Code \u7684 Boris Cherny",
+    "read_complete": true
+  },
+  {
+    "source_id": "S41",
+    "type": "youtube",
+    "title": "Are senior developers going back to writing code by hand?",
+    "line_count": 148,
+    "digest_path": "ingest/sources/S41/digest.md",
+    "thesis": "There's a real tension in the developer",
+    "read_complete": true
+  },
+  {
+    "source_id": "S42",
+    "type": "youtube",
+    "title": "Claude Code Dynamic Workflows Explained for Beginners",
+    "line_count": 249,
+    "digest_path": "ingest/sources/S42/digest.md",
+    "thesis": "This is not a normal Claude code",
+    "read_complete": true
+  },
+  {
+    "source_id": "S43",
+    "type": "youtube",
+    "title": "13 Claude Code TIPS you didn\u2019t know about",
+    "line_count": 472,
+    "digest_path": "ingest/sources/S43/digest.md",
+    "thesis": "These are 13 CloudCode tricks that most",
+    "read_complete": true
+  },
+  {
+    "source_id": "S44",
+    "type": "youtube",
+    "title": "The New AI prompting Method Everyone Is Talking About: Loops (And How To Use Them)",
+    "line_count": 599,
+    "digest_path": "ingest/sources/S44/digest.md",
+    "thesis": "There's a new idea that the top AI users",
+    "read_complete": true
+  },
+  {
+    "source_id": "S45",
+    "type": "youtube",
+    "title": "Harness Engineering: 4 Levers to Diagnose Any AI Agent",
+    "line_count": 291,
+    "digest_path": "ingest/sources/S45/digest.md",
+    "thesis": "Everyone [snorts] is talking about AI",
+    "read_complete": true
+  },
+  {
+    "source_id": "S46",
+    "type": "youtube",
+    "title": "Loop Engineering, Claude Code /goal, and Agent Routines",
+    "line_count": 2856,
+    "digest_path": "ingest/sources/S46/digest.md",
+    "thesis": "Oh, hey everybody. Can you hear me? I'm",
+    "read_complete": true
+  },
+  {
+    "source_id": "S47",
+    "type": "youtube",
+    "title": "Stop Prompting Claude Code: Loop Engineering in 5 Minutes",
+    "line_count": 164,
+    "digest_path": "ingest/sources/S47/digest.md",
+    "thesis": "So, Boris Cherny, who runs Claude code",
+    "read_complete": true
+  },
+  {
+    "source_id": "S48",
+    "type": "youtube",
+    "title": "/goal vs /loop in Claude Code (Full Guide for Devs)",
+    "line_count": 113,
+    "digest_path": "ingest/sources/S48/digest.md",
+    "thesis": "Goal and loop engineering for [music]",
+    "read_complete": true
+  },
+  {
+    "source_id": "S49",
+    "type": "youtube",
+    "title": "Ralph Loop STEP BY STEP DEMO",
+    "line_count": 377,
+    "digest_path": "ingest/sources/S49/digest.md",
+    "thesis": "demonstrate step-by-step so you can",
+    "read_complete": true
+  },
+  {
+    "source_id": "S50",
+    "type": "youtube",
+    "title": "How to Build a Self-Improving Code Agent With RAG",
+    "line_count": 26,
+    "digest_path": "ingest/sources/S50/digest.md",
+    "thesis": "This is SkillBank \u2014 a coding agent",
+    "read_complete": true
+  },
+  {
+    "source_id": "S51",
+    "type": "youtube",
+    "title": "Anthropic Just Dropped the Biggest Subagent Upgrade Yet",
+    "line_count": 349,
+    "digest_path": "ingest/sources/S51/digest.md",
+    "thesis": "Okay, so cloud code sub agents became",
+    "read_complete": true
+  },
+  {
+    "source_id": "S52",
+    "type": "youtube",
+    "title": "Why I don't open Claude Code anymore.",
+    "line_count": 358,
+    "digest_path": "ingest/sources/S52/digest.md",
+    "thesis": "There's a new discussion in the coding",
+    "read_complete": true
+  },
+  {
+    "source_id": "S53",
+    "type": "youtube",
+    "title": "Cursor just crushed Claude Code",
+    "line_count": 611,
+    "digest_path": "ingest/sources/S53/digest.md",
+    "thesis": "So a few days ago I opened up Curser.",
+    "read_complete": true
+  },
+  {
+    "source_id": "S54",
+    "type": "youtube",
+    "title": "OpenClaw vs Hermes Agent (Don\u2019t choose WRONG!)",
+    "line_count": 272,
+    "digest_path": "ingest/sources/S54/digest.md",
+    "thesis": "Hey, I'm Matt and you're trying to",
+    "read_complete": true
+  },
+  {
+    "source_id": "S55",
+    "type": "youtube",
+    "title": "Loop Engineering in 9 Minutes",
+    "line_count": 278,
+    "digest_path": "ingest/sources/S55/digest.md",
+    "thesis": "I saw a couple posts that went viral of",
+    "read_complete": true
+  },
+  {
+    "source_id": "S56",
+    "type": "youtube",
+    "title": "Stop Prompting Claude. Start Loop Engineering.",
+    "line_count": 401,
+    "digest_path": "ingest/sources/S56/digest.md",
+    "thesis": "Boris Cherny, the creator of Claude",
+    "read_complete": true
+  },
+  {
+    "source_id": "S57",
+    "type": "youtube",
+    "title": "Loop Engineering Explained",
+    "line_count": 364,
+    "digest_path": "ingest/sources/S57/digest.md",
+    "thesis": "If you're coding with Cloud or CodeX",
+    "read_complete": true
+  },
+  {
+    "source_id": "S58",
+    "type": "youtube",
+    "title": "How to write AI agent loops in Claude Code and Codex",
+    "line_count": 747,
+    "digest_path": "ingest/sources/S58/digest.md",
+    "thesis": "Prompts are out and loops are in. If",
+    "read_complete": true
+  },
+  {
+    "source_id": "S59",
+    "type": "youtube",
+    "title": "Loop Engineering: The Future of AI Coding?",
+    "line_count": 494,
+    "digest_path": "ingest/sources/S59/digest.md",
+    "thesis": "Okay, so over the last 24 hours almost",
+    "read_complete": true
+  },
+  {
+    "source_id": "S60",
+    "type": "youtube",
+    "title": "wtf is Loop Engineer & how to setup for real",
+    "line_count": 651,
+    "digest_path": "ingest/sources/S60/digest.md",
+    "thesis": "Thanks HubSpot for sponsoring this",
+    "read_complete": true
+  },
+  {
+    "source_id": "S61",
+    "type": "youtube",
+    "title": "Loop Engineering Totally 10x Hermes agents",
+    "line_count": 427,
+    "digest_path": "ingest/sources/S61/digest.md",
+    "thesis": "There's a new term going around and you",
+    "read_complete": true
+  },
+  {
+    "source_id": "S62",
+    "type": "youtube",
+    "title": "Agent Loops: Complete Guide (Claude Code + Codex)",
+    "line_count": 701,
+    "digest_path": "ingest/sources/S62/digest.md",
+    "thesis": "This is a complete guide to building",
+    "read_complete": true
+  },
+  {
+    "source_id": "S63",
+    "type": "youtube",
+    "title": "Ralph Loops: Build Dumb AI Loops That Ship \u2014 Chris Parsons, Cherrypick",
+    "line_count": 3193,
+    "digest_path": "ingest/sources/S63/digest.md",
+    "thesis": "this workshop is on Ralph loops.",
+    "read_complete": true
+  },
+  {
+    "source_id": "S64",
+    "type": "youtube",
+    "title": "Claude Code v2.1.139 \u2014 Agent Dashboard & Auto-Loop Goals",
+    "line_count": 17,
+    "digest_path": "ingest/sources/S64/digest.md",
+    "thesis": "and 39 two-bit editions, a unified agent",
+    "read_complete": true
+  },
+  {
+    "source_id": "S65",
+    "type": "youtube",
+    "title": "Claude Code Creator: \u201cWrite Loops, Not Prompts\u201d",
+    "line_count": 556,
+    "digest_path": "ingest/sources/S65/digest.md",
+    "thesis": "One tweet and a video clip from OpenClaw",
+    "read_complete": true
+  },
+  {
+    "source_id": "S66",
+    "type": "youtube",
+    "title": "Reflecting on a year of Claude Code",
+    "line_count": 901,
+    "digest_path": "ingest/sources/S66/digest.md",
+    "thesis": "When we first released Claude Code,",
+    "read_complete": true
+  },
+  {
+    "source_id": "S67",
+    "type": "youtube",
+    "title": "Claude Code Advanced Workflow - Build & Ship Real Apps",
+    "line_count": 536,
+    "digest_path": "ingest/sources/S67/digest.md",
+    "thesis": "Most people use Claude code one prompt",
+    "read_complete": true
+  },
+  {
+    "source_id": "S68",
+    "type": "youtube",
+    "title": "Claude Code Agent View: Parallel Agents Are Here",
+    "line_count": 410,
+    "digest_path": "ingest/sources/S68/digest.md",
+    "thesis": "&lt;b&gt;Claude Code just got a new&lt;/b&gt;",
+    "read_complete": true
+  },
+  {
+    "source_id": "S69",
+    "type": "youtube",
+    "title": "How to Build Effective Claude Code Agents in 2026",
+    "line_count": 2231,
+    "digest_path": "ingest/sources/S69/digest.md",
+    "thesis": "What would you say by the end of this",
+    "read_complete": true
+  },
+  {
+    "source_id": "S70",
+    "type": "youtube",
+    "title": "Only the best are using them...",
+    "line_count": 334,
+    "digest_path": "ingest/sources/S70/digest.md",
+    "thesis": "A new coding meta just dropped. Over",
+    "read_complete": true
+  },
+  {
+    "source_id": "S71",
+    "type": "youtube",
+    "title": "Claude Code Just Dropped /Goal. (Master it in 8 Minutes).",
+    "line_count": 279,
+    "digest_path": "ingest/sources/S71/digest.md",
+    "thesis": "Claude just released one of the most",
+    "read_complete": true
+  },
+  {
+    "source_id": "S72",
+    "type": "youtube",
+    "title": "Claude Code /goal Just Dropped and it Can Build Literally Anything",
+    "line_count": 812,
+    "digest_path": "ingest/sources/S72/digest.md",
+    "thesis": "Claude Code has just released a feature",
+    "read_complete": true
+  },
+  {
+    "source_id": "S73",
+    "type": "youtube",
+    "title": "Stop Using Claude's /goal Feature | Here's What Works",
+    "line_count": 454,
+    "digest_path": "ingest/sources/S73/digest.md",
+    "thesis": "Code just released a skill called slash",
+    "read_complete": true
+  },
+  {
+    "source_id": "S74",
+    "type": "youtube",
+    "title": "Harness Engineering: How to Build Software When Humans Steer, Agents Execute \u2014\u00a0Ryan Lopopolo, OpenAI",
+    "line_count": 1231,
+    "digest_path": "ingest/sources/S74/digest.md",
+    "thesis": "&gt;&gt; Our next speaker is here to speak about",
+    "read_complete": true
+  },
+  {
+    "source_id": "S75",
+    "type": "youtube",
+    "title": "Agent Harness explained in 8min..",
+    "line_count": 237,
+    "digest_path": "ingest/sources/S75/digest.md",
+    "thesis": "Asian harness is just one of those terms",
+    "read_complete": true
+  },
+  {
+    "source_id": "S76",
+    "type": "youtube",
+    "title": "Harness Engineering: What Separates Top Agentic Engineers Right Now",
+    "line_count": 511,
+    "digest_path": "ingest/sources/S76/digest.md",
+    "thesis": "A term that's popping up more and more",
+    "read_complete": true
+  },
+  {
+    "source_id": "S77",
+    "type": "youtube",
+    "title": "What is an Agent Harness? and How to build a great one!",
+    "line_count": 502,
+    "digest_path": "ingest/sources/S77/digest.md",
+    "thesis": "Everybody talks about agent harnesses,",
+    "read_complete": true
+  },
+  {
+    "source_id": "S78",
+    "type": "youtube",
+    "title": "The new spec-driven workflow is a mess...",
+    "line_count": 260,
+    "digest_path": "ingest/sources/S78/digest.md",
+    "thesis": "Sitting alone in a dark room, tinkering",
+    "read_complete": true
+  },
+  {
+    "source_id": "S79",
+    "type": "youtube",
+    "title": "Build and deploy a full app with Claude Code in 2026 (full tutorial)",
+    "line_count": 469,
+    "digest_path": "ingest/sources/S79/digest.md",
+    "thesis": "Here's an app that I built with Claude",
+    "read_complete": true
+  },
+  {
+    "source_id": "S80",
+    "type": "youtube",
+    "title": "Loop Engineering: The 6 Parts of a Real Agent Harness | ADI Pod #30",
+    "line_count": 1808,
+    "digest_path": "ingest/sources/S80/digest.md",
+    "thesis": "But there's a followup to that which is",
+    "read_complete": true
+  },
+  {
+    "source_id": "S81",
+    "type": "youtube",
+    "title": "Harness Engineering vs Loop Engineering: Which One Does Your AI Agent Actually Need?",
+    "line_count": 43,
+    "digest_path": "ingest/sources/S81/digest.md",
+    "thesis": "harness engineering, loop engineering,",
+    "read_complete": true
+  },
+  {
+    "source_id": "S82",
+    "type": "paper",
+    "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S82/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S83",
+    "type": "paper",
+    "title": "Agentic AutoResearch forSpace Autonomy: An Auditable, LLM-Driven Research Agent for Aerospace Control Problems",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S83/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S84",
+    "type": "paper",
+    "title": "Dual-Agent Framework for Cross-Model Verified Translation of Natural-Language Protocols into Robotic Laboratory Platform",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S84/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S85",
+    "type": "paper",
+    "title": "Connect the Dots: Training LLMs for Long-Lifecycle Agents with Cross-Domain Generalization Via Reinforcement Learning",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S85/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S86",
+    "type": "paper",
+    "title": "Beyond Static Endpoints: Tool Programs as an Interface for Flexible Agentic Web Services",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S86/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S87",
+    "type": "paper",
+    "title": "Human-on-the-Loop Orchestration for AI-Assisted Legal Discovery",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S87/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S88",
+    "type": "paper",
+    "title": "Library-Aware Doubles and Iterative Repair for Large Language Model-Generated Unit Tests in OpenSIL Firmware",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S88/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S89",
+    "type": "paper",
+    "title": "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S89/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S90",
+    "type": "paper",
+    "title": "AgenticDB: Agentic Performance Reconfiguration for Database Workloads",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S90/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S91",
+    "type": "paper",
+    "title": "MetaResearcher: Scaling Deep Research via Self-Reflective Reinforcement Learning in Adversarial Virtual Environments",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S91/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S92",
+    "type": "paper",
+    "title": "Agentic Electronic Design Automation: A Handoff Perspective",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S92/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S93",
+    "type": "paper",
+    "title": "Hidden Anchors in Multi-Agent LLM Deliberation",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S93/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S94",
+    "type": "paper",
+    "title": "AdsMind: A Physics-Grounded Multi-Agent System for Self-Correcting Discovery of Adsorption Configurations on Heterogeneous Catalyst Surfaces",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S94/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S95",
+    "type": "paper",
+    "title": "Skill-MAS: Evolving Meta-Skill for Automatic Multi-Agent Systems",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S95/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S96",
+    "type": "paper",
+    "title": "Deep Research in Physical Sciences: A Multi-Agent Framework and Comprehensive Benchmark",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S96/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S97",
+    "type": "paper",
+    "title": "Bridging Creative Intent and Visual Quality: Creator-Driven Recurrent Video Generation with Agentic Feedback Loops",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S97/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S98",
+    "type": "paper",
+    "title": "Before the Pull Request: Mining Multi-Agent Coordination",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S98/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  },
+  {
+    "source_id": "S99",
+    "type": "paper",
+    "title": "StaminaBench: Stress-Testing Coding Agents over 100 Interaction Turns",
+    "line_count": 1241,
+    "digest_path": "ingest/sources/S99/digest.md",
+    "thesis": "\"title\": \"Probe-and-Refine Tuning of Repository Guidance for Coding Agents\",",
+    "read_complete": true
+  }
+]

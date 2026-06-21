@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-131 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+133 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -11,7 +11,7 @@
 
 | Kind | Examples | When invoked |
 |---|---|---|
-| **Process** | `brainstorming`, `tdd`, `diagnose`, `gepetto`, `grill-me`, `prototype`, `zoom-out`, `verification-before-completion` | Before / around implementation — decides the workflow |
+| **Process** | `brainstorming`, `tdd`, `diagnose`, `gepetto`, `grill-me`, `prototype`, `zoom-out`, `verification-before-completion`, `loop-engineering` | Before / around implementation — decides the workflow |
 | **Implementation patterns** | `supabase`, `threejs-animation`, `flutter-*`, `langfuse`, `framer-motion-animator`, `r3f-best-practices` | Inside an implementation specialist — loads domain knowledge |
 | **Governance** | `evaluating-skill-necessity`, `managing-skills-library`, `evaluating-agent-behavior`, `find-skills` | Around library hygiene & evals |
 | **Workflow artifacts** | `to-prd`, `to-issues`, `triage`, `edit-article`, `write-a-skill`, `setup-pre-commit`, `setup-matt-pocock-skills`, `git-guardrails-claude-code` | Producing deliverables outside the code itself |
@@ -93,6 +93,7 @@ Per `superpowers:using-superpowers`:
 | `setup-matt-pocock-skills` | Installs the AGENTS.md `## Agent skills` block + `docs/agents/` scaffolding (precondition for `to-prd`, `to-issues`, `triage`) |
 | `write-a-skill` | Author a new skill with proper structure + bundled resources |
 | `scaffold-exercises` | Exercise directory scaffolding (course/content authoring) |
+| `loop-engineering` | Loop/harness design, `/loop` `/goal`, code-backed repo picks — pairs with `loop-engineering-architect` agent |
 | `building-claude-portability-kit` | Build a self-contained Mac-replacement-proof snapshot of an entire Claude Code setup (agents + skills + plugins + MCP + connectors + tooling + restore script). Encodes the exact workflow used to build this canonical kit (the folder you're reading now) |
 
 ### Implementation-pattern skills (domain knowledge)
@@ -209,7 +210,8 @@ idea-researcher                             impeccable
 improve-codebase-architecture               integrate-whatsapp
 jove-youtube-feed-pipeline                  json-canvas
 langfuse                                    langsmith-evaluator
-llm-eval                                    managing-skills-library
+llm-eval                                    loop-engineering
+loop-engineering                            managing-skills-library
 master-resume                               memory-router
 migrate-to-shoehorn                         moat-analysis
 ner-content-pipeline                        nextjs-app-router-patterns

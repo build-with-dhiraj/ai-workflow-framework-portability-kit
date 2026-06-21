@@ -1,0 +1,188 @@
+# Corpus Index (v2 full ingest)
+
+
+- **PDF_agent-hub-field-guide** (pdf) — agent-hub-field-guide — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/PDF_agent-hub-field-guide/digest.md`
+  - A BEHIND-THE-SCENES BUILD GUIDE
+- **S01** (pdf) — Agent Hub Field Guide — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S01/digest.md`
+  - <</Type/Pages/Kids[6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R]/Count 8>>
+- **S02** (article) — Loop Engineering — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S02/digest.md`
+  - "name": "addy-osmani-loop-engineering",
+- **S03** (article) — Loop Engineering (Substack) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S03/digest.md`
+  - "name": "addyo-substack-loop-engineering",
+- **S04** (article) — Loop Engineering, designing systems that prompt your coding  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S04/digest.md`
+  - "name": "i-scoop-loop-engineering",
+- **S05** (article) — Loop Engineering (Firecrawl) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S05/digest.md`
+  - "name": "firecrawl-loop-engineering",
+- **S06** (article) — Loop Engineering AI Coding Agents Guide — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S06/digest.md`
+  - "name": "lushbinary-loop-engineering",
+- **S07** (article) — The Anthropic leader who built Claude Code says he ditched p — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S07/digest.md`
+  - "name": "thenewstack-loop-engineering",
+- **S08** (docs) — Claude Code Routines — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S08/digest.md`
+  - "name": "claude-code-routines",
+- **S09** (docs) — Agent SDK Agent Loop — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S09/digest.md`
+  - "name": "claude-code-agent-loop",
+- **S10** (article) — The architecture of an agent that runs itself — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S10/digest.md`
+  - "name": "dev-agent-runs-itself",
+- **S100** (paper) — Code-Augur: Agentic Vulnerability Detection via Specificatio — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S100/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S101** (paper) — DF-ExpEnse: Diffusion Filtered Exploration for Sample Effici — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S101/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S102** (paper) — Playful Agentic Robot Learning — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S102/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S103** (paper) — Learning to Annotate Delayed and False AEB Events: A Practic — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S103/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S104** (paper) — RTSGameBench: An RTS Benchmark for Strategic Reasoning by Vi — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S104/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S105** (paper) — Skill-Guided Continuation Distillation for GUI Agents — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S105/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S106** (paper) — RubricsTree: Scalable and Evolving Open-Ended Evaluation of  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S106/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S11** (product) — Nabu — self-hosted self-improving AI agent — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S11/digest.md`
+  - "url": "https://nabuagent.com/",
+- **S26** (skills.sh) — continual-learning — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S26/digest.md`
+  - "url": "https://skills.sh/microsoft/agent-skills/continual-learning",
+- **S27** (skills.sh) — self-improving-agent — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S27/digest.md`
+  - "name": "self-improving-agent",
+- **S28** (skills.sh) — self-improvement — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S28/digest.md`
+  - "url": "https://skills.sh/pskoett/self-improving-agent/self-improvement",
+- **S29** (skills.sh) — ralph (Ouroboros loop) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S29/digest.md`
+  - "url": "https://skills.sh/supercent-io/skills-template/ralph",
+- **S30** (skills.sh) — claude-reflection — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S30/digest.md`
+  - "url": "https://skills.sh/vamseeachanta/workspace-hub/claude-reflection",
+- **S31** (reddit) — If loop engineering is replacing prompt… — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S31/digest.md`
+- **S32** (youtube) — Loop Engineering, OpenAI Sites & the Great China Model Shift — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S32/digest.md`
+  - Shane: This is a tweet from OpenAI.
+- **S33** (youtube) — Ryan Lopopolo - Harness Engineering: How to Build Software W — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S33/digest.md`
+  - Thank you kindly. Uh we've only got a
+- **S34** (youtube) — 【Loop Engineering 循环工程】从理论到实践，它真的适合每个人吗？ — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S34/digest.md`
+  - 差不多同一时间,Anthropic 那边管 Claude Code 的
+- **S35** (youtube) — Loop Engineering Simplified. Here's What To Do Next — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S35/digest.md`
+  - Prompt engineering is dead and most people haven't noticed it.
+- **S36** (youtube) — Visualizing Claude Code Ep.1 | Sessions, Turns & the Agent L — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S36/digest.md`
+  - An Agent looks like a chat interface, but behind it runs a whole execution chain.
+- **S37** (youtube) — Loop Engineering 火了：AI Agent 的杠杆，正在从 Prompt 移到 Loop — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S37/digest.md`
+  - Hello everyone, welcome to Lingjie's AI Talk.
+- **S38** (youtube) — L8 Principal's Agentic Engineering Workflow — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S38/digest.md`
+  - Hi everyone, welcome to this video and
+- **S39** (youtube) — The NEW Way to Use Claude Code in 2026 (Loops) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S39/digest.md`
+  - The creator of Claude Code says that he
+- **S40** (youtube) — Claude Code 隱藏功能：創造者 Boris 公開 15 個私藏技巧 — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S40/digest.md`
+  - 那個打造出 Claude Code 的 Boris Cherny
+- **S41** (youtube) — Are senior developers going back to writing code by hand? — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S41/digest.md`
+  - There's a real tension in the developer
+- **S42** (youtube) — Claude Code Dynamic Workflows Explained for Beginners — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S42/digest.md`
+  - This is not a normal Claude code
+- **S43** (youtube) — 13 Claude Code TIPS you didn’t know about — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S43/digest.md`
+  - These are 13 CloudCode tricks that most
+- **S44** (youtube) — The New AI prompting Method Everyone Is Talking About: Loops — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S44/digest.md`
+  - There's a new idea that the top AI users
+- **S45** (youtube) — Harness Engineering: 4 Levers to Diagnose Any AI Agent — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S45/digest.md`
+  - Everyone [snorts] is talking about AI
+- **S46** (youtube) — Loop Engineering, Claude Code /goal, and Agent Routines — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S46/digest.md`
+  - Oh, hey everybody. Can you hear me? I'm
+- **S47** (youtube) — Stop Prompting Claude Code: Loop Engineering in 5 Minutes — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S47/digest.md`
+  - So, Boris Cherny, who runs Claude code
+- **S48** (youtube) — /goal vs /loop in Claude Code (Full Guide for Devs) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S48/digest.md`
+  - Goal and loop engineering for [music]
+- **S49** (youtube) — Ralph Loop STEP BY STEP DEMO — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S49/digest.md`
+  - demonstrate step-by-step so you can
+- **S50** (youtube) — How to Build a Self-Improving Code Agent With RAG — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S50/digest.md`
+  - This is SkillBank — a coding agent
+- **S51** (youtube) — Anthropic Just Dropped the Biggest Subagent Upgrade Yet — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S51/digest.md`
+  - Okay, so cloud code sub agents became
+- **S52** (youtube) — Why I don't open Claude Code anymore. — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S52/digest.md`
+  - There's a new discussion in the coding
+- **S53** (youtube) — Cursor just crushed Claude Code — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S53/digest.md`
+  - So a few days ago I opened up Curser.
+- **S54** (youtube) — OpenClaw vs Hermes Agent (Don’t choose WRONG!) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S54/digest.md`
+  - Hey, I'm Matt and you're trying to
+- **S55** (youtube) — Loop Engineering in 9 Minutes — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S55/digest.md`
+  - I saw a couple posts that went viral of
+- **S56** (youtube) — Stop Prompting Claude. Start Loop Engineering. — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S56/digest.md`
+  - Boris Cherny, the creator of Claude
+- **S57** (youtube) — Loop Engineering Explained — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S57/digest.md`
+  - If you're coding with Cloud or CodeX
+- **S58** (youtube) — How to write AI agent loops in Claude Code and Codex — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S58/digest.md`
+  - Prompts are out and loops are in. If
+- **S59** (youtube) — Loop Engineering: The Future of AI Coding? — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S59/digest.md`
+  - Okay, so over the last 24 hours almost
+- **S60** (youtube) — wtf is Loop Engineer & how to setup for real — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S60/digest.md`
+  - Thanks HubSpot for sponsoring this
+- **S61** (youtube) — Loop Engineering Totally 10x Hermes agents — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S61/digest.md`
+  - There's a new term going around and you
+- **S62** (youtube) — Agent Loops: Complete Guide (Claude Code + Codex) — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S62/digest.md`
+  - This is a complete guide to building
+- **S63** (youtube) — Ralph Loops: Build Dumb AI Loops That Ship — Chris Parsons,  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S63/digest.md`
+  - this workshop is on Ralph loops.
+- **S64** (youtube) — Claude Code v2.1.139 — Agent Dashboard & Auto-Loop Goals — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S64/digest.md`
+  - and 39 two-bit editions, a unified agent
+- **S65** (youtube) — Claude Code Creator: “Write Loops, Not Prompts” — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S65/digest.md`
+  - One tweet and a video clip from OpenClaw
+- **S66** (youtube) — Reflecting on a year of Claude Code — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S66/digest.md`
+  - When we first released Claude Code,
+- **S67** (youtube) — Claude Code Advanced Workflow - Build & Ship Real Apps — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S67/digest.md`
+  - Most people use Claude code one prompt
+- **S68** (youtube) — Claude Code Agent View: Parallel Agents Are Here — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S68/digest.md`
+  - &lt;b&gt;Claude Code just got a new&lt;/b&gt;
+- **S69** (youtube) — How to Build Effective Claude Code Agents in 2026 — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S69/digest.md`
+  - What would you say by the end of this
+- **S70** (youtube) — Only the best are using them... — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S70/digest.md`
+  - A new coding meta just dropped. Over
+- **S71** (youtube) — Claude Code Just Dropped /Goal. (Master it in 8 Minutes). — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S71/digest.md`
+  - Claude just released one of the most
+- **S72** (youtube) — Claude Code /goal Just Dropped and it Can Build Literally An — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S72/digest.md`
+  - Claude Code has just released a feature
+- **S73** (youtube) — Stop Using Claude's /goal Feature | Here's What Works — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S73/digest.md`
+  - Code just released a skill called slash
+- **S74** (youtube) — Harness Engineering: How to Build Software When Humans Steer — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S74/digest.md`
+  - &gt;&gt; Our next speaker is here to speak about
+- **S75** (youtube) — Agent Harness explained in 8min.. — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S75/digest.md`
+  - Asian harness is just one of those terms
+- **S76** (youtube) — Harness Engineering: What Separates Top Agentic Engineers Ri — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S76/digest.md`
+  - A term that's popping up more and more
+- **S77** (youtube) — What is an Agent Harness? and How to build a great one! — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S77/digest.md`
+  - Everybody talks about agent harnesses,
+- **S78** (youtube) — The new spec-driven workflow is a mess... — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S78/digest.md`
+  - Sitting alone in a dark room, tinkering
+- **S79** (youtube) — Build and deploy a full app with Claude Code in 2026 (full t — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S79/digest.md`
+  - Here's an app that I built with Claude
+- **S80** (youtube) — Loop Engineering: The 6 Parts of a Real Agent Harness | ADI  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S80/digest.md`
+  - But there's a followup to that which is
+- **S81** (youtube) — Harness Engineering vs Loop Engineering: Which One Does Your — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S81/digest.md`
+  - harness engineering, loop engineering,
+- **S82** (paper) — Probe-and-Refine Tuning of Repository Guidance for Coding Ag — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S82/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S83** (paper) — Agentic AutoResearch forSpace Autonomy: An Auditable, LLM-Dr — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S83/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S84** (paper) — Dual-Agent Framework for Cross-Model Verified Translation of — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S84/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S85** (paper) — Connect the Dots: Training LLMs for Long-Lifecycle Agents wi — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S85/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S86** (paper) — Beyond Static Endpoints: Tool Programs as an Interface for F — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S86/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S87** (paper) — Human-on-the-Loop Orchestration for AI-Assisted Legal Discov — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S87/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S88** (paper) — Library-Aware Doubles and Iterative Repair for Large Languag — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S88/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S89** (paper) — ENPIRE: Agentic Robot Policy Self-Improvement in the Real Wo — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S89/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S90** (paper) — AgenticDB: Agentic Performance Reconfiguration for Database  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S90/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S91** (paper) — MetaResearcher: Scaling Deep Research via Self-Reflective Re — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S91/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S92** (paper) — Agentic Electronic Design Automation: A Handoff Perspective — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S92/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S93** (paper) — Hidden Anchors in Multi-Agent LLM Deliberation — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S93/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S94** (paper) — AdsMind: A Physics-Grounded Multi-Agent System for Self-Corr — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S94/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S95** (paper) — Skill-MAS: Evolving Meta-Skill for Automatic Multi-Agent Sys — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S95/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S96** (paper) — Deep Research in Physical Sciences: A Multi-Agent Framework  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S96/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S97** (paper) — Bridging Creative Intent and Visual Quality: Creator-Driven  — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S97/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S98** (paper) — Before the Pull Request: Mining Multi-Agent Coordination — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S98/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",
+- **S99** (paper) — StaminaBench: Stress-Testing Coding Agents over 100 Interact — `/Users/pw/Connecting Dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/research/loop-engineering-agent-hub-2026/ingest/sources/S99/digest.md`
+  - "title": "Probe-and-Refine Tuning of Repository Guidance for Coding Agents",

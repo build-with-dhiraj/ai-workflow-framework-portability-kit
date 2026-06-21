@@ -17,5 +17,15 @@ dhiraj-portfolio-content-brief.md
 .idea/
 .vscode/
 
+# Local dev / scrape artifacts (not part of kit)
+.playwright-mcp/
+__pycache__/
+*.pyc
+cm-*.png
+live-*.*
+
+# Loop research — shallow clones are reproducible via audit_github_repos.py
+research/loop-engineering-agent-hub-2026/github-clones/
+
 # Plan-mode artifacts (if any sneak in)
 *.plan.md
