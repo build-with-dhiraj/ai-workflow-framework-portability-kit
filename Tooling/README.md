@@ -14,6 +14,7 @@ This folder captures the **host-side tooling** Claude depends on: brew packages,
 | `Brewfile` | Leaf packages installed via Homebrew, plus VS Code extensions and `uv` tools | `brew bundle dump --force --file=./Brewfile` |
 | `npm-globals.json` | Global npm packages (excluding npm itself) | `npm list -g --depth=0 --json` |
 | `restore.sh` | One-shot script that installs everything and restores the entire kit | hand-authored |
+| `sync-repo-about.sh` | Syncs GitHub repo **About** description with live `Agents/` + `Skills/` counts | hand-authored; also runs via CI on push |
 
 > Only **leaf** brew packages are captured — i.e., things you `brew install`'d directly. Their dependencies (several dozen transitive packages — `ffmpeg` alone pulls a large tree) come along automatically when brew bundle runs. This keeps the Brewfile small and forward-compatible across brew versions.
 
@@ -122,6 +123,7 @@ npm list -g --depth=0 --json > ./npm-globals.json
 ```
 
 Commit both files (if this kit is in git) so the next restore captures the latest state.
+After adding or removing agents/skills, the GitHub **About** blurb updates automatically — `.github/workflows/sync-repo-about.yml` runs `Tooling/sync-repo-about.sh` on every push to `main` that touches `Agents/` or `Skills/`. To sync manually: `bash Tooling/sync-repo-about.sh`.
 
 ---
 

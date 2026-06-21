@@ -1,0 +1,25 @@
+name: Sync repo About
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Agents/**'
+      - 'Skills/**'
+      - 'Tooling/sync-repo-about.sh'
+      - '.github/workflows/sync-repo-about.yml'
+
+permissions:
+  contents: read
+  administration: write
+
+jobs:
+  sync-about:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update GitHub About description
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash Tooling/sync-repo-about.sh
