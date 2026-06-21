@@ -6,7 +6,7 @@
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/build-with-dhiraj/ai-workflow-framework-portability-kit?color=yellow"></a>
   <img alt="last commit" src="https://img.shields.io/github/last-commit/build-with-dhiraj/ai-workflow-framework-portability-kit">
   <img alt="agents" src="https://img.shields.io/badge/agents-36-blue">
-  <img alt="skills" src="https://img.shields.io/github/directory-file-count/build-with-dhiraj/ai-workflow-framework-portability-kit/Skills?type=dir&label=skills&color=blue">
+  <img alt="skills" src="https://img.shields.io/badge/skills-133-blue">
   <img alt="platform" src="https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white">
   <img alt="Claude Code" src="https://img.shields.io/badge/Claude%20Code-orchestration-D97757">
 </p>
