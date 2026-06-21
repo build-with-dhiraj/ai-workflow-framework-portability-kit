@@ -17,8 +17,12 @@ if ! command -v gh >/dev/null 2>&1; then
 fi
 
 # GITHUB_TOKEN cannot edit repo settings; REPO_ADMIN_TOKEN (classic PAT, repo scope) is required in CI.
-if [ -z "${GH_TOKEN:-}" ] && [ -n "${REPO_ADMIN_TOKEN:-}" ]; then
+if [ -n "${REPO_ADMIN_TOKEN:-}" ]; then
   export GH_TOKEN="$REPO_ADMIN_TOKEN"
+elif [ -n "${GH_TOKEN:-}" ]; then
+  :
+elif [ -n "${GITHUB_TOKEN:-}" ]; then
+  export GH_TOKEN="$GITHUB_TOKEN"
 fi
 
 if [ -z "${GH_TOKEN:-}" ]; then
