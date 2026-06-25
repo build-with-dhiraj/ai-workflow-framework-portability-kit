@@ -7,6 +7,13 @@
       "headers": {
         "Authorization": "Bearer REDACTED_PUT_N8N_MCP_JWT_HERE"
       }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
     }
   }
 }

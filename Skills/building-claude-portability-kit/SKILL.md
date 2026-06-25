@@ -34,7 +34,7 @@ Every portability kit gets exactly this shape. Folder boundaries are not arbitra
 └── Tooling/             ← README + Brewfile + npm-globals.json + restore.sh
 ```
 
-The **canonical worked example** lives at `/Users/pw/Claude Agents and Skills/` — when filling in a new kit, reference the structure and tone there.
+The **canonical kit already exists** as a git repo at `/Users/pw/connecting-dots/CONTEXT/Personal Projects/Claude Agents and Skills (PORTABILITY KIT)/` (remote: `github.com/build-with-dhiraj/ai-workflow-framework-portability-kit`). **Before building anything, LOCATE this existing kit and REFRESH it in place** (see "Maintenance" below) — do NOT create a new kit folder elsewhere (e.g. `~/Claude Agents and Skills/`); that just produces a redundant, unlinked duplicate. Reference its structure and tone when filling gaps.
 
 ---
 
