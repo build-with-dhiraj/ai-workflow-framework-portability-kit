@@ -6,6 +6,8 @@ brew "cocoapods"
 brew "ffmpeg"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Swiss-army knife of markup format conversion
@@ -14,15 +16,16 @@ brew "pandoc"
 brew "poppler"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Manipulate and query tags on macOS files
+brew "tag"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
-vscode "anysphere.remote-ssh"
-uv "notebooklm-mcp-cli"
-uv "specify-cli"
 uv "youtube-studio-mcp"
 npm "@anthropic-ai/claude-code"
 npm "@cobusgreyling/loop-audit"
@@ -34,8 +37,6 @@ npm "@openai/codex"
 npm "agent-browser"
 npm "defuddle"
 npm "docx"
-npm "loom"
 npm "pnpm"
 npm "pptxgenjs"
 npm "vercel"
-npm "zubeid-youtube-mcp-server"
