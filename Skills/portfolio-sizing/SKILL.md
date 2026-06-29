@@ -25,9 +25,9 @@ A dedicated **`--step sizing`** is now wired in `32_consult_brain.py` (maps to
 corpus so the desk-synthesis sizing atomics (`vault/desk/sizing/atomic/`, weight 0.9) surface
 ALONGSIDE the binding CIO, then keep the two underlying canon steps as a fallback union:
 ```bash
-set -a && source /Users/pw/invest/.env && set +a
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a
 # Primary: dedicated sizing step on blended corpus (surfaces desk atomics + binding)
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/32_consult_brain.py \
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<ticker or name> Kelly position sizing edge opportunity cost fractional half kelly catastrophic loss risk uncertainty liquidity" \
   --model general \
   --step sizing \
@@ -35,7 +35,7 @@ set -a && source /Users/pw/invest/.env && set +a
   --json-out extracted/grilling/<TICKER>_sizing.json
 # Fallback / detail: the two underlying canon steps (union the returned principles)
 for STEP in opportunity-cost margin-of-safety; do
-  /Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/32_consult_brain.py \
+  /Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
     --company "<ticker or name> Kelly position sizing edge opportunity cost fractional half kelly" \
     --model general \
     --step "$STEP" \

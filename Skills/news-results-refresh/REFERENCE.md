@@ -1,80 +1,80 @@
 # news-results-refresh — Reference
 
-Workspace: `/Users/pw/invest`. Env: `set -a && source /Users/pw/invest/.env && set +a`; Python: `/Users/pw/invest/.venv/bin/python`.
+Workspace: `/Users/Dhiraj/dev/invest`. Env: `set -a && source /Users/Dhiraj/dev/invest/.env && set +a`; Python: `/Users/Dhiraj/dev/invest/.venv/bin/python`.
 
 ## Sweep universe (FULL dashboard ∪ held, derived LIVE each cycle)
 The loop sweeps the **FULL Action Dashboard (~241 names)**, not just the ~90 INDmoney holdings.
 ```bash
 # 0. BUILD the sweep universe from the LIVE dashboard col B (READ-ONLY; degrade-safe).
 #    Re-derives data/manifests/dashboard_universe.json every cycle → onboarded rows auto-join.
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/build_sweep_universe.py
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/build_sweep_universe.py --dry-run  # inspect, no write
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/build_sweep_universe.py --test     # fixture self-test
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/build_sweep_universe.py
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/build_sweep_universe.py --dry-run  # inspect, no write
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/build_sweep_universe.py --test     # fixture self-test
 # prove what the detector sweeps (full dashboard ∪ held) + dump coverage:
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/70_detect_material_events.py --universe
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/70_detect_material_events.py --universe
 ```
 - Resolver `data/scripts/held_universe.py` exposes **`sweep_tickers()`** = `dashboard_universe.json.resolved` ∪ `held_universe.json.resolved`, degrade chain **dashboard → held → legacy** (each with a loud stderr warn; never a silent shrink). `held_tickers()` (owned-only) is UNCHANGED, still used where the owned distinction matters (AVOID-owned→SELL col-N word).
 - `dashboard_universe.json` (TRACKED): `generated_at`, `source:"dashboard:colB(live)"`, `resolved:[...]` (sweepable dashboard tickers w/ dossier), `held:[...]` (resolved ∩ held), per-ticker `{dossier, brain_model, company, held}`, `no_dossier:[...]` (data rows lacking a dossier — expect ~0), `alias_resolved` (e.g. `ZOMATO→ETERNAL`, `IGIL→IGI`). Legend rows (≥246) are excluded; aliases resolve via dossier `aliases:` then a small verified map.
 
 ## Commands (the chain)
 ```bash
-set -a && source /Users/pw/invest/.env && set +a
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a
 
 # 1. DETECT — material events over the sweep universe (full dashboard ∪ held) → SQLite index
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/70_detect_material_events.py
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/70_detect_material_events.py
 
 # 2. CONSULT THE BINDING BRAIN (when a MATERIAL event fires) — vault is CIO
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/32_consult_brain.py \
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<name>" --model <bank|consumer-brand|commodity-cyclical|utility-psu|capital-goods|platform|general> \
   --step <conviction|margin-of-safety|verdict> --corpus binding \
   --json-out extracted/grilling/<TICKER>_refresh.json
 
 # 3a. L1 WRITE-BACK — head-window edit only (HEAD_LIMIT=4000, never tail-append)
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/apply_head_window_grade.py <grade>.json
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/apply_head_window_grade.py <grade>.json
 # 3b. L2 — do NOT apply. Write a proposal instead:
 #     data/state/pending_reviews/<TICKER>.json  (human approves later)
 
 # 4. REINDEX + RECALL CANARY (floor 0.95, auto-revert on drop)
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/26_build_lancedb_index.py
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/26_build_lancedb_index.py
 
 # 5. (L1 only) propagate the refreshed one-liner to the Sheet "Why" column
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/extract_dashboard_why.py
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/extract_dashboard_why.py
 ```
 
 ### Dynamic-IV + guarded re-rank chain (earning-power event; PR #33)
 ```bash
 # Is this event an EARNING-POWER change (→ IV re-grade) or just price/flow/sentiment (→ IV untouched)?
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/coln_iv_event_gate.py --test
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/coln_iv_event_gate.py --test
 
 # Price-INDEPENDENT fundamental IV by brain_model (DCF / justified-P/B / mid-cycle). --test proves two prices → identical IV.
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/80_estimate_iv.py --test
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/80_estimate_iv.py --test
 
 # 71 IV-event branch is invoked by the normal orchestrator run (dry-run default; --apply re-freezes the head only).
 # The whole-set re-rank + publish is the GUARD, default-OFF. In the LOOP it is invoked by 73 stage 3c
 # (gated by RERANK_AUTO=1 AND brain-healthy post-reindex (SKIP_PUBLISH!=1) AND >=1 L1 applied this cycle):
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/82_rerank_guard.py --tag <tag>          # dry-run + assertions + order-diff, NO live write (RERANK_AUTO OFF)
-RERANK_AUTO=1 /Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/82_rerank_guard.py --tag <tag>   # SUPERVISED live re-rank (guarded + auto-revert)
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/82_rerank_guard.py --self-test
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/82_rerank_guard.py --tag <tag>          # dry-run + assertions + order-diff, NO live write (RERANK_AUTO OFF)
+RERANK_AUTO=1 /Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/82_rerank_guard.py --tag <tag>   # SUPERVISED live re-rank (guarded + auto-revert)
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/82_rerank_guard.py --self-test
 
 # A re-rank CARRIES the live col-D verdict + col-M conv byte-for-byte; if those disagree with the dossier
 # oracle, 82's carried-cell assertion ABORTS. Reconcile them first with the sanctioned col-D/col-M writer
 # (default dry-run; COL_DM_DASHBOARD_WRITE=1 + omit --dry-run to write live):
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/sync_col_dm.py --only <TICKER[,TICKER...]>   # dry-run plan, NO live write
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/sync_col_dm.py --test
-node /Users/pw/invest/tools/sheets-bridge/write_col_dm.mjs --self-test
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/sync_col_dm.py --only <TICKER[,TICKER...]>   # dry-run plan, NO live write
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/sync_col_dm.py --test
+node /Users/Dhiraj/dev/invest/tools/sheets-bridge/write_col_dm.mjs --self-test
 ```
 
 ### col-N news-aware quick-read + daily drift audit (PR #31/#32/#34)
 **col-N is published for EVERY dashboard row** — including AVOID / board-contradiction / `needs_review` names, analysed and filled exactly like any other stock (user directive 2026-06-26). The **binding Munger/Buffett CIO (vault) verdict is PRIMARY and is what col-N shows**; the **56-director board panel is ADVISORY and NEVER vetoes col-N**. 78's Gate 7 RECORDS any board (mis)alignment as a non-blocking signal (into `board_contradictions`, also surfaced by `81`); it never fails verification on a contradiction. 79 publishes whenever a VALID col-N can be synthesized and skips ONLY: `verdict==NEEDS_REVIEW`, a genuinely THIN dossier (BOTH best AND worst NEEDS_REVIEW), no rendered string, or head_overflow. A board contradiction / governance flag / within-tier `needs_review` is a CONTESTED GRADE that still publishes the current verdict's col-N and is recorded for human adjudication — never withheld.
 ```bash
 # 📰 segment (read-only): latest material event → dated factual verdict-neutral clause
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/coln_news_segment.py --test
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/coln_news_segment.py --test
 # col-N maker → checker (Gate 8 re-derives the 📰 segment) → sanctioned single-column writer
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/77_synthesize_dashboard_why.py --universe sweep --apply --force
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/78_verify_dashboard_why.py
-COL_N_DASHBOARD_WRITE=1 /Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/79_publish_col_n.py   # omit the env var for dry-run
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/77_synthesize_dashboard_why.py --universe sweep --apply --force
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/78_verify_dashboard_why.py
+COL_N_DASHBOARD_WRITE=1 /Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/79_publish_col_n.py   # omit the env var for dry-run
 # read-only whole-set consistency audit (writes nothing; exit≠0 on a class-1/2/5 drift; --strict gates all)
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/81_audit_dashboard_consistency.py
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/81_audit_dashboard_consistency.py
 ```
 
 ## Autonomy ladder (user override 2026-06-25: L2 IV/conviction/verdict-demotion + re-rank now AUTO under the guard)
@@ -95,11 +95,11 @@ with **`UNIQUE(ticker, event_date, headline)`** (NOT url — INDmoney Source-A n
 ### Deterministic idempotency regression check (Phase 3)
 ```bash
 # isolated built-in self-test (temp DB, no network): asserts run1=2 new, run2=0 new, dup=2
-/Users/pw/invest/.venv/bin/python data/scripts/70_detect_material_events.py --test
+/Users/Dhiraj/dev/invest/.venv/bin/python data/scripts/70_detect_material_events.py --test
 # OR replay the fixed cached dump against a throwaway DB copy (real state untouched):
 TMP=$(mktemp -d); cp data/state/event_index.sqlite "$TMP/t.sqlite"
-/Users/pw/invest/.venv/bin/python data/scripts/70_detect_material_events.py data/state/news_dump_mvp.json --db "$TMP/t.sqlite" | grep items=
-/Users/pw/invest/.venv/bin/python data/scripts/70_detect_material_events.py data/state/news_dump_mvp.json --db "$TMP/t.sqlite" | grep items=  # expect new_rows=0
+/Users/Dhiraj/dev/invest/.venv/bin/python data/scripts/70_detect_material_events.py data/state/news_dump_mvp.json --db "$TMP/t.sqlite" | grep items=
+/Users/Dhiraj/dev/invest/.venv/bin/python data/scripts/70_detect_material_events.py data/state/news_dump_mvp.json --db "$TMP/t.sqlite" | grep items=  # expect new_rows=0
 rm -rf "$TMP"
 ```
 

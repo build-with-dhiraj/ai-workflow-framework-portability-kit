@@ -40,7 +40,7 @@ set — never just bolting rows onto a stale order.
 - **Substack (or other newsletter) profile URLs / handles** — scrape them first (Stage 1) to extract
   which stocks each author recommends and the thesis, then continue.
 
-**Default workbook:** `/Users/pw/invest/Substack_Stock_Picks.xlsx`. If the user names a different
+**Default workbook:** `/Users/Dhiraj/dev/invest/Substack_Stock_Picks.xlsx`. If the user names a different
 file, use that. Always **preserve existing sheets/data** — this skill appends and refreshes, never
 overwrites unrelated content.
 
@@ -66,7 +66,7 @@ universe.
 
 ## Source of truth
 
-Keep the per-stock structured data in `/Users/pw/invest/extracted/` as the durable store:
+Keep the per-stock structured data in `/Users/Dhiraj/dev/invest/extracted/` as the durable store:
 `_consolidated.json` (thesis), `enriched/*.json` (live financials), `_principles_scores_v2.json`
 (factor scores), `valuation/v2/*.json` (valuations), `_final_v2.json` (the ranked dataset). New stocks
 are merged into these, then the workbook is rendered from them. The workbook is a *rendering*; the

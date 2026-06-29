@@ -26,8 +26,8 @@ CIO-native principle*, not a new first-principle.
 
 ## STEP 0 — Pull the canon (binding-safe)
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --corpus blended \
   --company "<stock name> decision journal process outcome resulting bias premortem inversion calibrated probability base rate fear and greed market cycle sentiment crowd psychology hold-forever inconsistency-avoidance status-quo re-decision second-order and-then-what psychological distance" \
   --model general \

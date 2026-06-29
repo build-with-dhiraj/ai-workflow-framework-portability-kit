@@ -37,8 +37,8 @@ The SEBI-Satyam, SEBI-IL&FS-CRA, and Damodaran-forensic method-atomics live in t
 layer. Pull them before running the checklist:
 
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --corpus canon \
   --company "<company name> cash flow PAT related party pledge auditor provisioning NBFC group entity insider trading forensic" \
   --model <bank|general|...> \
@@ -63,8 +63,8 @@ Munger/Buffett consult and confirm the four binding anchors are returned before 
 verdict:
 
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --corpus binding \
   --company "<company> incentive-caused bias accounting gimmicks operating cash flow faulty accounting management integrity" \
   --model <bank|general|...> \

@@ -20,7 +20,7 @@ Example: /usr/bin/python3 valuation_runner.py '<json inp>' <current_price>
 import json
 import sys
 
-sys.path.insert(0, "/Users/pw/.claude/skills/creating-financial-models")
+sys.path.insert(0, "/Users/Dhiraj/.claude/skills/creating-financial-models")
 from dcf_model import DCFModel  # noqa: E402
 
 

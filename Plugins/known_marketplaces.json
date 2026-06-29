@@ -4,15 +4,15 @@
       "source": "github",
       "repo": "anthropics/claude-plugins-official"
     },
-    "installLocation": "/Users/pw/.claude/plugins/marketplaces/claude-plugins-official",
+    "installLocation": "/Users/Dhiraj/.claude/plugins/marketplaces/claude-plugins-official",
     "lastUpdated": "2026-03-26T09:27:28.886Z"
   },
   "vercel-vercel-plugin": {
     "source": {
       "source": "directory",
-      "path": "/Users/pw/.cache/plugins/github.com-vercel-vercel-plugin"
+      "path": "/Users/Dhiraj/.cache/plugins/github.com-vercel-vercel-plugin"
     },
-    "installLocation": "/Users/pw/.cache/plugins/github.com-vercel-vercel-plugin",
+    "installLocation": "/Users/Dhiraj/.cache/plugins/github.com-vercel-vercel-plugin",
     "lastUpdated": "2026-03-27T19:40:28.844Z"
   },
   "superpowers-marketplace": {
@@ -20,7 +20,7 @@
       "source": "github",
       "repo": "obra/superpowers-marketplace"
     },
-    "installLocation": "/Users/pw/.claude/plugins/marketplaces/superpowers-marketplace",
+    "installLocation": "/Users/Dhiraj/.claude/plugins/marketplaces/superpowers-marketplace",
     "lastUpdated": "2026-05-06T07:34:08.605Z"
   },
   "karpathy-skills": {
@@ -28,7 +28,7 @@
       "source": "github",
       "repo": "forrestchang/andrej-karpathy-skills"
     },
-    "installLocation": "/Users/pw/.claude/plugins/marketplaces/karpathy-skills",
+    "installLocation": "/Users/Dhiraj/.claude/plugins/marketplaces/karpathy-skills",
     "lastUpdated": "2026-05-07T15:01:13.330Z"
   }
 }

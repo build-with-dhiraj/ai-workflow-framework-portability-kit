@@ -346,7 +346,7 @@ Three skills appeared in the live `~/.claude/skills/` since the last snapshot an
 |---|---|---|
 | `master-resume` | MIT (kit-default) | Research-grade resume/CV/cover-letter tailoring from a persistent experience library to specific JDs — provenance-checked anti-fabrication, confidence-scored matching, 8-dimension critique, LaTeX/Overleaf output. **Runtime dep:** `tectonic` (Homebrew) for PDF compilation — not yet captured in `Tooling/Brewfile`; `brew install tectonic` after restore. |
 | `obsidian-vault-architect` | MIT (kit-default) | Higher-level Obsidian vault structuring/architecture guidance (complements the `obsidian-graph-auditor` / `obsidian-brain-eval` / `obsidian-orphan-rescue` trilogy). |
-| `stock-onboarding-pipeline` | MIT (kit-default) | End-to-end onboarding of new Indian stocks into the "Paise se Paisa" Action Dashboard (deep dossier → advisor board with FOREVER gate → deterministic D-Engine re-rank → publish). Embeds a personal workspace path (`/Users/pw/invest`) and a Google Sheet fileId — adjust on a new machine. |
+| `stock-onboarding-pipeline` | MIT (kit-default) | End-to-end onboarding of new Indian stocks into the "Paise se Paisa" Action Dashboard (deep dossier → advisor board with FOREVER gate → deterministic D-Engine re-rank → publish). Embeds a personal workspace path (`/Users/Dhiraj/dev/invest`) and a Google Sheet fileId — adjust on a new machine. |
 
 `hooks` + `statusLine` (token-optimizer) remain intentionally **out** of the kit's `settings.json` — they hardcode a machine-specific `.archive-token-optimizer-pkg` path and the token-optimizer plugin re-establishes them on restore.
 

@@ -7,7 +7,7 @@ Margin-of-Safety factor). Its job is to flag which high-ranked names are *cheap 
 ## The engine
 Import the bug-fixed model — do NOT reimplement:
 ```python
-import sys; sys.path.insert(0, "/Users/pw/.claude/skills/creating-financial-models")
+import sys; sys.path.insert(0, "/Users/Dhiraj/.claude/skills/creating-financial-models")
 from dcf_model import DCFModel
 ```
 Run with `/usr/bin/python3`. The model now: decouples `depreciation_percent` from capex; normalises

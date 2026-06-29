@@ -34,15 +34,15 @@ Manish Gupta, the Tambade asset-light lens). **Do a dual-pull and union the slug
 
 ```bash
 # (a) BINDING — the CIO ranking and arbiter (run ALWAYS; these atoms are the verdict)
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --corpus binding --step capital-allocation \
   --company "<company> capital allocation owner earnings reinvest above cost of capital buybacks dividends" \
   --model general --json-out extracted/grilling/<TICKER>_capalloc_binding.json
 
 # (b) PERSPECTIVES — the India runway voices (context/divergence only, NEVER the verdict)
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --corpus perspectives --step capital-allocation --k 15 \
   --company "<company> reinvestment runway incremental ROCE QGLP asset light capital discipline long runway" \
   --model general --json-out extracted/grilling/<TICKER>_capalloc_persp.json

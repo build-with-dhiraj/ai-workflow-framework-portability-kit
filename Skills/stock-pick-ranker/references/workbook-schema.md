@@ -1,6 +1,6 @@
 # Workbook schema — Substack_Stock_Picks.xlsx
 
-Default path: `/Users/pw/invest/Substack_Stock_Picks.xlsx`. **Always read the live workbook first**
+Default path: `/Users/Dhiraj/dev/invest/Substack_Stock_Picks.xlsx`. **Always read the live workbook first**
 (`openpyxl.load_workbook`) and match existing headers — the layout below is the as-built reference, but
 trust the file over this doc if they diverge. **Preserve every existing sheet.** Use `/usr/bin/python3`.
 

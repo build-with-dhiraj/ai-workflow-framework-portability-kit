@@ -28,8 +28,8 @@ durability-tested so conviction is grounded, not inferred.
 The moat-method atomics are in three canon folders. Pull them at the conviction step:
 
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && \
-/Users/pw/invest/.venv/bin/python /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && \
+/Users/Dhiraj/dev/invest/.venv/bin/python /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<name + moat terms, e.g. 'INDIAMART network effect switching costs contestable'>" \
   --model <model> --step conviction \
   --json-out extracted/grilling/<TICKER>_moat.json

@@ -23,8 +23,8 @@ The Damodaran "Valuing Financial Service Firms" method-atomics are in the `canon
 (it admits the bank canon AND keeps the binding/perspective atoms on relevance), and the financial-firm canon
 is **invisible to a blended query without it**:
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<bank name>" --model bank --step intrinsic-value --corpus blended --role banks \
   --json-out extracted/grilling/<TICKER>_bankval.json
 ```

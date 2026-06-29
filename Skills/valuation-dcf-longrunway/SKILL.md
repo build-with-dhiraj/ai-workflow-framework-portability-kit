@@ -32,8 +32,8 @@ cases only — not a rejection of disciplined multi-stage DCF for a genuinely ob
 ## STEP 0 — Pull the canon (binding-safe)
 Damodaran's DCF/terminal-value method-atomics are in the `canon` layer:
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<name>" --model general --step intrinsic-value --corpus canon \
   --json-out extracted/grilling/<TICKER>_dcf.json
 ```

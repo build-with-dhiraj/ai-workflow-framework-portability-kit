@@ -6,7 +6,7 @@ description: >
   for life. The fund mirror of the stock onboarding pipeline. Use when the user says "add an
   ETF/REIT/InvIT", "grade this fund", "build a global-trend buy-list", "passive sleeve", "evaluate
   a fund like a stock", "should I buy <ETF>", "is this trend worth owning", or wants to extend /
-  re-rank the global-trend exposure list. Workspace: /Users/pw/invest. Publish target is the
+  re-rank the global-trend exposure list. Workspace: /Users/Dhiraj/dev/invest. Publish target is the
   🌍 Global & Passive Base tab (re-architected per the plan) — the LOCKED Action Dashboard is
   NEVER touched. Charlie Munger & Warren Buffett (the Obsidian vault) are the binding CIO; the
   vault gates trend-durability/conviction/verdict/MoS — it is not narrative decoration.
@@ -18,7 +18,7 @@ The single source of truth for finding and grading global-trend funds, REITs and
 them to the **🌍 Global & Passive Base** tab. Follow the stages in order. This is the **fund mirror** of
 [[stock-onboarding-pipeline]]: the SAME board (binding Munger/Buffett CIO · 31 perspectives · 14 canon ·
 8 desks · WC) evaluates ETFs/REITs the **same way it evaluates stocks** — verdict → conviction → margin of
-safety. The design source of truth is `/Users/pw/.claude/plans/build-a-plan-to-iterative-creek.md`.
+safety. The design source of truth is `/Users/Dhiraj/.claude/plans/build-a-plan-to-iterative-creek.md`.
 
 The retrieval plumbing is identical to the stock pipeline — all vault consultation goes through
 `data/scripts/32_consult_brain.py` (scoped, cited, structured), now carrying the four NEW fund models
@@ -102,8 +102,8 @@ what lets the board "look at ETFs the same way as stocks." TOO_HARD is quarantin
 
 ## CONSULTING THE BRAIN (`data/scripts/32_consult_brain.py` — the ONE retrieval entrypoint)
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<trend or fund name>" \
   --model <passive-etf|commodity-etf|reit|invit> \
   --step <circle|conviction|intrinsic-value|margin-of-safety|opportunity-cost|verdict|inversion|capital-allocation|sizing> \

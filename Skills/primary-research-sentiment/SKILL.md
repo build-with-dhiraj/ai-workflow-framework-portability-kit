@@ -63,8 +63,8 @@ explicit attempt to *disprove* it. Anchoring to the existing view is the failure
 Then pull the standing arbiter frame from the desk/binding layer (the `--role` filter is INCLUSIVE — it
 admits the desk atomic AND keeps the binding mentors on relevance):
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
   --company "<name>" --model general --step understanding --corpus blended --role primary-research \
   --json-out extracted/grilling/<TICKER>_primary.json
 ```
@@ -76,8 +76,8 @@ The desk atomics are connective tissue, not a vote — they **never** set verdic
 First find the ValuePickr thread URL (web-search `forum.valuepickr.com <company>` — the thread id is the
 number in `/t/<slug>/<id>`). The screener URL is derivable from the ticker. Then:
 ```bash
-set -a && source /Users/pw/invest/.env && set +a && /Users/pw/invest/.venv/bin/python \
-  /Users/pw/invest/data/scripts/61_harvest_primary_research.py \
+set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
+  /Users/Dhiraj/dev/invest/data/scripts/61_harvest_primary_research.py \
   --ticker <TICKER> \
   --valuepickr-url "https://forum.valuepickr.com/t/<slug>/<id>" \
   --screener-url   "https://www.screener.in/company/<TICKER>/consolidated/"

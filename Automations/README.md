@@ -47,7 +47,7 @@ These are the heartbeat mechanisms. None is stored in a kit file; all are availa
 
 `settings.json` can carry a `hooks` block (shell commands fired on `SessionStart`/`PreToolUse`/`PreCompact`/etc.) and a `statusLine` — the *event-driven* cousin of the scheduled heartbeat.
 
-**This kit deliberately does NOT vendor them.** The operator's live hooks/statusLine are token-optimizer-provided and hardcode a machine-specific path (`/Users/pw/.claude/skills/.archive-token-optimizer-pkg/…`). Copying them verbatim would bake a dead path into the snapshot. The token-optimizer plugin re-establishes them on a fresh Mac. (See the `Skills/README.md` 2026-06-11 changelog where this choice is logged.)
+**This kit deliberately does NOT vendor them.** The operator's live hooks/statusLine are token-optimizer-provided and hardcode a machine-specific path (`/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/…`). Copying them verbatim would bake a dead path into the snapshot. The token-optimizer plugin re-establishes them on a fresh Mac. (See the `Skills/README.md` 2026-06-11 changelog where this choice is logged.)
 
 If you ever want a *portable* hook (e.g. a repo-relative pre-commit guard), add it to a `settings.template.json` with `$HOME`-relative paths — never absolute `/Users/<you>/` paths.
 

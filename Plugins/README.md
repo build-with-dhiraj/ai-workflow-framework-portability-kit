@@ -47,7 +47,7 @@ Snapshot in `known_marketplaces.json` next to this README.
 | Marketplace | Source type | Source | Notes |
 |---|---|---|---|
 | `claude-plugins-official` | GitHub | `anthropics/claude-plugins-official` | Default — registered by Claude Code at install time. No action needed. |
-| `vercel-vercel-plugin` | **Local directory** | `/Users/pw/.cache/plugins/github.com-vercel-vercel-plugin` | ⚠️ On a new Mac this directory doesn't exist — see §5 for restore options. |
+| `vercel-vercel-plugin` | **Local directory** | `/Users/Dhiraj/.cache/plugins/github.com-vercel-vercel-plugin` | ⚠️ On a new Mac this directory doesn't exist — see §5 for restore options. |
 | `superpowers-marketplace` | GitHub | `obra/superpowers-marketplace` | Public repo. |
 | `karpathy-skills` | GitHub | `forrestchang/andrej-karpathy-skills` | Public repo. |
 
@@ -99,7 +99,7 @@ On the source Mac, the Vercel marketplace was registered as a **local directory 
 "vercel-vercel-plugin": {
   "source": {
     "source": "directory",
-    "path": "/Users/pw/.cache/plugins/github.com-vercel-vercel-plugin"
+    "path": "/Users/Dhiraj/.cache/plugins/github.com-vercel-vercel-plugin"
   }
 }
 ```
