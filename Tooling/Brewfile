@@ -8,6 +8,8 @@ brew "ffmpeg"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Swiss-army knife of markup format conversion
@@ -26,6 +28,8 @@ brew "uv"
 brew "yt-dlp"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
+go "github.com/tmc/nlm/cmd/nlm"
+uv "notebooklm-mcp-cli"
 uv "youtube-studio-mcp"
 npm "@anthropic-ai/claude-code"
 npm "@cobusgreyling/loop-audit"
@@ -40,3 +44,4 @@ npm "docx"
 npm "pnpm"
 npm "pptxgenjs"
 npm "vercel"
+npm "zubeid-youtube-mcp-server"

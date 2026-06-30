@@ -272,7 +272,7 @@ If Claude Code lists all 36 custom agents and acknowledges Engineering Manager m
 | Specialist agent not discovered | Check `~/.claude/agents/<name>.md` has the right YAML frontmatter (`name:` matches what you dispatch with). |
 | Skill not auto-triggering | Check `SKILL.md` frontmatter `description:` — the trigger phrases live there. |
 | Plugin not appearing in skill list | `claude plugin list` to verify enabled; re-install if missing. |
-| MCP server "not authenticated" | Run the auth flow per server (e.g., `nlm login` for NotebookLM). For HTTP MCPs in `mcp.json`, verify the JWT is current. |
+| MCP server "not authenticated" | Run the auth flow per server (e.g., `nlm auth login` for NotebookLM). For HTTP MCPs in `mcp.json`, verify the JWT is current. |
 | Settings.json permissions seem too permissive | They are intentional — the orchestrator never directly executes them, and dispatched specialists need them. If you want stricter scoping, edit `settings.json` to use granular `Bash(<cmd>)` patterns instead of `Bash(*)`. |
 | Engineering Manager mode "I won't write code" appears in a dispatched subagent | This is a bug — the rule only binds the orchestrator. Re-read `CLAUDE-global.md` § Specialist Behavior; the override clause is there. If a specialist self-refuses, point it at that clause. |
 
@@ -290,7 +290,7 @@ For each capability category, what *else* needs to exist on the new Mac for it t
 | Supabase MCP | Connector | — | Supabase access token (re-auth via Claude UI) |
 | Slack messaging | Plugin/Connector | — | Slack OAuth via Claude UI |
 | Gmail / Calendar / Drive | Connector | — | Google OAuth on first use |
-| NotebookLM | Connector | `nlm` CLI (`npm i -g nlm`) + `nlm login` | Google account in `nlm` |
+| NotebookLM | Connector | `notebooklm-mcp` MCP (`uv tool install notebooklm-mcp-cli`) + the real `nlm` CLI (`brew install go` then `go install github.com/tmc/nlm/cmd/nlm@latest`; symlink into `~/.local/bin`), then `nlm auth login`. ⚠️ NOT `npm i -g nlm` — that npm package is an unrelated Node lifecycle tool. | Google account in `nlm` |
 | Reddit search **read** | Connector | — | None (read-only safety boundary) |
 | Reddit **write** (currently OFF) | Connector | `REDDIT_USERNAME` / `REDDIT_PASSWORD` env vars | Don't set unless intentional |
 | Pinecone | Connector | — | Pinecone API key (set in MCP config when prompted) |
