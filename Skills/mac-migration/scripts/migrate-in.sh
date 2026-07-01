@@ -218,6 +218,31 @@ fi
 # ---- 8. Worktree prune ---------------------------------------------------------
 for i in "${!MAP_NEW[@]}"; do d="${MAP_NEW[$i]}"; [ -d "$d/.git" ] && run git -C "$d" worktree prune 2>/dev/null; done
 
+# ---- 8b. Background launchd agents ("Allow in the Background") — stage + rewrite, DON'T auto-load ----
+# launchd program paths are LITERAL (no $HOME/env expansion), so the plists must be path-rewritten
+# like code; and macOS BLOCKS each agent until it is approved in System Settings. We stage them to a
+# REVIEW dir and rewrite paths, but never auto-activate (that needs your OK + a GUI toggle).
+if [ -f "$BUNDLE/launchagents.tgz" ]; then
+  LA_REVIEW="$HOME_DIR/mac-migration-launchagents-review"
+  log "staging background launchd agents -> $LA_REVIEW (review; NOT auto-loaded)"
+  run mkdir -p "$LA_REVIEW"
+  run tar -xzf "$BUNDLE/launchagents.tgz" -C "$LA_REVIEW"     # -> $LA_REVIEW/Library/LaunchAgents/*.plist
+  rewrite_tree "$LA_REVIEW"                                    # same (A) user + (B) project-root rewrite
+  if [ "$DRY" -eq 0 ]; then cat <<EOF
+  Staged (path-rewritten) at: $LA_REVIEW/Library/LaunchAgents/   inventory: $BUNDLE/launchagents-inventory.txt
+  These are macOS "Allow in the Background" agents — NOT auto-installed (they need your OK + a GUI toggle).
+  Restore ONLY your own agents (skip app-managed ones — Google/Chrome/OpenAI updaters etc. reappear on reinstall):
+    1. Ensure the script it runs exists + is executable (chmod +x); create its StandardOut/ErrorPath log dirs.
+    2. cp "$LA_REVIEW/Library/LaunchAgents/<label>.plist" ~/Library/LaunchAgents/
+    3. grep -R "/Users/$OLD_USER" ~/Library/LaunchAgents      # must be EMPTY
+    4. launchctl bootstrap gui/\$(id -u) ~/Library/LaunchAgents/<label>.plist   # fallback: launchctl load -w
+       launchctl enable gui/\$(id -u)/<label> ; launchctl kickstart -k gui/\$(id -u)/<label>   # for always-on
+    5. System Settings > General > Login Items & Extensions > "Allow in the Background" > toggle each ON (required).
+    6. Verify: launchctl list | grep <label> ; tail its log for crash-loops.
+EOF
+  fi
+fi
+
 # ---- 9. Broken-symlink check + MCP checklist ----------------------------------
 if [ "$DRY" -eq 0 ] && [ -d "$HOME_DIR/.claude/skills" ]; then
   broken="$(find "$HOME_DIR/.claude/skills" -maxdepth 1 -type l ! -exec test -e {}/SKILL.md \; -print 2>/dev/null)"

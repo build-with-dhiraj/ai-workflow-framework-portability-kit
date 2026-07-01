@@ -99,6 +99,19 @@ if [ "${#present[@]}" -gt 0 ]; then
   tar --exclude='.DS_Store' -czf "$STAGE/dotfiles-secrets.tgz" -C "$HOME" "${present[@]}"
 fi
 
+# --- Background launchd agents (~/Library/LaunchAgents/*.plist) = the "Login Items & ---
+# --- Extensions -> Allow in the Background" items. Their program paths are LITERAL (launchd ---
+# --- does NOT expand $HOME/env), so they must be path-rewritten on restore; macOS also re-blocks ---
+# --- them until re-approved. Captured here; migrate-in.sh stages them for review (never auto-loads). ---
+if ls "$HOME"/Library/LaunchAgents/*.plist >/dev/null 2>&1; then
+  log "archiving ~/Library/LaunchAgents -> launchagents.tgz (background 'Allow in the Background' agents)"
+  tar --exclude='.DS_Store' -czf "$STAGE/launchagents.tgz" -C "$HOME" Library/LaunchAgents
+  { echo "# labels loaded on the OLD Mac (launchctl list). YOUR agents restore;"
+    echo "# app-managed ones (Google/Chrome/OpenAI updaters, Keystone) reappear on reinstall."
+    launchctl list 2>/dev/null | awk 'NR>1 && $3!="-" {print $3}' | sort
+  } > "$STAGE/launchagents-inventory.txt" 2>/dev/null || true
+fi
+
 # --- manifest.json (the restore reads OLD_USER + the project map from this) ---
 {
   echo "{"

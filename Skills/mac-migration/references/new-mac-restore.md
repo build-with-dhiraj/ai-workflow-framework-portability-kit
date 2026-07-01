@@ -93,6 +93,25 @@ misplaced (want `0`). **Restart Claude Desktop** after editing sessions — it c
 - Re-add each Obsidian vault in the app ("Open folder as vault") — the vault folders + `.lancedb` are already on disk from the extract.
 - Re-auth MCP servers from the printed list (browser OAuth for most; CLI login for some). **Verify assumptions**: some "lost" secrets may actually have ridden inside a project archive (e.g. an app's `.secrets/` under a repo) — test before re-doing OAuth.
 
+## 6b. Background launchd agents ("Login Items & Extensions → Allow in the Background")
+
+Automations often install `~/Library/LaunchAgents/*.plist` (Slack bridges, data
+refreshers, price alerts…). These are **machine-local** — they do NOT travel with a
+Claude/Drive sign-in — and `migrate-in.sh` does **not** auto-load them; it stages them
+(path-rewritten) to `~/mac-migration-launchagents-review/` for you to review.
+
+**Categorize the plists first:**
+- **Yours** (`com.<you>.*`, `com.<project>.*`) → restore (below).
+- **App-managed** (Google/Chrome/OpenAI updaters, Keystone, vendor helpers) → do nothing; they re-register when you reinstall the app.
+- **Dead** (a tool you removed; its script dir no longer exists) → skip, or re-register fresh from source.
+
+**Restore each of yours:**
+1. **Preconditions** — the agent calls a real script, which must exist and run: restore the project, create its venv/deps, restore the `.env`/API keys it reads, re-auth any OAuth. An agent whose script is missing just crash-loops.
+2. **Path-rewrite the plist** — the catch: **launchd uses LITERAL paths and does NOT expand `$HOME`/env vars** in `ProgramArguments`/`WorkingDirectory`/log paths. Rewrite every `/Users/<old>` (project-relocation first, e.g. `…/invest → …/dev/invest`, then the bare user). `grep -R "/Users/<old>" ~/Library/LaunchAgents` must return nothing. `chmod +x` the target script; create the `StandardOutPath`/`StandardErrorPath` log dirs.
+3. **Load** — `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/<label>.plist` (fallback `launchctl load -w`), then `launchctl enable gui/$(id -u)/<label>`, and `launchctl kickstart -k gui/$(id -u)/<label>` for always-on ones.
+4. **Approve** — macOS BLOCKS each until you toggle it ON in **System Settings → General → Login Items & Extensions → "Allow in the Background."** Loading is not enough.
+5. **Verify** — `launchctl list | grep <label>`, `launchctl print gui/$(id -u)/<label> | grep -iE 'state|last exit'`, tail the log for crash-loops.
+
 ## 7. Verify + establish redundancy
 
 Run `scripts/verify.sh`. It should report: no `/Users/<old>` in config/code, **no broken skill symlinks**, the expected `.lancedb` count, **zero session `cwd`s pointing at a missing dir** ([4]), **zero misplaced transcripts** ([4b] — else re-run `migrate-in.sh` so step 7b aligns them), and chat history present. Confirm stashes + no-remote repos survived (`git stash list`, `git log` on the no-remote repo).

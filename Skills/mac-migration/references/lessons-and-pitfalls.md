@@ -49,6 +49,12 @@ A restore script rewrites `~/.claude`, `.claude.json`, and per-repo `.git/config
 - **Time Machine to an external SSD beats cloud** for a Mac move: it preserves Keychain (so most MCP logins survive), is a physical second copy, and lets Migration Assistant remap `/Users/old` automatically.
 - **Fix the root cause:** replace hard-coded `/Users/old` paths in `~/.claude/settings.json` hooks with `$HOME`/`~` so the next move doesn't repeat all of this.
 
+## Background-agent (launchd) traps
+- **`~/Library/LaunchAgents/*.plist` don't travel with a sign-in and aren't in a config-only restore.** They're the "Login Items & Extensions → Allow in the Background" entries; capture them in the bundle (`launchagents.tgz`).
+- **launchd paths are LITERAL — no `$HOME`/env expansion in `ProgramArguments`.** Every plist must be path-rewritten exactly like code (project-relocation first, then bare user), and the target script must exist + be `chmod +x`, or the agent crash-loops silently.
+- **macOS re-blocks every agent until you approve it** in System Settings → "Allow in the Background." Loading with `launchctl` isn't enough.
+- **Only restore YOUR agents.** App-managed ones (Google/Chrome/OpenAI updaters, Keystone) reappear when you reinstall the app; dead ones (removed tools) should be skipped, not resurrected.
+
 ## The single best decisions, in order
 
 1. Set the new account's short name = the old username (if you can) → no rewrites.
