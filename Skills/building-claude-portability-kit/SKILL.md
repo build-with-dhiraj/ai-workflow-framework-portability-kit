@@ -108,7 +108,7 @@ And: **user instructions always override any skill.**
 cp ~/.claude/agents/*.md <Kit>/Agents/
 
 # Skills MUST resolve symlinks (-L flag) so the kit is self-contained
-rsync -aL --exclude='.archive' ~/.claude/skills/ <Kit>/Skills/
+rsync -aL --exclude='.archive*' ~/.claude/skills/ <Kit>/Skills/
 
 # Plugin manifests
 cp ~/.claude/plugins/installed_plugins.json <Kit>/Plugins/
@@ -288,7 +288,7 @@ When the source machine changes (new agent, new plugin, new brew package), re-sn
 cp ~/.claude/agents/*.md <Kit>/Agents/
 
 # Skills (resolve symlinks!)
-rsync -aL --exclude='.archive' --delete ~/.claude/skills/ <Kit>/Skills/
+rsync -aL --exclude='.archive*' --delete ~/.claude/skills/ <Kit>/Skills/
 
 # Plugin manifests
 cp ~/.claude/plugins/{installed_plugins,known_marketplaces}.json <Kit>/Plugins/
