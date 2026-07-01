@@ -169,6 +169,52 @@ print("  sessions repaired:",n)
   fi
 else [ "$DRY" -eq 0 ] && warn "no python3/node: skipping session-cwd repair (see references/new-mac-restore.md §5c)"; fi
 
+# ---- 7b. Align chat transcripts with session cwds (fix "session history unavailable") ----
+# A chat loads history only if slug(session.cwd) matches the dir holding its <id>.jsonl,
+# where slug turns every char except [A-Za-z0-9.] into '-'. After the cwd repairs above,
+# some transcripts sit under a DIFFERENT slug (pruned-worktree slugs, the old bare-user
+# slug, underscore/paren folders) -> the folder is valid but history won't load. Copy each
+# transcript into the slug matching its (valid) cwd. Additive — never deletes.
+if [ "$INTERP" = python3 ] && [ "$DRY" -eq 0 ]; then
+  log "aligning chat transcripts with session cwds (fix 'session history unavailable')"
+  python3 - "$CLA/claude-code-sessions" "$CLA/local-agent-mode-sessions" "$HOME_DIR/.claude/projects" <<'PY'
+import json,os,glob,shutil,sys
+sess=sys.argv[1:3]; PROJ=sys.argv[3]
+def slug(p): return "".join(c if (c.isalnum() or c==".") else "-" for c in p)
+tindex={}
+for d in glob.glob(f"{PROJ}/*"):
+  if os.path.isdir(d):
+    for fn in os.listdir(d):
+      if fn.endswith(".jsonl"): tindex.setdefault(fn[:-6],[]).append(d)
+def recs(o):
+  if isinstance(o,dict):
+    if isinstance(o.get("cwd"),str): yield o
+    for v in o.values(): yield from recs(v)
+  elif isinstance(o,list):
+    for v in o: yield from recs(v)
+seen=set(); n=0
+for base in sess:
+  if not os.path.isdir(base): continue
+  for root,_,files in os.walk(base):
+    for fn in files:
+      if not fn.endswith(".json"): continue
+      try: j=json.load(open(os.path.join(root,fn)))
+      except Exception: continue
+      for r in recs(j):
+        for sid in [i for i in (r.get("cliSessionId"),r.get("sessionId")) if i]:
+          if sid in seen: continue
+          seen.add(sid); dst=f"{PROJ}/{slug(r['cwd'])}"
+          if os.path.exists(f"{dst}/{sid}.jsonl"): break
+          srcs=[d for d in tindex.get(sid,[]) if os.path.exists(f"{d}/{sid}.jsonl")]
+          if not srcs: break
+          os.makedirs(dst,exist_ok=True)
+          shutil.copy2(f"{srcs[0]}/{sid}.jsonl", f"{dst}/{sid}.jsonl")
+          if os.path.isdir(f"{srcs[0]}/{sid}"): shutil.copytree(f"{srcs[0]}/{sid}", f"{dst}/{sid}", dirs_exist_ok=True)
+          n+=1; break
+print("  transcripts aligned to cwd slug:",n)
+PY
+fi
+
 # ---- 8. Worktree prune ---------------------------------------------------------
 for i in "${!MAP_NEW[@]}"; do d="${MAP_NEW[$i]}"; [ -d "$d/.git" ] && run git -C "$d" worktree prune 2>/dev/null; done
 

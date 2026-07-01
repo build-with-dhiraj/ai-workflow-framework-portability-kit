@@ -33,7 +33,7 @@ If anything fails, re-download — do not proceed on a corrupt archive.
 ./scripts/migrate-in.sh <bundle> --dry-run     # show the full plan, change nothing
 ./scripts/migrate-in.sh <bundle>               # real run (prompts to confirm the new username)
 ```
-It: verifies checksums (aborts on mismatch) → restores dotfiles/SSH (fixes perms) → restores `~/.claude` + `~/.agents` + history + Desktop sessions → extracts projects into `~/dev` under clean names → **rewrites all `/Users/<old>` paths (identity from `$HOME`), including the Desktop config, the Desktop session `cwd`s, and the history slugs** → prunes worktrees → prints a per-repo deps + vault + MCP re-auth checklist.
+It: verifies checksums (aborts on mismatch) → restores dotfiles/SSH (fixes perms) → restores `~/.claude` + `~/.agents` + history + Desktop sessions → extracts projects into `~/dev` under clean names → **rewrites all `/Users/<old>` paths (identity from `$HOME`), including the Desktop config, the Desktop session `cwd`s, and the history slugs** → **aligns each chat transcript with its session's cwd slug (step 7b — fixes "Session history unavailable")** → prunes worktrees → prints a per-repo deps + vault + MCP re-auth checklist.
 
 **Extract, never clone** (doctrine 1): the archives are the only source of gitignored vaults, `.lancedb`, stashes, and no-remote repos. Only clone a repo you've verified is fully pushed and has no gitignored data.
 
@@ -60,14 +60,27 @@ real new location:
 - a folder that was never restored → create an empty placeholder so the chat at least opens, or leave it if abandoned
 - bare `/Users/<old>` → `~` (`/Users/<new>`)
 
-**And make the chat load its history:** a chat shows messages only if
-`slug(session.cwd)` matches a transcript dir in `~/.claude/projects/`. The slug is
-the cwd with every non-alphanumeric char turned to `-` (Claude *keeps the dot* in
-e.g. `phy6.ai`). So if you point a session's `cwd` somewhere whose slug doesn't
-match where the migration filed its transcript, the chat opens **empty**. Either
-point `cwd` at the path whose slug matches the existing transcript (symlink it to
-the real files if needed), or rename the transcript dir to match the cwd. Verify
-with `verify.sh`. **Restart Claude Desktop** after editing sessions — it caches
+### (c-bis) Transcript slug alignment — the cause of "Session history unavailable"
+This is the sibling bug to (c), and it appears *after* you've fixed the cwds. A
+chat shows its messages only if `slug(session.cwd)` names a dir in
+`~/.claude/projects/` that actually contains that session's `<id>.jsonl`. The slug
+is the cwd with **every char except `[A-Za-z0-9.]` turned to `-`** — so `/`, space,
+`_`, `(`, `)` and even `-` all become `-`, while the **dot is kept** (`phy6.ai` →
+`phy6.ai`, `Pm_research_starter` → `Pm-research-starter`). Repairing a session's
+cwd in (c) can therefore *move* it to a slug that no longer matches where the
+migration filed its transcript — the folder is valid, the chat opens, but history
+is **empty** and Desktop shows **"Session history unavailable."** Common causes:
+the transcript was filed under a pruned-worktree slug, the old bare-user slug
+(`-Users-<old>`), or an underscore/paren folder.
+
+The bundled `migrate-in.sh` now fixes this automatically in **step 7b** (runs right
+after the cwd repair): for every session it reads the *valid* cwd, computes
+`slug(cwd)`, and if the transcript lives under a different slug it **copies** it
+(and any per-session subdir) into the matching one — additive, never deletes. To do
+it by hand instead: point `cwd` at the path whose slug matches the existing
+transcript (symlink to the real files if needed), or copy the transcript dir to
+match the cwd. Either way, `verify.sh` check **[4b]** counts sessions still
+misplaced (want `0`). **Restart Claude Desktop** after editing sessions — it caches
 `cwd`s in memory.
 
 > If you're inside Claude Desktop while doing this, you can't quit it (that kills
@@ -82,6 +95,6 @@ with `verify.sh`. **Restart Claude Desktop** after editing sessions — it cache
 
 ## 7. Verify + establish redundancy
 
-Run `scripts/verify.sh`. It should report: no `/Users/<old>` in config/code, **no broken skill symlinks**, the expected `.lancedb` count, **zero session `cwd`s pointing at a missing dir**, and chat history present. Confirm stashes + no-remote repos survived (`git stash list`, `git log` on the no-remote repo).
+Run `scripts/verify.sh`. It should report: no `/Users/<old>` in config/code, **no broken skill symlinks**, the expected `.lancedb` count, **zero session `cwd`s pointing at a missing dir** ([4]), **zero misplaced transcripts** ([4b] — else re-run `migrate-in.sh` so step 7b aligns them), and chat history present. Confirm stashes + no-remote repos survived (`git stash list`, `git log` on the no-remote repo).
 
 Then **doctrine 5 — make it redundant.** Get the irreplaceable data (vaults, `.lancedb`, no-remote repos, stashes) onto a second location (external SSD / Time Machine), *especially* before deleting the cloud bundle and *especially* if this is a corporate/MDM machine that can be wiped remotely. Note that secrets are often woven *inside* the data archives (a repo's `.env`/`.secrets/`), so you can't cleanly "keep data, delete secrets" file-by-file — rotating the secrets is what actually neutralizes the bundle's copies. Finally, replace hard-coded `/Users/<old>` hook paths in `~/.claude/settings.json` with `$HOME`/`~`.

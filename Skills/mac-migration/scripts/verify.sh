@@ -50,6 +50,44 @@ else
   echo "    $(grep -rhoE '"(cwd|originCwd|worktreePath)":"/Users/'"$OLD"'' "$CLA" --include='*.json' 2>/dev/null | wc -l | tr -d ' ') stale refs in session metadata"
 fi
 
+echo "[4b] chats whose transcript is MISPLACED vs its cwd slug (cause of 'session history unavailable'):"
+if [ -n "$INTERP" ] && [ "$INTERP" = python3 ]; then
+  python3 - "$CLA/claude-code-sessions" "$CLA/local-agent-mode-sessions" "$HOME/.claude/projects" <<'PY'
+import json,os,glob,sys
+sess=sys.argv[1:3]; PROJ=sys.argv[3]
+def slug(p): return "".join(c if (c.isalnum() or c==".") else "-" for c in p)
+tindex={}
+for d in glob.glob(f"{PROJ}/*"):
+  if os.path.isdir(d):
+    for fn in os.listdir(d):
+      if fn.endswith(".jsonl"): tindex.setdefault(fn[:-6],1)
+def recs(o):
+  if isinstance(o,dict):
+    if isinstance(o.get("cwd"),str): yield o
+    for v in o.values(): yield from recs(v)
+  elif isinstance(o,list):
+    for v in o: yield from recs(v)
+seen=set(); misplaced=0; empty=0; ok=0
+for base in sess:
+  if not os.path.isdir(base): continue
+  for root,_,files in os.walk(base):
+    for fn in files:
+      if not fn.endswith(".json"): continue
+      try: j=json.load(open(os.path.join(root,fn)))
+      except: continue
+      for r in recs(j):
+        for sid in [i for i in (r.get("cliSessionId"),r.get("sessionId")) if i]:
+          if sid in seen: continue
+          seen.add(sid)
+          if os.path.exists(f"{PROJ}/{slug(r['cwd'])}/{sid}.jsonl"): ok+=1
+          elif sid in tindex: misplaced+=1
+          else: empty+=1
+          break
+print(f"    {misplaced} misplaced " + ("✅" if misplaced==0 else "⚠️ re-run migrate-in.sh (step 7b aligns transcripts)"))
+print(f"    ({ok} load history, {empty} genuinely-empty sessions with no transcript)")
+PY
+else echo "    (needs python3)"; fi
+
 echo "[5] chat history present:"
 echo "    $(find "$HOME/.claude/projects" -name '*.jsonl' 2>/dev/null | wc -l | tr -d ' ') transcripts"
 
