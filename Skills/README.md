@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-133 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+134 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -15,6 +15,7 @@
 | **Implementation patterns** | `supabase`, `threejs-animation`, `flutter-*`, `langfuse`, `framer-motion-animator`, `r3f-best-practices` | Inside an implementation specialist — loads domain knowledge |
 | **Governance** | `evaluating-skill-necessity`, `managing-skills-library`, `evaluating-agent-behavior`, `find-skills` | Around library hygiene & evals |
 | **Workflow artifacts** | `to-prd`, `to-issues`, `triage`, `edit-article`, `write-a-skill`, `setup-pre-commit`, `setup-matt-pocock-skills`, `git-guardrails-claude-code` | Producing deliverables outside the code itself |
+| **Ops & migration** | `mac-migration` | Whole-environment operations — e.g. backing up an old Mac and restoring the full Claude + dev stack onto a new one (extract-not-clone, path-rewrite, session-cwd repair) |
 
 A few skills span layers — `context-kernel` is part process (when to write/read kernel) and part implementation pattern (the schema). `improve-codebase-architecture` is part diagnostic, part planning.
 
