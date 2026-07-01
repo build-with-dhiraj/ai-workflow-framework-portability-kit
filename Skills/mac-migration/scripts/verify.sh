@@ -32,7 +32,15 @@ echo "[4] Desktop session cwds pointing at a MISSING dir (want 0 — else 'worki
 if [ -n "$INTERP" ] && [ "$INTERP" = python3 ]; then
   python3 - "$CLA/claude-code-sessions" "$CLA/local-agent-mode-sessions" <<'PY'
 import json,os,sys
-bad=0
+def paths(o):            # session .json is sometimes a list, sometimes a dict — walk both
+  if isinstance(o,dict):
+    for k in ("cwd","originCwd","worktreePath"):
+      v=o.get(k)
+      if isinstance(v,str): yield v
+    for v in o.values(): yield from paths(v)
+  elif isinstance(o,list):
+    for v in o: yield from paths(v)
+bad=0; seen=set()
 for base in sys.argv[1:]:
   if not os.path.isdir(base): continue
   for root,_,files in os.walk(base):
@@ -40,9 +48,10 @@ for base in sys.argv[1:]:
       if not fn.endswith(".json"): continue
       try: j=json.load(open(os.path.join(root,fn)))
       except: continue
-      for k in ("cwd","originCwd","worktreePath"):
-        v=j.get(k)
-        if isinstance(v,str) and v.startswith("/Users/") and not os.path.isdir(v): bad+=1
+      for v in paths(j):
+        if v.startswith("/Users/") and v not in seen:
+          seen.add(v)
+          if not os.path.isdir(v): bad+=1
 print(f"    {bad}  " + ("✅" if bad==0 else "⚠️ run migrate-in.sh session repair / see references/new-mac-restore.md §5c"))
 PY
 else
