@@ -65,6 +65,12 @@ Cowork-only workflows: use Cowork (Claude Desktop) for `/competitive-brief` runs
 
 For idea validation or product research, use the `idea-researcher` skill. It orchestrates Reddit (`mcp__reddit__*`), X / Product Hunt (the `superpowers-chrome` plugin's `mcp__chrome__use_browser` action-based tool), and WebSearch into a structured validation report. It will refuse to fabricate findings when sources fail, and will explicitly note which sources it accessed.
 
+## Idea→Build Pipeline (global default for new builds)
+
+For any "I have an idea → ship it" flow, invoke the **`idea-to-build`** skill (`~/.claude/skills/idea-to-build/`). It is a thin router over existing skills: **Stage 1** brainstorm on Sonnet (any surface, incl. phone chat) → **Stage 2** tracker tickets with dependencies/blockers + `agent-ok`/`human-in-loop` tags (Linear preferred; Jira/Notion/native-tasks/to-issues fallbacks) → **Stage 3** Fable plans **in the project repo** from tickets + real repo state (Fable's architecture overrides Stage-1 suggestions; deviations written back to tickets) → **Stage 4** Fable orchestrates as EM, **all implementation dispatched with `model:"opus"`** (Opus 4.8 workers — never let workers silently inherit Fable).
+
+Standing refinement to EM mode: implementation and review dispatches default to `model:"opus"` (haiku for trivial/mechanical subtasks) unless the user says otherwise. The tracker — not chat history — is the durable state between stages and sessions.
+
 ## Governance
 
 - Run `evaluating-skill-necessity` before adding any new skill or agent.

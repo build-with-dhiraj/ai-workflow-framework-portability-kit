@@ -28,6 +28,10 @@ Dhruva) supply the bull thesis + ground-truth context; **Charlie Munger & Warren
 the FINAL, BINDING arbiters.** Finding zero FOREVER names — and finding that nothing clears the
 margin-of-safety bar at today's prices — is an acceptable, expected result. Patience is the edge.
 
+**See also — ETFs / REITs / InvITs:** this pipeline is for individual stocks → the 🎯 Action Dashboard.
+For a fund (ETF, REIT, InvIT) use **`etf-reit-onboarding`** instead — it evaluates funds like stocks but
+publishes to the **🌍 Global & Passive Base** tab and NEVER touches the LOCKED Action Dashboard.
+
 ## HARD RULES (never violate)
 1. **Never re-grill / re-dossier stocks already done.** Existing dossiers in `vault/research/dossiers/*.md`
    are frozen inputs. Only dossier the NEW stocks. (Exception A — DATA FIX: a stock whose dossier had a *data error* —
@@ -86,6 +90,12 @@ margin-of-safety bar at today's prices — is an acceptable, expected result. Pa
     multiple for commodity cyclicals). Always check for stock splits and validate the dossier's current_price
     against the live yfinance close (a stale enriched-pipeline snapshot once put a price 17% wrong).
 11. **5-tier verdict** exactly one per stock: FOREVER / COMPOUND / WATCH / AVOID / TOO_HARD.
+
+**Autonomy-ladder ratification.** Ratified 2026-07-03 (PW-13): the daily loop auto-consults fresh (≤2d)
+RED+MATERIAL events, hard-capped at CYCLE_CONSULT_BUDGET=25/cycle, RED-first-oldest-first. L1 auto-applies;
+L2 IV/conviction/verdict changes including upgrades up through COMPOUND auto-apply under 82_rerank_guard.
+FOREVER promotion remains the sole permanent human gate. Backlog (>2d) events consult only under DRAIN_GO=1
+(founder-gated). The value-digest reports these changes (email); it never grades.
 
 ## CONSULTING THE BRAIN (`data/scripts/32_consult_brain.py` — the ONE retrieval entrypoint)
 ```bash

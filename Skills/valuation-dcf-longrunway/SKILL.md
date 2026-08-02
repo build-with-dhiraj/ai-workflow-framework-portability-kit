@@ -46,9 +46,11 @@ Also run the binding consult (Munger/Buffett CIO) for the moat-durability judgme
 the runway. The canon is the method; the CIO is the judge of whether the runway is real.
 
 **Pull the moat-erosion atoms to CAP the explicit window** — runway length is an *output of the moat verdict*,
-not a free parameter (`[[runway-length-equals-moat-durability]]`). Add a moat consult:
+not a free parameter (`[[runway-length-equals-moat-durability]]`). Add a moat consult on the `conviction` step
+(which maps to the moat/management/owner-earnings filters), `--corpus blended` to surface the desk + canon moat
+atomics alongside the binding CIO:
 ```bash
-... 32_consult_brain.py --company "<name>" --model general --step moat --corpus blended --role moat ...
+... 32_consult_brain.py --company "<name> moat durability erosion contestable pricing power" --model general --step conviction --corpus blended ...
 ```
 `moats-are-hard-to-maintain` and `fast-moats-can-be-lost-fast` are the binding governors: a Wide+Widening moat
 earns a long explicit window; a contestable/eroding one caps it short. The fade (METHOD §3) then competes the

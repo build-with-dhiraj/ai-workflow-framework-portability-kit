@@ -17,21 +17,25 @@ The binding Munger/Buffett vault is thin on bank-specific valuation, so bank IVs
 weakest numbers on the Action Dashboard. This skill encodes Damodaran's free financial-firm
 method as a reusable procedure. Ground every step in the canon (below) — never free-hand a bank IV.
 
-## STEP 0 — Pull the canon (binding-safe) — ALWAYS with `--role banks`
+## STEP 0 — Pull the canon (binding-safe) — ALWAYS on `--corpus blended` with financial-firm seeds
 The Damodaran "Valuing Financial Service Firms" method-atomics are in the `canon` layer, tagged
-`analyst_role: banks`. **Pass `--role banks` on every bank brain query** — the `--role` filter is INCLUSIVE
-(it admits the bank canon AND keeps the binding/perspective atoms on relevance), and the financial-firm canon
-is **invisible to a blended query without it**:
+`analyst_role: banks`. Surface them the way every other finance-desk skill does — **`--corpus blended`
+(which admits the canon AND desk layers alongside the binding CIO) plus explicit financial-firm seed terms
+appended to `--company`** so the cold consult pulls the Damodaran atomics by relevance. Without those seeds a
+bare bank name can miss the financial-firm canon:
 ```bash
 set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
   /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
-  --company "<bank name>" --model bank --step intrinsic-value --corpus blended --role banks \
+  --company "<bank name> justified price to book excess return equity valuation regulatory capital deposit franchise cost of funds provisioning through cycle" \
+  --model bank --step intrinsic-value --corpus blended \
   --json-out extracted/grilling/<TICKER>_bankval.json
 ```
 `cites_principles` ⊂ the returned slugs. ALSO run the normal binding consult (`--corpus binding`,
 the Munger/Buffett CIO) for conviction/moat — the canon is the *method*, the CIO is the *judge*.
-**Hard rule (load-bearing):** a bank brain query **without `--role banks` is invalid** — it returns 0 Damodaran
-financial-firm atomics and the agent will silently *free-hand* the IV, which is the exact failure this skill exists to fix.
+**Hard rule (load-bearing):** a bank brain query that **omits the financial-firm `--company` seed terms is invalid**
+— a bare `--company "<bank name>"` can return 0 Damodaran financial-firm atomics and the agent will silently
+*free-hand* the IV, which is the exact failure this skill exists to fix. `--model bank` + `--corpus blended` +
+the seed terms is the working pattern.
 
 ## STEP 0.5 — Pull the CIO bank-temperament gate (binding, qualitative)
 Before computing any number, retrieve the binding bank-character atoms and treat them as a **gate the IV must
@@ -105,9 +109,11 @@ is not a real number.
 2. Always normalize provisioning to mid-cycle before computing ROE — and only on a book that has **survived the
    forensic evergreening/hidden-NPA screen** (`forensic-accounting-redflags`); a normalized credit cost on a
    managed book is fiction.
-3. **Always query with `--role banks`** — a bank brain query without it returns 0 financial-firm canon and the
-   IV gets free-handed. Cite only canon slugs the consult actually returns; if `principles` is thin, flag it and
-   stay conservative. Hand-supplied India regulatory inputs (NIM/CASA/NPA/CAR) are labelled un-grounded.
+3. **Always query with `--corpus blended` + financial-firm `--company` seed terms** (justified P/B, excess
+   return, regulatory capital, deposit franchise, provisioning-through-cycle) — a bare bank name returns 0
+   financial-firm canon and the IV gets free-handed. Cite only canon slugs the consult actually returns; if
+   `principles` is thin, flag it and stay conservative. Hand-supplied India regulatory inputs (NIM/CASA/NPA/CAR)
+   are labelled un-grounded.
 4. **Discount every pitch-side re-rating thesis.** A high-ROE bank framed as "mispriced on mix-shift / fortress
    balance sheet" enters `iv_base` ONLY if the excess return is structurally sustainable through-cycle — route
    it through `leverage-magnifies-errors` first (on a levered financial a wrong re-rating call is amplified into

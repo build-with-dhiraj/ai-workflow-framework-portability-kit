@@ -54,16 +54,14 @@ wires the erosion finding directly to what the binding arbiter would *do* about 
 Also run the binding consult at `--step inversion` for any FOREVER candidate — pull
 disconfirming moat-erosion principles before endorsing the moat as lifelong.
 
-**India retrieval blindness (known gap — seed around it).** The India perspective moat atoms are
-currently NOT tagged `analyst_role: moat`, so a `--role moat` filter never surfaces them — Terry
-Smith's scale-matters-in-durability / dominant-position-pricing-power / valuation-discipline-relative-to-quality,
-SOIC's premiumization-financialization-as-moat, and Saurabh Mukherjea's consistent-compounder lens
-stay invisible. Two mitigations: (1) a one-time, *narrowly scoped* frontmatter retag pass to add
-`analyst_role: moat` to those specific atoms (review each — do NOT bulk-sed, or non-moat atoms get
-mis-tagged and pollute the role filter for the capital-allocation / behavioral desks); and (2) until
-that lands, add those terms as explicit `--company` seeds so the cold consult still pulls them. These
-voices enter strictly as CONTEXT/lenses (down-weighted 0.85) — they never upgrade a moat tier on
-their own; the binding arbiter ([[do-not-be-charmed-by-moats-alone]], [[moats-are-hard-to-maintain]],
+**India retrieval blindness (known gap — seed around it).** The India perspective moat atoms —
+Terry Smith's scale-matters-in-durability / dominant-position-pricing-power /
+valuation-discipline-relative-to-quality, SOIC's premiumization-financialization-as-moat, and Saurabh
+Mukherjea's consistent-compounder lens — will not surface on a bare company name. The canonical
+pattern is `--corpus blended` with those terms added as explicit `--company` seeds so the cold
+consult pulls them by relevance. These voices enter strictly as CONTEXT/lenses (down-weighted 0.85) —
+they never upgrade a moat tier on their own; the binding arbiter
+([[do-not-be-charmed-by-moats-alone]], [[moats-are-hard-to-maintain]],
 [[avoid-commoditized-businesses]]) sets the verdict.
 
 ## TAXONOMY — seven sources (apply all that fire)

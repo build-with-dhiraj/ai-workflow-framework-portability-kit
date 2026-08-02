@@ -1,4 +1,5 @@
 {
+  "cleanupPeriodDays": 99999,
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
@@ -13,64 +14,34 @@
       "TodoWrite(*)"
     ]
   },
-  "enabledPlugins": {
-    "figma@claude-plugins-official": true,
-    "vercel-plugin@vercel-vercel-plugin": true,
-    "superpowers@superpowers-marketplace": true,
-    "superpowers-chrome@superpowers-marketplace": true,
-    "superpowers-developing-for-claude-code@superpowers-marketplace": true,
-    "superpowers-lab@superpowers-marketplace": true,
-    "andrej-karpathy-skills@karpathy-skills": true,
-    "github@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "superpowers-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "obra/superpowers-marketplace"
-      }
-    },
-    "karpathy-skills": {
-      "source": {
-        "source": "github",
-        "repo": "forrestchang/andrej-karpathy-skills"
-      }
-    }
-  },
-  "theme": "dark",
-  "teammateMode": "in-process",
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
-  "skipWorkflowUsageWarning": true,
-  "cleanupPeriodDays": 99999,
   "hooks": {
     "PreToolUse": [
       {
+        "matcher": "Read",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/read_cache.py --quiet"
           }
-        ],
-        "matcher": "Read"
+        ]
       },
       {
+        "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/bash_hook.py --quiet"
           }
-        ],
-        "matcher": "Bash"
+        ]
       },
       {
+        "matcher": "Agent|Task",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/measure.py checkpoint-trigger --milestone pre-fanout --quiet"
           }
-        ],
-        "matcher": "Agent|Task"
+        ]
       }
     ],
     "PreCompact": [
@@ -97,8 +68,8 @@
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/measure.py ensure-health",
-            "async": true,
-            "timeout": 15000
+            "timeout": 15000,
+            "async": true
           },
           {
             "type": "command",
@@ -111,13 +82,13 @@
         ]
       },
       {
+        "matcher": "compact",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/measure.py compact-restore"
           }
-        ],
-        "matcher": "compact"
+        ]
       }
     ],
     "Stop": [
@@ -136,8 +107,8 @@
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/measure.py session-end-flush",
-            "async": true,
-            "timeout": 60000
+            "timeout": 60000,
+            "async": true
           }
         ]
       }
@@ -164,31 +135,31 @@
     ],
     "PostToolUse": [
       {
+        "matcher": "Bash|Read|Glob|Grep|Agent|mcp__.*",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/archive_result.py --quiet"
           }
-        ],
-        "matcher": "Bash|Read|Glob|Grep|Agent|mcp__.*"
+        ]
       },
       {
+        "matcher": "Bash|Read|Grep|Glob|mcp__.*",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/context_intel.py --quiet"
           }
-        ],
-        "matcher": "Bash|Read|Grep|Glob|mcp__.*"
+        ]
       },
       {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
         "hooks": [
           {
             "type": "command",
             "command": "bash \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/python-launcher.sh\" \"/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/hooks/run.py\" skills/token-optimizer/scripts/read_cache.py --invalidate --quiet"
           }
-        ],
-        "matcher": "Edit|Write|MultiEdit|NotebookEdit"
+        ]
       }
     ],
     "PostCompact": [
@@ -214,6 +185,45 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "node '/Users/Dhiraj/.claude/skills/.archive-token-optimizer-pkg/skills/token-optimizer/scripts/statusline.js'"
-  }
+    "command": "node \"$HOME/.claude/skills/.archive-token-optimizer-pkg/skills/token-optimizer/scripts/statusline.js\""
+  },
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true,
+    "vercel-plugin@vercel-vercel-plugin": false,
+    "superpowers@superpowers-marketplace": true,
+    "superpowers-chrome@superpowers-marketplace": true,
+    "superpowers-developing-for-claude-code@superpowers-marketplace": true,
+    "superpowers-lab@superpowers-marketplace": true,
+    "andrej-karpathy-skills@karpathy-skills": true,
+    "github@claude-plugins-official": true,
+    "ponytail@ponytail": true,
+    "youdotcom-agent-skills@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      },
+      "autoUpdate": true
+    },
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      },
+      "autoUpdate": true
+    },
+    "ponytail": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/DietrichGebert/ponytail.git"
+      }
+    }
+  },
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark",
+  "teammateMode": "in-process",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }

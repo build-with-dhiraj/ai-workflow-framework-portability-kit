@@ -23,6 +23,12 @@ Keep dashboard-stock verdicts current. The detector finds material events; you r
 5. **Never fabricate an event.** Every event row carries a dated source URL. If the detector finds nothing, that is success — stamp L0 and stop. No early-exit "empty = bug".
 6. **Recall canary is a hard floor.** After any reindex, Recall@10 must hold ≥0.95; auto-revert the index on any drop.
 
+**Autonomy-ladder ratification.** Ratified 2026-07-03 (PW-13): the daily loop auto-consults fresh (≤2d)
+RED+MATERIAL events, hard-capped at CYCLE_CONSULT_BUDGET=25/cycle, RED-first-oldest-first. L1 auto-applies;
+L2 IV/conviction/verdict changes including upgrades up through COMPOUND auto-apply under 82_rerank_guard.
+FOREVER promotion remains the sole permanent human gate. Backlog (>2d) events consult only under DRAIN_GO=1
+(founder-gated). The value-digest reports these changes (email); it never grades.
+
 ## Workflow (one cycle)
 0. **Build sweep universe** — `build_sweep_universe.py` re-derives `data/manifests/dashboard_universe.json` from the LIVE dashboard col B (data rows only; legend excluded; aliases resolved e.g. ZOMATO→ETERNAL). READ-ONLY on the dashboard, degrade-safe (keeps the last good manifest on a failed read). Runs FIRST in `73_refresh_cycle.sh` so onboarded names auto-join this cycle.
 1. **Detect** — `70_detect_material_events.py` over the sweep universe (`sweep_tickers()` = full dashboard ∪ held, ~241+) → `data/state/event_index.sqlite`. Materiality from `data/config/event_taxonomy.json` (RESULTS / DEAL / FILING / GOVERNANCE → INFO / MATERIAL / RED; GOVERNANCE-RED escalates). Recency window = since `max(graded, last_event_checked)`. (`--universe` prints the swept set + dump coverage.)

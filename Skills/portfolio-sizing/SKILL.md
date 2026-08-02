@@ -216,8 +216,9 @@ a position-construction input.
 5. **Cite only slugs the consult returns.** If the sizing step returns thin principles, flag it
    and apply the half-Kelly / conviction-cap table conservatively. The desk-synthesis sizing
    atomics (`[[kelly-proposes-catastrophic-loss-test-disposes]]`, `[[risk-not-uncertainty-sizing-arbiter]]`,
-   `[[india-liquidity-haircut-on-kelly-size]]`, `[[sizing-is-where-temperament-is-priced]]`) are
-   tagged `analyst_role: sizing` and surface on `--corpus blended` (or `--step sizing`); the Thorp/
-   Mauboussin math lives in `--corpus canon`. Query both — `--role sizing` alone will miss the canon math.
+   `[[india-liquidity-haircut-on-kelly-size]]`, `[[sizing-is-where-temperament-is-priced]]`) surface on
+   `--corpus blended` (or `--step sizing`); the Thorp/Mauboussin math lives in `--corpus canon`. The canonical
+   pattern is to query both — `--step sizing --corpus blended` for the desk atomics, plus `--corpus canon` for
+   the Kelly/Mauboussin math.
 6. **The Munger/Buffett binding CIO remains the arbiter.** This skill supplies the number;
    the CIO supplies the judgment that earns the conviction score that caps the number.

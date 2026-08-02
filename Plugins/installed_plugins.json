@@ -5,10 +5,10 @@
       {
         "scope": "project",
         "projectPath": "/Users/Dhiraj",
-        "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/figma/2.0.2",
-        "version": "2.0.2",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/figma/2.2.68",
+        "version": "2.2.68",
         "installedAt": "2026-02-11T05:39:09.435Z",
-        "lastUpdated": "2026-05-06T11:54:36.405Z",
+        "lastUpdated": "2026-07-01T08:52:34.818Z",
         "gitCommitSha": "20aca44ee6ba6092037e943c151c067896828360"
       }
     ],
@@ -27,20 +27,20 @@
       {
         "scope": "project",
         "projectPath": "/Users/Dhiraj",
-        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers/5.1.0",
-        "version": "5.1.0",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers/6.1.0",
+        "version": "6.1.0",
         "installedAt": "2026-05-06T07:44:51.389Z",
-        "lastUpdated": "2026-05-06T11:54:36.405Z",
+        "lastUpdated": "2026-07-01T08:52:30.309Z",
         "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
       }
     ],
     "superpowers-chrome@superpowers-marketplace": [
       {
         "scope": "user",
-        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/1.12.0",
-        "version": "1.12.0",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/3.0.2",
+        "version": "3.0.2",
         "installedAt": "2026-05-06T11:54:30.440Z",
-        "lastUpdated": "2026-05-06T11:54:30.440Z",
+        "lastUpdated": "2026-07-01T08:52:04.941Z",
         "gitCommitSha": "2d3663e888bcc44405627628c86a7ffbfdaacccb"
       }
     ],
@@ -57,10 +57,10 @@
     "superpowers-lab@superpowers-marketplace": [
       {
         "scope": "user",
-        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers-lab/0.4.0",
-        "version": "0.4.0",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers-lab/0.5.0",
+        "version": "0.5.0",
         "installedAt": "2026-05-06T11:54:43.869Z",
-        "lastUpdated": "2026-05-06T11:54:43.869Z",
+        "lastUpdated": "2026-07-01T08:52:07.897Z",
         "gitCommitSha": "59389b1506e2d476980ee05c7c98c2f5e211fcb1"
       }
     ],
@@ -80,7 +80,27 @@
         "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/github/unknown",
         "version": "unknown",
         "installedAt": "2026-05-12T21:30:03.173Z",
-        "lastUpdated": "2026-05-12T21:30:03.173Z"
+        "lastUpdated": "2026-07-01T08:52:14.186Z"
+      }
+    ],
+    "ponytail@ponytail": [
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/ponytail/ponytail/4.8.4",
+        "version": "4.8.4",
+        "installedAt": "2026-07-04T10:42:06.300Z",
+        "lastUpdated": "2026-07-04T10:42:06.300Z",
+        "gitCommitSha": "40e50d9e03242aa5dd53ac771950f9127362b25f"
+      }
+    ],
+    "youdotcom-agent-skills@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/youdotcom-agent-skills/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-07-30T23:06:04.904Z",
+        "lastUpdated": "2026-07-30T23:06:04.904Z",
+        "gitCommitSha": "4712250ae8e5ce3095cad3b43b62b33608888863"
       }
     ]
   }

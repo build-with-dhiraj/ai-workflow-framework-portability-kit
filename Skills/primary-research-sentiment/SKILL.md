@@ -60,12 +60,12 @@ explicit attempt to *disprove* it. Anchoring to the existing view is the failure
 (`avoid-anchoring-and-destroy-previous-ideas`); a harvest that only confirms is flagged as anchoring and
 **re-run with bear-case queries** ("<company> problems / fraud / churn / competition / promoter").
 
-Then pull the standing arbiter frame from the desk/binding layer (the `--role` filter is INCLUSIVE — it
-admits the desk atomic AND keeps the binding mentors on relevance):
+Then pull the standing arbiter frame from the desk/binding layer via `--corpus blended` — it admits the
+desk atomics alongside the binding mentors, kept on relevance to the query:
 ```bash
 set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
   /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
-  --company "<name>" --model general --step understanding --corpus blended --role primary-research \
+  --company "<name> primary research disconfirming channel checks promoter credibility" --model general --step understanding --corpus blended \
   --json-out extracted/grilling/<TICKER>_primary.json
 ```
 This surfaces `[[primary-research-earns-edge-only-by-disconfirming]]` and `[[loudest-promoter-is-least-credible-source]]`

@@ -14,6 +14,8 @@ brew "go"
 brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Interpreted, interactive, object-oriented programming language
@@ -26,6 +28,10 @@ brew "tectonic"
 brew "uv"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+# UI toolkit for building applications for mobile, web and desktop
+cask "flutter"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 go "github.com/tmc/nlm/cmd/nlm"

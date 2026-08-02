@@ -50,14 +50,10 @@ set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/in
 
 `cites_principles` ⊂ the union of returned slugs.
 
-**Retrieval wiring (the fix landed — read this).** A dedicated `--step capital-allocation` now
-exists, and `--role` is now INCLUSIVE. But there is a lossy trap that runs *opposite* to the old
-warning: the Thorndike canon atoms are tagged `role=capital-allocation`, **the 30 external voices
-are NOT.** So `--role capital-allocation` filters to the academic-canon layer and *hides* the India
-runway perspectives. **Do NOT lead with `--role capital-allocation`.** Use the dual-pull above:
-`--corpus binding` for the CIO ranking, and `--corpus perspectives` with NO `--role` to surface the
-external voices. (`--corpus blended` also surfaces the desk-synthesis atomics below alongside the
-binding layer — use it when you want both in one call.)
+**Retrieval wiring (canonical pattern).** A dedicated `--step capital-allocation` exists; the canonical
+pull is the dual-corpus pattern above — `--corpus binding` for the CIO ranking, and `--corpus perspectives`
+(with runway seed terms on `--company`) to surface the 30 external India-runway voices. Use `--corpus blended`
+when you want the desk-synthesis atomics below alongside the binding layer in one call.
 
 - Score the perspectives layer **evidence-gated** — credit a long runway only on *actual incremental
   ROCE history*, never on a projected TAM narrative. The perspectives are promotional (managers and
