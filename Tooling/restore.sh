@@ -126,7 +126,7 @@ echo "════════════════════════�
 echo "  Restore complete."
 echo "  Start a new Claude Code session and verify:"
 echo "    - 36 custom agents listed"
-echo "    - 151 skills present"
+echo "    - 149 skills present"
 echo "    - 10 plugins installed, 9 enabled (run \`claude plugin list\`)"
 echo "    - Engineering Manager mode active on first prompt"
 echo "═══════════════════════════════════════════════════════════════"

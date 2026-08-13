@@ -107,7 +107,9 @@ And: **user instructions always override any skill.**
 # Agents are plain .md files
 cp ~/.claude/agents/*.md <Kit>/Agents/
 
-# Skills MUST resolve symlinks (-L flag) so the kit is self-contained
+# Skills MUST resolve symlinks (-L flag) so the kit is self-contained.
+# If the kit is published, exclude work-specific skills here too — see the
+# Maintenance section for the full, authoritative exclude list.
 rsync -aL --exclude='.archive*' ~/.claude/skills/ <Kit>/Skills/
 
 # Plugin manifests
@@ -287,8 +289,20 @@ When the source machine changes (new agent, new plugin, new brew package), re-sn
 # Custom agents
 cp ~/.claude/agents/*.md <Kit>/Agents/
 
-# Skills (resolve symlinks!)
-rsync -aL --exclude='.archive*' --delete ~/.claude/skills/ <Kit>/Skills/
+# Skills (resolve symlinks!) — the kit repo is PUBLIC, so 7 skills are held back.
+# Never drop these excludes: they leak the work repo's layout, internal tool
+# paths, its CLAUDE.md rule citations, and the Pinecone namespace design.
+rsync -aL --exclude='.archive*' --delete \
+  --exclude='/README.md' \
+  --exclude='/jove-design-loop' --exclude='/jove-labs-sweep' \
+  --exclude='/jove-recall' --exclude='/jove-youtube-feed-pipeline' \
+  --exclude='/mixpanel-mastery' \
+  --exclude='/memory-router' --exclude='/wrap-up' \
+  ~/.claude/skills/ <Kit>/Skills/
+
+# Parity check: live count minus 7 must equal the kit count.
+#   ls -1 ~/.claude/skills | grep -v '^\.' | wc -l     # live
+#   ls -1 <Kit>/Skills | grep -v '^README.md$' | wc -l # kit
 
 # Plugin manifests
 cp ~/.claude/plugins/{installed_plugins,known_marketplaces}.json <Kit>/Plugins/

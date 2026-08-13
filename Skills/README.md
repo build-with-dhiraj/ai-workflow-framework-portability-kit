@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-151 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+149 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -174,15 +174,15 @@ The following skills come from installed plugins — they auto-reappear when plu
 131 skill directories — the authoritative on-disk set as of the 2026-06-21 re-sync, alphabetically:
 
 ```
-3d-web-experience                           integrate-whatsapp
-a11y-audit                                  json-canvas
-add-custom-mcp                              langfuse
-ai-product-ux                               langsmith-evaluator
-ai-sdk                                      llm-eval
-arize-experiment                            loop-engineering
-arize-prompt-optimization                   mac-migration
-bank-valuation                              managing-skills-library
-baoyu-youtube-transcript                    memory-router
+3d-web-experience                           improve-codebase-architecture
+a11y-audit                                  integrate-whatsapp
+add-custom-mcp                              json-canvas
+ai-product-ux                               langfuse
+ai-sdk                                      langsmith-evaluator
+arize-experiment                            llm-eval
+arize-prompt-optimization                   loop-engineering
+bank-valuation                              mac-migration
+baoyu-youtube-transcript                    managing-skills-library
 build-review-interface                      migrate-to-shoehorn
 building-claude-portability-kit             moat-analysis
 capital-allocation-judge                    ner-content-pipeline
@@ -245,11 +245,10 @@ github-actions                              ux-writing
 grill-me                                    validate-evaluator
 grill-with-docs                             valuation-dcf-longrunway
 gws-forms                                   web-asset-generator
-humanizer                                   wrap-up
-idea-researcher                             write-a-skill
-idea-to-build                               write-judge-prompt
-impeccable                                  zoom-out
-improve-codebase-architecture
+humanizer                                   write-a-skill
+idea-researcher                             write-judge-prompt
+idea-to-build                               zoom-out
+impeccable
 ```
 
 > `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 131; this fenced block is the source of truth for *what is on disk right now*.
@@ -396,9 +395,9 @@ Eight skills appeared in live `~/.claude/skills/` since the 2026-06-17 snapshot 
 
 ---
 
-### Added 2026-08-13: live re-sync → 151 skills
+### Added 2026-08-13: live re-sync → 149 skills
 
-One skill appeared in live `~/.claude/skills/` since the 2026-08-02 snapshot. Re-sync brings the kit to parity — **150 → 151 skills**.
+One skill appeared in live `~/.claude/skills/` since the 2026-08-02 snapshot; two were withdrawn from the public kit. Net **150 → 149 skills**.
 
 | Skill | Source | Notes |
 |---|---|---|
@@ -406,7 +405,11 @@ One skill appeared in live `~/.claude/skills/` since the 2026-08-02 snapshot. Re
 
 Also picked up in this pass (content-only, no new skills): missing `README.md` files inside `stitch-design-md`, `stitch-enhance-prompt`, and `stitch-stitch-loop`, which the 2026-08-02 snapshot had skipped.
 
-**Employer-named skills held back from the public kit** (present in live `~/.claude/skills/`, excluded here by the same rule applied to the work-video pipeline on 2026-08-02): four work-repo symlinks plus one analytics skill. They live on locally and are re-created by cloning the work repo, not by this kit. Live count is 156; published count is 151.
+**Withdrawn from the public kit this pass: `memory-router` and `wrap-up`.** Both were published in lighter form since 2026-05-27. Upstream they have since grown work-specific: the work repo's directory layout, its internal indexing tool paths, citations of its `CLAUDE.md` rules, and the Pinecone namespace design. Genericizing them would have meant re-genericizing on every refresh and a kit copy that no longer mirrors live, so they are held back whole — same treatment as the employer-named skills below. They remain fully functional in live `~/.claude/skills/`; a new machine gets them by cloning the work repo, not from this kit.
+
+**Employer-named skills also held back** (present in live `~/.claude/skills/`, excluded by the same rule applied to the work-video pipeline on 2026-08-02): four work-repo symlinks plus one analytics skill.
+
+**Reconciliation:** live 156 − 5 employer-named − 2 withdrawn = **149 published**. Any future refresh must keep all seven excluded; the exclusion list is in the maintenance `rsync` in [`building-claude-portability-kit/SKILL.md`](building-claude-portability-kit/SKILL.md).
 
 **Two corrections to earlier entries:**
 
