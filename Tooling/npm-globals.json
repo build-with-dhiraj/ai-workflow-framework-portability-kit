@@ -2,7 +2,7 @@
   "name": "lib",
   "dependencies": {
     "@anthropic-ai/claude-code": {
-      "version": "2.1.201",
+      "version": "2.1.223",
       "overridden": false
     },
     "@cobusgreyling/loop-audit": {

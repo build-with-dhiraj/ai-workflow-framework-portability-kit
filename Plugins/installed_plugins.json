@@ -10,6 +10,14 @@
         "installedAt": "2026-02-11T05:39:09.435Z",
         "lastUpdated": "2026-07-01T08:52:34.818Z",
         "gitCommitSha": "20aca44ee6ba6092037e943c151c067896828360"
+      },
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/figma/2.2.68",
+        "version": "2.2.68",
+        "installedAt": "2026-08-12T07:00:33.592Z",
+        "lastUpdated": "2026-08-12T07:00:33.592Z",
+        "gitCommitSha": "20aca44ee6ba6092037e943c151c067896828360"
       }
     ],
     "vercel-plugin@vercel-vercel-plugin": [
@@ -32,15 +40,23 @@
         "installedAt": "2026-05-06T07:44:51.389Z",
         "lastUpdated": "2026-07-01T08:52:30.309Z",
         "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
+      },
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers/6.1.0",
+        "version": "6.1.0",
+        "installedAt": "2026-08-12T07:00:33.592Z",
+        "lastUpdated": "2026-08-12T07:00:33.592Z",
+        "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
       }
     ],
     "superpowers-chrome@superpowers-marketplace": [
       {
         "scope": "user",
-        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/3.0.2",
-        "version": "3.0.2",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/3.0.4",
+        "version": "3.0.4",
         "installedAt": "2026-05-06T11:54:30.440Z",
-        "lastUpdated": "2026-07-01T08:52:04.941Z",
+        "lastUpdated": "2026-08-06T13:13:23.155Z",
         "gitCommitSha": "2d3663e888bcc44405627628c86a7ffbfdaacccb"
       }
     ],
@@ -80,7 +96,7 @@
         "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/github/unknown",
         "version": "unknown",
         "installedAt": "2026-05-12T21:30:03.173Z",
-        "lastUpdated": "2026-07-01T08:52:14.186Z"
+        "lastUpdated": "2026-08-06T17:18:49.702Z"
       }
     ],
     "ponytail@ponytail": [
@@ -96,10 +112,10 @@
     "youdotcom-agent-skills@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/youdotcom-agent-skills/1.0.0",
-        "version": "1.0.0",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/claude-plugins-official/youdotcom-agent-skills/0.4.0",
+        "version": "0.4.0",
         "installedAt": "2026-07-30T23:06:04.904Z",
-        "lastUpdated": "2026-07-30T23:06:04.904Z",
+        "lastUpdated": "2026-08-04T04:58:27.152Z",
         "gitCommitSha": "4712250ae8e5ce3095cad3b43b62b33608888863"
       }
     ]

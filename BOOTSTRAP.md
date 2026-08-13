@@ -115,7 +115,7 @@ claude plugin install github@claude-plugins-official
 Verify:
 
 ```bash
-claude plugin list   # expect 8 plugins, all enabled
+claude plugin list   # expect 10 plugins installed, 9 enabled (vercel-plugin ships disabled)
 ```
 
 The shipped `settings.json` (already copied in step 1) has the right `enabledPlugins` block, so no further toggling is needed.

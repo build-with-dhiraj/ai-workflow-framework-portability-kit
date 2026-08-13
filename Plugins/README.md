@@ -86,7 +86,7 @@ claude plugin install github@claude-plugins-official
 The shipped `../settings.json` has these eight plugins set to `true` under `enabledPlugins`. After copying `settings.json` into `~/.claude/`, no further action needed — Claude Code reads this on next session start.
 
 ```bash
-claude plugin list   # should show 8 plugins, all enabled
+claude plugin list   # should show 10 plugins installed, 9 enabled (vercel-plugin ships disabled)
 ```
 
 ---
@@ -167,7 +167,7 @@ If you ever need to capture the Cowork plugin set verbatim, dump `~/.claude/mcp-
 ```
 Plugins/
 ├── README.md                       ← this file
-├── installed_plugins.json          ← snapshot of ~/.claude/plugins/installed_plugins.json (8 plugins)
+├── installed_plugins.json          ← snapshot of ~/.claude/plugins/installed_plugins.json (10 plugins)
 ├── known_marketplaces.json         ← snapshot of ~/.claude/plugins/known_marketplaces.json (4 marketplaces)
 └── vercel-marketplace-source/      ← 7.7 MB mirror of ~/.cache/plugins/github.com-vercel-vercel-plugin/
                                       (the actual marketplace source — see §5 option 1)

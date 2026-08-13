@@ -1,13 +1,7 @@
 {
-  "_comment": "MCP server registry. Copy to ~/.claude/mcp.json on the new Mac and replace each REDACTED token with the live secret.",
+  "_comment": "MCP server registry, mirroring ~/.claude/mcp.json on the source machine. Copy to ~/.claude/mcp.json on the new Mac. As of the 2026-08-13 snapshot this file carries NO secrets — the only locally-registered server is stdio-launched via npx. If you later add an HTTP server with an Authorization header, redact the token here as REDACTED_PUT_<NAME>_TOKEN_HERE and keep the live value in your password manager.",
+  "_history": "A self-hosted n8n HTTP MCP server was registered here until 2026-07-04. It is gone from live config and has been dropped from this template; re-add it by hand (URL + Bearer JWT from the password manager) if you bring it back.",
   "mcpServers": {
-    "n8n": {
-      "type": "http",
-      "url": "https://pw-ai.app.n8n.cloud/mcp-server/http",
-      "headers": {
-        "Authorization": "Bearer REDACTED_PUT_N8N_MCP_JWT_HERE"
-      }
-    },
     "playwright": {
       "command": "npx",
       "args": [

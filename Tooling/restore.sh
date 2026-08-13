@@ -84,6 +84,7 @@ rsync -a "$KIT_DIR/Plugins/vercel-marketplace-source/" \
 
 claude plugin marketplace add github obra/superpowers-marketplace 2>/dev/null || true
 claude plugin marketplace add github forrestchang/andrej-karpathy-skills 2>/dev/null || true
+claude plugin marketplace add git https://github.com/DietrichGebert/ponytail.git 2>/dev/null || true
 claude plugin marketplace add directory \
   "$HOME/.cache/plugins/github.com-vercel-vercel-plugin" 2>/dev/null || true
 
@@ -94,23 +95,26 @@ for p in figma@claude-plugins-official \
          superpowers-developing-for-claude-code@superpowers-marketplace \
          superpowers-lab@superpowers-marketplace \
          andrej-karpathy-skills@karpathy-skills \
-         github@claude-plugins-official; do
+         github@claude-plugins-official \
+         ponytail@ponytail \
+         youdotcom-agent-skills@claude-plugins-official; do
   echo "  Installing $p"
   claude plugin install "$p" || echo "    (skipped — already installed or unavailable)"
 done
+# NOTE: vercel-plugin is installed but disabled in settings.json ("enabledPlugins" false).
+# Installing it keeps parity with the source machine; flip the flag to activate.
 
-# ─── Step 7: MCP config (manual step for secrets) ────────────────────
+# ─── Step 7: MCP config ──────────────────────────────────────────────
 echo ""
-echo "==> Step 7/7: MCP server registry — MANUAL ACTION REQUIRED"
+echo "==> Step 7/7: MCP server registry"
+cp "$KIT_DIR/MCP/mcp.template.json" "$CLAUDE_HOME/mcp.json"
+echo "  Wrote $CLAUDE_HOME/mcp.json"
 echo ""
-echo "  This kit ships a redacted MCP template. To finish:"
-echo ""
-echo "    1. Edit:  $KIT_DIR/MCP/mcp.template.json"
-echo "       Replace REDACTED_PUT_N8N_MCP_JWT_HERE with the live JWT"
-echo "       (it lives in your password manager)."
-echo ""
-echo "    2. Copy into place:"
-echo "       cp '$KIT_DIR/MCP/mcp.template.json' '$CLAUDE_HOME/mcp.json'"
+echo "  This snapshot carries NO secrets — the only locally-registered"
+echo "  server launches over stdio via npx, so the copy above is complete."
+echo "  If a future snapshot adds an HTTP server with an Authorization"
+echo "  header, it ships redacted and you must paste the live token from"
+echo "  your password manager into $CLAUDE_HOME/mcp.json by hand."
 echo ""
 echo "  Account-bound connectors (Gmail, Drive, Slack, Supabase, etc.)"
 echo "  reattach automatically on your next \`claude\` session. OAuth"
@@ -121,7 +125,8 @@ echo ""
 echo "═══════════════════════════════════════════════════════════════"
 echo "  Restore complete."
 echo "  Start a new Claude Code session and verify:"
-echo "    - 31 custom agents listed"
-echo "    - 8 plugins enabled (run \`claude plugin list\`)"
+echo "    - 36 custom agents listed"
+echo "    - 151 skills present"
+echo "    - 10 plugins installed, 9 enabled (run \`claude plugin list\`)"
 echo "    - Engineering Manager mode active on first prompt"
 echo "═══════════════════════════════════════════════════════════════"

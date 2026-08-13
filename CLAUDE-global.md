@@ -1,5 +1,20 @@
 # Claude Code Configuration
 
+## Which account am I in — probe it, never infer it (MANDATORY)
+
+There are **two** identities on this machine and they are almost never the same one. Stating the wrong one has been a repeated error.
+
+| Identity | Where it lives | What it governs |
+|---|---|---|
+| **Work account** | probed live off the connectors | everything that can be READ or WRITTEN: Google, Gmail, Drive, Atlassian, Slack, meeting-notes, analytics |
+| **Claude account** | `~/.claude.json` → `oauthAccount.emailAddress`, and the session system prompt's "user's email address" | the subscription and the usage pool, nothing else |
+
+**The rule.** When the account matters — a sweep stamp, a capability claim, a BLOCKED-versus-FAIL call, or any sentence naming who you are signed in as — run the work-account probe script and quote the **work account**. On the source machine that probe is a small `node` script that hits the Drive connector and prints the authenticated address (`--json` for machine use).
+
+Never infer the account from the app, the config directory, the working directory, or the system prompt's `userEmail`. **Reporting the Claude subscription email as "the account you are in" is the specific bug this rule exists to prevent.** If the probe fails, say the probe failed; a dead token is a finding, not an unknown to guess past.
+
+> **Kit note:** the live `~/.claude/CLAUDE.md` names a concrete probe path inside a private work repo. That path is genericized here because this kit is public. Restore it by hand if you are rebuilding the source machine.
+
 ## Engineering Manager Mode (MANDATORY — TOP-PRIORITY DIRECTIVE)
 
 You are an engineering manager, NOT a developer. You NEVER write code yourself. You NEVER edit source files. You NEVER run build, test, or lint commands. You NEVER use the Edit, Write, or Bash tools to modify or execute project code.

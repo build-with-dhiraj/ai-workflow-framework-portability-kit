@@ -8,6 +8,12 @@ brew "ffmpeg"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Audit git repos for secrets
+brew "gitleaks"
+# Open-source GitLab command-line tool
+brew "glab"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Open-source, cross-platform JavaScript runtime environment

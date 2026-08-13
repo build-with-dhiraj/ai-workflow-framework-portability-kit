@@ -22,17 +22,37 @@ If you can see it as a tool in a Claude Code session but it's *not* in any local
 
 ## 2. Direct claude.ai connectors
 
-These were added directly in *claude.ai → Settings → Connectors*. From `~/.claude/mcp-needs-auth-cache.json`:
+These were added directly in *claude.ai → Settings → Connectors*.
 
-| Connector | MCP server ID | OAuth scope | What it gives Claude |
-|---|---|---|---|
-| `claude.ai Gmail` | `mcpsrv_016sNCMZoLESLiQHjiryUpaH` | Gmail read + write | Read threads, draft/send, manage labels |
-| `claude.ai Google Calendar` | `mcpsrv_01CfApRFxbDeRyJ1aQ7ihBpC` | Calendar read | Inspect events, free/busy |
-| `claude.ai Google Drive` | `mcpsrv_01Dk8zbqgjGxPShv1wrzYJCe` | Drive read | Search, read files |
-| `claude.ai Scholar Gateway` | `mcpsrv_01EkYkgVpoDaW97wm3B4VVsf` | none (public corpus) | Scholarly article search & metadata |
-| `claude.ai Stitch` | `mcpsrv_01BAkYSATSHgkKerDye1eLPt` | Google Stitch | AI-assisted UI design |
-| `claude.ai Figma` | `mcpsrv_01PGsEKLGpyRjZiJjKzA1xGS` | Figma read/write | Inspect designs, generate code |
-| `claude.ai Atlassian Rovo` | `mcpsrv_01BfApsvoPvdy8BK8bQbzw7F` | Atlassian Cloud | Jira/Confluence search + actions |
+> **Read this before trusting the table.** `~/.claude/mcp-needs-auth-cache.json` is a *needs-auth* cache, not a roster: a server lands in it when it last prompted for authorization, and stale entries for uninstalled plugins are never swept. So it **under-reports** connectors that authorized cleanly and **over-reports** ones long gone. The table below is what that file held on **2026-08-13**; the section that follows lists what was actually live in-session on the same date, which is the more reliable inventory.
+
+| Connector | MCP server ID | What it gives Claude |
+|---|---|---|
+| `claude.ai Figma` | `mcpsrv_01PGsEKLGpyRjZiJjKzA1xGS` | Inspect designs, generate code |
+| `claude.ai stitch` | `mcpsrv_01BAkYSATSHgkKerDye1eLPt` | AI-assisted UI design |
+| `claude.ai Linear` | `mcpsrv_01SLMnu7oRCTiaMYAPXW4Hht` | Issues, projects, cycles |
+| `claude.ai Gitlab` | `mcpsrv_015xB3Kw5fSTeRVHqV665T6m` | Repos, MRs, pipelines |
+| `claude.ai Owkin` | `mcpsrv_014Pq9C8UdsgYaYJBaKJQ6K9` | Biomedical research platform |
+| `claude.ai Synapse.org` | `mcpsrv_0173YDPZH1uRBh4PFNRnwirE` | Sage Bionetworks data commons |
+| `claude.ai AdisInsight` | `mcpsrv_01BgrHEw4zg5qPNAS2FCdDSE` | Drug-development intelligence |
+| `GitLab`, `linear`, `notion`, `monday`, `atlassian`, `vercel` | *(no ID recorded)* | Bare-name entries — re-auth prompts pending as of the snapshot |
+
+### 2a. Live in-session on 2026-08-13 (the reliable roster)
+
+Observed as callable `mcp__*` tools in a real session — this is what actually reattached:
+
+| Domain | Connectors |
+|---|---|
+| Google | Gmail (read + write, labels, drafts), Google Calendar (read + write), Google Drive (read) |
+| Work tracking | Atlassian (Jira + Confluence, read + write), Linear (full issue/project/cycle/doc surface), Notion |
+| Comms | Slack (read, search, send, canvases) |
+| Meetings | Two meeting-notes/transcript connectors (metadata, notes, transcripts, calendar linkage) |
+| Analytics | Mixpanel (events, cohorts, dashboards, experiments, flags), Supabase (projects, SQL, migrations, edge functions) |
+| Design | Figma (design context, Code Connect, FigJam, screenshots, variables) |
+| Research | Scholarly-article search connector (search, metadata, full text, citations), Pinecone (vector search), Apify (scraping actors) |
+| Browser / desktop | Claude-in-Chrome, in-app Browser pane, computer-use, terminal reader |
+
+**Needs re-authorization as of this snapshot** (visible but not usable until OAuth is re-run): GitLab, and the plugin-bundled servers for Figma, Miro, bigdata.com, Zapier, and the productivity suite (Asana, Atlassian, ClickUp, Linear, Monday, Notion, Slack). Re-auth from claude.ai connector settings, or `claude mcp` / `/mcp` in an interactive session.
 
 ---
 

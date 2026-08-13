@@ -27,14 +27,14 @@ Snapshot re-synced 2026-06-11:
 | Type | Package | Why it's here |
 |---|---|---|
 | `brew` | `cocoapods` | iOS dependency manager (needed for `flutter-*` skills targeting iOS) |
-| `brew` | `ffmpeg` | Audio/video transcode + frame/audio extraction — backs the YouTube skills (`baoyu-youtube-transcript`, `jove-youtube-feed-pipeline`) |
+| `brew` | `ffmpeg` | Audio/video transcode + frame/audio extraction — backs the YouTube skills (`baoyu-youtube-transcript` and the operator-local video pipeline held back from the public kit) |
 | `brew` | `gh` | GitHub CLI — used by many skills + Mattpocock `to-issues`, `to-prd`, `triage` |
 | `brew` | `node` | Node.js + npm — runtime for Claude Code itself + npm-globals |
 | `brew` | `pandoc` | Document conversion — used by `anthropic-skills:docx`, `pdf`, `xlsx` |
 | `brew` | `poppler` | PDF utilities — used by `anthropic-skills:pdf` |
 | `brew` | `python@3.11` | Modern Python for tools that don't work with system 3.9 (Xcode's pip) |
 | `brew` | `tectonic` | Self-contained LaTeX engine — compiles `master-resume`'s CV/résumé/cover-letter `.tex` output to PDF |
-| `brew` | `yt-dlp` | YouTube/video downloader — backs `baoyu-youtube-transcript` and `jove-youtube-feed-pipeline` |
+| `brew` | `yt-dlp` | YouTube/video downloader — backs `baoyu-youtube-transcript` and the operator-local video pipeline held back from the public kit |
 | `cask` | `libreoffice` | Headless office suite — document-conversion fallback for `anthropic-skills:docx`/`pptx`/`xlsx` |
 | `vscode` | `anysphere.remote-ssh` | Cursor's Remote SSH extension |
 | `uv` | `notebooklm-mcp-cli` | NotebookLM CLI installed via `uv` |
@@ -56,7 +56,7 @@ Snapshot re-synced 2026-06-11:
 | `pnpm` | Fast package manager used across JS projects |
 | `pptxgenjs` | pptx generation library |
 | `vercel` | Vercel CLI — deploys + env management |
-| `zubeid-youtube-mcp-server` | YouTube MCP server — backs `baoyu-youtube-transcript` and `jove-youtube-feed-pipeline` |
+| `zubeid-youtube-mcp-server` | YouTube MCP server — backs `baoyu-youtube-transcript` and the operator-local video pipeline held back from the public kit |
 | `npm` | npm itself — excluded from the restore loop |
 
 Notably **NOT** captured globally: `nlm` (NotebookLM CLI) — it's uv-managed (`notebooklm-mcp-cli` in the Brewfile) or installed on-demand by skills.
@@ -91,7 +91,7 @@ It prompts once for confirmation, then runs end-to-end:
 | 3 | Install global npm packages | 1–2min |
 | 4 | Copy `CLAUDE-global.md` → `~/.claude/CLAUDE.md` and `settings.json` → `~/.claude/settings.json` | <1s |
 | 5 | Restore 35 agents + 131 skills via `rsync` | <5s |
-| 6 | Register 3 marketplaces + install 8 plugins | 1–3min |
+| 6 | Register 4 marketplaces + install 10 plugins | 1–3min |
 | 7 | **Manual** — print instructions for MCP secrets (the script can't paste your JWT for you) | — |
 
 The only thing the script doesn't do for you is **fill in your n8n JWT** in `MCP/mcp.template.json` — that secret lives in your password manager and you have to paste it yourself before copying to `~/.claude/mcp.json`.

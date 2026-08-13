@@ -1,6 +1,6 @@
 # Skills — Roster, Layers & Precedence
 
-150 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+151 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
@@ -174,73 +174,82 @@ The following skills come from installed plugins — they auto-reappear when plu
 131 skill directories — the authoritative on-disk set as of the 2026-06-21 re-sync, alphabetically:
 
 ```
-3d-web-experience                           ai-product-ux
-ai-sdk                                      arize-experiment
-arize-prompt-optimization                   bank-valuation
-baoyu-youtube-transcript                    build-review-interface
-building-claude-portability-kit             capital-allocation-judge
-caveman                                     claude-seo
-code-review-excellence                      context-kernel
-cra-to-next-migration                       creating-financial-models
-decision-journal                            deep-research
-defuddle                                    deployments-cicd
-design-taste-frontend                       diagnose
-dspy-gepa-reflective                        edit-article
-emil-design-eng                             error-analysis
-etf-reit-onboarding                         eval-audit
-evaluate-rag                                evaluating-agent-behavior
-evaluating-skill-necessity                  fact-check
-find-skills                                 fleet-auditor
-flutter-adding-home-screen-widgets          flutter-animating-apps
-flutter-architecting-apps                   flutter-building-forms
-flutter-building-layouts                    flutter-building-plugins
-flutter-caching-data                        flutter-embedding-native-views
-flutter-handling-concurrency                flutter-handling-http-and-json
-flutter-implementing-navigation-and-routing flutter-improving-accessibility
-flutter-interoperating-with-native-apis     flutter-localizing-apps
-flutter-managing-state                      flutter-reducing-app-size
-flutter-setting-up-on-linux                 flutter-setting-up-on-macos
-flutter-setting-up-on-windows               flutter-testing-apps
-flutter-theming-apps                        flutter-working-with-databases
-forensic-accounting-redflags                framer-motion-animator
-generate-synthetic-data                     gepetto
-git-guardrails-claude-code                  github-actions
-grill-me                                    grill-with-docs
-gws-forms                                   humanizer
-idea-researcher                             impeccable
-improve-codebase-architecture               integrate-whatsapp
-jove-youtube-feed-pipeline                  json-canvas
-langfuse                                    langsmith-evaluator
-llm-eval                                    loop-engineering
-loop-engineering                            managing-skills-library
-master-resume                               memory-router
-migrate-to-shoehorn                         moat-analysis
-ner-content-pipeline                        nextjs-app-router-patterns
-nodejs-backend-patterns                     obsidian-bases
-obsidian-brain-eval                         obsidian-cli
-obsidian-graph-auditor                      obsidian-markdown
-obsidian-orphan-rescue                      obsidian-vault
-obsidian-vault-architect                    office-hours
-personal-content-resurface                  phy6-brand-assets
-portfolio-sizing                            postgresql-code-review
-primary-research-sentiment                  product-management
-prompt-engineering                          prototype
-python-pipelines                            r3f-best-practices
-rag-patterns                                research-synthesis
-scaffold-exercises                          security-review
-sentry-nextjs-sdk                           setup-matt-pocock-skills
-setup-pre-commit                            stock-onboarding-pipeline
-stock-pick-ranker                           supabase
-supabase-postgres-best-practices            tanstack-start-best-practices
-tdd                                         threejs-animation
-to-issues                                   to-prd
-token-coach                                 token-dashboard
-token-optimizer                             triage
-typescript-react-reviewer                   user-research
-validate-evaluator                          valuation-dcf-longrunway
-web-asset-generator                         wrap-up
-write-a-skill                               write-judge-prompt
-zoom-out                                    
+3d-web-experience                           integrate-whatsapp
+a11y-audit                                  json-canvas
+add-custom-mcp                              langfuse
+ai-product-ux                               langsmith-evaluator
+ai-sdk                                      llm-eval
+arize-experiment                            loop-engineering
+arize-prompt-optimization                   mac-migration
+bank-valuation                              managing-skills-library
+baoyu-youtube-transcript                    memory-router
+build-review-interface                      migrate-to-shoehorn
+building-claude-portability-kit             moat-analysis
+capital-allocation-judge                    ner-content-pipeline
+caveman                                     news-results-refresh
+claude-design-prompting                     nextjs-app-router-patterns
+claude-seo                                  nodejs-backend-patterns
+code-review-excellence                      obsidian-bases
+color-expert                                obsidian-brain-eval
+context-kernel                              obsidian-cli
+cra-to-next-migration                       obsidian-graph-auditor
+creating-financial-models                   obsidian-markdown
+decision-journal                            obsidian-orphan-rescue
+deep-research                               obsidian-vault
+defuddle                                    obsidian-vault-architect
+deployments-cicd                            office-hours
+design-taste-frontend                       personal-content-resurface
+design-tokens                               phy6-brand-assets
+diagnose                                    portfolio-sizing
+dspy-gepa-reflective                        postgresql-code-review
+edit-article                                primary-research-sentiment
+emil-design-eng                             product-management
+error-analysis                              prompt-engineering
+etf-reit-onboarding                         prototype
+eval-audit                                  python-pipelines
+evaluate-rag                                r3f-best-practices
+evaluating-agent-behavior                   rag-patterns
+evaluating-skill-necessity                  research-synthesis
+extract-design-system                       scaffold-exercises
+fact-check                                  security-review
+find-skills                                 sentry-nextjs-sdk
+fleet-auditor                               setup-matt-pocock-skills
+flutter-adding-home-screen-widgets          setup-pre-commit
+flutter-animating-apps                      stitch-code-to-design
+flutter-architecting-apps                   stitch-design-md
+flutter-building-forms                      stitch-enhance-prompt
+flutter-building-layouts                    stitch-extract-design-md
+flutter-building-plugins                    stitch-extract-static-html
+flutter-caching-data                        stitch-generate-design
+flutter-embedding-native-views              stitch-manage-design-system
+flutter-handling-concurrency                stitch-stitch-loop
+flutter-handling-http-and-json              stitch-taste-design
+flutter-implementing-navigation-and-routing stitch-upload-to-stitch
+flutter-improving-accessibility             stock-onboarding-pipeline
+flutter-interoperating-with-native-apis     stock-pick-ranker
+flutter-localizing-apps                     supabase
+flutter-managing-state                      supabase-postgres-best-practices
+flutter-reducing-app-size                   tanstack-start-best-practices
+flutter-setting-up-on-linux                 tdd
+flutter-setting-up-on-macos                 think-like-fable
+flutter-setting-up-on-windows               threejs-animation
+flutter-testing-apps                        to-issues
+flutter-theming-apps                        to-prd
+flutter-working-with-databases              token-coach
+forensic-accounting-redflags                token-dashboard
+framer-motion-animator                      token-optimizer
+generate-synthetic-data                     triage
+gepetto                                     typescript-react-reviewer
+git-guardrails-claude-code                  user-research
+github-actions                              ux-writing
+grill-me                                    validate-evaluator
+grill-with-docs                             valuation-dcf-longrunway
+gws-forms                                   web-asset-generator
+humanizer                                   wrap-up
+idea-researcher                             write-a-skill
+idea-to-build                               write-judge-prompt
+impeccable                                  zoom-out
+improve-codebase-architecture
 ```
 
 > `frontend-design` and `brand-guidelines` are **not** in this list — both were archived to `~/.claude/skills/.archive/` (superseded by `design-taste-frontend` and `anthropic-skills:brand-guidelines` respectively) and are intentionally absent from the public kit. The dated subsections below narrate how the library grew to these 131; this fenced block is the source of truth for *what is on disk right now*.
@@ -384,4 +393,23 @@ Eight skills appeared in live `~/.claude/skills/` since the 2026-06-17 snapshot 
 | `etf-reit-onboarding` | local dir | ETF/REIT onboarding pipeline |
 
 **Intentionally excluded from the kit:** `vercel-deployment` (deprecated — use `vercel-plugin:*`), `.archive-token-optimizer-pkg/` (archive bundle), nested `.git/` dirs, and `__pycache__/`.
+
+---
+
+### Added 2026-08-13: live re-sync → 151 skills
+
+One skill appeared in live `~/.claude/skills/` since the 2026-08-02 snapshot. Re-sync brings the kit to parity — **150 → 151 skills**.
+
+| Skill | Source | Notes |
+|---|---|---|
+| `claude-design-prompting` | local dir | How to prompt Claude Design (claude.ai/design) for new prototypes/decks/pages and for edits to existing ones |
+
+Also picked up in this pass (content-only, no new skills): missing `README.md` files inside `stitch-design-md`, `stitch-enhance-prompt`, and `stitch-stitch-loop`, which the 2026-08-02 snapshot had skipped.
+
+**Employer-named skills held back from the public kit** (present in live `~/.claude/skills/`, excluded here by the same rule applied to the work-video pipeline on 2026-08-02): four work-repo symlinks plus one analytics skill. They live on locally and are re-created by cloning the work repo, not by this kit. Live count is 156; published count is 151.
+
+**Two corrections to earlier entries:**
+
+- `master-resume` (added 2026-06-11) is **no longer present** in live or in the kit. It was removed from the source machine between the 06-21 and 08-02 snapshots; the 06-11 table above is left intact as history. Its `tectonic` Brewfile note is therefore moot.
+- The "`hooks` + `statusLine` remain intentionally **out** of the kit's `settings.json`" policy stated in the 2026-06-11 entry was **not actually honoured** by the 2026-08-02 snapshot, which shipped 19 token-optimizer hooks pointing at `~/.claude/skills/.archive-token-optimizer-pkg/` — a path this kit deliberately excludes, so a restore would have written a `settings.json` referencing files that were never copied. Both keys are stripped again as of this snapshot, and the hooks are gone from the live machine too (removed 2026-08-12).
 
