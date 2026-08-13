@@ -29,3 +29,10 @@ research/loop-engineering-agent-hub-2026/github-clones/
 
 # Plan-mode artifacts (if any sneak in)
 *.plan.md
+
+# Private capability overlay — NEVER published.
+# Holds the work-specific skills and the second config root that the public
+# kit deliberately omits. The kit FOLDER carries full capability; the kit
+# REPO carries only what is safe to publish. Copy the folder (not a clone)
+# when migrating Macs. See Private/README.md.
+Private/

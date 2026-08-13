@@ -7,6 +7,48 @@
 
 ---
 
+## 0. The full addressable roster — and why this folder holds only part of it
+
+A live session can dispatch **66** agents. This folder contains 36 of them.
+That is not a gap; the other 30 have no files to copy. See
+[../CLAUDE.md §1a](../CLAUDE.md) for the delivery-tier model.
+
+| Source | Count | In this folder? | How it is restored |
+|---|---|---|---|
+| **Custom specialists** (this folder) | **36** | ✅ yes | `rsync` in `restore.sh` step 5 |
+| **Claude Code built-ins** | 6 | ❌ no | ships inside the Claude Code binary |
+| **Plugin-provided** | 24 | ❌ no | arrives when the plugin installs |
+| **Total dispatchable** | **66** | | |
+
+**Do not copy the other 30 into this folder.** Built-ins are part of the app;
+adding same-named files to `~/.claude/agents/` creates shadow definitions that
+can override the real ones. Plugin agents are owned by their plugin — a second
+copy on disk is a precedence hazard, exactly the bug that made `claude-seo`
+load as `claude-seo@skills-dir` until it was registered properly on 2026-08-13.
+The correct way to "capture" a plugin agent is to capture its **plugin**, which
+`Plugins/` already does.
+
+### The 6 built-ins
+
+`claude` (general catch-all) · `general-purpose` · `Explore` (read-only
+fan-out search) · `Plan` (architecture/planning, read-only) ·
+`claude-code-guide` (Claude Code / SDK / API questions) · `statusline-setup`
+
+### The 24 plugin-provided
+
+| Plugin | Agents | Delivery tier |
+|---|---|---|
+| `claude-seo` | 18 (`seo-technical`, `seo-content`, `seo-geo`, `seo-maps`, `seo-local`, `seo-schema`, …) | 1 — disk, `Plugins/claude-seo-source/` |
+| `searchfit-seo` | 3 (`competitor-analyzer`, `content-strategist`, `seo-auditor`) | 2 — app-delivered |
+| `product-tracking-skills` | 1 (`tracking-watchdog`) | 2 — app-delivered |
+| `superpowers-chrome` | 1 (`browser-user`) | 1 — disk, CLI plugin |
+| `zapier` | 1 (`Zapier MCP Specialist`) | 2 — app-delivered |
+
+Only `claude-seo` and `superpowers-chrome` are restorable by this kit. The rest
+reattach on `claude login`.
+
+---
+
 ## 1. The dispatch contract
 
 Every specialist obeys the same contract when dispatched:

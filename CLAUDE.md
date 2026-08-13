@@ -18,12 +18,49 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `SPEC-KIT-global.md` | Snapshot of your global `~/.claude/SPEC-KIT.md` (greenfield spec-driven phase mapping) | `~/.claude/SPEC-KIT.md` |
 | `settings.json` | Snapshot of `~/.claude/settings.json` (plugins, permissions, env) | `~/.claude/settings.json` |
 | `Agents/` | All 36 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
-| `Skills/` | All 149 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
+| `Skills/` | All 148 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
 | `Automations/` | The loop-heartbeat layer (Osmani "Loop Engineering") — harness scheduling stack, hooks/statusLine policy, and the human-in-the-loop kit-maintenance loop (README inside) | harness/account-bound (`/loop`, `/goal`, `/schedule`; no local file) |
 | `Tooling/` | Brewfile + npm globals snapshot + **`restore.sh`** (one-prompt end-to-end restore script) | system-level (Homebrew, npm) |
+| `Private/` | 🔒 **Gitignored.** The 7 work-specific skills held back from the public repo + the second config root (`~/.claude-jove`). Present in the kit *folder*, absent from the kit *repo*. (README inside) | `~/.claude/skills/*` + `~/.claude-jove/` |
+
+---
+
+## 1a. Delivery tiers — what this kit can and cannot own
+
+Before the layer model, understand **where capability physically comes from**.
+Three tiers, and the kit can only copy one of them. Confusing them is what
+makes the kit look incomplete when it is not.
+
+| Tier | Lives | Examples | Kit captures? | Survives a Mac wipe? |
+|---|---|---|---|---|
+| **1 — Disk** | `~/.claude/` | 36 agents, 155 local skills, 13 CLI plugins, `settings.json`, `CLAUDE.md` | ✅ **yes — this is the kit's whole job** | only via this kit |
+| **2 — App-delivered** | nowhere on disk | `desktop-commander`, `miro`, `langfuse`, `auth0`, `zapier`, `bigdata-com`, `slack-by-salesforce`, `product-tracking-skills`, `searchfit-seo`, `anthropic-skills` | ❌ no — **nothing to copy** | ✅ auto, on `claude login` |
+| **3 — Account** | Anthropic backend | claude.ai skills (`ListSkills` → 6), all OAuth connectors | ❌ no (inventoried only) | ✅ auto, on `claude login` |
+
+Tier 2 is the one that surprises people. Those plugins return **NOT FOUND** on a
+full filesystem search — the desktop app provisions them at runtime into a
+session-scoped cache. `ListPlugins` returns empty and `ListSkills` returns only
+the 6 account skills, confirming they are served, not installed.
+
+**The practical rule:** if a capability is missing after a restore, first ask
+which tier it is in. Tier 1 → the kit failed, fix `restore.sh`. Tiers 2 and 3 →
+you are not logged in yet, or the connector needs re-authorization. Never try to
+"add" a tier-2 plugin to `Plugins/`; there is no file to add.
+
+### The repo / folder distinction
+
+| | Contains | Use it for |
+|---|---|---|
+| **Kit repo** (GitHub) | Everything publishable | Sharing, auditing, forking |
+| **Kit folder** (this directory) | Repo **+ gitignored `Private/`** | **Actual Mac migration** |
+
+`Private/` holds 7 work-specific skills and the second config root
+(`~/.claude-jove`). Withholding something from the public repo no longer means
+losing it on restore. **Copy the folder; do not `git clone`** — see
+[Private/README.md](Private/README.md).
 
 ---
 
@@ -287,6 +324,8 @@ For loop design, harness engineering, `/loop` `/goal`, Ralph loops, Agent Hub pa
 | Host-side packages (Homebrew, npm globals) + one-shot restore script | [Tooling/README.md](Tooling/README.md) (Brewfile + npm-globals.json + restore.sh) |
 | Memory restoration | [MEMORY.md](MEMORY.md) |
 | New-Mac install procedure | [BOOTSTRAP.md](BOOTSTRAP.md) |
+| What is deliberately NOT published, and the repo-vs-folder rule | [Private/README.md](Private/README.md) *(gitignored — folder only)* |
+| Which capability comes from disk vs the app vs the account | §1a above, [Plugins/README.md §0](Plugins/README.md), [Agents/README.md §0](Agents/README.md) |
 
 When this `CLAUDE.md` and `CLAUDE-global.md` disagree, **`CLAUDE-global.md` wins** — it is the live source-of-truth from the source machine.
 

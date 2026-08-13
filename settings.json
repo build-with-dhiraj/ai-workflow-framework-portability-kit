@@ -24,7 +24,10 @@
     "andrej-karpathy-skills@karpathy-skills": true,
     "github@claude-plugins-official": true,
     "ponytail@ponytail": true,
-    "youdotcom-agent-skills@claude-plugins-official": true
+    "youdotcom-agent-skills@claude-plugins-official": true,
+    "claude-seo@agricidaniel-seo": true,
+    "productivity@knowledge-work-plugins": true,
+    "cowork-plugin-management@knowledge-work-plugins": true
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
@@ -45,6 +48,18 @@
       "source": {
         "source": "git",
         "url": "https://github.com/DietrichGebert/ponytail.git"
+      }
+    },
+    "agricidaniel-seo": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/Dhiraj/.claude/plugins/local-src/claude-seo"
+      }
+    },
+    "knowledge-work-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/knowledge-work-plugins"
       }
     }
   },

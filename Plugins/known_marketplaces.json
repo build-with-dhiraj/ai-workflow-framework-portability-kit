@@ -40,5 +40,21 @@
     },
     "installLocation": "/Users/Dhiraj/.claude/plugins/marketplaces/ponytail",
     "lastUpdated": "2026-07-04T10:42:00.236Z"
+  },
+  "agricidaniel-seo": {
+    "source": {
+      "source": "directory",
+      "path": "/Users/Dhiraj/.claude/plugins/local-src/claude-seo"
+    },
+    "installLocation": "/Users/Dhiraj/.claude/plugins/local-src/claude-seo",
+    "lastUpdated": "2026-08-13T01:46:19.573Z"
+  },
+  "knowledge-work-plugins": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/knowledge-work-plugins"
+    },
+    "installLocation": "/Users/Dhiraj/.claude/plugins/marketplaces/knowledge-work-plugins",
+    "lastUpdated": "2026-08-13T01:47:12.004Z"
   }
 }

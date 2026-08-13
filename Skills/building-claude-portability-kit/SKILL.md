@@ -292,17 +292,35 @@ cp ~/.claude/agents/*.md <Kit>/Agents/
 # Skills (resolve symlinks!) — the kit repo is PUBLIC, so 7 skills are held back.
 # Never drop these excludes: they leak the work repo's layout, internal tool
 # paths, its CLAUDE.md rule citations, and the Pinecone namespace design.
+HELD="jove-design-loop jove-labs-sweep jove-recall jove-youtube-feed-pipeline \
+      mixpanel-mastery memory-router wrap-up"
+
 rsync -aL --exclude='.archive*' --delete \
   --exclude='/README.md' \
-  --exclude='/jove-design-loop' --exclude='/jove-labs-sweep' \
-  --exclude='/jove-recall' --exclude='/jove-youtube-feed-pipeline' \
-  --exclude='/mixpanel-mastery' \
-  --exclude='/memory-router' --exclude='/wrap-up' \
+  $(for s in $HELD; do printf -- "--exclude=/%s " "$s"; done) \
   ~/.claude/skills/ <Kit>/Skills/
 
-# Parity check: live count minus 7 must equal the kit count.
-#   ls -1 ~/.claude/skills | grep -v '^\.' | wc -l     # live
-#   ls -1 <Kit>/Skills | grep -v '^README.md$' | wc -l # kit
+# EVERY held-back skill MUST land in the gitignored Private/ overlay, or the
+# capability is silently lost on restore. Excluding without overlaying is the
+# bug this pairing exists to prevent.
+for s in $HELD; do
+  rsync -aL --delete --exclude='.git' ~/.claude/skills/$s/ <Kit>/Private/Skills/$s/
+done
+
+# Second config root (work profile) — only what is UNIQUE to it; its agents are
+# byte-identical to the default profile's and are restored from <Kit>/Agents/.
+cp ~/.claude-jove/{CLAUDE.md,SPEC-KIT.md,settings.json} <Kit>/Private/work-profile/
+cp ~/.claude-jove/plugins/{installed_plugins,known_marketplaces}.json <Kit>/Private/work-profile/
+for s in $(comm -13 <(ls -1 ~/.claude/skills | grep -v '^\.' | sort) \
+                    <(ls -1 ~/.claude-jove/skills | grep -v '^\.' | sort)); do
+  rsync -aL --exclude='.git' ~/.claude-jove/skills/$s/ <Kit>/Private/work-profile/skills-delta/$s/
+done
+
+# THE PARITY IDENTITY — assert it, do not eyeball it:
+#   live ~/.claude/skills  ==  <Kit>/Skills (public)  +  <Kit>/Private/Skills
+#   ls -1 ~/.claude/skills | grep -v '^\.' | wc -l          # live
+#   ls -1 <Kit>/Skills | grep -v '^README.md$' | wc -l      # public
+#   ls -1 <Kit>/Private/Skills | grep -v '^README.md$' | wc -l  # private
 
 # Plugin manifests
 cp ~/.claude/plugins/{installed_plugins,known_marketplaces}.json <Kit>/Plugins/

@@ -1,9 +1,34 @@
 # Skills — Roster, Layers & Precedence
 
-149 active skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+148 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
+
+### Where the skill count actually lands
+
+A live session can invoke far more than 148 skills. Only the first row below is
+this kit's responsibility — see [../CLAUDE.md §1a](../CLAUDE.md) for why.
+
+| Source | Count | Restored by this kit? |
+|---|---|---|
+| **This folder** (public) | **148** | ✅ `restore.sh` step 5 |
+| `../Private/Skills/` (work-specific, gitignored) | 7 | ✅ step 8 — folder copies only, not clones |
+| → **local skills on disk after restore** | **155** | matches live `~/.claude/skills/` exactly |
+| Plugin-provided (21 namespaces) | ~207 | ✅ *indirectly* — arrives with the plugin |
+| claude.ai account skills | 6 | ✅ auto, on `claude login` |
+| Claude Code harness built-ins | ~14 | ships inside the app |
+
+**Every local skill dir here has a valid `SKILL.md`** — verified 2026-08-13.
+Three carry `disable-model-invocation: true` (`zoom-out`,
+`setup-matt-pocock-skills`, `sentry-nextjs-sdk`): fully installed, invoked by
+slash command, deliberately absent from the model's auto-invocable list. That
+is a setting, not a defect — don't "fix" it.
+
+`claude-seo` used to sit in this folder and was **not** a skill: it is a plugin
+with 25 skills and 18 agents that loaded by accidental auto-discovery. It moved
+to [`../Plugins/claude-seo-source/`](../Plugins/) on 2026-08-13 and is now
+registered as a proper directory marketplace.
 
 ---
 
@@ -410,6 +435,38 @@ Also picked up in this pass (content-only, no new skills): missing `README.md` f
 **Employer-named skills also held back** (present in live `~/.claude/skills/`, excluded by the same rule applied to the work-video pipeline on 2026-08-02): four work-repo symlinks plus one analytics skill.
 
 **Reconciliation:** live 156 − 5 employer-named − 2 withdrawn = **149 published**. Any future refresh must keep all seven excluded; the exclusion list is in the maintenance `rsync` in [`building-claude-portability-kit/SKILL.md`](building-claude-portability-kit/SKILL.md).
+
+---
+
+### Added 2026-08-13 (second pass): parity audit → 148 skills
+
+A three-way audit of repo vs Mac vs live app found the counts were not
+comparable because three different delivery tiers were being added together.
+Fixes, in the order they changed the numbers:
+
+- **`claude-seo` reclassified.** It was never a skill — it is a plugin (25
+  skills + 18 agents) that sat loose in `~/.claude/skills/` with no
+  registration, loading only because Claude Code auto-discovers a
+  `.claude-plugin/marketplace.json` there and synthesises a `skills-dir`
+  marketplace. Now registered as the `agricidaniel-seo` directory marketplace;
+  source moved to [`../Plugins/claude-seo-source/`](../Plugins/). Local skills
+  149 → 148, plugins 10 → 13. **Every remaining skill dir has a valid
+  `SKILL.md`** — no more silent non-loaders.
+- **`Private/` overlay added.** The 7 held-back skills now live in a gitignored
+  overlay, so withholding from the repo no longer costs capability on restore.
+  The parity identity is now asserted, not eyeballed:
+  `live 155 == public 148 + private 7`.
+- **Second config root captured.** `~/.claude-jove` (157 skills, 9 plugins, its
+  own `CLAUDE.md`/`settings.json`) was entirely invisible to the kit. Its
+  unique parts are in `Private/work-profile/`; its agents are byte-identical to
+  `../Agents/` and are not stored twice.
+- **Delivery tiers documented** in [../CLAUDE.md §1a](../CLAUDE.md),
+  [../Plugins/README §0](../Plugins/README.md) and
+  [../Agents/README §0](../Agents/README.md), so the ~207 plugin skills, 6
+  claude.ai skills, and ~14 harness built-ins are no longer mistaken for gaps.
+- **`disable-model-invocation: true`** confirmed on `zoom-out`,
+  `setup-matt-pocock-skills`, and `sentry-nextjs-sdk`. Installed and working as
+  slash commands; absent from the auto-invocable list by design, not by fault.
 
 **Two corrections to earlier entries:**
 

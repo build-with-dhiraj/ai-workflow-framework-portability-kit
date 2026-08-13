@@ -91,7 +91,7 @@ It prompts once for confirmation, then runs end-to-end:
 | 3 | Install global npm packages | 1–2min |
 | 4 | Copy `CLAUDE-global.md` → `~/.claude/CLAUDE.md` and `settings.json` → `~/.claude/settings.json` | <1s |
 | 5 | Restore 35 agents + 131 skills via `rsync` | <5s |
-| 6 | Register 4 marketplaces + install 10 plugins | 1–3min |
+| 6 | Register 6 marketplaces (7 total) + install 13 plugins | 1–3min |
 | 7 | **Manual** — print instructions for MCP secrets (the script can't paste your JWT for you) | — |
 
 The only thing the script doesn't do for you is **fill in your n8n JWT** in `MCP/mcp.template.json` — that secret lives in your password manager and you have to paste it yourself before copying to `~/.claude/mcp.json`.

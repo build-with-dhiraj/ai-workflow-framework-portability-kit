@@ -118,6 +118,36 @@
         "lastUpdated": "2026-08-04T04:58:27.152Z",
         "gitCommitSha": "4712250ae8e5ce3095cad3b43b62b33608888863"
       }
+    ],
+    "claude-seo@agricidaniel-seo": [
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/agricidaniel-seo/claude-seo/1.9.9",
+        "version": "1.9.9",
+        "installedAt": "2026-08-13T01:46:24.781Z",
+        "lastUpdated": "2026-08-13T01:46:24.781Z",
+        "gitCommitSha": "7676024a0200c8aa636d03dc1de136c1cc8d5ffc"
+      }
+    ],
+    "productivity@knowledge-work-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/knowledge-work-plugins/productivity/1.3.1",
+        "version": "1.3.1",
+        "installedAt": "2026-08-13T01:47:12.223Z",
+        "lastUpdated": "2026-08-13T01:47:12.223Z",
+        "gitCommitSha": "e1f73c1d4ac2677518180d2810b3ccc7489632fa"
+      }
+    ],
+    "cowork-plugin-management@knowledge-work-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/Dhiraj/.claude/plugins/cache/knowledge-work-plugins/cowork-plugin-management/0.2.2",
+        "version": "0.2.2",
+        "installedAt": "2026-08-13T01:47:12.982Z",
+        "lastUpdated": "2026-08-13T01:47:12.982Z",
+        "gitCommitSha": "e1f73c1d4ac2677518180d2810b3ccc7489632fa"
+      }
     ]
   }
 }

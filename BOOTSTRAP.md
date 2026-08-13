@@ -2,7 +2,11 @@
 
 This is the runbook to get from a fresh Mac + Claude subscription to the same orchestration setup as the source machine. Estimated time: **15–20 minutes**.
 
-> **🚀 Fast path (recommended):** Run `Tooling/restore.sh`. It does steps 1–7 below in a single pass after one confirmation prompt. See [Tooling/README.md](Tooling/README.md). Step 7 (MCP secrets) is the only manual remainder. The steps below remain as a reference if you need to do anything partially or manually.
+> **🚀 Fast path (recommended):** Run `Tooling/restore.sh`. It does steps 1–7 below in one pass after a single confirmation prompt, plus a step 8 that applies the private overlay when present. See [Tooling/README.md](Tooling/README.md). The steps below remain as a reference if you need to do anything partially or manually.
+
+> **⚠️ Copy the folder, don't `git clone`.** The repo omits 7 work-specific skills and the second config root (`~/.claude-jove`); those live in the gitignored `Private/` overlay, which only exists in the folder. A clone restores a complete and usable stack — just not the private layer. `restore.sh` says which one it applied. See [Private/README.md](Private/README.md).
+
+> **Three tiers of capability.** This runbook restores tier 1 (disk) only. Tier 2 (app-delivered plugins) and tier 3 (claude.ai skills and connectors) have no files and reattach on `claude login`. If something is missing after a restore, check which tier it is in before debugging — [CLAUDE.md §1a](CLAUDE.md).
 
 ---
 
@@ -115,7 +119,7 @@ claude plugin install github@claude-plugins-official
 Verify:
 
 ```bash
-claude plugin list   # expect 10 plugins installed, 9 enabled (vercel-plugin ships disabled)
+claude plugin list   # expect 13 plugins installed, 12 enabled (vercel-plugin ships disabled)
 ```
 
 The shipped `settings.json` (already copied in step 1) has the right `enabledPlugins` block, so no further toggling is needed.
@@ -231,12 +235,25 @@ cd "/path/to/Claude Agents and Skills (PORTABILITY KIT)" && export KIT_DIR="$PWD
 
 # Check agents
 ls ~/.claude/agents/*.md | wc -l   # expect 36
+#   A live session also offers 6 Claude Code built-ins and ~24 plugin-provided
+#   agents (66 total). Those have no files here by design — see Agents/README §0.
 
 # Check skills
-ls ~/.claude/skills/ | wc -l       # expect 133 (or fewer if some are now symlinks)
+ls -1 ~/.claude/skills | grep -v '^\.' | wc -l
+#   expect 148 from a git clone
+#   expect 155 if you copied the kit FOLDER (adds the Private/ overlay)
+#   Plugin, claude.ai, and harness-built-in skills are on top of this and are
+#   NOT counted here — see Skills/README and CLAUDE.md §1a.
+
+# Check the second config root (only present with the Private/ overlay)
+ls -1 ~/.claude-jove/skills 2>/dev/null | grep -v '^\.' | wc -l   # expect 157, or absent
 
 # Check plugins
-claude plugin list                  # expect 8 enabled plugins
+claude plugin list                  # expect 13 installed, 12 enabled
+#   vercel-plugin ships disabled on purpose.
+#   App-delivered plugins (desktop-commander, miro, langfuse, auth0, zapier,
+#   bigdata-com, …) will NOT appear here and need no action — they reattach on
+#   `claude login`. See Plugins/README §0.
 
 # Check global instructions
 head -30 ~/.claude/CLAUDE.md        # should start with "# Claude Code Configuration"
