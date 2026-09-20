@@ -54,7 +54,7 @@
         {
           "text": "Pulled the data from the live instance without asking the user to paste anything",
           "passed": true,
-          "evidence": "es, what it's told, and what state the flow carries Read from the live graph on `https://flowiseai.dev.test.jove.com`, flow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, type `AG"
+          "evidence": "es, what it's told, and what state the flow carries Read from the live graph on `https://internal-host.example.com`, flow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, type `AG"
         }
       ],
       "notes": []
@@ -98,7 +98,7 @@
         {
           "text": "Pulled the data from the live instance without asking the user to paste anything",
           "passed": true,
-          "evidence": "he curation model actually sees, and what state the flow carries Read live from `https://flowiseai.dev.test.jove.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, las"
+          "evidence": "he curation model actually sees, and what state the flow carries Read live from `https://internal-host.example.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, las"
         }
       ],
       "notes": []

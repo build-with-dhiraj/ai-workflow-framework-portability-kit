@@ -1,6 +1,6 @@
 # AI Playlist — what the curation model sees, what it's told, and what state the flow carries
 
-Read from the live graph on `https://flowiseai.dev.test.jove.com`, flow **AI Playlist**, id
+Read from the live graph on `https://internal-host.example.com`, flow **AI Playlist**, id
 `fe20a92c-9245-484b-88a9-155cbb1889cc`, type `AGENTFLOW`, 28 nodes / 29 edges,
 `updatedDate = 2026-08-14`, `deployed = false`. Pulled 17 Aug 2026.
 
@@ -256,7 +256,7 @@ candidate list.
 
 **How confident to be.** The graph is unambiguous on all three facts above. What I can't tell from
 the graph alone is whether the running behaviour matches, and this is the dev instance
-(`flowiseai.dev.test.jove.com`, every flow showing `deployed = false`), so it may not be the graph
+(`internal-host.example.com`, every flow showing `deployed = false`), so it may not be the graph
 serving users. Two cheap checks before you rely on this either way:
 
 1. Open the Start node in the UI and confirm whether `curation_context` appears in Flow State. If

@@ -54,7 +54,7 @@
         {
           "text": "Pulled the data from the live instance without asking the user to paste anything",
           "passed": true,
-          "evidence": "ntflow V2) \u00b7 id `bd799a71-9b90-4bdd-888e-627e3428fa55` **28 nodes, 29 edges** \u00b7 instance `flowiseai.jove.com` \u00b7 flow `updatedDate` **2026-08-17T08:16:30Z** **Read from the live graph on 202"
+          "evidence": "ntflow V2) \u00b7 id `bd799a71-9b90-4bdd-888e-627e3428fa55` **28 nodes, 29 edges** \u00b7 instance `internal-host.example.com` \u00b7 flow `updatedDate` **2026-08-17T08:16:30Z** **Read from the live graph on 202"
         }
       ],
       "notes": []

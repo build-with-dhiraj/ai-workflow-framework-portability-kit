@@ -15,6 +15,8 @@ const patternRules = [
   [/(?<![A-Za-z0-9])[CDG]0[0-9A-Z]{8,10}(?![A-Za-z0-9])/g, "C0XXXXXXXXX"],
   [/(docs\.google\.com\/[a-z]+\/d\/)[A-Za-z0-9_-]{20,}/g, "$1DOC_ID"], [/\d{12}(\.dkr\.ecr)/g, "000000000000$1"],
   [/\/Users\/Dhiraj/g, "~"],
+  // employer subdomains other than the public sites are internal hosts
+  [/(?<![A-Za-z0-9.-])(?!www\.|app\.)[a-z0-9-]+(?:\.[a-z0-9-]+)*\.jove\.com/g, "internal-host.example.com"],
 ];
 const isText = b => !b.subarray(0, 8000).includes(0);
 let files = 0, changed = 0;

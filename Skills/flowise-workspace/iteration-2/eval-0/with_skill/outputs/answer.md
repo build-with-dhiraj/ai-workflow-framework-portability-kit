@@ -1,7 +1,7 @@
 # AI Playlist — what the curation model sees, what it's told, and what state the flow carries
 
 **Flow:** `AI Playlist` · type `AGENTFLOW` (Agentflow V2) · id `bd799a71-9b90-4bdd-888e-627e3428fa55`
-**28 nodes, 29 edges** · instance `flowiseai.jove.com` · flow `updatedDate` **2026-08-17T08:16:30Z**
+**28 nodes, 29 edges** · instance `internal-host.example.com` · flow `updatedDate` **2026-08-17T08:16:30Z**
 **Read from the live graph on 2026-08-17.** Read-only; no prediction endpoint was called.
 
 There is exactly one flow named "AI Playlist" on this instance (18 flows total), so there is no
@@ -237,7 +237,7 @@ removes the question entirely.
 ## How to re-verify any claim above
 
 ```bash
-export FLOWISE_API_ENDPOINT=https://flowiseai.jove.com FLOWISE_API_KEY=<key>   # key not recorded here
+export FLOWISE_API_ENDPOINT=https://internal-host.example.com FLOWISE_API_KEY=<key>   # key not recorded here
 
 node scripts/flowise.mjs nodes   "AI Playlist"                             # the 28-node map
 node scripts/flowise.mjs vars    "AI Playlist"                             # the state contract

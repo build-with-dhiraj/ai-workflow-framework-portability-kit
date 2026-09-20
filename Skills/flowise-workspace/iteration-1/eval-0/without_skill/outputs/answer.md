@@ -1,6 +1,6 @@
 # AI Playlist — what the curation model actually sees, and what state the flow carries
 
-Read live from `https://flowiseai.dev.test.jove.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, last updated **14 Aug 2026**. (There is a second flow named "AI Playlist dev", id `6e4cfab8-...` — everything below is from the non-dev one.)
+Read live from `https://internal-host.example.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, last updated **14 Aug 2026**. (There is a second flow named "AI Playlist dev", id `6e4cfab8-...` — everything below is from the non-dev one.)
 
 ## The short answer
 

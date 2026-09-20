@@ -24,7 +24,7 @@
     {
       "text": "Pulled the data from the live instance without asking the user to paste anything",
       "passed": true,
-      "evidence": "he curation model actually sees, and what state the flow carries Read live from `https://flowiseai.dev.test.jove.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, las"
+      "evidence": "he curation model actually sees, and what state the flow carries Read live from `https://internal-host.example.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, las"
     }
   ],
   "passed": 5,
