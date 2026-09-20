@@ -1,0 +1,42 @@
+{
+  "run_id": "eval-3-with_skill",
+  "expectations": [
+    {
+      "text": "Uses the correct singular /api/v1/prediction/{id} path",
+      "passed": true,
+      "evidence": "into a Next.js UI, with the user's ID attached ## The short version One endpoint, `POST /api/v1/prediction/{chatflowId}` (singular \u2014 the docs contain a plural `/predictions/` example that does not"
+    },
+    {
+      "text": "Lists the SSE event names (start, token, metadata, end at minimum)",
+      "passed": true,
+      "evidence": "named 4/4 of start, token, metadata, end"
+    },
+    {
+      "text": "Notes that metadata arrives after the tokens, before end",
+      "passed": true,
+      "evidence": "` yourself** and send it on the very first request. Otherwise you have to wait for the `metadata` event, which arrives *near the end of the answer*, before you can continue the conversation. - **Pass the user through as"
+    },
+    {
+      "text": "States the caller can supply chatId and that it is honoured verbatim, so the client need not parse metadata to continue a conversation",
+      "passed": true,
+      "evidence": "things that are worth getting right on the first pass rather than discovering later: - **Mint the `chatId` yourself** and send it on the very first request. Otherwise you have to wait for the `"
+    },
+    {
+      "text": "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+      "passed": true,
+      "evidence": "e answer*, before you can continue the conversation. - **Pass the user through as both `sessionId` and `vars`.** They do different jobs, and if you send only `sessionId` it silently doubles as the"
+    },
+    {
+      "text": "Warns that overrideConfig is disabled by default and must be enabled per property",
+      "passed": true,
+      "evidence": "eparate conversations into one stored thread. Then the one that eats the most time: **`overrideConfig` is disabled by default**, per property, so the userId you carefully pass will be dropped without an e"
+    },
+    {
+      "text": "Keeps the API key server-side rather than calling Flowise from the browser",
+      "passed": true,
+      "evidence": "hose expose your node names and tool calls to anyone with devtools open, which is why the route handler below filters rather than blindly piping. For contrast, with `\"streaming\": false` you ge"
+    }
+  ],
+  "passed": 7,
+  "total": 7
+}

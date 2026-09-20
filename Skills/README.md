@@ -1,19 +1,19 @@
 # Skills — Roster, Layers & Precedence
 
-149 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+161 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
 
 ### Where the skill count actually lands
 
-A live session can invoke far more than 149 skills. Only the first row below is
+A live session can invoke far more than 161 skills. Only the first row below is
 this kit's responsibility — see [../CLAUDE.md §1a](../CLAUDE.md) for why.
 
 | Source | Count | Restored by this kit? |
 |---|---|---|
-| **This folder** (public) | **149** | ✅ `restore.sh` step 5 |
-| `../Private/Skills/` (work-specific, gitignored) | 14 (12 held back + 2 overrides) | ✅ step 8 — folder copies only, not clones |
+| **This folder** (public) | **161** (14 as sanitized copies) | ✅ `restore.sh` step 5 |
+| `../Private/Skills/` (gitignored) | 14 verbatim originals that overwrite the sanitized copies | ✅ step 8 — folder copies only, not clones |
 | → **local skills on disk after restore** | **161** | matches live `~/.claude/skills/` exactly |
 | Plugin-provided (21 namespaces) | ~207 | ✅ *indirectly* — arrives with the plugin |
 | claude.ai account skills | 6 | ✅ auto, on `claude login` |
@@ -494,3 +494,16 @@ content. The held-back list is now 12.
   `"Bash(*)"` (which `restore.sh` relies on) and omits `additionalDirectories`, `statusLine` and
   the machine-specific `autoMode.environment` block.
 - Refreshed in place: `obsidian-cli`, `obsidian-graph-auditor`.
+
+### Added 2026-09-21 (second pass): identical scope → 161 skills
+
+Nothing is private-only any more. The 14 skills that were held back or frozen are now published as
+**sanitized copies**: same files, same instructions, with colleague names replaced by roles, internal
+ids, hosts and email addresses replaced by placeholders, credential-shaped strings redacted, and the
+production figures inside voice samples replaced with round numbers.
+
+- `Tooling/sanitize-skills.mjs <skill>...` produces them from live. Its name map is
+  `Private/sanitize-map.json` (gitignored), so the repo never lists the names it removes.
+- `Private/Skills/` keeps the verbatim originals and overwrites the sanitized copies at
+  `restore.sh` step 8. A git clone restores 161 working skills; a folder copy restores them verbatim.
+- **Parity identity:** `live 161 == public 161`, and `Private/Skills` is a subset of both.

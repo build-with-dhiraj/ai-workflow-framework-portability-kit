@@ -1,0 +1,12 @@
+{
+  "eval_id": 0,
+  "eval_name": "audit-live-flow",
+  "prompt": "Our Flowise instance has an agentflow called \"AI Playlist\". I need to understand one specific thing about it before a meeting: when the system decides which videos go into the final playlist, what exactly does the model get to see about each video, and what instruction is it given? Also tell me what state the flow carries between its steps. Credentials are in the FLOWISE_API_ENDPOINT and FLOWISE_API_KEY environment variables.",
+  "assertions": [
+    "Identifies the curation node by name (Organizing playlist)",
+    "States candidates are reduced to id/title/articleType before the model sees them",
+    "Quotes or accurately paraphrases the curation prompt's selection instruction",
+    "Lists the $flow.state keys the flow carries between steps",
+    "Pulled the data from the live instance without asking the user to paste anything"
+  ]
+}

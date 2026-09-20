@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-3-with_skill",
+  "expectations": [
+    {
+      "text": "Uses the correct singular /api/v1/prediction/{id} path",
+      "passed": true,
+      "evidence": "atflow from Next.js, streamed, with the user's ID attached Short version: one `POST` to `/api/v1/prediction/{chatflowId}` with `\"streaming\": true`, proxied through a route handler so the API key nev"
+    },
+    {
+      "text": "Lists the SSE event names (start, token, metadata, end at minimum)",
+      "passed": true,
+      "evidence": "so the shape the official SDKs yield, so the same loop handles both. ``` data: {\"event\":\"start\",\"data\":\"\"} data: {\"event\":\"token\",\"data\":\"To\"} data: {\"event\":\"token\",\"data\":\" reset\"} data: {\"event\":\"token\",\"data\":\" your password\"} data: {\"event\":\"metadata\",\"data\":{\"chatId\":\"...\",\"chatMessageId\":\"..."
+    },
+    {
+      "text": "Notes that metadata arrives after the tokens, before end",
+      "passed": true,
+      "evidence": "` | streaming begins | | `token` | each token \u2014 this is the one you append to the UI | | `metadata` | after all tokens, before `end`; carries `chatId` and message IDs | | `sourceDocuments` | the flow returned vector-store"
+    },
+    {
+      "text": "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+      "passed": true,
+      "evidence": "r-property** and has to be enabled in the flow's **Security** tab in the UI. If you send `sessionId` and `vars` and the flow behaves exactly as if you'd sent nothing, that is almost always this \u2014 not"
+    },
+    {
+      "text": "Warns that overrideConfig is disabled by default and must be enabled per property",
+      "passed": true,
+      "evidence": "before you write the code: `overrideConfig` is off by default Since Flowise `2.1.4`, **`overrideConfig` is disabled per-property** and has to be enabled in the flow's **Security** tab in the UI. If you send `sessionId` and `vars` and the flo"
+    },
+    {
+      "text": "Keeps the API key server-side rather than calling Flowise from the browser",
+      "passed": true,
+      "evidence": "e `POST` to `/api/v1/prediction/{chatflowId}` with `\"streaming\": true`, proxied through a route handler so the API key never reaches the browser. The user ID goes in `overrideConfig` \u2014 via **tw"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

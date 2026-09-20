@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-4-without_skill",
+  "expectations": [
+    {
+      "text": "Read the live flow rather than reasoning from architecture alone",
+      "passed": true,
+      "evidence": "k to the lower article ID. ### Step 4 \u2014 Compress candidates, then let a curator choose (\"Organizing playlist...\") Each surviving candidate is compacted to three fields \u2014 `{ id, t, ty }` \u2014 id, title"
+    },
+    {
+      "text": "States that playlist candidates are compacted to id/title/type before curation",
+      "passed": true,
+      "evidence": "idates, then let a curator choose (\"Organizing playlist...\") Each surviving candidate is compacted to three fields \u2014 `{ id, t, ty }` \u2014 id, title, article type. Nothing else. That is what makes it affordable to put hundreds of candidat"
+    },
+    {
+      "text": "Does NOT claim the playlist passes description or transcript to the curator",
+      "passed": true,
+      "evidence": "verified by direct read"
+    },
+    {
+      "text": "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+      "passed": true,
+      "evidence": "bels you will see in the canvas. ### Step 1 \u2014 Expand the topic into teaching subtopics (\"Analyzing your Topic...\") Before anything is searched, an LLM turns the single user topic into a list of subt"
+    },
+    {
+      "text": "Identifies the clarification/disambiguation step as a differentiator",
+      "passed": true,
+      "evidence": "antees it cannot. ### Step 6 \u2014 Ask one question instead of guessing (\"Planning request & clarifications...\") Ahead of all of this sits a planner that can refuse to run. It returns a re"
+    },
+    {
+      "text": "Produces a concrete checklist of what to verify on the Labs side, not generic advice",
+      "passed": true,
+      "evidence": "\". Those are different questions and Labs is only asking the second one. --- ## What to go and check on the Labs side There are working snapshots of the Labs services in this workspace at `"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

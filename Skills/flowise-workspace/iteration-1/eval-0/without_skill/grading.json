@@ -1,0 +1,32 @@
+{
+  "run_id": "eval-0-without_skill",
+  "expectations": [
+    {
+      "text": "Identifies the curation node by name (Organizing playlist)",
+      "passed": true,
+      "evidence": "e short answer Video selection happens in exactly **one** node: the LLM step labelled **\"Organizing playlist...\"** (`llmAgentflow_2`), running `gpt-5.6-luna` through a custom OpenAI-compatible endpo"
+    },
+    {
+      "text": "States candidates are reduced to id/title/articleType before the model sees them",
+      "passed": true,
+      "evidence": "lab_manual_procedure`) | That is the entire per-video representation. It is produced by `compactCandidate()` in the \"Searching JoVE library...\" node. **What the model does NOT see about each vid"
+    },
+    {
+      "text": "Quotes or accurately paraphrases the curation prompt's selection instruction",
+      "passed": true,
+      "evidence": "at the requested count or when relevant non-duplicate candidates are exhausted. - Select only from `candidates`. Do not invent ids. **Labeling rules** \u2014 concise, specific, learner-useful labels refl"
+    },
+    {
+      "text": "Lists the $flow.state keys the flow carries between steps",
+      "passed": true,
+      "evidence": "rough the single node above. ## The state the flow carries The Start node declares **37 state keys** with `startPersistState: true`, so they persist across turns within a chat session. |"
+    },
+    {
+      "text": "Pulled the data from the live instance without asking the user to paste anything",
+      "passed": true,
+      "evidence": "he curation model actually sees, and what state the flow carries Read live from `https://flowiseai.dev.test.jove.com`, agentflow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, las"
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

@@ -28,18 +28,19 @@ Default: if the destination is a formal artifact or a reader senior to the write
 
 **THE TRAP, never repeat it:** reading "make it human" and reaching for the *add-soul* half. Added personality, opinions, and writerly flourishes are precisely what an exec reads as "too AI-led." In Stakeholder mode you do not add soul. You remove tells and impose structure. Full stop.
 
-## STAKEHOLDER / EXEC MODE — the spec (The Dhanur Test + gstack)
+## STAKEHOLDER / EXEC MODE — the spec (The the Director Test + gstack)
 
 Not stylistic polish. Structural. The reader asks one question of every line: **"why are you telling me this?"** No decision it drives, no question it answers, cut it.
 
 Rules, most important first:
 1. **Decision-first.** First line answers "why am I reading this?" Lead with the call, the number, the ask. Kill every word of preamble ("I wanted to share", "As discussed", "Here is").
-2. **Bullets by default.** Anything listable becomes bullets or a table. Prose is the exception. ("Rule of thumb: short, bulleted points always help." — Dhanur)
-3. **Cut stray data.** Every number, caveat, and clause earns its place or it goes. ("I am reviewing a doc that has stray data." — Dhanur)
+2. **Bullets by default.** Anything listable becomes bullets or a table. Prose is the exception. ("Rule of thumb: short, bulleted points always help." — the Director)
+3. **Cut stray data.** Every number, caveat, and clause earns its place or it goes. ("I am reviewing a doc that has stray data." — the Director)
 4. **Altitude-matched.** A Director gets the calls, the timeline, one north-star metric. Engineering depth (file:line, SQL, ticket IDs) lives in a SEPARATE artifact, never mixed in.
 5. **Absolute dates only.** "Mon 14 Jul", never "Monday" or "next week". (His comment: "which Monday?")
 6. **One idea per sentence. No self-restating heading** (a heading that just repeats the line under it).
 7. **Show the trade-off, don't bury it.** A cost or risk is a line, not a footnote.
+8. **To the Director on a product change: outcome, then Scenario 1** (3 Sep 2026 PPP/1:1). He stopped a four-case CURATE walkthrough: "Just speak about scenarios. Scenario one." Not a yes-no tree. Not a workflow chart unless he asks. The chart is for tech. If CS does not need to operate it yet, do not explain it to them.
 
 HARD BANS (mechanical, non-negotiable):
 - **Em dashes, the long dash, anywhere, ever.** Use a comma, colon, period, or parentheses. Absolute.
@@ -589,3 +590,40 @@ Provide:
 This skill is based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. The patterns documented there come from observations of thousands of instances of AI-generated text on Wikipedia.
 
 Key insight from Wikipedia: "LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases."
+
+## HARD BUDGETS (added 17 Aug 2026, after the same length feedback five times)
+
+Every rule above is qualitative, so every rule above gets ignored under pressure. the Director has given
+the same correction repeatedly ("too long, over-explains"), Dhiraj has given it on drafts, on meeting
+descriptions and on ticket bodies, and each time the fix was another paragraph of guidance that did
+not survive the next draft. So: numbers.
+
+**Word budgets, counted before sending. Over budget is a defect, not a style opinion.**
+
+| Surface | Budget | Notes |
+|---|---|---|
+| Email to a stakeholder | **120 words** | the Director's own rewrites land near 80 |
+| Slack message | **60 words** | Longer belongs in a linked artifact |
+| Meeting description | **80 words** | Enough to prepare, not to read twice |
+| Spoken or written product change to the Director | **scenarios, ~80 words** | Outcome first. Scenario 1. Stop. No yes-no tree (3 Sep 2026) |
+| Jira ticket body | no budget | Tickets are specs, brevity is not the goal |
+| Doc or PRD | no budget | Structure governs, not length |
+
+**The cut pass, mandatory, after the draft reads well.** Write it, then delete half. What survives is
+the send. Specifically, delete in this order and stop when under budget:
+
+1. **Any sentence explaining why you are explaining.** "I want to give you the honest explanation
+   rather than a fix note" is throat-clearing.
+2. **Any sentence that pre-empts a question nobody asked.** If they ask, answer then.
+3. **Reasoning behind a request.** "So that I can reproduce it exactly and confirm whether X or Y"
+   becomes nothing. They do not need your diagnostic plan to send you a lab name.
+4. **Praise, softening and framing.** "You spotted something real" is for a conversation, not an email.
+5. **Any sentence that could be a bullet.**
+
+**The test.** Read only the first line and the ask. If a busy reader could act correctly on those two
+alone, the rest is optional and most of it should go. If they could not, the first line is wrong and
+lengthening the email will not fix it.
+
+**Why this keeps happening, named so it stops.** A long draft feels more helpful and more careful. It
+is neither. It transfers reading cost to someone senior to save the writer a cut. Every correction on
+record has been the same direction, and none has ever been "add more context".

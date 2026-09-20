@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-2-without_skill",
+  "expectations": [
+    {
+      "text": "Identifies SQLite as the cause of the locking under concurrent use and recommends Postgres",
+      "passed": true,
+      "evidence": "## Short version Five changes, in this order. Everything else can wait. 1. **Move off SQLite to Postgres.** This is the lock-up. SQLite allows one writer at a time across the whole file, and Flowise writes on every"
+    },
+    {
+      "text": "Names specific DATABASE_* environment variables rather than describing them vaguely",
+      "passed": true,
+      "evidence": "postgres: condition: service_healthy environment: PORT: 3000 DATABASE_TYPE: postgres DATABASE_HOST: postgres DATABASE_PORT: 5432 DATABASE_NAME: fl"
+    },
+    {
+      "text": "Explains the lost-flows cause as unpersisted volume / default data path, with the fix",
+      "passed": true,
+      "evidence": "flows \u2014 today, before anything else.** In almost every case it's a missing or misdirected volume mount, which means you are still one `docker compose up` away from losing them again. The"
+    },
+    {
+      "text": "Warns that the credential encryption key must be stable (FLOWISE_SECRETKEY_OVERWRITE)",
+      "passed": true,
+      "evidence": "Where does Flowise think its data lives? docker compose config | grep -Ei 'DATABASE_PATH|SECRETKEY_PATH|APIKEY_PATH|LOG_PATH|BLOB_STORAGE' # Did it die uncleanly? Exit 137 = SIGKILL, i.e. kill"
+    },
+    {
+      "text": "States that SSO is an enterprise-licensed feature, not available on the open-source build",
+      "passed": true,
+      "evidence": "n every flow becomes undecryptable while the flows themselves look fine. 4. **Decide your SSO story deliberately.** Real per-user identity, workspaces and RBAC in Flowise are Enterprise-licensed. The open-source route is an identity-aware proxy in front, which gates the UI but lea"
+    },
+    {
+      "text": "Tells the user the project is archived and which version to pin",
+      "passed": false,
+      "evidence": "No mention of the archive, the sunset or a version to pin. Advises pinning 'a' tag but names no version and treats upstream as alive."
+    }
+  ],
+  "passed": 5,
+  "total": 6
+}

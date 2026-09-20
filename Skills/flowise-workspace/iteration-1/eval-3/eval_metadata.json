@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "integrate-streaming",
+  "prompt": "I've got a chatflow working in the Flowise UI and now I need to call it from our Next.js app, streaming the answer into the UI token by token rather than waiting for the whole thing. I also need to pass the logged-in user's ID through so the flow can personalise. What does the request look like and what do I actually get back on the wire?",
+  "assertions": [
+    "Uses the correct singular /api/v1/prediction/{id} path",
+    "Lists the SSE event names (start, token, metadata, end at minimum)",
+    "Notes that metadata arrives after the tokens, before end",
+    "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+    "Warns that overrideConfig is disabled by default and must be enabled per property",
+    "Keeps the API key server-side rather than calling Flowise from the browser"
+  ]
+}

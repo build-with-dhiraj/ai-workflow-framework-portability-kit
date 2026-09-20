@@ -1,0 +1,32 @@
+{
+  "run_id": "eval-0-with_skill",
+  "expectations": [
+    {
+      "text": "Identifies the curation node by name (Organizing playlist)",
+      "passed": true,
+      "evidence": "ustomFunctionAgentflow_1` (42 KB) | Queries the catalog, **builds the payload** | | 06 | `Organizing playlist...` | `llmAgentflow_2` (12 KB) | **The model that selects, labels and sequences** | | 07"
+    },
+    {
+      "text": "States candidates are reduced to id/title/articleType before the model sees them",
+      "passed": true,
+      "evidence": "ched or already in the user's draft \u2014 is put through this function first: ```js function compactCandidate(video) { return { id: Number(video && video.articleId), t: String((video && vid"
+    },
+    {
+      "text": "Quotes or accurately paraphrases the curation prompt's selection instruction",
+      "passed": true,
+      "evidence": "a constraint, when appending. - **\"Do not invent ids\" is only enforced in recalibrate.** `requireCandidateMembership: true` is passed in the recalibrate path only. In `new` and `append`, `dedupeArticles`"
+    },
+    {
+      "text": "Lists the $flow.state keys the flow carries between steps",
+      "passed": true,
+      "evidence": "** (`6e4cfab8-\u2026`). It is **not** a copy of this one \u2014 it's an older 10-node design with 5 state keys and different node names (`Parsing your request...`, `Re ordering playlist content...`)."
+    },
+    {
+      "text": "Pulled the data from the live instance without asking the user to paste anything",
+      "passed": true,
+      "evidence": "es, what it's told, and what state the flow carries Read from the live graph on `https://flowiseai.dev.test.jove.com`, flow **AI Playlist**, id `fe20a92c-9245-484b-88a9-155cbb1889cc`, type `AG"
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

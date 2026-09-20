@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-4-without_skill",
+  "expectations": [
+    {
+      "text": "Read the live flow rather than reasoning from architecture alone",
+      "passed": true,
+      "evidence": "ered foundational \u2192 advanced. Max 10 keywords for a new playlist, 20 when growing one. - `customFunctionAgentflow_1` \"Searching JoVE library...\" \u2014 the retrieval engine: - `buildSearchQueries()` = `[top"
+    },
+    {
+      "text": "States that playlist candidates are compacted to id/title/type before curation",
+      "passed": true,
+      "evidence": "/`jove_education` 2 > everything else 1, tie-break lower article id. - Candidates are **compacted to `{id, t, ty}`** before the LLM sees them \u2014 no descriptions, no images. Cheap enough"
+    },
+    {
+      "text": "Does NOT claim the playlist passes description or transcript to the curator",
+      "passed": true,
+      "evidence": "ticle id. - Candidates are **compacted to `{id, t, ty}`** before the LLM sees them \u2014 no descriptions, no images. Cheap enough that 480 candidates fit in one call. - Emits a structured `curation"
+    },
+    {
+      "text": "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+      "passed": true,
+      "evidence": "the retrieval step**. Three things, in order of how much they matter: 1. **The playlist decomposes before it searches, and searches many times.** One user topic becomes 10\u201320 short, dist"
+    },
+    {
+      "text": "Identifies the clarification/disambiguation step as a differentiator",
+      "passed": true,
+      "evidence": "ers ### AI Playlist **Flow:** Start \u2192 fetch profile \u2192 access check \u2192 validate input \u2192 *(clarify if ambiguous)* \u2192 **plan** \u2192 validate readiness \u2192 route \u2192 **subtopic generation** \u2192 **fan"
+    },
+    {
+      "text": "Produces a concrete checklist of what to verify on the Labs side, not generic advice",
+      "passed": true,
+      "evidence": "eo ids: [...]` \u2014 `~/dev/jove-code/research-svc/src/campaigns/services/jove-api.service.ts:222` - `search_ai: N video(s) for \"<query>\" (dropped M text-only)` \u2014 same file, L279"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

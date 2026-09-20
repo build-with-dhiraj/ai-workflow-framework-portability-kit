@@ -1,0 +1,32 @@
+{
+  "run_id": "eval-0-with_skill",
+  "expectations": [
+    {
+      "text": "Identifies the curation node by name (Organizing playlist)",
+      "passed": true,
+      "evidence": "ch_keywords Searching JoVE library... customFunctionAgentflow_1 \u2192 BUILDS THE PAYLOAD Organizing playlist... llmAgentflow_2 \u2192 MAKES THE SELECTION Building curated response... c"
+    },
+    {
+      "text": "States candidates are reduced to id/title/articleType before the model sees them",
+      "passed": true,
+      "evidence": "d it as \"this flow isn't live.\" --- ## The short answer 1. **Per video, the model sees three fields and nothing else: the numeric article id, the title string, and the article type.** No"
+    },
+    {
+      "text": "Quotes or accurately paraphrases the curation prompt's selection instruction",
+      "passed": true,
+      "evidence": "create a playlist using www.jove.com > videos for a university professor. Your task is to select, label, and sequence the strongest > relevant teaching videos from curation_context.candidates.\""
+    },
+    {
+      "text": "Lists the $flow.state keys the flow carries between steps",
+      "passed": true,
+      "evidence": "oad problem, not a prompt problem \u2014 no amount of prompt tuning fixes it. 3. **State is 37 keys declared on the Start node, persisted across turns** (`startPersistState: true`). `dra"
+    },
+    {
+      "text": "Pulled the data from the live instance without asking the user to paste anything",
+      "passed": true,
+      "evidence": "ntflow V2) \u00b7 id `bd799a71-9b90-4bdd-888e-627e3428fa55` **28 nodes, 29 edges** \u00b7 instance `flowiseai.jove.com` \u00b7 flow `updatedDate` **2026-08-17T08:16:30Z** **Read from the live graph on 202"
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

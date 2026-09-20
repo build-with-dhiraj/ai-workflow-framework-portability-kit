@@ -1,0 +1,556 @@
+{
+  "metadata": {
+    "skill_name": "flowise",
+    "skill_path": "~/.claude/skills/flowise",
+    "executor_model": "claude-opus-5",
+    "analyzer_model": "claude-opus-5",
+    "timestamp": "2026-08-17T10:05:00Z",
+    "evals_run": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "audit-live-flow",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 369.0,
+        "tokens": 116227,
+        "tool_calls": 25,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies the curation node by name (Organizing playlist)",
+          "passed": true,
+          "evidence": "ch_keywords Searching JoVE library... customFunctionAgentflow_1 \u2192 BUILDS THE PAYLOAD Organizing playlist... llmAgentflow_2 \u2192 MAKES THE SELECTION Building curated response... c"
+        },
+        {
+          "text": "States candidates are reduced to id/title/articleType before the model sees them",
+          "passed": true,
+          "evidence": "d it as \"this flow isn't live.\" --- ## The short answer 1. **Per video, the model sees three fields and nothing else: the numeric article id, the title string, and the article type.** No"
+        },
+        {
+          "text": "Quotes or accurately paraphrases the curation prompt's selection instruction",
+          "passed": true,
+          "evidence": "create a playlist using www.jove.com > videos for a university professor. Your task is to select, label, and sequence the strongest > relevant teaching videos from curation_context.candidates.\""
+        },
+        {
+          "text": "Lists the $flow.state keys the flow carries between steps",
+          "passed": true,
+          "evidence": "oad problem, not a prompt problem \u2014 no amount of prompt tuning fixes it. 3. **State is 37 keys declared on the Start node, persisted across turns** (`startPersistState: true`). `dra"
+        },
+        {
+          "text": "Pulled the data from the live instance without asking the user to paste anything",
+          "passed": true,
+          "evidence": "ntflow V2) \u00b7 id `bd799a71-9b90-4bdd-888e-627e3428fa55` **28 nodes, 29 edges** \u00b7 instance `flowiseai.jove.com` \u00b7 flow `updatedDate` **2026-08-17T08:16:30Z** **Read from the live graph on 202"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "audit-live-flow",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 351.7,
+        "tokens": 111518,
+        "tool_calls": 29,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies the curation node by name (Organizing playlist)",
+          "passed": true,
+          "evidence": "e short answer Video selection happens in exactly **one** node: the LLM node labelled **\"Organizing playlist...\"** (`llmAgentflow_2`, model `gpt-5.6-luna`). For each candidate video, that model see"
+        },
+        {
+          "text": "States candidates are reduced to id/title/articleType before the model sees them",
+          "passed": true,
+          "evidence": "** (`llmAgentflow_2`, model `gpt-5.6-luna`). For each candidate video, that model sees **three fields and nothing else**: | Field | Meaning | Source | |---|---|---| | `id` | JoVE article id"
+        },
+        {
+          "text": "Quotes or accurately paraphrases the curation prompt's selection instruction",
+          "passed": true,
+          "evidence": "create a playlist using www.jove.com videos for a university professor. > Your task is to select, label, and sequence the strongest relevant teaching videos from curation_context.candidates. >"
+        },
+        {
+          "text": "Lists the $flow.state keys the flow carries between steps",
+          "passed": true,
+          "evidence": "s two lines \u2014 the whole payload arrives as one serialised blob: ``` curation_context: {{ $flow.state.curation_context }} ``` Note the instruction \"Use ty and t to choose the best representa"
+        },
+        {
+          "text": "Pulled the data from the live instance without asking the user to paste anything",
+          "passed": true,
+          "evidence": "id `bd799a71-9b90-4bdd-888e-627e3428fa55`, last updated 2026-08-17T08:16:30Z. Read-only (`GET /api/v1/chatflows`). Flow is `deployed: false`, `isPublic: false`. --- ## The short answer Video selecti"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "design-agentflow",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 221.4,
+        "tokens": 91263,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses real Agentflow V2 node identifiers, no invented node names",
+          "passed": true,
+          "evidence": "nodes, and why each one | # | Node | Identifier | Job | |---|---|---|---| | 1 | Start | `startAgentflow` | Entry. Form Input. **Declares all Flow State keys** | | 2 | LLM | `llmAgentflow` | Cla"
+        },
+        {
+          "text": "States that flow state keys must be declared in the Start node before they can be written",
+          "passed": true,
+          "evidence": "ingle most common cause of \"my data disappeared\" in Agentflow V2: every state key must be declared in the Start node's Flow State parameter with an initial value, even an empty one. Nodes with an `Upda"
+        },
+        {
+          "text": "Recommends structured JSON output for the classification rather than parsing prose",
+          "passed": true,
+          "evidence": "uild it as an **Agentflow V2** flow with **six nodes**. Classify with an **LLM node using JSON Structured Output**, write the category into **Flow State**, branch with a **Condition node** on the state"
+        },
+        {
+          "text": "Branches on the stored classification with a Condition node rather than raw model text",
+          "passed": true,
+          "evidence": "Update Flow State: category = {{ output.category }} \u2514\u2500\u25ba Condition $flow.state.category == \"billing\" \u251c\u2500\u2500 anchor 0 (true) \u2500\u25ba HTTP GET api.internal/invoices \u2500\u25ba LLM"
+        },
+        {
+          "text": "Covers the HTTP node (or a justified Custom Function) for the invoice API call",
+          "passed": true,
+          "evidence": "category into **Flow State**, branch with a **Condition node** on the state key, put an **HTTP node** on the billing anchor, and give each branch its **own** draft node. Do not merge the br"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "design-agentflow",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 317.8,
+        "tokens": 91004,
+        "tool_calls": 12,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses real Agentflow V2 node identifiers, no invented node names",
+          "passed": true,
+          "evidence": "}}` | The current input | | `{{ $vars.invoiceApiToken }}` | A workspace Variable | | `{{ llmAgentflow_0.output.category }}` | A field on a prior node's output (nested access works) | | `{{ $w"
+        },
+        {
+          "text": "States that flow state keys must be declared in the Start node before they can be written",
+          "passed": true,
+          "evidence": "here.\"* Operational nodes' `Update Flow State` can only update **pre-existing** keys \u2014 it cannot create one. If you skip this, your LLM node's state write silently does nothing and your Conditi"
+        },
+        {
+          "text": "Recommends structured JSON output for the classification rather than parsing prose",
+          "passed": true,
+          "evidence": "ote via its **Update Flow State** parameter. The classifier must emit the label through **JSON Structured Output** \u2014 that is the whole trick. Everything else is plumbing. Do **not** build this as an Ag"
+        },
+        {
+          "text": "Branches on the stored classification with a Condition node rather than raw model text",
+          "passed": true,
+          "evidence": "\u2502 \u2502 Type: String \u2502 Value 1: {{ $flow.state.category }} \u2502 \u2502 Operation: Equal \u2502 Value 2: billing"
+        },
+        {
+          "text": "Covers the HTTP node (or a justified Custom Function) for the invoice API call",
+          "passed": true,
+          "evidence": "nchor per rule plus a final default anchor. Wire **anchor 0** (the matched rule) into the HTTP node and the **default/else anchor** into your generic draft node. You only need one rule. Yo"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "diagnose-deployment",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 239.2,
+        "tokens": 95480,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies SQLite as the cause of the locking under concurrent use and recommends Postgres",
+          "passed": true,
+          "evidence": "k the key up | Silent credential loss on restart | Today | | 3 | Move `DATABASE_TYPE` to `postgres` | The lock-ups | This week | | 4 | Scheduled JSON export of every flow into git | No ver"
+        },
+        {
+          "text": "Names specific DATABASE_* environment variables rather than describing them vaguely",
+          "passed": true,
+          "evidence": "TKEY_PATH`, and back the key up | Silent credential loss on restart | Today | | 3 | Move `DATABASE_TYPE` to `postgres` | The lock-ups | This week | | 4 | Scheduled JSON export of every flow int"
+        },
+        {
+          "text": "Explains the lost-flows cause as unpersisted volume / default data path, with the fix",
+          "passed": true,
+          "evidence": "Pin `3.1.3` (25 June 2026). `3.1.4` ships a Docker image that fails to start on a fresh volume \u2014 `EACCES` on `/root/.flowise`, `Cannot find module '@smithy/eventstream-codec'`, `this"
+        },
+        {
+          "text": "Warns that the credential encryption key must be stable (FLOWISE_SECRETKEY_OVERWRITE)",
+          "passed": true,
+          "evidence": "`3.1.3` and make `~/.flowise` genuinely persistent | The lost flows | Today | | 2 | Set `FLOWISE_SECRETKEY_OVERWRITE` **and** `SECRETKEY_PATH`, and back the key up | Silent credential loss on restart | Toda"
+        },
+        {
+          "text": "States that SSO is an enterprise-licensed feature, not available on the open-source build",
+          "passed": true,
+          "evidence": "e archive changes the answer most, so two separate points. **Flowise's built-in auth and SSO live under a commercial licence, not Apache 2.0.** Since `3.0.1` the repo is dual-licensed: `packages/server/src/enterp"
+        },
+        {
+          "text": "Tells the user the project is archived and which version to pin",
+          "passed": true,
+          "evidence": "ng self-hosted Flowise for a small team ## Read this before the checklist **Flowise was archived on 13 August 2026 \u2014 four days ago. It is read-only.** Final release is `3.1.4` (29 July 2"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "diagnose-deployment",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8333,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 273.2,
+        "tokens": 87174,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies SQLite as the cause of the locking under concurrent use and recommends Postgres",
+          "passed": true,
+          "evidence": "## Short version Five changes, in this order. Everything else can wait. 1. **Move off SQLite to Postgres.** This is the lock-up. SQLite allows one writer at a time across the whole file, and Flowise writes on every"
+        },
+        {
+          "text": "Names specific DATABASE_* environment variables rather than describing them vaguely",
+          "passed": true,
+          "evidence": "postgres: condition: service_healthy environment: PORT: 3000 DATABASE_TYPE: postgres DATABASE_HOST: postgres DATABASE_PORT: 5432 DATABASE_NAME: fl"
+        },
+        {
+          "text": "Explains the lost-flows cause as unpersisted volume / default data path, with the fix",
+          "passed": true,
+          "evidence": "flows \u2014 today, before anything else.** In almost every case it's a missing or misdirected volume mount, which means you are still one `docker compose up` away from losing them again. The"
+        },
+        {
+          "text": "Warns that the credential encryption key must be stable (FLOWISE_SECRETKEY_OVERWRITE)",
+          "passed": true,
+          "evidence": "Where does Flowise think its data lives? docker compose config | grep -Ei 'DATABASE_PATH|SECRETKEY_PATH|APIKEY_PATH|LOG_PATH|BLOB_STORAGE' # Did it die uncleanly? Exit 137 = SIGKILL, i.e. kill"
+        },
+        {
+          "text": "States that SSO is an enterprise-licensed feature, not available on the open-source build",
+          "passed": true,
+          "evidence": "n every flow becomes undecryptable while the flows themselves look fine. 4. **Decide your SSO story deliberately.** Real per-user identity, workspaces and RBAC in Flowise are Enterprise-licensed. The open-source route is an identity-aware proxy in front, which gates the UI but lea"
+        },
+        {
+          "text": "Tells the user the project is archived and which version to pin",
+          "passed": false,
+          "evidence": "No mention of the archive, the sunset or a version to pin. Advises pinning 'a' tag but names no version and treats upstream as alive."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "integrate-streaming",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 242.4,
+        "tokens": 92204,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses the correct singular /api/v1/prediction/{id} path",
+          "passed": true,
+          "evidence": "into a Next.js UI, with the user's ID attached ## The short version One endpoint, `POST /api/v1/prediction/{chatflowId}` (singular \u2014 the docs contain a plural `/predictions/` example that does not"
+        },
+        {
+          "text": "Lists the SSE event names (start, token, metadata, end at minimum)",
+          "passed": true,
+          "evidence": "named 4/4 of start, token, metadata, end"
+        },
+        {
+          "text": "Notes that metadata arrives after the tokens, before end",
+          "passed": true,
+          "evidence": "` yourself** and send it on the very first request. Otherwise you have to wait for the `metadata` event, which arrives *near the end of the answer*, before you can continue the conversation. - **Pass the user through as"
+        },
+        {
+          "text": "States the caller can supply chatId and that it is honoured verbatim, so the client need not parse metadata to continue a conversation",
+          "passed": true,
+          "evidence": "things that are worth getting right on the first pass rather than discovering later: - **Mint the `chatId` yourself** and send it on the very first request. Otherwise you have to wait for the `"
+        },
+        {
+          "text": "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+          "passed": true,
+          "evidence": "e answer*, before you can continue the conversation. - **Pass the user through as both `sessionId` and `vars`.** They do different jobs, and if you send only `sessionId` it silently doubles as the"
+        },
+        {
+          "text": "Warns that overrideConfig is disabled by default and must be enabled per property",
+          "passed": true,
+          "evidence": "eparate conversations into one stored thread. Then the one that eats the most time: **`overrideConfig` is disabled by default**, per property, so the userId you carefully pass will be dropped without an e"
+        },
+        {
+          "text": "Keeps the API key server-side rather than calling Flowise from the browser",
+          "passed": true,
+          "evidence": "hose expose your node names and tool calls to anyone with devtools open, which is why the route handler below filters rather than blindly piping. For contrast, with `\"streaming\": false` you ge"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "integrate-streaming",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 391.3,
+        "tokens": 102411,
+        "tool_calls": 19,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses the correct singular /api/v1/prediction/{id} path",
+          "passed": true,
+          "evidence": "wise chatflow from Next.js with token streaming + a user ID **Short version:** one `POST /api/v1/prediction/{chatflowId}` with `streaming: true`, proxied through a Next.js route handler. The user ID"
+        },
+        {
+          "text": "Lists the SSE event names (start, token, metadata, end at minimum)",
+          "passed": true,
+          "evidence": "named 4/4 of start, token, metadata, end"
+        },
+        {
+          "text": "Notes that metadata arrives after the tokens, before end",
+          "passed": true,
+          "evidence": "ions. Any line starting with `:` must be skipped, as must the bare `message:` line. 4. **`metadata` arrives at the *end*, not the start** \u2014 the server calls `streamMetadataEvent` only after the flow resolves. If you need `chatId` to continue the conversation, either generate and"
+        },
+        {
+          "text": "States the caller can supply chatId and that it is honoured verbatim, so the client need not parse metadata to continue a conversation",
+          "passed": true,
+          "evidence": "art** \u2014 the server calls `streamMetadataEvent` only after the flow resolves. If you need `chatId` to continue the conversation, either generate and send your own, or read it from this late event *after* the tokens have all rendered. 5. **Errors arrive"
+        },
+        {
+          "text": "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+          "passed": true,
+          "evidence": "true`, proxied through a Next.js route handler. The user ID rides in `overrideConfig` \u2014 `vars.userId` for the prompt, `sessionId` for memory scoping. What comes back is SSE, but in a **non-standard frame shape** (`mess"
+        },
+        {
+          "text": "Warns that overrideConfig is disabled by default and must be enabled per property",
+          "passed": true,
+          "evidence": "ation. In `packages/server/src/utils/index.ts` the override is applied behind: ```ts if (overrideConfig && apiOverrideStatus) { flowNodeData = replaceInputsWithConfig(flowNodeData, overrideConfig, nodeOverrides"
+        },
+        {
+          "text": "Keeps the API key server-side rather than calling Flowise from the browser",
+          "passed": true,
+          "evidence": "`POST /api/v1/prediction/{chatflowId}` with `streaming: true`, proxied through a Next.js route handler. The user ID rides in `overrideConfig` \u2014 `vars.userId` for the prompt, `sessionId` for me"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "transfer-learnings-between-flows",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 746.4,
+        "tokens": 192993,
+        "tool_calls": 47,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Read the live flow rather than reasoning from architecture alone",
+          "passed": true,
+          "evidence": "No expansion on any path | Playlist: only edge into the search node is `llmAgentflow_1 -> customFunctionAgentflow_1`; prompt \"Analyzing your Topic\u2026\". Labs: `lab-module-techniques.util.ts:182-196` | | **3"
+        },
+        {
+          "text": "States that playlist candidates are compacted to id/title/type before curation",
+          "passed": true,
+          "evidence": "0 out of ~20 that it is forbidden to compare against a sibling method's. Same model, same three fields per candidate \u2014 but one has a competitive pool and the other does not. 2. **It refuses.**"
+        },
+        {
+          "text": "Does NOT claim the playlist passes description or transcript to the curator",
+          "passed": true,
+          "evidence": "never logged and the curator's selection is never logged at all. --- ## The false lead: do not enrich the candidate payload This is the trap this comparison is designed to catch, and it is w"
+        },
+        {
+          "text": "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+          "passed": true,
+          "evidence": "list: Start node `startState`. Labs: `curriculum-generator.service.ts:1142-1150` | | **2. Normalisation** | **Unconditional.** One LLM node converts topic \u2192 \u226410 keywords (\u226420 with an exist"
+        },
+        {
+          "text": "Identifies the clarification/disambiguation step as a differentiator",
+          "passed": true,
+          "evidence": "compares it to anything. 3. **It asks before it searches.** A polysemous topic triggers a clarification question instead of a search. Labs never asks about a technique. The one thing yo"
+        },
+        {
+          "text": "Produces a concrete checklist of what to verify on the Labs side, not generic advice",
+          "passed": true,
+          "evidence": "er's publications \u2192 **title + abstract only** | Playlist: Start node `startState`. Labs: `curriculum-generator.service.ts:1142-1150` | | **2. Normalisation** | **Unconditional.** One LLM node converts"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "transfer-learnings-between-flows",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 441.0,
+        "tokens": 186600,
+        "tool_calls": 39,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Read the live flow rather than reasoning from architecture alone",
+          "passed": true,
+          "evidence": "ered foundational \u2192 advanced. Max 10 keywords for a new playlist, 20 when growing one. - `customFunctionAgentflow_1` \"Searching JoVE library...\" \u2014 the retrieval engine: - `buildSearchQueries()` = `[top"
+        },
+        {
+          "text": "States that playlist candidates are compacted to id/title/type before curation",
+          "passed": true,
+          "evidence": "/`jove_education` 2 > everything else 1, tie-break lower article id. - Candidates are **compacted to `{id, t, ty}`** before the LLM sees them \u2014 no descriptions, no images. Cheap enough"
+        },
+        {
+          "text": "Does NOT claim the playlist passes description or transcript to the curator",
+          "passed": true,
+          "evidence": "ticle id. - Candidates are **compacted to `{id, t, ty}`** before the LLM sees them \u2014 no descriptions, no images. Cheap enough that 480 candidates fit in one call. - Emits a structured `curation"
+        },
+        {
+          "text": "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+          "passed": true,
+          "evidence": "the retrieval step**. Three things, in order of how much they matter: 1. **The playlist decomposes before it searches, and searches many times.** One user topic becomes 10\u201320 short, dist"
+        },
+        {
+          "text": "Identifies the clarification/disambiguation step as a differentiator",
+          "passed": true,
+          "evidence": "ers ### AI Playlist **Flow:** Start \u2192 fetch profile \u2192 access check \u2192 validate input \u2192 *(clarify if ambiguous)* \u2192 **plan** \u2192 validate readiness \u2192 route \u2192 **subtopic generation** \u2192 **fan"
+        },
+        {
+          "text": "Produces a concrete checklist of what to verify on the Labs side, not generic advice",
+          "passed": true,
+          "evidence": "eo ids: [...]` \u2014 `~/dev/jove-code/research-svc/src/campaigns/services/jove-api.service.ts:222` - `search_ai: N video(s) for \"<query>\" (dropped M text-only)` \u2014 same file, L279"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 363.68,
+        "stddev": 221.8956,
+        "min": 221.4,
+        "max": 746.4
+      },
+      "tokens": {
+        "mean": 117633.4,
+        "stddev": 43341.299,
+        "min": 91263,
+        "max": 192993
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9667,
+        "stddev": 0.0746,
+        "min": 0.8333,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 355.0,
+        "stddev": 64.8068,
+        "min": 273.2,
+        "max": 441.0
+      },
+      "tokens": {
+        "mean": 115741.4,
+        "stddev": 40756.9416,
+        "min": 87174,
+        "max": 186600
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.0333",
+      "time_seconds": "+8.68",
+      "tokens": "+1892"
+    }
+  },
+  "notes": [
+    "Iteration 2: with_skill 29/29, without_skill 28/29. Iteration 1 was 28/28 versus 25/28. The gap narrowed because the baseline improved, not because the skill got worse.",
+    "The chatId fix works and does not discriminate. The new assertion passes in BOTH configurations: the skill now states it, and the base model already knew it. Fixing that gap brought the skill level with the baseline rather than ahead of it, which is still the right fix.",
+    "Iteration 1's eval-3 advantage was largely variance. That baseline scored 4/6; this one scored 7/7 on a superset of the same assertions, naming all four SSE events and the metadata ordering. With one run per configuration, run-to-run variance is indistinguishable from skill effect, so the +3 reported for iteration 1 should be read as noisy.",
+    "Exactly ONE assertion now discriminates across both iterations: the archive and version pin on eval-2. That is the only thing the base model provably cannot know, since it postdates training. Every other assertion in the suite measures the model.",
+    "The assertions keep missing where the skill actually pays. This iteration the with_skill transfer run produced the finding that Labs prompts are database-backed so the source constants are only a seed, and that extraction backfills searchTerm from name when the prompt omits it. Neither is rewarded by any assertion, and both changed real decisions.",
+    "Baselines remain contamination-free: zero mentions of archive, sunset, 3.1.3 or Workday in all five without_skill runs.",
+    "Three corrections landed AFTER these runs started (the silent JSON fallback on a non-streamable flow, sessionId bypassing the override gate, the frame format). This iteration does not measure them.",
+    "Methodological flaw to fix before iteration 3: the output path names the condition, so a baseline agent can see it is the control arm. One this round said so explicitly and abstained from the skill, which is the honest outcome but not a guaranteed one. Use neutral run directories."
+  ]
+}

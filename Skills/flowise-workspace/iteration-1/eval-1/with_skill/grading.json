@@ -1,0 +1,32 @@
+{
+  "run_id": "eval-1-with_skill",
+  "expectations": [
+    {
+      "text": "Uses real Agentflow V2 node identifiers, no invented node names",
+      "passed": true,
+      "evidence": "ngful inside `Update Flow State`. From any *other* node you refer back to this one as `{{ llmAgentflow_0.output.category }}`. Mixing those two up produces an empty string, not an error. ### 3"
+    },
+    {
+      "text": "States that flow state keys must be declared in the Start node before they can be written",
+      "passed": true,
+      "evidence": "from your mail system's envelope, where the customer cannot choose it. Then, in the same Start node, declare **Flow State**: ```json [ { \"key\": \"category\", \"value\": \"\" } ] ``` **This declaration is mandatory a"
+    },
+    {
+      "text": "Recommends structured JSON output for the classification rather than parsing prose",
+      "passed": true,
+      "evidence": "o not branch on the model's raw text. ``` Start (Form Input) \u2514\u2500 LLM \"Classify\" JSON Structured Output \u2192 { category } \u2502 Update Flow State: category \u2514\u2500 Condit"
+    },
+    {
+      "text": "Branches on the stored classification with a Condition node rather than raw model text",
+      "passed": true,
+      "evidence": "Output \u2192 { category } \u2502 Update Flow State: category \u2514\u2500 Condition {{ $flow.state.category }} equals \"billing\" \u251c\u2500 [match] HTTP GET /invoices?email=\u2026"
+    },
+    {
+      "text": "Covers the HTTP node (or a justified Custom Function) for the invoice API call",
+      "passed": true,
+      "evidence": "ng customer's invoice pasted into a reply\". Keep that direction when you tune it. ### 4. HTTP node \u2014 the invoice lookup On the billing anchor, add an **HTTP** node (`httpAgentflow`): - M"
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

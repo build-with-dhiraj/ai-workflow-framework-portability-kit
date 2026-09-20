@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-2-with_skill",
+  "expectations": [
+    {
+      "text": "Identifies SQLite as the cause of the locking under concurrent use and recommends Postgres",
+      "passed": true,
+      "evidence": "k the key up | Silent credential loss on restart | Today | | 3 | Move `DATABASE_TYPE` to `postgres` | The lock-ups | This week | | 4 | Scheduled JSON export of every flow into git | No ver"
+    },
+    {
+      "text": "Names specific DATABASE_* environment variables rather than describing them vaguely",
+      "passed": true,
+      "evidence": "TKEY_PATH`, and back the key up | Silent credential loss on restart | Today | | 3 | Move `DATABASE_TYPE` to `postgres` | The lock-ups | This week | | 4 | Scheduled JSON export of every flow int"
+    },
+    {
+      "text": "Explains the lost-flows cause as unpersisted volume / default data path, with the fix",
+      "passed": true,
+      "evidence": "Pin `3.1.3` (25 June 2026). `3.1.4` ships a Docker image that fails to start on a fresh volume \u2014 `EACCES` on `/root/.flowise`, `Cannot find module '@smithy/eventstream-codec'`, `this"
+    },
+    {
+      "text": "Warns that the credential encryption key must be stable (FLOWISE_SECRETKEY_OVERWRITE)",
+      "passed": true,
+      "evidence": "`3.1.3` and make `~/.flowise` genuinely persistent | The lost flows | Today | | 2 | Set `FLOWISE_SECRETKEY_OVERWRITE` **and** `SECRETKEY_PATH`, and back the key up | Silent credential loss on restart | Toda"
+    },
+    {
+      "text": "States that SSO is an enterprise-licensed feature, not available on the open-source build",
+      "passed": true,
+      "evidence": "e archive changes the answer most, so two separate points. **Flowise's built-in auth and SSO live under a commercial licence, not Apache 2.0.** Since `3.0.1` the repo is dual-licensed: `packages/server/src/enterp"
+    },
+    {
+      "text": "Tells the user the project is archived and which version to pin",
+      "passed": true,
+      "evidence": "ng self-hosted Flowise for a small team ## Read this before the checklist **Flowise was archived on 13 August 2026 \u2014 four days ago. It is read-only.** Final release is `3.1.4` (29 July 2"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

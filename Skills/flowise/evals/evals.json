@@ -1,0 +1,79 @@
+{
+  "skill_name": "flowise",
+  "evals": [
+    {
+      "id": 0,
+      "name": "audit-live-flow",
+      "prompt": "Our Flowise instance has an agentflow called \"AI Playlist\". I need to understand one specific thing about it before a meeting: when the system decides which videos go into the final playlist, what exactly does the model get to see about each video, and what instruction is it given? Also tell me what state the flow carries between its steps. Credentials are in the FLOWISE_API_ENDPOINT and FLOWISE_API_KEY environment variables.",
+      "expected_output": "Identifies the curation node, extracts the actual prompt, and reports that candidates are reduced to id/title/articleType (a compact object) before the model sees them. Lists the $flow.state keys. Should not require the user to paste anything.",
+      "files": [],
+      "assertions": [
+        "Identifies the curation node by name (Organizing playlist)",
+        "States candidates are reduced to id/title/articleType before the model sees them",
+        "Quotes or accurately paraphrases the curation prompt's selection instruction",
+        "Lists the $flow.state keys the flow carries between steps",
+        "Pulled the data from the live instance without asking the user to paste anything"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "design-agentflow",
+      "prompt": "I want to build something in Flowise for our support team. A customer email comes in, we classify it into billing / bug / feature-request / other, and if it's billing we need to call our internal invoice API (GET https://api.internal/invoices?email=X) before drafting the reply. Everything else goes straight to a draft reply. How should I actually wire this up? Which node types, and how do I get the classification result to control the branch?",
+      "expected_output": "Names real Agentflow V2 node types, explains the condition/branch mechanism, explains how to persist the classification into flow state and reference it downstream, covers structured output for reliable classification, and mentions the HTTP node or custom function for the API call.",
+      "files": [],
+      "assertions": [
+        "Uses real Agentflow V2 node identifiers, no invented node names",
+        "States that flow state keys must be declared in the Start node before they can be written",
+        "Recommends structured JSON output for the classification rather than parsing prose",
+        "Branches on the stored classification with a Condition node rather than raw model text",
+        "Covers the HTTP node (or a justified Custom Function) for the invoice API call"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "diagnose-deployment",
+      "prompt": "We self-host Flowise in Docker with the default SQLite setup. It was fine for one person but now three of us use it and it locks up, and we lost some flows last week after a container restart. We're also about to put it behind our SSO. What do we need to change before this becomes a real internal tool?",
+      "expected_output": "Identifies SQLite as the concurrency and durability problem, recommends Postgres with the specific env vars, covers volume persistence for the data that was lost, addresses the encryption key, and covers queue mode/workers for concurrency. Should be concrete about variable names.",
+      "files": [],
+      "assertions": [
+        "Identifies SQLite as the cause of the locking under concurrent use and recommends Postgres",
+        "Names specific DATABASE_* environment variables rather than describing them vaguely",
+        "Explains the lost-flows cause as unpersisted volume / default data path, with the fix",
+        "Warns that the credential encryption key must be stable (FLOWISE_SECRETKEY_OVERWRITE)",
+        "States that SSO is an enterprise-licensed feature, not available on the open-source build",
+        "Tells the user the project is archived and which version to pin"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "integrate-streaming",
+      "prompt": "I've got a chatflow working in the Flowise UI and now I need to call it from our Next.js app, streaming the answer into the UI token by token rather than waiting for the whole thing. I also need to pass the logged-in user's ID through so the flow can personalise. What does the request look like and what do I actually get back on the wire?",
+      "expected_output": "Gives the prediction endpoint and shape, explains streaming (SSE event types), shows how to pass variables/overrideConfig for the user id, and is honest about what the event stream actually contains. Should also say the caller can mint and pass its own chatId, which removes the need to read the late metadata event.",
+      "files": [],
+      "assertions": [
+        "Uses the correct singular /api/v1/prediction/{id} path",
+        "Lists the SSE event names (start, token, metadata, end at minimum)",
+        "Notes that metadata arrives after the tokens, before end",
+        "States the caller can supply chatId and that it is honoured verbatim, so the client need not parse metadata to continue a conversation",
+        "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+        "Warns that overrideConfig is disabled by default and must be enabled per property",
+        "Keeps the API key server-side rather than calling Flowise from the browser"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "transfer-learnings-between-flows",
+      "prompt": "We have two things that do roughly the same job. One is an agentflow called \"AI Playlist\" that our customer success team says works well: you give it a topic and it picks good videos and groups them. The other is a newer product, JoVE Labs, which starts from a researcher's published articles, pulls the methods out of them, and builds training modules of videos around each method. Labs gets complaints that the suggested videos are off-topic. Both use the same search backend. I want to know what specifically makes the playlist better and what we should actually copy. Credentials are in FLOWISE_API_ENDPOINT and FLOWISE_API_KEY. The Labs logic is not in Flowise, it is in a service, so treat the playlist as the readable one and tell me what to go and check on the other side.",
+      "expected_output": "Does not answer from architecture. Reads the playlist flow and enumerates the specific layers: input normalisation, disambiguation, retrieval breadth and filters, and critically the payload each candidate is reduced to before the model sees it. Identifies that candidates are compacted to id/title/type. Produces a concrete checklist of what to verify on the other side rather than a generic 'copy the prompt' answer.",
+      "files": [],
+      "assertions": [
+        "Read the live flow rather than reasoning from architecture alone",
+        "States that playlist candidates are compacted to id/title/type before curation",
+        "Does NOT claim the playlist passes description or transcript to the curator",
+        "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+        "Identifies the clarification/disambiguation step as a differentiator",
+        "Produces a concrete checklist of what to verify on the Labs side, not generic advice"
+      ]
+    }
+  ]
+}

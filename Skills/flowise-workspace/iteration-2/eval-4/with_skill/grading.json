@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-4-with_skill",
+  "expectations": [
+    {
+      "text": "Read the live flow rather than reasoning from architecture alone",
+      "passed": true,
+      "evidence": "No expansion on any path | Playlist: only edge into the search node is `llmAgentflow_1 -> customFunctionAgentflow_1`; prompt \"Analyzing your Topic\u2026\". Labs: `lab-module-techniques.util.ts:182-196` | | **3"
+    },
+    {
+      "text": "States that playlist candidates are compacted to id/title/type before curation",
+      "passed": true,
+      "evidence": "0 out of ~20 that it is forbidden to compare against a sibling method's. Same model, same three fields per candidate \u2014 but one has a competitive pool and the other does not. 2. **It refuses.**"
+    },
+    {
+      "text": "Does NOT claim the playlist passes description or transcript to the curator",
+      "passed": true,
+      "evidence": "never logged and the curator's selection is never logged at all. --- ## The false lead: do not enrich the candidate payload This is the trap this comparison is designed to catch, and it is w"
+    },
+    {
+      "text": "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+      "passed": true,
+      "evidence": "list: Start node `startState`. Labs: `curriculum-generator.service.ts:1142-1150` | | **2. Normalisation** | **Unconditional.** One LLM node converts topic \u2192 \u226410 keywords (\u226420 with an exist"
+    },
+    {
+      "text": "Identifies the clarification/disambiguation step as a differentiator",
+      "passed": true,
+      "evidence": "compares it to anything. 3. **It asks before it searches.** A polysemous topic triggers a clarification question instead of a search. Labs never asks about a technique. The one thing yo"
+    },
+    {
+      "text": "Produces a concrete checklist of what to verify on the Labs side, not generic advice",
+      "passed": true,
+      "evidence": "er's publications \u2192 **title + abstract only** | Playlist: Start node `startState`. Labs: `curriculum-generator.service.ts:1142-1150` | | **2. Normalisation** | **Unconditional.** One LLM node converts"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

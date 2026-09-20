@@ -1,0 +1,42 @@
+{
+  "run_id": "eval-3-without_skill",
+  "expectations": [
+    {
+      "text": "Uses the correct singular /api/v1/prediction/{id} path",
+      "passed": true,
+      "evidence": "wise chatflow from Next.js with token streaming + a user ID **Short version:** one `POST /api/v1/prediction/{chatflowId}` with `streaming: true`, proxied through a Next.js route handler. The user ID"
+    },
+    {
+      "text": "Lists the SSE event names (start, token, metadata, end at minimum)",
+      "passed": true,
+      "evidence": "named 4/4 of start, token, metadata, end"
+    },
+    {
+      "text": "Notes that metadata arrives after the tokens, before end",
+      "passed": true,
+      "evidence": "ions. Any line starting with `:` must be skipped, as must the bare `message:` line. 4. **`metadata` arrives at the *end*, not the start** \u2014 the server calls `streamMetadataEvent` only after the flow resolves. If you need `chatId` to continue the conversation, either generate and"
+    },
+    {
+      "text": "States the caller can supply chatId and that it is honoured verbatim, so the client need not parse metadata to continue a conversation",
+      "passed": true,
+      "evidence": "art** \u2014 the server calls `streamMetadataEvent` only after the flow resolves. If you need `chatId` to continue the conversation, either generate and send your own, or read it from this late event *after* the tokens have all rendered. 5. **Errors arrive"
+    },
+    {
+      "text": "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+      "passed": true,
+      "evidence": "true`, proxied through a Next.js route handler. The user ID rides in `overrideConfig` \u2014 `vars.userId` for the prompt, `sessionId` for memory scoping. What comes back is SSE, but in a **non-standard frame shape** (`mess"
+    },
+    {
+      "text": "Warns that overrideConfig is disabled by default and must be enabled per property",
+      "passed": true,
+      "evidence": "ation. In `packages/server/src/utils/index.ts` the override is applied behind: ```ts if (overrideConfig && apiOverrideStatus) { flowNodeData = replaceInputsWithConfig(flowNodeData, overrideConfig, nodeOverrides"
+    },
+    {
+      "text": "Keeps the API key server-side rather than calling Flowise from the browser",
+      "passed": true,
+      "evidence": "`POST /api/v1/prediction/{chatflowId}` with `streaming: true`, proxied through a Next.js route handler. The user ID rides in `overrideConfig` \u2014 `vars.userId` for the prompt, `sessionId` for me"
+    }
+  ],
+  "passed": 7,
+  "total": 7
+}

@@ -1,0 +1,32 @@
+{
+  "run_id": "eval-1-with_skill",
+  "expectations": [
+    {
+      "text": "Uses real Agentflow V2 node identifiers, no invented node names",
+      "passed": true,
+      "evidence": "nodes, and why each one | # | Node | Identifier | Job | |---|---|---|---| | 1 | Start | `startAgentflow` | Entry. Form Input. **Declares all Flow State keys** | | 2 | LLM | `llmAgentflow` | Cla"
+    },
+    {
+      "text": "States that flow state keys must be declared in the Start node before they can be written",
+      "passed": true,
+      "evidence": "ingle most common cause of \"my data disappeared\" in Agentflow V2: every state key must be declared in the Start node's Flow State parameter with an initial value, even an empty one. Nodes with an `Upda"
+    },
+    {
+      "text": "Recommends structured JSON output for the classification rather than parsing prose",
+      "passed": true,
+      "evidence": "uild it as an **Agentflow V2** flow with **six nodes**. Classify with an **LLM node using JSON Structured Output**, write the category into **Flow State**, branch with a **Condition node** on the state"
+    },
+    {
+      "text": "Branches on the stored classification with a Condition node rather than raw model text",
+      "passed": true,
+      "evidence": "Update Flow State: category = {{ output.category }} \u2514\u2500\u25ba Condition $flow.state.category == \"billing\" \u251c\u2500\u2500 anchor 0 (true) \u2500\u25ba HTTP GET api.internal/invoices \u2500\u25ba LLM"
+    },
+    {
+      "text": "Covers the HTTP node (or a justified Custom Function) for the invoice API call",
+      "passed": true,
+      "evidence": "category into **Flow State**, branch with a **Condition node** on the state key, put an **HTTP node** on the billing anchor, and give each branch its **own** draft node. Do not merge the br"
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

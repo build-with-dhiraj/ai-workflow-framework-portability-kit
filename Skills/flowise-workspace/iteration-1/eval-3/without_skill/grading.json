@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-3-without_skill",
+  "expectations": [
+    {
+      "text": "Uses the correct singular /api/v1/prediction/{id} path",
+      "passed": true,
+      "evidence": "+ a user ID ## The short version Three things: 1. **One endpoint.** `POST {FLOWISE_URL}/api/v1/prediction/{chatflowId}` with `\"streaming\": true` in the body. Same URL streaming or not \u2014 the flag a"
+    },
+    {
+      "text": "Lists the SSE event names (start, token, metadata, end at minimum)",
+      "passed": false,
+      "evidence": "Names start, token, metadata and sourceDocuments. `end` is never named, so a consumer loop has no documented terminator."
+    },
+    {
+      "text": "Notes that metadata arrives after the tokens, before end",
+      "passed": false,
+      "evidence": "Does not state the ordering. It sidesteps the issue by minting its own chatId instead, which is a good move but not this assertion."
+    },
+    {
+      "text": "Distinguishes sessionId (conversation memory) from vars (values readable in the flow)",
+      "passed": true,
+      "evidence": "means you never have to parse metadata to keep a conversation going. | | `overrideConfig.vars` | Runtime variables. This is your userId channel. | | `overrideConfig.sessionId` | Optional. Keys the memory node. Defaults to `chatId`. | | `history`, `uploads`, `form`"
+    },
+    {
+      "text": "Warns that overrideConfig is disabled by default and must be enabled per property",
+      "passed": true,
+      "evidence": "hy the route handler above branches on content type rather than trusting the flag. **2. `overrideConfig` is rejected by default on recent Flowise.** Chatflow Configuration \u2192 **Security** \u2192 *Override Configuration*: enable it and allowlist the fields you're sending (`vars`, and `sessionId` if you use"
+    },
+    {
+      "text": "Keeps the API key server-side rather than calling Flowise from the browser",
+      "passed": true,
+      "evidence": "`. It does *not* go in the question string, and it must be read from your server session, never from the browser's request body. The rest of this is the actual request, the actual bytes back, and the f"
+    }
+  ],
+  "passed": 4,
+  "total": 6
+}

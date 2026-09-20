@@ -1,0 +1,29 @@
+{
+  "skill_name": "vault-recall",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "what did we decide about the 90 day trial for jove labs? is it working in prod?",
+      "expected_output": "Routes to ledger-ask.mjs (not grep, not Pinecone). Answer states the trial decision and its verification status in plain language, distinguishing observed from assumed findings, WITHOUT citing F-### ids to the user. Sources listed as repo-relative vault paths.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "recall what the CS lead actually said about content relevance on the calls - her exact words",
+      "expected_output": "Uses ledger-ask.mjs --corpus (primary-source question needs verbatim quotes). Returns verbatim quotes with file paths from knowledge/jove-labs notes. Does not paraphrase from memory.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "what's our position on the PPP format? who decided it?",
+      "expected_output": "Non-Labs question: does NOT run ledger-ask. Reads INDEX.md / lexical rg over ~/dev/jove-hq/knowledge, reads hit files whole, answers with sources. If nothing found, says 'not in the vault' and names where to look next.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "did we ever discuss making labs quizzes count toward research instead of education?",
+      "expected_output": "Ledger first; abstains honestly if unanswered rather than guessing; escalates to --corpus before declaring absence (absence needs an exhausted search). Never fabricates a decision.",
+      "files": []
+    }
+  ]
+}

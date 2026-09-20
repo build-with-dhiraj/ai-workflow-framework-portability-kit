@@ -289,23 +289,39 @@ When the source machine changes (new agent, new plugin, new brew package), re-sn
 # Custom agents
 cp ~/.claude/agents/*.md <Kit>/Agents/
 
-# Skills (resolve symlinks!) — the kit repo is PUBLIC, so 7 skills are held back.
-# Never drop these excludes: they leak the work repo's layout, internal tool
-# paths, its CLAUDE.md rule citations, and the Pinecone namespace design.
-HELD="jove-design-loop jove-labs-sweep jove-recall jove-youtube-feed-pipeline \
-      mixpanel-mastery memory-router wrap-up"
+# Skills (resolve symlinks!) — IDENTICAL SCOPE (decided 2026-09-21): every live
+# skill is published, nothing is private-only. The kit repo is PUBLIC, so skills
+# with work-specific content go out as SANITIZED COPIES, never verbatim.
+# A NEW live skill is not verbatim-safe by default: grep it for colleague names,
+# emails, ids, hosts, tokens; if anything hits, add it to SANITIZED.
+SANITIZED="jove-design-loop jove-labs-sweep jove-recall jove-youtube-feed-pipeline \
+           mixpanel-mastery memory-router wrap-up jove-ticket-graph vault-recall \
+           writing-for-dhiraj flowise flowise-workspace humanizer obsidian-vault"
 
+# 1. verbatim-safe skills: straight copy (sanitized ones excluded so live text never lands)
 rsync -aL --exclude='.archive*' --delete \
   --exclude='/README.md' \
-  $(for s in $HELD; do printf -- "--exclude=/%s " "$s"; done) \
+  $(for s in $SANITIZED; do printf -- "--exclude=/%s " "$s"; done) \
   ~/.claude/skills/ <Kit>/Skills/
 
-# EVERY held-back skill MUST land in the gitignored Private/ overlay, or the
-# capability is silently lost on restore. Excluding without overlaying is the
-# bug this pairing exists to prevent.
-for s in $HELD; do
+# 2. sanitized copies into the public tree (run from the kit root). Names -> roles,
+#    emails/ids/hosts -> placeholders, tokens redacted. The name map is
+#    Private/sanitize-map.json (gitignored): add any new colleague name THERE.
+(cd <Kit> && node Tooling/sanitize-skills.mjs $SANITIZED)
+
+# 3. verbatim originals into the gitignored overlay; restore.sh step 8 lays them
+#    over the sanitized copies, so a folder copy restores the real thing.
+for s in $SANITIZED; do
   rsync -aL --delete --exclude='.git' ~/.claude/skills/$s/ <Kit>/Private/Skills/$s/
 done
+
+# CLAUDE-global.md and settings.json in the PUBLIC tree are genericized copies,
+# never a plain cp of live. installed_plugins.json: the public copy drops entries
+# whose projectPath is in a work repo. Verbatim files go to Private/default-profile/.
+
+# LEAK GATE before every commit — grep the ADDED lines of `git diff --cached`
+# for colleague names, emails, hosts, ids, tokens. Then sweep the sanitized dirs
+# for capitalized non-dictionary words: that is how unknown names get found.
 
 # Second config root (work profile) — only what is UNIQUE to it; its agents are
 # byte-identical to the default profile's and are restored from <Kit>/Agents/.
@@ -317,7 +333,7 @@ for s in $(comm -13 <(ls -1 ~/.claude/skills | grep -v '^\.' | sort) \
 done
 
 # THE PARITY IDENTITY — assert it, do not eyeball it:
-#   live ~/.claude/skills  ==  <Kit>/Skills (public)  +  <Kit>/Private/Skills
+#   live ~/.claude/skills  ==  <Kit>/Skills (public);  Private/Skills is a subset of both
 #   ls -1 ~/.claude/skills | grep -v '^\.' | wc -l          # live
 #   ls -1 <Kit>/Skills | grep -v '^README.md$' | wc -l      # public
 #   ls -1 <Kit>/Private/Skills | grep -v '^README.md$' | wc -l  # private
@@ -325,9 +341,12 @@ done
 # Plugin manifests
 cp ~/.claude/plugins/{installed_plugins,known_marketplaces}.json <Kit>/Plugins/
 
-# Global config
-cp ~/.claude/CLAUDE.md <Kit>/CLAUDE-global.md
-cp ~/.claude/settings.json <Kit>/
+# Global config — verbatim to Private/, hand-merged genericized copy to public
+mkdir -p <Kit>/Private/default-profile
+cp ~/.claude/{CLAUDE.md,settings.json} <Kit>/Private/default-profile/
+diff <Kit>/CLAUDE-global.md ~/.claude/CLAUDE.md     # merge new sections by hand
+diff <Kit>/settings.json ~/.claude/settings.json    # keep "Bash(*)" (restore.sh needs it);
+                                                    # omit additionalDirectories, statusLine, autoMode.environment
 
 # Host-side tooling
 brew bundle dump --force --file=<Kit>/Tooling/Brewfile

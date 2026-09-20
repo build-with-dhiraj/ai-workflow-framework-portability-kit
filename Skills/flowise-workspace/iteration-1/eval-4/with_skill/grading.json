@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-4-with_skill",
+  "expectations": [
+    {
+      "text": "Read the live flow rather than reasoning from architecture alone",
+      "passed": true,
+      "evidence": "o the same three fields before the model sees it. Playlist, `Searching JoVE library...` (node 04, `customFunctionAgentflow_1`): ```js function compactCandidate(video) { return { i"
+    },
+    {
+      "text": "States that playlist candidates are compacted to id/title/type before curation",
+      "passed": true,
+      "evidence": "list, `Searching JoVE library...` (node 04, `customFunctionAgentflow_1`): ```js function compactCandidate(video) { return { id: Number(video && video.articleId), t: String((video && vid"
+    },
+    {
+      "text": "Does NOT claim the playlist passes description or transcript to the curator",
+      "passed": true,
+      "evidence": "payload built at line 389 keeps only `id`, `title`, `articleType`. The playlist never had descriptions to discard \u2014 the search response it parses does not carry them into `normalizeVideo()`. So Labs can be given a strictly richer curation payl"
+    },
+    {
+      "text": "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+      "passed": true,
+      "evidence": "s \u2192 20 queries** | **1 method \u2192 1 query. No expansion step exists.** | Playlist: node 18 `Analyzing your Topic...` + `buildSearchQueries()`; Labs: `module-video-matcher.service.ts:246-276` | | Candida"
+    },
+    {
+      "text": "Identifies the clarification/disambiguation step as a differentiator",
+      "passed": true,
+      "evidence": "st difference and the most likely cause of your complaints. 2. **It refuses to execute an ambiguous request.** It stops and asks a question instead. Labs has no concept of asking. 3. **I"
+    },
+    {
+      "text": "Produces a concrete checklist of what to verify on the Labs side, not generic advice",
+      "passed": true,
+      "evidence": "The Labs logic is readable at `~/dev/jove-code/research-svc`, so most of the \"go and check\" list below is already checked. I have marked the handful of items that genuinely still n"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

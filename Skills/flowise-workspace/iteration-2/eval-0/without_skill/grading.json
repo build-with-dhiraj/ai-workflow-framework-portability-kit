@@ -1,0 +1,32 @@
+{
+  "run_id": "eval-0-without_skill",
+  "expectations": [
+    {
+      "text": "Identifies the curation node by name (Organizing playlist)",
+      "passed": true,
+      "evidence": "e short answer Video selection happens in exactly **one** node: the LLM node labelled **\"Organizing playlist...\"** (`llmAgentflow_2`, model `gpt-5.6-luna`). For each candidate video, that model see"
+    },
+    {
+      "text": "States candidates are reduced to id/title/articleType before the model sees them",
+      "passed": true,
+      "evidence": "** (`llmAgentflow_2`, model `gpt-5.6-luna`). For each candidate video, that model sees **three fields and nothing else**: | Field | Meaning | Source | |---|---|---| | `id` | JoVE article id"
+    },
+    {
+      "text": "Quotes or accurately paraphrases the curation prompt's selection instruction",
+      "passed": true,
+      "evidence": "create a playlist using www.jove.com videos for a university professor. > Your task is to select, label, and sequence the strongest relevant teaching videos from curation_context.candidates. >"
+    },
+    {
+      "text": "Lists the $flow.state keys the flow carries between steps",
+      "passed": true,
+      "evidence": "s two lines \u2014 the whole payload arrives as one serialised blob: ``` curation_context: {{ $flow.state.curation_context }} ``` Note the instruction \"Use ty and t to choose the best representa"
+    },
+    {
+      "text": "Pulled the data from the live instance without asking the user to paste anything",
+      "passed": true,
+      "evidence": "id `bd799a71-9b90-4bdd-888e-627e3428fa55`, last updated 2026-08-17T08:16:30Z. Read-only (`GET /api/v1/chatflows`). Flow is `deployed: false`, `isPublic: false`. --- ## The short answer Video selecti"
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

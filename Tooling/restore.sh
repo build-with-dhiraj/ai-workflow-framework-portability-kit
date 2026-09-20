@@ -151,7 +151,7 @@ echo ""
 echo "==> Step 8/8: Private capability overlay"
 PRIV="$KIT_DIR/Private"
 if [ -d "$PRIV" ]; then
-  # 12 skills withheld from the public repo
+  # verbatim originals of the 14 skills the repo carries as sanitized copies
   rsync -a --exclude='/README.md' "$PRIV/Skills/" "$CLAUDE_HOME/skills/"
   # second config root (work profile); its agents are identical to the default
   # profile's, so they come from Agents/ rather than being stored twice
@@ -171,7 +171,7 @@ if [ -d "$PRIV" ]; then
 else
   echo "  No Private/ overlay found — skipping."
   echo "  This is EXPECTED if you git-cloned the repo instead of copying the folder."
-  echo "  Consequence: 12 work-specific skills and the ~/.claude-jove profile are"
+  echo "  Consequence: 14 skills stay as sanitized copies and the ~/.claude-jove profile are"
   echo "  absent. The public layers above are complete and usable on their own."
 fi
 
@@ -181,7 +181,7 @@ echo "════════════════════════�
 echo "  Restore complete."
 echo "  Start a new Claude Code session and verify:"
 echo "    - 36 custom agents listed"
-echo "    - 149 skills from the repo (161 with the Private/ overlay)"
+echo "    - 161 skills from the repo (Private/ overlay swaps 14 sanitized copies for the originals)"
 echo "    - 13 plugins installed, 12 enabled (run \`claude plugin list\`)"
 echo "    - Engineering Manager mode active on first prompt"
 echo ""

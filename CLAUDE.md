@@ -18,13 +18,13 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `SPEC-KIT-global.md` | Snapshot of your global `~/.claude/SPEC-KIT.md` (greenfield spec-driven phase mapping) | `~/.claude/SPEC-KIT.md` |
 | `settings.json` | Snapshot of `~/.claude/settings.json` (plugins, permissions, env) | `~/.claude/settings.json` |
 | `Agents/` | All 36 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
-| `Skills/` | All 149 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
+| `Skills/` | All 161 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
 | `Automations/` | The loop-heartbeat layer (Osmani "Loop Engineering") — harness scheduling stack, hooks/statusLine policy, and the human-in-the-loop kit-maintenance loop (README inside) | harness/account-bound (`/loop`, `/goal`, `/schedule`; no local file) |
 | `Tooling/` | Brewfile + npm globals snapshot + **`restore.sh`** (one-prompt end-to-end restore script) | system-level (Homebrew, npm) |
-| `Private/` | 🔒 **Gitignored.** The 12 work-specific skills held back from the public repo + the second config root (`~/.claude-jove`). Present in the kit *folder*, absent from the kit *repo*. (README inside) | `~/.claude/skills/*` + `~/.claude-jove/` |
+| `Private/` | 🔒 **Gitignored.** The verbatim originals of the 14 skills the public repo carries as sanitized copies + the second config root (`~/.claude-jove`). Present in the kit *folder*, absent from the kit *repo*. (README inside) | `~/.claude/skills/*` + `~/.claude-jove/` |
 
 ---
 
@@ -57,7 +57,7 @@ you are not logged in yet, or the connector needs re-authorization. Never try to
 | **Kit repo** (GitHub) | Everything publishable | Sharing, auditing, forking |
 | **Kit folder** (this directory) | Repo **+ gitignored `Private/`** | **Actual Mac migration** |
 
-`Private/` holds 12 work-specific skills and the second config root
+`Private/` holds the verbatim originals of 14 sanitized skills and the second config root
 (`~/.claude-jove`). Withholding something from the public repo no longer means
 losing it on restore. **Copy the folder; do not `git clone`** — see
 [Private/README.md](Private/README.md).

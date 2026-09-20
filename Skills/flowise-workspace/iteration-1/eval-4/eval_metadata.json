@@ -1,0 +1,13 @@
+{
+  "eval_id": 4,
+  "eval_name": "transfer-learnings-between-flows",
+  "prompt": "We have two things that do roughly the same job. One is an agentflow called \"AI Playlist\" that our customer success team says works well: you give it a topic and it picks good videos and groups them. The other is a newer product, JoVE Labs, which starts from a researcher's published articles, pulls the methods out of them, and builds training modules of videos around each method. Labs gets complaints that the suggested videos are off-topic. Both use the same search backend. I want to know what specifically makes the playlist better and what we should actually copy. Credentials are in FLOWISE_API_ENDPOINT and FLOWISE_API_KEY. The Labs logic is not in Flowise, it is in a service, so treat the playlist as the readable one and tell me what to go and check on the other side.",
+  "assertions": [
+    "Read the live flow rather than reasoning from architecture alone",
+    "States that playlist candidates are compacted to id/title/type before curation",
+    "Does NOT claim the playlist passes description or transcript to the curator",
+    "Identifies the keyword-normalisation step as a differentiator the other side may lack",
+    "Identifies the clarification/disambiguation step as a differentiator",
+    "Produces a concrete checklist of what to verify on the Labs side, not generic advice"
+  ]
+}

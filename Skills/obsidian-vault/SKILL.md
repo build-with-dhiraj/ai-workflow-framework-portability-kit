@@ -1,59 +1,41 @@
 ---
 name: obsidian-vault
-description: Search, create, and manage notes in the Obsidian vault with wikilinks and index notes. Use when user wants to find, create, or organize notes in Obsidian.
+description: Superseded by vault-recall. Mechanical file-level lookup in the JoVE HQ vault at ~/dev/jove-hq/knowledge - locating a note by filename or path when you already know what you are looking for. Do NOT use for recall, decisions, ownership, history, cross-linking, or grilling; vault-recall owns all of those and is the skill to invoke.
 ---
 
-# Obsidian Vault
+# Obsidian Vault (JoVE HQ) - mechanical lookup only
 
-## Vault location
+**`vault-recall` is the skill for this vault.** It recalls, cross-links, and grills, and it is the
+one to invoke for any question about what the vault says. This file covers only the mechanical
+case: finding a file when you already know roughly what it is called.
 
-`/mnt/d/Obsidian Vault/AI Research/`
+Scope is `~/dev/jove-hq/knowledge` and nothing else. Read-only.
 
-Mostly flat at root level.
-
-## Naming conventions
-
-- **Index notes**: aggregate related topics (e.g., `Ralph Wiggum Index.md`, `Skills Index.md`, `RAG Index.md`)
-- **Title case** for all note names
-- No folders for organization - use links and index notes instead
-
-## Linking
-
-- Use Obsidian `[[wikilinks]]` syntax: `[[Note Title]]`
-- Notes link to dependencies/related notes at the bottom
-- Index notes are just lists of `[[wikilinks]]`
-
-## Workflows
-
-### Search for notes
+## Locate a note
 
 ```bash
-# Search by filename
-find "/mnt/d/Obsidian Vault/AI Research/" -name "*.md" | grep -i "keyword"
+V=~/dev/jove-hq/knowledge
 
-# Search by content
-grep -rl "keyword" "/mnt/d/Obsidian Vault/AI Research/" --include="*.md"
+# by filename, excluding the scraped corpus (8,718 of ~11,200 notes)
+find "$V" -name "*.md" -not -path "*/youtube-academia-corpus/*" | grep -i "keyword"
+
+# by content, signal directories only
+grep -rl "keyword" "$V/jove-labs" "$V/meetings" "$V/memory" "$V/entities" --include="*.md"
 ```
 
-Or use Grep/Glob tools directly on the vault path.
+Filenames are kebab-case with a `-YYYY-MM-DD` suffix on anything time-bound, and a SCREAMING
+prefix marking kind in `jove-labs/`: `HANDOVER-`, `ANSWER-`, `METRICS-`, `TICKET-DRAFT-`,
+`OUTBOX-`, `TODAY-PLAN-`. Grep and Glob tools work directly on these paths and are faster.
 
-### Create a new note
+## Vault shape
 
-1. Use **Title Case** for filename
-2. Write content as a unit of learning (per vault rules)
-3. Add `[[wikilinks]]` to related notes at the bottom
-4. If part of a numbered sequence, use the hierarchical numbering scheme
+Root holds one note, `HOME.md`. Everything else sits 2-3 levels down under 13 directories:
+`youtube-academia-corpus/` 8718 (scraped corpus), `jove-labs/` 923, `archive-export/` 906,
+`vault-dumps/` 186, `meetings/` 175, `copilot/` 170, `entities/` 90, `memory/` 31, and
+`inbox/ research-metrics/ parity/ cowork/ vault-extras/` under 20 each.
 
-### Find related notes
+## Anything else
 
-Search for `[[Note Title]]` across the vault to find backlinks:
-
-```bash
-grep -rl "\\[\\[Note Title\\]\\]" "/mnt/d/Obsidian Vault/AI Research/"
-```
-
-### Find index notes
-
-```bash
-find "/mnt/d/Obsidian Vault/AI Research/" -name "*Index*"
-```
+Hand off to **`vault-recall`**: questions, decisions, ownership, history, backlinks, hub and MOC
+navigation, contradictions, grilling. Writing notes is out of scope for both - see
+`obsidian-markdown` for authoring and `obsidian-cli` for CLI operations.

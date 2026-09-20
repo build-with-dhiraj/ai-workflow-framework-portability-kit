@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-2-with_skill",
+  "expectations": [
+    {
+      "text": "Identifies SQLite as the cause of the locking under concurrent use and recommends Postgres",
+      "passed": true,
+      "evidence": "on artifact \u2014 more on that at the end. --- ## 2. The lockups \u2014 two separate causes, and Postgres only fixes one Do not treat \"it locks up\" as a single problem. With three users there ar"
+    },
+    {
+      "text": "Names specific DATABASE_* environment variables rather than describing them vaguely",
+      "passed": true,
+      "evidence": "Move to Postgres before this becomes a shared tool \u2014 you are already past that line. ``` DATABASE_TYPE=postgres ``` Valid values are `sqlite`, `mysql`, `postgres`, and \u2014 implemented but undoc"
+    },
+    {
+      "text": "Explains the lost-flows cause as unpersisted volume / default data path, with the fix",
+      "passed": true,
+      "evidence": ".1.4` or `latest`.** The final release ships a Docker image that fails to boot on a fresh volume \u2014 `EACCES` on `/root/.flowise`, `Cannot find module '@smithy/eventstream-codec'`, `this.d"
+    },
+    {
+      "text": "Warns that the credential encryption key must be stable (FLOWISE_SECRETKEY_OVERWRITE)",
+      "passed": true,
+      "evidence": "lows on a container restart: ``` DATABASE_PATH=/data/flowise LOG_PATH=/data/flowise/logs SECRETKEY_PATH=/data/flowise BLOB_STORAGE_PATH=/data/flowise/storage ``` The container runs as **uid 10"
+    },
+    {
+      "text": "States that SSO is an enterprise-licensed feature, not available on the open-source build",
+      "passed": true,
+      "evidence": "announcement recommends it, and two things temper that. The auth layer you would need for SSO (`IdentityManager.ts`, `enterprise/**`) is under the commercial licence rather than Apache 2.0, and a request to relicense went unanswered. And as of late August 2026 no serious community fork has emerged, "
+    },
+    {
+      "text": "Tells the user the project is archived and which version to pin",
+      "passed": true,
+      "evidence": "it becomes a real internal tool ## Read this before you plan anything else Flowise was archived upstream on **13 August 2026** \u2014 four days ago. The repository is read-only, the final re"
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}
