@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "obsidian-graph-auditor"
-version = "0.1.0"
+version = "0.1.2"
 description = "Score an Obsidian vault on the 8-dimension Grade-A rubric. Read-only, pure Python, no API keys."
 readme = "README.md"
 license = { text = "MIT" }

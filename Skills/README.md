@@ -1,20 +1,20 @@
 # Skills — Roster, Layers & Precedence
 
-148 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+149 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
 
 ### Where the skill count actually lands
 
-A live session can invoke far more than 148 skills. Only the first row below is
+A live session can invoke far more than 149 skills. Only the first row below is
 this kit's responsibility — see [../CLAUDE.md §1a](../CLAUDE.md) for why.
 
 | Source | Count | Restored by this kit? |
 |---|---|---|
-| **This folder** (public) | **148** | ✅ `restore.sh` step 5 |
-| `../Private/Skills/` (work-specific, gitignored) | 7 | ✅ step 8 — folder copies only, not clones |
-| → **local skills on disk after restore** | **155** | matches live `~/.claude/skills/` exactly |
+| **This folder** (public) | **149** | ✅ `restore.sh` step 5 |
+| `../Private/Skills/` (work-specific, gitignored) | 14 (12 held back + 2 overrides) | ✅ step 8 — folder copies only, not clones |
+| → **local skills on disk after restore** | **161** | matches live `~/.claude/skills/` exactly |
 | Plugin-provided (21 namespaces) | ~207 | ✅ *indirectly* — arrives with the plugin |
 | claude.ai account skills | 6 | ✅ auto, on `claude login` |
 | Claude Code harness built-ins | ~14 | ships inside the app |
@@ -473,3 +473,24 @@ Fixes, in the order they changed the numbers:
 - `master-resume` (added 2026-06-11) is **no longer present** in live or in the kit. It was removed from the source machine between the 06-21 and 08-02 snapshots; the 06-11 table above is left intact as history. Its `tectonic` Brewfile note is therefore moot.
 - The "`hooks` + `statusLine` remain intentionally **out** of the kit's `settings.json`" policy stated in the 2026-06-11 entry was **not actually honoured** by the 2026-08-02 snapshot, which shipped 19 token-optimizer hooks pointing at `~/.claude/skills/.archive-token-optimizer-pkg/` — a path this kit deliberately excludes, so a restore would have written a `settings.json` referencing files that were never copied. Both keys are stripped again as of this snapshot, and the hooks are gone from the live machine too (removed 2026-08-12).
 
+
+### Added 2026-09-21: live re-sync → 149 skills
+
+Six skills appeared in live `~/.claude/skills/` since the 2026-08-13 snapshot. One is published:
+
+| Skill | What it does |
+|---|---|
+| `llm-council` | Five independent advisors answer, peer-review each other anonymously, and a chairman synthesizes one verdict. Adapted from Karpathy's LLM Council. |
+
+The other five went to the gitignored `Private/` overlay because each carries work-specific
+content. The held-back list is now 12.
+
+- **Parity identity is now a union:** `live 161 == public 149 ∪ private 14` (2 overlap).
+- **Two public skills are frozen at their last published version:** `humanizer` and
+  `obsidian-vault`. Their live versions picked up work-specific content, so the live copies sit in
+  `Private/Skills/` and overwrite the public ones at `restore.sh` step 8.
+- **`CLAUDE-global.md` and `settings.json` are genericized copies**, no longer a plain `cp` of
+  live. The verbatim files live in `Private/default-profile/`. The public `settings.json` keeps
+  `"Bash(*)"` (which `restore.sh` relies on) and omits `additionalDirectories`, `statusLine` and
+  the machine-specific `autoMode.environment` block.
+- Refreshed in place: `obsidian-cli`, `obsidian-graph-auditor`.

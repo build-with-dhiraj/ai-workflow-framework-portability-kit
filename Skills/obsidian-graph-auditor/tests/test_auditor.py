@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from obsidian_graph_auditor.auditor import audit, build_graph
+from obsidian_graph_auditor.auditor import audit, build_graph, render_table
 from tests.conftest import (
     make_force_star_vault,
     make_healthy_vault,
@@ -93,6 +93,47 @@ def test_obsidian_internal_dirs_skipped(tmp_path: Path) -> None:
     (vault / "real.md").write_text("# real\n", encoding="utf-8")
     metrics = audit(vault)
     assert metrics["total_notes"] == 1
+
+
+def test_connectivity_ladder_is_monotonic(tmp_path: Path) -> None:
+    """Ladder keys exist and counts never increase as the degree floor rises."""
+    vault = make_healthy_vault(tmp_path)
+    metrics = audit(vault)
+
+    all_links = [metrics[f"connected_{k}plus_count"] for k in (2, 3, 4, 5)]
+    resolved = [metrics[f"connected_{k}plus_resolved_count"] for k in (2, 3, 4, 5)]
+    assert all_links == sorted(all_links, reverse=True)
+    assert resolved == sorted(resolved, reverse=True)
+
+    # k=2 all-links is the pre-existing metric, unchanged in definition.
+    assert all_links[0] == metrics["connected_2plus_count"]
+    for k in (2, 3, 4, 5):
+        # A resolved count can never exceed its all-links count at the same floor.
+        assert metrics[f"connected_{k}plus_resolved_count"] <= metrics[f"connected_{k}plus_count"]
+        # Percentages track the counts against total_notes.
+        assert metrics[f"connected_{k}plus_pct"] == pytest.approx(
+            100 * metrics[f"connected_{k}plus_count"] / metrics["total_notes"], abs=0.01
+        )
+
+
+def test_resolved_ladder_ignores_dangling_links(tmp_path: Path) -> None:
+    """A link to a non-existent note counts for degree but NOT for resolved degree."""
+    vault = tmp_path / "v"
+    vault.mkdir()
+    (vault / "a.md").write_text("See [[b]], [[c]] and [[ghost]].\n", encoding="utf-8")
+    (vault / "b.md").write_text("# B\n", encoding="utf-8")
+    (vault / "c.md").write_text("# C\n", encoding="utf-8")
+
+    metrics = audit(vault)
+    # `a` has graph degree 3 (b, c, ghost) but resolved degree 2 (b, c only).
+    assert metrics["connected_3plus_count"] == 1
+    assert metrics["connected_3plus_resolved_count"] == 0
+    assert metrics["connected_2plus_resolved_count"] == 1
+
+
+def test_render_table_includes_ladder(tmp_path: Path) -> None:
+    vault = make_healthy_vault(tmp_path)
+    assert "CONNECTIVITY LADDER" in render_table(audit(vault))
 
 
 def test_audit_output_is_json_serializable(tmp_path: Path) -> None:

@@ -202,7 +202,12 @@ def build_graph(vault: Path) -> nx.Graph:
     edge_weights: dict[tuple[str, str], float] = defaultdict(float)
 
     for md_path in _iter_md_files(vault):
-        src = md_path.stem.lower()
+        # Key a node by its SLUG, not by the raw lowercased stem. Link targets are slugified
+        # (see _slug_from_wikilink_inner), so keying sources differently split every note whose
+        # filename contains a space, a dot or an underscore into two half-degree nodes: one
+        # holding its outgoing links, one holding every link into it, never joined. Measured on
+        # a 13,310-note vault: 930 notes had that shape and 903 edges were double-counted.
+        src = _slugify(md_path.stem)
         if not src:
             continue
 
@@ -276,9 +281,10 @@ def _scan_vault(
     hub_alias_total = 0
     hub_alias_with = 0
     node_class: dict[str, str] = {}
+    slug_files: dict[str, list[str]] = defaultdict(list)
 
     for md_path in _iter_md_files(vault):
-        slug = md_path.stem.lower()
+        slug = _slugify(md_path.stem)   # same keying as build_graph, or note_slugs cannot match graph nodes
         if not slug:
             continue
         try:
@@ -290,6 +296,11 @@ def _scan_vault(
         cls = _note_class(fm, md_path, vault, signal_types, signal_folders)
         class_counts[cls] += 1
         node_class[slug] = cls
+        # Two files in different folders can share a stem, so they collapse to ONE graph node.
+        # Recording which files claimed each slug is what lets audit() report that collapse
+        # instead of burying it: percentages that sum to 100 by construction can no longer
+        # reveal it, and a check that cannot fail is not evidence.
+        slug_files[slug].append(str(md_path.relative_to(vault)))
 
         type_label = str((fm or {}).get("type") or (fm or {}).get("source") or "_none")
         type_counts[type_label] += 1
@@ -310,6 +321,7 @@ def _scan_vault(
         "hub_alias_total": hub_alias_total,
         "hub_alias_with": hub_alias_with,
         "node_class": node_class,
+        "slug_files": dict(slug_files),
     }
 
 
@@ -402,16 +414,30 @@ def audit(
     G = build_graph(vault)
     gm = _graph_metrics(G, top=top)
 
-    total = scan["total"]
+    total = scan["total"]           # .md FILES read
     edges = gm["graph_edges"]
 
     in_graph_slugs = {s for s in G.nodes() if G.degree(s) >= 1}
     in_graph_deg = dict(G.degree())
     note_slugs = set(scan["node_class"].keys())
+    # Every connectivity numerator below counts distinct SLUGS, so the denominator is the distinct
+    # NODE count, not the file count. Files sharing a stem collapse into one node, so nodes <= files,
+    # and dividing by files made orphan + near-orphan + connected>=2 sum to less than 100 (98.44 on
+    # a 15,898-file vault, 248 nodes lost). Two ratios deliberately keep the FILE denominator below,
+    # because their numerators are file counts and they are correct as they stand:
+    # fm_wikilink_adoption_pct and hub_alias_coverage_pct.
+    nodes = len(note_slugs)
     connected_notes = note_slugs & in_graph_slugs
     deg1_notes = {s for s in connected_notes if in_graph_deg.get(s, 0) == 1}
     deg2_notes = {s for s in connected_notes if in_graph_deg.get(s, 0) >= 2}
     orphan_notes = note_slugs - connected_notes
+
+    # Informational connectivity ladder (never graded). The "resolved" variant counts only
+    # neighbours that are themselves real notes: a wikilink to a note that does not exist is
+    # still an edge in the graph, and optimising degree by minting dangling links is junk.
+    resolved_deg = {s: sum(1 for nb in G.neighbors(s) if nb in note_slugs) for s in connected_notes}
+    ladder = {k: sum(1 for s in connected_notes if in_graph_deg.get(s, 0) >= k) for k in (2, 3, 4, 5)}
+    ladder_resolved = {k: sum(1 for s in connected_notes if resolved_deg[s] >= k) for k in (2, 3, 4, 5)}
 
     def pct(a: int, b: int) -> float:
         return round(100 * a / b, 2) if b else 0.0
@@ -431,19 +457,43 @@ def audit(
             "orphan_pct": pct(len(orph), len(members)),
         }
 
-    link_density = round(edges / total, 4) if total else 0.0
+    link_density = round(edges / nodes, 4) if nodes else 0.0   # edges are in slug space: per NODE
+
+    collisions = sorted(
+        ((s, len(fs)) for s, fs in scan["slug_files"].items() if len(fs) > 1),
+        key=lambda kv: (-kv[1], kv[0]),
+    )
 
     return {
         "vault": str(vault),
-        "total_notes": total,
+        "total_notes": total,        # kept, and kept equal to the FILE count, so nothing downstream breaks
+        "total_files": total,
+        "distinct_nodes": nodes,
+        "collapsed_files": total - nodes,
+        "colliding_slugs": len(collisions),
+        "top_collisions": [[s, n] for s, n in collisions[:10]],
         "resolved_internal_edges": edges,
         "link_density": link_density,
         "orphan_count": len(orphan_notes),
-        "orphan_pct": pct(len(orphan_notes), total),
+        "orphan_pct": pct(len(orphan_notes), nodes),
         "near_orphan_count": len(deg1_notes),
-        "near_orphan_pct": pct(len(deg1_notes), total),
+        "near_orphan_pct": pct(len(deg1_notes), nodes),
         "connected_2plus_count": len(deg2_notes),
-        "connected_2plus_pct": pct(len(deg2_notes), total),
+        "connected_2plus_pct": pct(len(deg2_notes), nodes),
+        "connected_3plus_count": ladder[3],
+        "connected_3plus_pct": pct(ladder[3], nodes),
+        "connected_4plus_count": ladder[4],
+        "connected_4plus_pct": pct(ladder[4], nodes),
+        "connected_5plus_count": ladder[5],
+        "connected_5plus_pct": pct(ladder[5], nodes),
+        "connected_2plus_resolved_count": ladder_resolved[2],
+        "connected_2plus_resolved_pct": pct(ladder_resolved[2], nodes),
+        "connected_3plus_resolved_count": ladder_resolved[3],
+        "connected_3plus_resolved_pct": pct(ladder_resolved[3], nodes),
+        "connected_4plus_resolved_count": ladder_resolved[4],
+        "connected_4plus_resolved_pct": pct(ladder_resolved[4], nodes),
+        "connected_5plus_resolved_count": ladder_resolved[5],
+        "connected_5plus_resolved_pct": pct(ladder_resolved[5], nodes),
         "fm_wikilink_adoption_pct": pct(scan["fm_wikilink_notes"], total),
         "top_hub": gm["top_hub"],
         "top_hub_edge_share_pct": gm["top_hub_edge_share_pct"],
@@ -482,13 +532,31 @@ def render_table(m: dict[str, Any], grades: dict[str, str] | None = None) -> str
     A("  STRUCTURE")
     A(f"    total notes               {m['total_notes']:>10,}")
     A(f"    resolved internal edges   {m['resolved_internal_edges']:>10,}")
-    A(f"    link density (edges/note) {m['link_density']:>10.4f}   {g.get('link_density', '')}")
+    A(f"    link density (edges/node) {m['link_density']:>10.4f}   {g.get('link_density', '')}")
+    if m.get("collapsed_files", 0) > 0:
+        A("")
+        A("  SLUG COLLISIONS")
+        A(f"    files                     {m['total_files']:>10,}")
+        A(f"    distinct graph nodes      {m['distinct_nodes']:>10,}")
+        A(f"    collapsed into a peer     {m['collapsed_files']:>10,}   "
+          f"({m['colliding_slugs']:,} slug{'' if m['colliding_slugs'] == 1 else 's'} claimed by 2+ files)")
+        worst = ", ".join(f"{s} x{n}" for s, n in m.get("top_collisions", [])[:3])
+        if worst:
+            A(f"    worst: {worst}")
     A("")
-    A("  CONNECTIVITY")
+    A("  CONNECTIVITY  (percentages are over distinct graph nodes, not files)")
     A(f"    orphans (deg 0)           {m['orphan_count']:>10,}  ({m['orphan_pct']:.2f}%)   {g.get('orphan_pct', '')}")
     A(f"    near-orphans (deg 1)      {m['near_orphan_count']:>10,}  ({m['near_orphan_pct']:.2f}%)   {g.get('near_orphan_pct', '')}")
     A(f"    connected (deg >=2)       {m['connected_2plus_count']:>10,}  ({m['connected_2plus_pct']:.2f}%)   {g.get('connected_2plus_pct', '')}")
     A(f"    frontmatter-wikilink      {m['fm_wikilink_adoption_pct']:>10.2f}%  adoption    {g.get('fm_wikilink_adoption_pct', '')}")
+    A("")
+    A("  CONNECTIVITY LADDER (informational, not graded)")
+    A(f"    {'':<19}{'all links':>24}{'real notes only':>21}")
+    for k in (2, 3, 4, 5):
+        A(f"    connected (deg >={k}) {m.get(f'connected_{k}plus_count', 0):>13,} "
+          f"({m.get(f'connected_{k}plus_pct', 0.0):>6.2f}%) "
+          f"{m.get(f'connected_{k}plus_resolved_count', 0):>10,} "
+          f"({m.get(f'connected_{k}plus_resolved_pct', 0.0):>6.2f}%)")
     A("")
     A("  CONCENTRATION")
     ratio = m["top_hub_next_ratio"]

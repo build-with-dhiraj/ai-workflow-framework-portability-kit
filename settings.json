@@ -67,5 +67,18 @@
   "theme": "dark",
   "teammateMode": "in-process",
   "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(glab:*) read-only subcommands in this project (glab issue list, glab mr list, glab repo view) against gitlab.com",
+      "Bash(gcloud:*) read-only inspection in this project (gcloud config list, gcloud auth list, gcloud projects list)",
+      "Bash(obsidian-graph-audit:*) and Bash(obsidian-brain-eval:*) local vault audit runs in this project"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(glab:*) destructive or publishing subcommands in this project (glab mr merge, glab repo delete, glab release create) against gitlab.com",
+      "Bash(gcloud:*) mutating subcommands in this project (gcloud storage rm, gcloud iam *, gcloud run deploy, gcloud projects delete)"
+    ]
+  }
 }

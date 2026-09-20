@@ -104,3 +104,14 @@ obsidian dev:mobile on
 ```
 
 Run `obsidian help` to see additional developer commands including CDP and debugger controls.
+
+## ADDENDUM (15 Aug 2026): the official CLI shipped in Obsidian 1.12
+
+Everything above predates Obsidian 1.12 (Feb 2026), which ships an OFFICIAL first-party CLI
+(binary `obsidian`, 100+ commands: vault search, note create from template, daily notes,
+diff, plugin management, move). It sees the app's own index, unlike URI-scheme or
+community-CLI paths, and supersedes them wherever both could do the job. It must be enabled
+once per machine in Settings > General > Advanced. On this machine: installed at
+/opt/homebrew/bin/obsidian, version 1.12.7. Verify the live command surface with
+`obsidian --help` before trusting any command list, including this one. Source of record:
+https://github.com/kepano/obsidian-skills (the vendor's own agent skills).

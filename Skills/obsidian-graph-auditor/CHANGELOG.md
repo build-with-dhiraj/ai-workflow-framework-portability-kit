@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-18
+
+### Fixed
+- Graph source nodes are now keyed by slug, matching link targets. Previously a note whose
+  filename contained a space, a dot or an underscore was split into two half-degree nodes,
+  under-counting its degree and double-counting its edges.
+
+### Added
+- Connectivity ladder (deg >=2/3/4/5, all links and real-notes-only) in the JSON output and
+  the scorecard. Informational, not graded.
+
 ## [0.1.0] - 2026-06-03
 
 ### Added

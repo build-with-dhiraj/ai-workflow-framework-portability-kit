@@ -4,7 +4,7 @@ This is the runbook to get from a fresh Mac + Claude subscription to the same or
 
 > **🚀 Fast path (recommended):** Run `Tooling/restore.sh`. It does steps 1–7 below in one pass after a single confirmation prompt, plus a step 8 that applies the private overlay when present. See [Tooling/README.md](Tooling/README.md). The steps below remain as a reference if you need to do anything partially or manually.
 
-> **⚠️ Copy the folder, don't `git clone`.** The repo omits 7 work-specific skills and the second config root (`~/.claude-jove`); those live in the gitignored `Private/` overlay, which only exists in the folder. A clone restores a complete and usable stack — just not the private layer. `restore.sh` says which one it applied. See [Private/README.md](Private/README.md).
+> **⚠️ Copy the folder, don't `git clone`.** The repo omits 12 work-specific skills and the second config root (`~/.claude-jove`); those live in the gitignored `Private/` overlay, which only exists in the folder. A clone restores a complete and usable stack — just not the private layer. `restore.sh` says which one it applied. See [Private/README.md](Private/README.md).
 
 > **Three tiers of capability.** This runbook restores tier 1 (disk) only. Tier 2 (app-delivered plugins) and tier 3 (claude.ai skills and connectors) have no files and reattach on `claude login`. If something is missing after a restore, check which tier it is in before debugging — [CLAUDE.md §1a](CLAUDE.md).
 
@@ -240,8 +240,8 @@ ls ~/.claude/agents/*.md | wc -l   # expect 36
 
 # Check skills
 ls -1 ~/.claude/skills | grep -v '^\.' | wc -l
-#   expect 148 from a git clone
-#   expect 155 if you copied the kit FOLDER (adds the Private/ overlay)
+#   expect 149 from a git clone
+#   expect 161 if you copied the kit FOLDER (adds the Private/ overlay)
 #   Plugin, claude.ai, and harness-built-in skills are on top of this and are
 #   NOT counted here — see Skills/README and CLAUDE.md §1a.
 

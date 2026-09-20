@@ -106,3 +106,13 @@ Agency-agents specialists (in `~/.claude/agents/engineering-*.md`) provide domai
 ## Spec-Driven Development
 
 Greenfield-only. See `~/.claude/SPEC-KIT.md` for when to use, phase mapping, and the mandatory override rule (never run `/speckit.implement`).
+
+## Writing anything a human reads (MANDATORY)
+
+Before drafting ANY text a human will read under the user's name - Slack, email, ticket, doc,
+comment - invoke the personal voice skill FIRST. It carries verbatim voice samples and the
+classify-the-trigger step. Drafting first and fixing after feedback is the failure mode this
+rule exists to stop. Voice is fixed, tone flexes to the trigger's shape and register.
+
+> **Kit note:** the voice skill holds real sent messages, so it lives in the private overlay
+> (`Private/Skills/`), not in the public `Skills/` folder.

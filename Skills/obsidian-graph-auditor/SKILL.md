@@ -65,10 +65,11 @@ Default exit codes:
 
 ## How to read the output
 
-The scorecard has 5 sections:
+The scorecard has 6 sections:
 
 - **STRUCTURE**: total notes, edges, link density. If density < 1.5 you have a capture-heavy vault that isn't connecting.
 - **CONNECTIVITY**: orphan + near-orphan + connected-2plus percentages. The headline metric.
+- **CONNECTIVITY LADDER**: share of notes at deg >=2/3/4/5, both for all links and counting only links to notes that actually exist. Informational, never graded.
 - **CONCENTRATION**: top-hub edge-share + top:next ratio. High values = force-star.
 - **COMMUNITY**: Louvain modularity. < 0.3 = no coherent clusters; > 0.75 = siloed islands.
 - **TOP HUBS / TOP BRIDGES**: the high-influence notes. Useful for "what should I de-star?" or "what's a connector worth protecting?"
