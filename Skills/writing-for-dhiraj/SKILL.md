@@ -65,6 +65,14 @@ Pattern: @mention + "As discussed,". Numbered 1 / 1.1 / 1.2, labs first (the uni
 
 Pattern: outcome in one line, then Scenario 1 / Scenario 2. Stop. He said: "Just speak about scenarios. Scenario one." Do not walk four cases, yes-no trees, or a workflow chart unless he asks. The chart is for tech. Do not then offer to explain it to CS.
 
+**Jira comment after a call, to the devs (JVA-32464, 30 Sep):**
+> @the dev lead @Colleague-P After the 30 Sep call:
+> * The permanent fix is to store the institute at sign-up on the platform side.
+> * We shouldn't just rely on the institution ID. As a fallback, use the domain to check if a user belongs to an enabled institute. Colleague-P and Colleague-V will connect, and you can grab the download from Colleague-P on how to do this with less latency.
+> * This ticket stays as the temporary fix until that's in place.
+
+Pattern: tags both owners, "After the <date> call:", bullets. He adds the concrete instruction the devs need (the fallback) that the draft left out, and names who hands over the know-how.
+
 **Acknowledgements:** "Aligned." / "Sure Noted" / "Please sign off." / "Noted."
 One word to three. Never a paragraph of thanks.
 

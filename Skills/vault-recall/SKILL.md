@@ -10,6 +10,51 @@ description: The second brain over the JoVE HQ vault at ~/dev/jove-hq/knowledge,
 The second brain over `~/dev/jove-hq/knowledge`. Three jobs, one source: **recall** what is
 written down, **cross-link** how it connects, **grill** Dhiraj against it.
 
+## The answer protocol (every invocation, in this order; Dhiraj, 1 Oct 2026)
+
+Run all four, every time, before the first sentence of the answer. Skipping one is the failure mode
+this exists to stop: answering the literal words from one note while the chat, a later call or
+another lens already said otherwise.
+
+1. **Understand what he is saying.** Restate the ask to yourself in one line: what he wants to
+   know, what he will do with it (decide, send, file, brief the Director), and the mode (recall / verdict /
+   grill / think). If two readings exist, pick the one his next action needs and say which.
+2. **Grill the vault.** Route below (ladder first, then the standing note, then ledger-ask or
+   lexical), read hits whole, follow supersedes/superseded_by and backlinks, and check the newest
+   call on the topic (the day's transcripts if it was decided today). Press where the vault is thin:
+   an assumed bin, an unowned item, two notes that disagree. Cite or abstain.
+3. **Read the chat.** What this conversation has already established, decided or drafted outranks
+   an older note on the same point (newest governs, older still binds its own layer, rule 14). Name
+   it when the chat and the vault disagree; never silently pick one.
+4. **Answer from every angle that changes it.** Before replying, run the lenses that apply and use
+   the skill or agent that owns each one when it would move the answer, not as decoration:
+   product and business (product-management skills, the PM lens in CLAUDE.md), engineering and
+   architecture (code reads via the GitLab clone, Software Architect, Senior Developer), design and
+   UX (impeccable, ux-writing, ai-product-ux), data and metrics (stakeholder-artifacts registry,
+   mixpanel-mastery, Redash), the scientist who will use it (user-research, the voice-of-academia
+   corpus), the engineering manager (sequencing, tickets, owners), prompt engineering (prompt-
+   engineering) and writing for a human (writing-for-dhiraj). Then think-like-fable: answer first,
+   reasoning next, the one thing that would make it wrong last.
+
+### Authority order and links (knowledge/CONTEXT.md, decided 1 Oct 2026)
+
+When notes disagree, the answer follows, in order:
+
+1. **The ladder** (`meetings/ladders/LADDER-<slug>.md`, its "Where this stands today") governs.
+2. **The decision note** (`jove-labs/decisions/D-*.md`) is a part of the ladder's position. A
+   decision note that disagrees with its ladder is a finding to name, not a winner to pick.
+3. **The call note**: the newest wins, but only on the point it addresses (rule 14).
+4. **A draft never governs.** OUTBOX, TICKET-DRAFT, PRD and DRAFT notes carry `status: draft`,
+   `sent` or `superseded`; follow `superseded_by` or `sent_to` to what replaced it or where it went,
+   and never quote a draft as the position.
+
+**Slug links only.** Write and follow links by the target's file name, `[[slug]]` or
+`[[slug|written form]]`. An alias (`[[vaibhav jaiswal]]`) is never a link target; aliases are for
+search. A link-only edit to a raw note is allowed (visible words unchanged); changing a raw note's
+words is a raw correction and needs `raw-correction` in the commit.
+
+Relay rules below still hold (no F-ids, keep bins and status, answer then sources).
+
 ## Scope: one vault, nothing else
 
 Answers come from `~/dev/jove-hq/knowledge` and nowhere else. Not other vaults
@@ -33,6 +78,26 @@ call. Recall is 100% by construction and the model's job is judgment, not search
 "improve" this with embeddings.**
 
 ## Route the question
+
+**Ladder first for any "what did we decide / where do we stand on X" about a call topic:** open `~/dev/jove-hq/knowledge/meetings/ladders/_index.md`, read the topic's `LADDER-<slug>.md` (where it stands today, rungs newest first, what was superseded), then the calls it names. Never answer from one older call note; a later call may have superseded it. A call note's frontmatter carries `ladders`, `ladder_status`, `supersedes`, `superseded_by`.
+
+
+**0. Any verification of a metric, query, dashboard tile, count, or a claim about what production does**
+(the ask contains "verify", "audit", "is this right", "is it current", "reconcile", or ends in a verdict):
+run route 1 **twice before opening any code**, and quote the F-ids in the note's `## Recall run` section:
+
+```bash
+node ~/dev/jove-hq/tools/sweep/ledger-ask.mjs "How does the product decide <the attribution the number depends on>?"
+node ~/dev/jove-hq/tools/sweep/ledger-ask.mjs --open "What is known to be wrong or unfinished about <the entity>?"
+```
+
+Then `ls ~/dev/jove-hq/knowledge/jove-labs/ | grep -iE "^(RCA|CHECK|AUDIT)-.*<entity>"` and read those whole.
+The ticket question ("which tickets touched X") is a third question, never the first. On 23 Sep 2026 it was the
+only one asked about Redash query 2936; the mechanism question, asked on 24 Sep, returned F-666, F-703, F-717,
+F-718, F-719 and F-794 in 25 seconds, and the note that had certified the counter was wrong by 7,492 accounts.
+`tools/sweep/verdict-check.mjs` fails a verdict note that has no `Recall run` section.
+
+
 
 **1. Any JoVE Labs question** - decisions, bugs, scope, tickets, launch state:
 
@@ -82,7 +147,7 @@ How notes connect is itself an answer. The link layer is verified present, not a
 
 - **Hubs.** `HOME.md` is the spine. `jove-labs/moc/_map.md` maps 45 topic MOCs. `jove-labs/decisions/_index.md`
   holds one settled decision per note with verbatim evidence, and **outranks a passing mention
-  anywhere else** - check it before treating something as open. `jove-labs/findings/_index.md` is
+  anywhere else** (the ladder still governs it, see Authority order) - check it before treating something as open. `jove-labs/findings/_index.md` is
   the findings ledger.
 - **Hub membership** via frontmatter (609 notes carry `moc:`):
 

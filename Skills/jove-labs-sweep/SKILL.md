@@ -1,6 +1,6 @@
 ---
 name: jove-labs-sweep
-description: On-demand deep sweep that reconstructs the entire JoVE Labs state from every surface in knowledge/jove-labs/surfaces.yaml (vault and Google Docs, Slack, Gmail, calendar, tl;dv and Granola, GitLab code, Jira and Confluence, Mixpanel and Redash, Figma, the QA and Champions sheets, Linear) into the canonical knowledge/jove-labs/STATUS.md brief. Proves its own coverage arithmetically, reports whether it is converged with the other Claude account, flags stale or redundant docs for confirmation, and routes action items to Linear and Jira. Every invocation covers ALL surfaces, delta-only against the stored cursors; if that does not fit one context it runs as a Workflow, never as a smaller sweep. Invoke when Dhiraj says "labs sweep", "reconstruct jove labs", "what is the state of jove labs", "what happened on labs", "catch me up on labs", or /jove-labs-sweep.
+description: On-demand deep sweep that reconstructs the entire JoVE Labs state from every surface in knowledge/jove-labs/surfaces.yaml (vault and Google Docs, Slack, Gmail, calendar, Wispr and Granola, GitLab code, Jira and Confluence, Mixpanel and Redash, Figma, the QA and Champions sheets, Linear) into the canonical knowledge/jove-labs/STATUS.md brief. Proves its own coverage arithmetically, reports whether it is converged with the other Claude account, flags stale or redundant docs for confirmation, and routes action items to Linear and Jira. Every invocation covers ALL surfaces, delta-only against the stored cursors; if that does not fit one context it runs as a Workflow, never as a smaller sweep. Invoke when Dhiraj says "labs sweep", "reconstruct jove labs", "what is the state of jove labs", "what happened on labs", "catch me up on labs", or /jove-labs-sweep.
 ---
 
 > **Project root:** every relative path in this skill (`knowledge/...`, `tools/...`, `.claude/skills/...`) resolves against `~/dev/jove-hq`, never the current working directory. This skill is invocable from any cwd, so prefix accordingly: `~/dev/jove-hq/knowledge/jove-labs/STATUS.md`.
@@ -47,6 +47,11 @@ Rebuild from scratch only when `state.json` is missing or unparseable.
 
 ## Gate (run first)
 
+0. **World versus vault, before anything else (CLAUDE.md rule 18).** Write the MCP handoffs first, then run the enumerator:
+   - `knowledge/jove-labs/.sweep/enum/slack.json` from `slack_list_user_channels` (types `public_channel,private_channel`, `exclude_archived`), every channel as a `containers` row `{id, title}`.
+   - `knowledge/jove-labs/.sweep/enum/jira.json` from `searchJiraIssuesUsingJql` on `project in (JVA, JPMT) AND (parent = JVA-29512 OR text ~ "\"JoVE Labs\"" OR labels = jove-labs) AND updated >= "2026-07-01"`, every issue as an `items` row `{id: key, title, modified}` and every parent epic as a `containers` row.
+   - `knowledge/jove-labs/.sweep/enum/granola.json` from Granola `list_meetings` (last 30 days), each meeting an `items` row. Wispr is read from `knowledge/meetings/.state/wispr-snapshot.json`, which the meetings gate already refreshes.
+   - Then `node tools/sweep/enumerate-coverage.mjs --emit-stubs`. Gemini and Drive are listed live through the Drive API. Every `UNINGESTED`, `NEW SURFACE` and `UNENUMERABLE` line prints **first, before the coverage ledger and before any finding**, and the worklist it writes (`.sweep/uningested-<date>.md`) is this run's first work queue. A handoff missing or older than 48h is `UNENUMERABLE`, which is a breach, not a skip. A `NEW SURFACE` is closed only by registering it (surfaces.yaml, or the Slack registry) or by Dhiraj adding it to `knowledge/jove-labs/surfaces-ignored.yaml` with a reason; the sweep proposes, it never self-ignores.
 1. Read `knowledge/jove-labs/surfaces.yaml`. This is the scope. A surface absent from it is out of scope; a surface in it that this run does not report is a finding, never silence.
 2. Read `knowledge/jove-labs/.sweep/state.json`. It holds per-surface cursors and fingerprints and it is your prior: never re-pull what it already covers. Pull only the window after each cursor. If it is missing or unparseable, ignore it and do a full reconstruction, then rebuild it at write-back. A bad cache can only cost duplicate work, never missed items.
 3. Read `_shared/jove-connectors.md` before pulling any live data.
@@ -82,6 +87,16 @@ Rebuild from scratch only when `state.json` is missing or unparseable.
      source timeline.** A draft written from one surface while another surface holds the
      newer or fuller word is the failure this catches (19 Aug: a ticket drafted from a call
      transcript alone while the morning's Slack DM carried the requirement).
+   - `node tools/sweep/verdict-check.mjs`: **does every verdict note carry its Recall run,
+     Attribution and Reconciled record sections.** A counter certified from its definition
+     alone, while the vault already held the attribution rule it broke, is the failure this
+     catches (24 Sep: Redash 2936 was called "faithful to what production enforces" and missed
+     7,492 accounts).
+   - `node tools/redash/customer-rule.mjs`: **do the nine dashboard 169 queries still embed the one
+     customer-lab rule.** Nine hand-typed copies of "a lab in a PI's hands" drift apart unseen
+     (24 Sep: only 2933 carried the QA-account flag). The rule lives in
+     `knowledge/jove-labs/redash-customer-lab-rule.sql`; drift is a finding, and `--apply` rewrites
+     only on Dhiraj's go.
    - `node tools/sweep/ledger-health.mjs` — **did every prior run's findings actually reach the ledger.** Drift here means an earlier run swept surfaces and taught nobody, so this run's prior is incomplete and its own findings may be re-derivations of work already paid for. Fix the drift before pulling, or you will pay for it twice.
 
 3b. **This run is accountable to the ledger.** At write-back it must do exactly one of two things: add its findings and list its `run_id` under `runs_ingested`, or list it under `no_new_findings` with a reason. Do not stamp the id at the gate, only once findings exist. Silence is the single outcome the gate rejects, and it is the one that has already happened once.
@@ -98,12 +113,16 @@ Rebuild from scratch only when `state.json` is missing or unparseable.
 
 3d. **Read `knowledge/jove-labs/roadmap.md` before ranking anything.** Its `phase` flag decides the question this run is asking: **pre-launch** asks *will it work*, **launch** asks *is it working now*, **post-launch** asks *is anyone using it, where do they drop, which institution is stalling*. Coverage tells you the surfaces were read. The roadmap tells you which of them mattered. A run that reports "no breach" while a launch-blocking finding sits unowned has measured integrity and missed consequence, which is exactly what happened on 11 Aug.
 
-3b-bis. **Is every recording a note? `node tools/meetings/coverage.mjs`.** The three meeting
-recorders (tl;dv, Wispr, Gemini) are all `critical` surfaces, and a sweep that reads a call from
-one of them while the vault holds no per-meeting record of it is reasoning from a source the next
-run cannot find. Exit 1 lists uncoupled conversations: report them in the coverage table and name
-PPP STEP 1c as the owner (this skill never writes meeting notes). Exit 2 means a snapshot is stale
-or missing, so a recorder went unread, which is a coverage breach in its own right.
+3b-bis. **Is every recording a note? `node tools/meetings/coverage.mjs`.** The active meeting
+recorders are Wispr (primary), Gemini and Granola, all `critical` surfaces, and a sweep that reads a
+call from one of them while the vault holds no per-meeting record of it is reasoning from a source
+the next run cannot find. **tl;dv was retired 25 Sep 2026** (Dhiraj stopped the subscription); its
+surfaces.yaml entry is `criticality: archive`, `reachable: false` by design, and a 401 from it is
+expected, never a coverage gap, never grounds to ask for re-authorisation. Earlier tl;dv-sourced call
+notes already in the vault remain valid. Exit 1 lists uncoupled conversations: report them in the
+coverage table and name PPP STEP 1c as the owner (this skill never writes meeting notes). Exit 2
+means a snapshot is stale or missing, so a recorder went unread, which is a coverage breach in its
+own right.
 
 3c. `knowledge/jove-labs/INDEX.md` is the map of the 248-note corpus, one line each, newest first. Read it before searching the folder or querying the index: it is cheaper than a semantic query and it shows what exists, which a similarity score cannot. It is generated, so never hand-edit it; fix the source note's frontmatter `subject` instead.
 4. Read `~/dev/jove-code/.kernel/KERNEL.md`. **If a brief and the kernel disagree, the kernel wins.**
@@ -457,6 +476,8 @@ One row per enabled surface, every run. No summarising "and the rest were quiet"
 ```
 covered + skipped + failed  ==  count(surfaces.yaml where consumers includes labs-sweep)
 ```
+
+**Covered is item level, not surface level (25 Sep 2026).** `OK` on a surface means world minus vault is empty for that surface's enumerable class in `tools/sweep/enumerate-coverage.mjs`, not "we pulled it". The ledger said "Gemini covered" while 19 of 131 Gemini docs were in no note, because it counted surfaces pulled. A surface whose class reports `UNINGESTED n` is `OK +n owed`, never plain `OK`, and a class reporting `UNENUMERABLE` makes every surface it backs a `FAIL`.
 
 A mismatch prints **first, before any finding**, in this shape:
 

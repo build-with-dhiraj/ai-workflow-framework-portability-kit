@@ -1,20 +1,20 @@
 # Skills — Roster, Layers & Precedence
 
-161 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
+162 skills live in this folder. They are the **process tier**, **implementation-pattern tier**, and **governance tier** of the architecture described in [../CLAUDE.md](../CLAUDE.md). Skills don't write code by themselves — they tell agents *how* to work.
 
 > **Where they live on the live Mac:** `~/.claude/skills/` (some as real dirs, some as symlinks to `~/.agents/skills/`).
 > Restoration: copy every subdirectory in this folder back to `~/.claude/skills/`. Each skill is self-contained — its `SKILL.md` is auto-discovered. The symlink targets have already been resolved here, so no external library is needed.
 
 ### Where the skill count actually lands
 
-A live session can invoke far more than 161 skills. Only the first row below is
+A live session can invoke far more than 162 skills. Only the first row below is
 this kit's responsibility — see [../CLAUDE.md §1a](../CLAUDE.md) for why.
 
 | Source | Count | Restored by this kit? |
 |---|---|---|
-| **This folder** (public) | **161** (14 as sanitized copies) | ✅ `restore.sh` step 5 |
-| `../Private/Skills/` (gitignored) | 14 verbatim originals that overwrite the sanitized copies | ✅ step 8 — folder copies only, not clones |
-| → **local skills on disk after restore** | **161** | matches live `~/.claude/skills/` exactly |
+| **This folder** (public) | **162** (15 as sanitized copies) | ✅ `restore.sh` step 5 |
+| `../Private/Skills/` (gitignored) | 15 verbatim originals that overwrite the sanitized copies | ✅ step 8 — folder copies only, not clones |
+| → **local skills on disk after restore** | **162** | matches live `~/.claude/skills/` exactly |
 | Plugin-provided (21 namespaces) | ~207 | ✅ *indirectly* — arrives with the plugin |
 | claude.ai account skills | 6 | ✅ auto, on `claude login` |
 | Claude Code harness built-ins | ~14 | ships inside the app |
@@ -507,3 +507,16 @@ production figures inside voice samples replaced with round numbers.
 - `Private/Skills/` keeps the verbatim originals and overwrites the sanitized copies at
   `restore.sh` step 8. A git clone restores 161 working skills; a folder copy restores them verbatim.
 - **Parity identity:** `live 161 == public 161`, and `Private/Skills` is a subset of both.
+
+### Added 2026-10-04: live re-sync → 162 skills
+
+One new skill and four edited ones since the 2026-09-21 snapshot.
+
+| Skill | What it does |
+|---|---|
+| `vault-to-manuscript` | Turns a vault report into a journal-shaped manuscript (Significance, Abstract, Introduction, Results, Discussion, Methods, References) as prose, every number traced to its source note. Published as a sanitized copy. |
+
+- Refreshed in place: `etf-reit-onboarding`, `jove-labs-sweep`, `vault-recall`, `writing-for-dhiraj`.
+- `CLAUDE-global.md` gains the "Product manager's lens" section in generic wording.
+- Sanitized copies are now 15. **Parity identity:** `live 162 == public 162`.
+- The refresh rsync now excludes `.venv` and `__pycache__`: a virtualenv is regenerable and its looping symlinks break `rsync -L`.

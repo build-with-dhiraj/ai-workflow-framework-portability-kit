@@ -296,11 +296,12 @@ cp ~/.claude/agents/*.md <Kit>/Agents/
 # emails, ids, hosts, tokens; if anything hits, add it to SANITIZED.
 SANITIZED="jove-design-loop jove-labs-sweep jove-recall jove-youtube-feed-pipeline \
            mixpanel-mastery memory-router wrap-up jove-ticket-graph vault-recall \
-           writing-for-dhiraj flowise flowise-workspace humanizer obsidian-vault"
+           writing-for-dhiraj flowise flowise-workspace humanizer obsidian-vault \
+           vault-to-manuscript"
 
 # 1. verbatim-safe skills: straight copy (sanitized ones excluded so live text never lands)
 rsync -aL --exclude='.archive*' --delete \
-  --exclude='/README.md' \
+  --exclude='/README.md' --exclude='.venv' --exclude='__pycache__' \
   $(for s in $SANITIZED; do printf -- "--exclude=/%s " "$s"; done) \
   ~/.claude/skills/ <Kit>/Skills/
 

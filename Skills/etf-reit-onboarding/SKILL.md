@@ -6,7 +6,7 @@ description: >
   for life. The fund mirror of the stock onboarding pipeline. Use when the user says "add an
   ETF/REIT/InvIT", "grade this fund", "build a global-trend buy-list", "passive sleeve", "evaluate
   a fund like a stock", "should I buy <ETF>", "is this trend worth owning", or wants to extend /
-  re-rank the global-trend exposure list. Workspace: /Users/Dhiraj/dev/invest. Publish target is the
+  re-rank the global-trend exposure list. Workspace: /Users/Dhiraj/invest. Publish target is the
   🌍 Global & Passive Base tab (re-architected per the plan) — the LOCKED Action Dashboard is
   NEVER touched. Charlie Munger & Warren Buffett (the Obsidian vault) are the binding CIO; the
   vault gates trend-durability/conviction/verdict/MoS — it is not narrative decoration.
@@ -18,7 +18,7 @@ The single source of truth for finding and grading global-trend funds, REITs and
 them to the **🌍 Global & Passive Base** tab. Follow the stages in order. This is the **fund mirror** of
 [[stock-onboarding-pipeline]]: the SAME board (binding Munger/Buffett CIO · 31 perspectives · 14 canon ·
 8 desks · WC) evaluates ETFs/REITs the **same way it evaluates stocks** — verdict → conviction → margin of
-safety. The design source of truth is `/Users/Dhiraj/.claude/plans/build-a-plan-to-iterative-creek.md`.
+safety. The design source of truth is `/Users/Dhiraj/invest/extracted/research/global_grill_prep.md` plus `/Users/Dhiraj/invest/extracted/research/global_mf_sleeve_spec.md` (the stock news-loop plan `build-a-plan-to-iterative-creek.md` is **not** this pipeline).
 
 The retrieval plumbing is identical to the stock pipeline — all vault consultation goes through
 `data/scripts/32_consult_brain.py` (scoped, cited, structured), now carrying the four NEW fund models
@@ -102,8 +102,8 @@ what lets the board "look at ETFs the same way as stocks." TOO_HARD is quarantin
 
 ## CONSULTING THE BRAIN (`data/scripts/32_consult_brain.py` — the ONE retrieval entrypoint)
 ```bash
-set -a && source /Users/Dhiraj/dev/invest/.env && set +a && /Users/Dhiraj/dev/invest/.venv/bin/python \
-  /Users/Dhiraj/dev/invest/data/scripts/32_consult_brain.py \
+set -a && source /Users/Dhiraj/invest/.env && set +a && /Users/Dhiraj/invest/.venv/bin/python \
+  /Users/Dhiraj/invest/data/scripts/32_consult_brain.py \
   --company "<trend or fund name>" \
   --model <passive-etf|commodity-etf|reit|invit> \
   --step <circle|conviction|intrinsic-value|margin-of-safety|opportunity-cost|verdict|inversion|capital-allocation|sizing> \
@@ -255,11 +255,12 @@ CORE-PASSIVE/ACCUMULATE 11-col sketch is a data point, NOT a template). BACK UP 
 auto-coloring / locked-format discipline as the stock dashboard; if a helper disagrees with the live tab,
 FIX THE HELPER, never the sheet, and never bypass a helper with raw writes for new/reordered rows.**
 
-**Re-architected 🌍 tab schema (reads like the stock dashboard — a decision cockpit):**
-`Rank · Vehicle · Trend/Exposure · Verdict · Conviction · Buy-zone (index-value) · Live NAV/price · Upside ·
-TER · Tracking-error · Tax-bucket · Liquidity/AUM · Held? · Max-size · Why (1-line) · Sources`
-with a **REIT / InvIT block** carrying: `Yield · Sustainable-yield (income-only) · NAV premium/discount ·
-LTV · Occupancy`.
+**Re-architected 🌍 tab schema (near-parity with the stock dashboard — see `dashboards/global-tab-schema.md`):**
+`Rank · Vehicle · Trend/Exposure · Verdict · Conviction · Buy-below · Live · Sell/trim · Status · MoS% ·
+Upside · TER · Tax · P&L · Max-size · Open · Dossier · Why`
+Tracking-error, AUM, and REIT yield/LTV live in the dossier (ALTIUS for REIT/InvIT), not the cockpit.
+Dossier template: `vault/_system/templates/fund-dossier.md`. Grade publish spec:
+`extracted/research/publish_global_grades_spec.md` (gid `1626172876` only).
 - **Rank key = lexicographic (verdict_tier [CORE < COMPOUND-TREND < WATCH < AVOID < TOO_HARD], −conviction, −MoS).**
   No other tiebreakers. TOO_HARD quarantined off the buy-list rows.
 - **Values:** conviction (capped 2 for REIT/InvIT), buy-zone = index-fair-value entry (ETF) or the
@@ -294,8 +295,10 @@ LTV · Occupancy`.
   `get_mf_funds_details`, `networth_allocation_breakdown`, `lookup_ind_keys`) · **WebSearch/WebFetch** (TER &
   tracking error from mfdata.in / valueresearch; index CAPE/PE) · **BSE filings** (REIT/InvIT DPU; live price by
   BSE code) · optionally **reddit / youtube MCP** for live trend sentiment via `idea-researcher`.
-- **Artifacts:** trend map `extracted/research/global_trend_map.md`; brain consults
-  `extracted/grilling/<CODE>_<step>.json`; REIT/InvIT dossiers `vault/research/dossiers/<CODE>.md`.
+- **Artifacts:** ranking contract `extracted/research/global_grill_prep.md`; trend map
+  `extracted/research/global_trend_map.md`; universe `extracted/research/global_grade_universe_v1.json`;
+  brain consults `extracted/grilling/<CODE>_<step>.json`; ETF/FoF dossiers
+  `vault/research/dossiers/funds/<CODE>.md`; REIT/InvIT dossiers `vault/research/dossiers/<CODE>.md`.
 - **VERDICT TIERS:** CORE (≈FOREVER, the broad lowest-cost anchor, price-exempt) · COMPOUND-TREND (≈COMPOUND,
   durable trend at a fair index valuation) · WATCH (great trend+wrapper, expensive index → wait) · AVOID (bad
   wrapper OR fad/fading trend) · TOO_HARD (durability unknowable OR no clean wrapper). Rank = verdict →

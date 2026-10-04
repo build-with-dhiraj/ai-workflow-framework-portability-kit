@@ -2,7 +2,7 @@
 
 This folder is **a portable, self-contained snapshot** of the operator's Claude Code agent + skill setup. Drop it on any new Mac, follow [BOOTSTRAP.md](BOOTSTRAP.md), and the orchestration logic, specialist agents, and skill library are restored exactly as on the source machine.
 
-> **Snapshotted on:** 2026-08-13
+> **Snapshotted on:** 2026-10-04
 > **Source machine settings live at:** `~/.claude/` (mirrored here)
 
 ---
@@ -18,13 +18,13 @@ This folder is **a portable, self-contained snapshot** of the operator's Claude 
 | `SPEC-KIT-global.md` | Snapshot of your global `~/.claude/SPEC-KIT.md` (greenfield spec-driven phase mapping) | `~/.claude/SPEC-KIT.md` |
 | `settings.json` | Snapshot of `~/.claude/settings.json` (plugins, permissions, env) | `~/.claude/settings.json` |
 | `Agents/` | All 36 custom specialist agents + dispatch logic (README inside) | `~/.claude/agents/` |
-| `Skills/` | All 161 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
+| `Skills/` | All 162 active skills (symlinks resolved into real content; README inside) | `~/.claude/skills/` |
 | `MCP/` | Local MCP server template (secrets redacted) + full MCP roster | `~/.claude/mcp.json` |
 | `Plugins/` | Installed-plugins snapshot + marketplace registry + Vercel cache + reinstall guide | `~/.claude/plugins/*` + `~/.cache/plugins/github.com-vercel-vercel-plugin/` |
 | `Connectors/` | Account-bound integrations inventory (Gmail, Drive, Supabase, Slack, etc.) | claude.ai → Settings → Connectors (no local file) |
 | `Automations/` | The loop-heartbeat layer (Osmani "Loop Engineering") — harness scheduling stack, hooks/statusLine policy, and the human-in-the-loop kit-maintenance loop (README inside) | harness/account-bound (`/loop`, `/goal`, `/schedule`; no local file) |
 | `Tooling/` | Brewfile + npm globals snapshot + **`restore.sh`** (one-prompt end-to-end restore script) | system-level (Homebrew, npm) |
-| `Private/` | 🔒 **Gitignored.** The verbatim originals of the 14 skills the public repo carries as sanitized copies + the second config root (`~/.claude-jove`). Present in the kit *folder*, absent from the kit *repo*. (README inside) | `~/.claude/skills/*` + `~/.claude-jove/` |
+| `Private/` | 🔒 **Gitignored.** The verbatim originals of the 15 skills the public repo carries as sanitized copies + the second config root (`~/.claude-jove`). Present in the kit *folder*, absent from the kit *repo*. (README inside) | `~/.claude/skills/*` + `~/.claude-jove/` |
 
 ---
 
@@ -36,7 +36,7 @@ makes the kit look incomplete when it is not.
 
 | Tier | Lives | Examples | Kit captures? | Survives a Mac wipe? |
 |---|---|---|---|---|
-| **1 — Disk** | `~/.claude/` | 36 agents, 161 local skills, 13 CLI plugins, `settings.json`, `CLAUDE.md` | ✅ **yes — this is the kit's whole job** | only via this kit |
+| **1 — Disk** | `~/.claude/` | 36 agents, 162 local skills, 13 CLI plugins, `settings.json`, `CLAUDE.md` | ✅ **yes — this is the kit's whole job** | only via this kit |
 | **2 — App-delivered** | nowhere on disk | `desktop-commander`, `miro`, `langfuse`, `auth0`, `zapier`, `bigdata-com`, `slack-by-salesforce`, `product-tracking-skills`, `searchfit-seo`, `anthropic-skills` | ❌ no — **nothing to copy** | ✅ auto, on `claude login` |
 | **3 — Account** | Anthropic backend | claude.ai skills (`ListSkills` → 6), all OAuth connectors | ❌ no (inventoried only) | ✅ auto, on `claude login` |
 
@@ -57,7 +57,7 @@ you are not logged in yet, or the connector needs re-authorization. Never try to
 | **Kit repo** (GitHub) | Everything publishable | Sharing, auditing, forking |
 | **Kit folder** (this directory) | Repo **+ gitignored `Private/`** | **Actual Mac migration** |
 
-`Private/` holds the verbatim originals of 14 sanitized skills and the second config root
+`Private/` holds the verbatim originals of 15 sanitized skills and the second config root
 (`~/.claude-jove`). Withholding something from the public repo no longer means
 losing it on restore. **Copy the folder; do not `git clone`** — see
 [Private/README.md](Private/README.md).
